@@ -473,6 +473,11 @@
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateAlert.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateCrisis.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeUpdateCrisis.msrd</semanticResources>
+  <semanticResources>usecases/usecases.msr</semanticResources>
+  <semanticResources>usecases/usecase-ugLogin.msr</semanticResources>
+  <semanticResources>usecases/usecase-ugUserActivity.msr</semanticResources>
+  <semanticResources>usecases/usecase-ugWitnessSendFamilyNotification.msr</semanticResources>
+  <semanticResources>usecases/usecase-ugVictimSendFamilyNotification.msr</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

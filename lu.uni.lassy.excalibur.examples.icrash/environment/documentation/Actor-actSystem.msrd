@@ -16,9 +16,6 @@ icrash.environment.actSystem.inactSystem.ieCallUserActivity
 @inputEvent
 icrash.environment.actSystem.inactSystem.ieCallTypeWithTimeAverage
 ""
-@inputEvent
-icrash.environment.actSystem.inactSystem.oeSendStatistic
-""
 
 @endInputEvents
 //output events
@@ -36,6 +33,9 @@ icrash.environment.actSystem.outactSystem.oeChooseInformation
 ""
 @outputEvent
 icrash.environment.actSystem.outactSystem.oeSendNotification
+""
+@outputEvent
+icrash.environment.actSystem.outactSystem.oeSendStatistic
 ""
 
 @endOutputEvents
