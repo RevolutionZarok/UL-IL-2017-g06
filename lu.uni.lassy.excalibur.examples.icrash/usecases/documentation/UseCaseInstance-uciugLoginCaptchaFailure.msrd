@@ -1,0 +1,8 @@
+/*
+@author michm
+@date Mon Mar 27 14:03:40 CEST 2017
+*/
+
+
+@@Instance Use Case usecases.uciugLogin.uciugLoginCaptchaFailure
+@description "A failed captcha response submission after at least three failed login attempts"

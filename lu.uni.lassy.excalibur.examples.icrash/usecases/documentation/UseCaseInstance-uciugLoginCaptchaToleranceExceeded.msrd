@@ -1,0 +1,8 @@
+/*
+@author michm
+@date Mon Mar 27 14:03:43 CEST 2017
+*/
+
+
+@@Instance Use Case usecases.uciugLogin.uciugLoginCaptchaToleranceExceeded
+@description "After three failed login attempts without and five login attempts with captcha verification, the requested login user name will be blocked for further login attempts"

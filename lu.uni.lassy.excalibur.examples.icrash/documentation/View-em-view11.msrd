@@ -1,0 +1,12 @@
+/*
+@author michm
+@date Mon Mar 27 13:38:15 CEST 2017
+*/
+
+
+@@view em-view11//actMailingService
+@model Environment
+@level Local
+@number 11
+@description "The actor responsible to send e-mails"
+@caption "E-mail service"

@@ -957,6 +957,34 @@
     <semanticResources>usecases/documentation/UseCase-ugWitnessSendFamilyNotification.msrd</semanticResources>
     <semanticResources>usecases/usecase-ugCrisisInTime.msr</semanticResources>
     <semanticResources>usecases/usecase-ugAverageTypeofCrisis.msr</semanticResources>
+    <semanticResources>documentation/View-em-view8.msrd</semanticResources>
+    <semanticResources>documentation/View-em-view9.msrd</semanticResources>
+    <semanticResources>documentation/View-em-view10.msrd</semanticResources>
+    <semanticResources>documentation/View-em-view11.msrd</semanticResources>
+    <semanticResources>documentation/View-em-view12.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugAverageTypeofCrisis.msrd</semanticResources>
+    <semanticResources>usecases/usecaseinstance-ugAverageTypeofCrisis-uciugStatisticAvergeTypeofCrisis.msr</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugStatisticAvergeTypeofCrisis.msrd</semanticResources>
+    <semanticResources>usecases/usecaseinstance-ugCrisisInTime-uciugStatisticCrisisInTime.msr</semanticResources>
+    <semanticResources>usecases/usecaseinstance-uciugLogin.msr</semanticResources>
+    <semanticResources>usecases/usecaseinstance-ugUserActivity-uciugUserActivity.msr</semanticResources>
+    <semanticResources>usecases/usecaseinstance-ugWitnessSendFamilyNotification-uciugWitnessSendFamilyNotification.msr</semanticResources>
+    <semanticResources>usecases/usecaseinstance-ugVictimSendFamilyNotification-uciugVictimSendFamilyNotification.msr</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugStatisticCrisisInTime.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginSuccess.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginFailure.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginCaptchaSuccess.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginCaptchaFailure.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginCaptchaToleranceExceeded.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugLoginRejected.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugUserActivity.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugVictimSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-uciugWitnessSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugCrisisInTime.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugLogin.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugUserActivity.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugVictimSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>documentation/View-uc-ugWitnessSendFamilyNotification.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Aguk8EY3EeOwoLagakxXNQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8IZyuNKSEeadaP6YRq5p0w" name="cm-pt-ct-gv-01" representation="_frDQIFBBEeOoKst3jxjvgA">

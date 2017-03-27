@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:15:22 CEST 2017
+*/
+
+
+@@view uc-ugUserActivity
+@model Use-Case icrash.usecases.ugUserActivity.ugUserActivity 
+@description "The actor administrator will open the statics the activity of the users, there he can find out how many users are active at any time. Also the abstract user System give the information "
+@caption "The activity of the users"
+@scale MaxWidth

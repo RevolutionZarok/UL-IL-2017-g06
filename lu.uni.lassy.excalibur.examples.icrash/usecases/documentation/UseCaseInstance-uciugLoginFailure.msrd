@@ -1,0 +1,8 @@
+/*
+@author michm
+@date Mon Mar 27 14:03:33 CEST 2017
+*/
+
+
+@@Instance Use Case usecases.uciugLogin.uciugLoginFailure
+@description "A user submitted a wrong combination of user name and password during the login process. The authentication is refused."

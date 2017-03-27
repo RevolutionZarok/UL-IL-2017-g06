@@ -1,0 +1,8 @@
+/*
+@author michm
+@date Mon Mar 27 14:03:35 CEST 2017
+*/
+
+
+@@Instance Use Case usecases.uciugLogin.uciugLoginCaptchaSuccess
+@description "A successful login attempt with captcha verification"

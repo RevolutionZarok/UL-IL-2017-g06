@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:09:25 CEST 2017
+*/
+
+
+@@view uc-ugCrisisInTime
+@model Use-Case icrash.usecases.ugCrisisInTime.ugCrisisInTime 
+@description "The actor administrator will open the statics The number of crisis at the time, there he can find out how many crisis are send at the different time. Also the abstract user System give the information "
+@caption "The number of crisis at the time"
+@scale MaxWidth

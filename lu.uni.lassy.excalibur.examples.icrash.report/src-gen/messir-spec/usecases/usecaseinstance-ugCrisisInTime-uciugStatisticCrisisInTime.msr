@@ -1,0 +1,24 @@
+package usecases.uciugCrisisInTime {
+	import icrash.usecases.ugCrisisInTime
+	import icrash.environment
+	import icrash.usecases.subfunctions
+
+	Use Case Model {
+
+		use case instance uciugStatisticCrisisInTime : ugCrisisInTime{
+			actors {
+				User : actAdministrator
+				Database : actDatabase
+			}
+			use case steps {
+				User executed instanceof subfunction oeStatistic{
+					ieCallTimeAndCrisisNumber() returned to Database
+				}
+				Database executed instanceof subfunction oeSendStatistic("For the number of cisises in time for the different type of crisis"){
+					ieShowStatisticCrisis() returned to User
+				}	
+			
+			}
+		}
+	}
+}

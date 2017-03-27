@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 13:41:48 CEST 2017
+*/
+
+
+@@view uc-ugAverageTypeofCrisis
+@model Use-Case icrash.usecases.ugAverageTypeofCrisis.ugAverageTypeofCrisis 
+@description "The actor administrator will open the statics the average time for each type of crises,there the administrator can find out how long the different types of crisis needs.The tree types of a crises are small, medium and huge . Also the abstract user System give the information  "
+@caption "The average time for each type of crises"
+@scale MaxWidth

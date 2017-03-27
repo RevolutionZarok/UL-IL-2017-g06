@@ -1,0 +1,8 @@
+/*
+@author michm
+@date Mon Mar 27 13:50:11 CEST 2017
+*/
+
+
+@@Instance Use Case usecases.uciugAverageTypeofCrisis.uciugStatisticAverageTypeofCrisis
+@description "The Administrator click the button to open the statics so the system has to call the information for the average time of the different types and send it back to the Administrator so he can see it. "

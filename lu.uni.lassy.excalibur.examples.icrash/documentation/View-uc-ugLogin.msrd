@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:11:34 CEST 2017
+*/
+
+
+@@view uc-ugLogin
+@model Use-Case icrash.usecases.ugLogin.ugLogin 
+@description "An actor tries to log in to the system using his credentials"
+@caption "User goal: log in to the system"
+@scale MaxWidth

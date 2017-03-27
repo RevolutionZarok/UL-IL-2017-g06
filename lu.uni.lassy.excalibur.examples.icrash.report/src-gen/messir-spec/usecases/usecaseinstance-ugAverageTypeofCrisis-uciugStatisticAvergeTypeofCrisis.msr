@@ -1,0 +1,24 @@
+package usecases.uciugAverageTypeofCrisis {
+	import icrash.usecases.ugAverageTypeofCrisis
+	import icrash.environment
+	import icrash.usecases.subfunctions
+
+	Use Case Model {
+
+		use case instance uciugStatisticAverageTypeofCrisis : ugAverageTypeofCrisis{
+			actors { 
+				User : actAdministrator
+				Database : actDatabase
+			}
+			use case steps {
+				User executed instanceof subfunction oeStatistic{
+					ieCallTypeWithTimeAverage() returned to Database
+				}
+				Database executed instanceof subfunction oeSendStatistic("For the average time for the different type of crises"){
+					ieShowStatisticTimeAverage() returned to User
+				}
+						
+			}
+		}
+	}
+}
