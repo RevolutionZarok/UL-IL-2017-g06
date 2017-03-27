@@ -5,7 +5,7 @@
 
 
 @@Use Case icrash.usecases.ugWitnessSendFamilyNotification.ugWitnessSendFamilyNotification
-@description ""
+@description ""//Goal of sending selected information to the family
 @protocolCondition
 "
 "

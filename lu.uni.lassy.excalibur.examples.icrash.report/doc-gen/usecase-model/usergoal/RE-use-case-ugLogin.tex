@@ -3,6 +3,7 @@
 \label{RE-use-case-ugLogin}
 
 
+An actor wants to identify himself in order to gain access to the systems functionalities		  
 
 
 \begin{usecase}
@@ -22,7 +23,7 @@
 \addnumberedsinglerow{}{\msrcode{actMailingService[active]}}
 
 \addrowheading{Goal(s) description}
-\addsinglerow{}
+\addsinglerow{An actor wants to identify himself in order to gain access to the systems functionalities}
 
 \addrowheading{Reuse}
 \addnumberedsinglerow{}{\msrucname{oeLogin [1..1]}}
@@ -32,16 +33,17 @@
 \addnumberedsinglerow{}{\msrucname{oeCaptchaValid [1..1]}}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{the system has to be started}
+\addnumberedsinglerow{}{the actor (client) must be able to access the system (connected to the internet)}
 
 \addrowheading{Pre-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{the actor is not identified (logged in) and thus not able to access the systems functionalities}
 
 \addrowheading{Main post-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{if the login was successful, the actor is now identified and thus able to access the systems functionalities}
+\addnumberedsinglerow{}{if an attempt to log in failed, the authentication is refused and the actor has to try again}
+\addnumberedsinglerow{}{if the actor failed three times to log in, each further attempt to log in is accompanied by a captcha verification test}
+\addnumberedsinglerow{}{if the actor failed three times to log in without and five times with captcha verification, the requested user name will be blocked from further log in attempts}
 
 \addrowheading{Main Steps}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeLogin} use case}

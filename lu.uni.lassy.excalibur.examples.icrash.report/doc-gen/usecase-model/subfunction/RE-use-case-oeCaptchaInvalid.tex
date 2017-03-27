@@ -3,6 +3,7 @@
 \label{RE-use-case-oeCaptchaInvalid}
 
 
+Notifies the system that the supplied captcha answer is invalid		  
 
 
 \begin{usecase}
@@ -21,19 +22,18 @@
 \addnumberedsinglerow{}{\msrcode{actAuthenticated[]}}
 
 \addrowheading{Goal(s) description}
-\addsinglerow{}
+\addsinglerow{Notifies the system that the supplied captcha answer is invalid}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The system must have requested the generation of a captcha test from the generation actor first and should have received a captcha test}
+\addnumberedsinglerow{}{The system must have submitted or forwarded an answer to the captcha test to the validation actor}
 
 \addrowheading{Pre-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The submitted answer to the captcha test is incorrect}
 
 \addrowheading{Main post-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The system is notified about the failure state of the submitted answer to the captcha test}
+\addnumberedsinglerow{}{If the requested user name failed five times in a row to log in, the user name will be blocked and a mail with instructions to unblock the user name will be send to the affected user}
 
 \addrowheading{Additional Information}
 \addsinglerow{

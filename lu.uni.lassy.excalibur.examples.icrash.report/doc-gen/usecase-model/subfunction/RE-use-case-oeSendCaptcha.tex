@@ -3,6 +3,7 @@
 \label{RE-use-case-oeSendCaptcha}
 
 
+The actor responsible for captcha generation sends a captcha test and its answer to the system		  
 
 
 \begin{usecase}
@@ -20,19 +21,17 @@
 \addnumberedsinglerow{}{\msrcode{actAuthenticated[]}}
 
 \addrowheading{Goal(s) description}
-\addsinglerow{}
+\addsinglerow{The actor responsible for captcha generation sends a captcha test and its answer to the system}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{the system has to be started}
+\addnumberedsinglerow{}{the captcha generator has to be available}
 
 \addrowheading{Pre-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{the system must have notified the actor first in order that he can generate the captcha}
 
 \addrowheading{Main post-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{due to the request of the system, the captcha test and its answer has been generated and sent back to the system}
 
 \addrowheading{Additional Information}
 \addsinglerow{

@@ -5,18 +5,23 @@
 
 
 @@Use Case icrash.usecases.ugLogin.ugLogin
-@description ""
+@description "An actor wants to identify himself in order to gain access to the systems functionalities"
 @protocolCondition
-"
-"
+"the system has to be started"
+@protocolCondition
+"the actor (client) must be able to access the system (connected to the internet)"
 @endProtocolConditions
 @preCondition
-"
-"
+"the actor is not identified (logged in) and thus not able to access the systems functionalities"
 @endPreConditions
 @postCondition
-"
-"
+"if the login was successful, the actor is now identified and thus able to access the systems functionalities"
+@postCondition
+"if an attempt to log in failed, the authentication is refused and the actor has to try again"
+@postCondition
+"if the actor failed three times to log in, each further attempt to log in is accompanied by a captcha verification test"
+@postCondition
+"if the actor failed three times to log in without and five times with captcha verification, the requested user name will be blocked from further log in attempts"
 @endPostConditions
 @additionalInformation
 "

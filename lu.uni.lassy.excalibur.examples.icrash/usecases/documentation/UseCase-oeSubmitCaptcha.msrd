@@ -5,18 +5,19 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeSubmitCaptcha
-@description ""
+@description "The actor submits his answer to a captcha test to the system for validation"
 @protocolCondition
-"
-"
+"the system has to be started"
+@protocolCondition
+"the actor has to be connected but not yet identified to the system"
+@protocolCondition
+"the system must have received first the captcha test and its answer from the actor responsible for captcha generation"
 @endProtocolConditions
 @preCondition
-"
-"
+"the actor receives the captcha test from the system"
 @endPreConditions
 @postCondition
-"
-"
+"the actor submitted an answer to the given captcha test back to the system"
 @endPostConditions
 @additionalInformation
 "

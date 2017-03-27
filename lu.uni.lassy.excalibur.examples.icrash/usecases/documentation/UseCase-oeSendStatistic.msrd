@@ -5,17 +5,20 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeSendStatistic
-@description ""
+@description "Send the statistic to the system that the system send it to the administrator"
 @protocolCondition
-"
+"The actor has been login as a administrator to call the statistic so the subfunction can send the data to the system 
 "
 @endProtocolConditions
 @preCondition
-"
+"The administrator has call the statistic, so the function will send the information
 "
 @endPreConditions
 @postCondition
+"if the administrator click to the button statistic so the system will find the information.
 "
+@postCondition
+"the Database has send back the information to the system and after to the actor. 
 "
 @endPostConditions
 @additionalInformation

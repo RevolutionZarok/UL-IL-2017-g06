@@ -6,15 +6,14 @@
 
 @@Operation
 icrash.environment.actSystem.outactSystem.oeChooseInformation
-@description "
- "
+@description "" //The system chooses the information to be sent in the notification to the family
 //preProtocol descriptions
 @preP
 " "
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+" "//An alert or crisis must exist
 @endPreF
 //postFunctional descriptions
 @postF 

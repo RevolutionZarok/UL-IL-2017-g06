@@ -5,14 +5,13 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeUpdateCrisis
-@description ""
+@description ""//The coordinator updates a crisis with new information
 @protocolCondition
 "
 "
 @endProtocolConditions
 @preCondition
-"
-"
+"" //There must exist a crisis
 @endPreConditions
 @postCondition
 "

@@ -955,6 +955,8 @@
     <semanticResources>usecases/documentation/UseCase-ugAvergeTypeofCrisis.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-ugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-ugWitnessSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>usecases/usecase-ugCrisisInTime.msr</semanticResources>
+    <semanticResources>usecases/usecase-ugAverageTypeofCrisis.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Aguk8EY3EeOwoLagakxXNQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8IZyuNKSEeadaP6YRq5p0w" name="cm-pt-ct-gv-01" representation="_frDQIFBBEeOoKst3jxjvgA">

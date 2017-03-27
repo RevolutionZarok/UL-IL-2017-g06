@@ -5,18 +5,19 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeCaptchaInvalid
-@description ""
+@description "Notifies the system that the supplied captcha answer is invalid"
 @protocolCondition
-"
-"
+"The system must have requested the generation of a captcha test from the generation actor first and should have received a captcha test"
+@protocolCondition
+"The system must have submitted or forwarded an answer to the captcha test to the validation actor"
 @endProtocolConditions
 @preCondition
-"
-"
+"The submitted answer to the captcha test is incorrect"
 @endPreConditions
 @postCondition
-"
-"
+"The system is notified about the failure state of the submitted answer to the captcha test"
+@postCondition
+"If the requested user name failed five times in a row to log in, the user name will be blocked and a mail with instructions to unblock the user name will be send to the affected user"
 @endPostConditions
 @additionalInformation
 "

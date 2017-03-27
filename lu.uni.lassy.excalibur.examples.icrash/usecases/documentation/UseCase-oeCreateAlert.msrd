@@ -5,7 +5,7 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeCreateAlert
-@description ""
+@description ""//Output event from an authenticated or anonymous user to create an alert
 @protocolCondition
 "
 "

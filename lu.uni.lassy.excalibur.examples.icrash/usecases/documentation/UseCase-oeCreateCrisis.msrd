@@ -5,7 +5,7 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeCreateCrisis
-@description ""
+@description ""//A coordinator can create an output event crisis from an existing alert
 @protocolCondition
 "
 "

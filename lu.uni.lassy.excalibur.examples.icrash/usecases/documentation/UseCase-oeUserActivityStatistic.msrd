@@ -5,17 +5,22 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeUserActivityStatistic
-@description ""
+@description "An actor has been login as a Administrator to use the statistic function. So he can see the number of user compared with the time"
 @protocolCondition
+"The actor  has been login as a administrator and he has to click on the button static.
 "
-"
+@protocolCondition
+"The actor must be able to access the system (connected to the internet)"
 @endProtocolConditions
 @preCondition
-"
+"The actor is not login as a administrator, so he can click the button statistic.
 "
 @endPreConditions
 @postCondition
+"if the login was successful, the actor is now identified and thus able to access the AdministrateTheSystem
 "
+@postCondition
+"The actor can click the button statistic and so he see the statistic
 "
 @endPostConditions
 @additionalInformation

@@ -3,6 +3,7 @@
 \label{RE-use-case-oeCaptchaValid}
 
 
+Notifies the system that the supplied captcha answer is valid		  
 
 
 \begin{usecase}
@@ -20,19 +21,17 @@
 \addnumberedsinglerow{}{\msrcode{actAuthenticated[]}}
 
 \addrowheading{Goal(s) description}
-\addsinglerow{}
+\addsinglerow{Notifies the system that the supplied captcha answer is valid}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The system must have requested the generation of a captcha test from the generation actor first and should have received a captcha test}
+\addnumberedsinglerow{}{The system must have submitted or forwarded an answer to the captcha test to the validation actor}
 
 \addrowheading{Pre-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The submitted answer to the captcha test is correct}
 
 \addrowheading{Main post-condition(s)}
-\addnumberedsinglerow{}{
-}
+\addnumberedsinglerow{}{The system is notified about the success state of the submitted answer to the captcha test}
 
 \addrowheading{Additional Information}
 \addsinglerow{

@@ -5,7 +5,7 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeChooseInformation
-@description ""
+@description ""//Output event in which the system selects alert or crisis information to be sent to the family of the identified victim
 @protocolCondition
 "
 "

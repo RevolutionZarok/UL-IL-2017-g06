@@ -6,15 +6,14 @@
 
 @@Operation
 icrash.environment.actSystem.outactSystem.oeSendNotification
-@description "
- "
+@description ""//Send a notification to the family of a victim
 //preProtocol descriptions
 @preP
 " "
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+" "//Alert or crisis must exist
 @endPreF
 //postFunctional descriptions
 @postF 

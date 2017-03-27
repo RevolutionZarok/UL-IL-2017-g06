@@ -5,18 +5,17 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeSendCaptcha
-@description ""
+@description "The actor responsible for captcha generation sends a captcha test and its answer to the system"
 @protocolCondition
-"
-"
+"the system has to be started"
+@protocolCondition
+"the captcha generator has to be available"
 @endProtocolConditions
 @preCondition
-"
-"
+"the system must have notified the actor first in order that he can generate the captcha"
 @endPreConditions
 @postCondition
-"
-"
+"due to the request of the system, the captcha test and its answer has been generated and sent back to the system"
 @endPostConditions
 @additionalInformation
 "
