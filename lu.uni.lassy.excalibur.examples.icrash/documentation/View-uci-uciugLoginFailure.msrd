@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:34:20 CEST 2017
+*/
+
+
+@@view uci-uciugLoginFailure
+@instance Use-Case usecases.uciugLogin.uciugLoginFailure 
+@description "A user has submitted an incorrect combination of user name and password during the login process"
+@caption "A failed login attempt"
+@scale MaxWidth

@@ -985,6 +985,17 @@
     <semanticResources>documentation/View-uc-ugUserActivity.msrd</semanticResources>
     <semanticResources>documentation/View-uc-ugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-uc-ugWitnessSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugStatisticAverageTypeofCrisis.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugStatisticCrisisInTime.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginSuccess.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginFailure.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginCaptchaSuccess.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginCaptchaFailure.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginCaptchaToleranceExceeded.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugLoginRejected.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugUserActivity.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugVictimSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>documentation/View-uci-uciugWitnessSendFamilyNotification.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Aguk8EY3EeOwoLagakxXNQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8IZyuNKSEeadaP6YRq5p0w" name="cm-pt-ct-gv-01" representation="_frDQIFBBEeOoKst3jxjvgA">

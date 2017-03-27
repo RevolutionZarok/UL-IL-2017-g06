@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:41:20 CEST 2017
+*/
+
+
+@@view uci-uciugUserActivity
+@instance Use-Case usecases.uciugUserActivity.uciugUserActivity 
+@description "The administrator click the button to open the statics so the system has to call the information for the number of the user compared with the time and send it back to the Administrator so he can see it. "
+@caption "The number of the user compared with the time"
+@scale MaxWidth

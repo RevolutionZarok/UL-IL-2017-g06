@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:37:49 CEST 2017
+*/
+
+
+@@view uci-uciugLoginCaptchaToleranceExceeded
+@instance Use-Case usecases.uciugLogin.uciugLoginCaptchaToleranceExceeded 
+@description "The actor failed to log in three times without and five times with captcha verification. The login availability for the requested user name will be blocked."
+@caption "The tolerance of login attempts is exceeded"
+@scale MaxWidth

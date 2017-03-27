@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:23:11 CEST 2017
+*/
+
+
+@@view uci-uciugStatisticAverageTypeofCrisis
+@instance Use-Case usecases.uciugAverageTypeofCrisis.uciugStatisticAverageTypeofCrisis 
+@description "The Administrator click the button to open the statics so the system has to call the information for the average time of the different types and send it back to the Administrator so he can see it. "
+@caption "The average time of the different types"
+@scale MaxWidth

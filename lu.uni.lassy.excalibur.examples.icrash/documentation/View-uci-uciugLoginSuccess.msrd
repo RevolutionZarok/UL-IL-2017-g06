@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:25:13 CEST 2017
+*/
+
+
+@@view uci-uciugLoginSuccess
+@instance Use-Case usecases.uciugLogin.uciugLoginSuccess 
+@description "A user has submitted a correct combination of user name and password during the login process"
+@caption "A successful login attempt"
+@scale MaxWidth

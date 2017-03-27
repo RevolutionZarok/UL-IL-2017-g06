@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:35:41 CEST 2017
+*/
+
+
+@@view uci-uciugLoginCaptchaSuccess
+@instance Use-Case usecases.uciugLogin.uciugLoginCaptchaSuccess 
+@description "The actor tries to log in with captcha verification and correct credentials. The log in will be allowed."
+@caption "A successful login with captcha verification"
+@scale MaxWidth

@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:36:46 CEST 2017
+*/
+
+
+@@view uci-uciugLoginCaptchaFailure
+@instance Use-Case usecases.uciugLogin.uciugLoginCaptchaFailure 
+@description "The actor tries to log in with captcha verification and incorrect credentials. The log in process will be aborted."
+@caption "A failed login with captcha verification"
+@scale MaxWidth

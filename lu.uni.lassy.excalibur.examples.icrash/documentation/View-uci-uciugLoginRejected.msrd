@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Mon Mar 27 14:40:20 CEST 2017
+*/
+
+
+@@view uci-uciugLoginRejected
+@instance Use-Case usecases.uciugLogin.uciugLoginRejected 
+@description "A user has tried to log in with a user name who has been blocked by the system from any further login attempts"
+@caption "A rejected login attempt"
+@scale MaxWidth
