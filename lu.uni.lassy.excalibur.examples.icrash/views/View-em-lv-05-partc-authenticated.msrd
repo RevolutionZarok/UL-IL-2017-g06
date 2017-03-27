@@ -4,4 +4,4 @@
 @number 5
 @description 'shows the local view for the authenticated actor and interfaces'
 @caption 'authenticated actor environment model local view'
-@scale 0.80
+@scale MaxWidth

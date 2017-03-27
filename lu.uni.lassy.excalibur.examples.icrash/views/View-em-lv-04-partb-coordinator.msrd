@@ -4,4 +4,4 @@
 @number 4
 @description 'shows the local view for the coordinator actor and interfaces'
 @caption 'coordinator actor environment model view'
-@scale 0.80
+@scale MaxWidth

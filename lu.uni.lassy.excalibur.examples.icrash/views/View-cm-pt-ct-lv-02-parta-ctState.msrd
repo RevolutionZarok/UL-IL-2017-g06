@@ -5,4 +5,4 @@
 @number 2
 @description 'shows the local view of the ctState primary type class type.'
 @caption 'local view of the ctState primary type'
-@scale 0.80
+@scale MaxWidth

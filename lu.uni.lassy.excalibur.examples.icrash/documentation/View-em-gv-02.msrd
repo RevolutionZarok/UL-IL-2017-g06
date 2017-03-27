@@ -6,4 +6,4 @@
 
 @description "Abstract view of system's state and related environment actors"
 @caption "Abstract view of system's state and related environment actors"
-@scale 0.80
+@scale MaxWidth
