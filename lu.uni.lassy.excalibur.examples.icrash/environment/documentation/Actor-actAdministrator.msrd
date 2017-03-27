@@ -7,6 +7,12 @@
 "its reception confirms the creation of the requested coodinator. "
 @inputEvent icrash.environment.actAdministrator.inactAdministrator.ieCoordinatorDeleted
 "its reception confirms the deletion of the requested coodinator. "
+@inputEvent icrash.environment.actAdministrator.inactAdministrator.ieClickStatistic
+"" //TODO: Document
+@inputEvent icrash.environment.actAdministrator.inactAdministrator.ieStatistic 
+"" //TODO: Document
+@inputEvent icrash.environment.actAdministrator.inactAdministrator.ieCallTimeAndCrisisNumber
+"" //TODO: Document
 @endInputEvents
 
 //output events

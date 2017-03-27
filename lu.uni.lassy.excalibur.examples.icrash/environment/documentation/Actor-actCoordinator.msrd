@@ -30,4 +30,12 @@
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeValidateAlert
 "sent to indicate that a specific alert is not a fake."
 
+//Vlad:
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeCreateAlert
+""//TODO: Document
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeCreateCrisis
+""//TODO: Document
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis
+""//TODO: Document
+
 @endOutputEvents

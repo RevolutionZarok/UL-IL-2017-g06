@@ -1,0 +1,37 @@
+/*
+@author michm
+@date Mon Mar 27 10:38:20 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
+//parameters
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtResponse
+"The response given by the user of the captcha test"
+@endParameters
+
+@description "Submits a response to a captcha test to the system"
+//preProtocol descriptions
+@preP
+"the actor must have requested to answer to a captcha test first. (i.e. the system must have send a captcha test to the actor first)"
+@endPreP
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+//postFunctional descriptions
+@postF 
+"if the response is correct (validated successfully by the system), the actor is notified with a positive message"
+@postF 
+"if the response is incorrect (validated erroneously by the system), the actor is notified with a negative message"
+@endPostF
+//postProtocol descriptions
+@postP 
+"if the response is correct (validated successfully by the system), the actor can proceed normally with the login process"
+@postP 
+"if the response is incorrect (validated erroneously by the system), the current login process is aborted. After 5 wrong attempts to submit a response to a captcha test, the user name used to log in will be blocked."
+@endPostP
+//example
+@example" "

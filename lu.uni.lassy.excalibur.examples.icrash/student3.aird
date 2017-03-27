@@ -459,6 +459,36 @@
   <semanticResources>platform:/resource/lu.uni.lassy.excalibur.standard.specification.libraries/library/documentation/PrimaryType-Primitive-ptReal.msrd</semanticResources>
   <semanticResources>platform:/resource/lu.uni.lassy.excalibur.standard.specification.libraries/library/documentation/PrimaryType-Primitive-ptString.msrd</semanticResources>
   <semanticResources>documentation/View-em-gv-02.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtCaptcha.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtCaptchaImage.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtCaptchaResponse.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtStatisticCrisisinTime.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtStatisticTypeCrisis.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtStatisticUserActivity.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtTimestamp.msrd</semanticResources>
+  <semanticResources>environment/documentation/Actor-actCaptchaGenerator.msrd</semanticResources>
+  <semanticResources>environment/documentation/Actor-actCaptchaValidator.msrd</semanticResources>
+  <semanticResources>environment/documentation/Actor-actDatabase.msrd</semanticResources>
+  <semanticResources>environment/documentation/Actor-actMailingService.msrd</semanticResources>
+  <semanticResources>environment/documentation/Actor-actSystem.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCaptchaValidator-outactCaptchaValidator-oeCaptchaInvalid.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCaptchaValidator-outactCaptchaValidator-oeCaptchaValid.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeChooseInformation.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCaptchaGenerator-outactCaptchaGenerator-oeSendCaptcha.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeSendNotification.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugSercurelyUserSystem.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugVictimSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugWitnessSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAuthenticated-outactAuthenticated-oeSubmitCaptcha.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAuthenticated-outactAuthenticated-oeCreateAlert.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeNumberOfCrisis.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeUserActivityStatistic.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeTimeOfTypeOfCrisis.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-ugAdministrateTheSystem.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeStatistic.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateAlert.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateCrisis.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeUpdateCrisis.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

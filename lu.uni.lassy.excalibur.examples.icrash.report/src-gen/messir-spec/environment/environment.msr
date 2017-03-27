@@ -36,12 +36,24 @@ import lu.uni.lassy.messir.libraries.calendar
 											
 				operation oeDeleteCoordinator(
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
+											
+				//Sam:
+				operation oeUserActivityStatistic() : ptBoolean
+				operation oeNumberOfCrisis() : ptBoolean
+				operation oeTimeOfTypeOfCrisis() : ptBoolean
+				operation ugAdministrateTheSystem() : ptBoolean
+				operation oeStatistic() : ptBoolean
 			}
 			
 			input interface inactAdministrator{
 				
 				operation ieCoordinatorAdded():ptBoolean
 				operation ieCoordinatorDeleted():ptBoolean
+				
+				//Sam:
+				operation ieClickStatistic() : ptBoolean
+				operation ieStatistic() : ptBoolean
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
 	 		}
 		}
 		
@@ -71,6 +83,11 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+				
+				//Vlad:
+				operation oeCreateAlert() : ptBoolean
+				operation oeCreateCrisis() : ptBoolean
+				operation oeUpdateCrisis() : ptBoolean
 			}
 			
 			input interface inactCoordinator{
@@ -108,10 +125,19 @@ import lu.uni.lassy.messir.libraries.calendar
 			output interface outactAuthenticated{
 				operation oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword ):ptBoolean
 				operation oeLogout():ptBoolean
+				
+				//Michel:
+				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
+				
+				//Vlad:
+				operation oeCreateAlert() : ptBoolean
 			}
 			
 			input interface inactAuthenticated{
 				operation ieMessage(AMessage:ptString):ptBoolean
+				
+				//Michel:
+				operation ieConfirmCaptcha(ACaptcha:dtCaptcha):ptBoolean
 	 		}
 		}
 
@@ -127,5 +153,65 @@ import lu.uni.lassy.messir.libraries.calendar
 			input interface inactActivator{
 	 		}
 		}
+		
+		//Michel:
+		actor actCaptchaGenerator role rnactCaptchaGenerator cardinality[1 .. 1] {
+			input interface inactCaptchaGenerator {
+				operation ieGenerateCaptcha():ptBoolean//Documented
+				operation ieValidateCaptcha(AResponse:dtCaptchaResponse):ptBoolean//Documented
+			}
+			output interface outactCaptchaGenerator {
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean//Partly Documented
+			}
+		}
+		
+		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
+			input interface inactMailingService {
+				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
+			}
+			output interface outactMailingService {
+			}
+		}
+		
+		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
+			input interface inactCaptchaValidator {
+				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
+			}
+			output interface outactCaptchaValidator {
+				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
+				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
+			}
+		}
+		
+		//Sam:
+		actor actSystem role rnactSystem cardinality[1 .. 1] {
+			input interface inactSystem {
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation ieCallUserActivity() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation oeSendStatistic() : ptBoolean
+			}
+			output interface outactSystem {
+				operation ugSercurelyUserSystem() : ptBoolean
+				operation ugVictimSendFamilyNotification() : ptBoolean
+				operation ugWitnessSendFamilyNotification() : ptBoolean
+				operation oeChooseInformation() : ptBoolean
+				operation oeSendNotification() : ptBoolean
+			}
+		}
+		
+		actor actDatabase role rnactDatabase cardinality[1 .. 1] {
+			input interface inactDatabase {
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation ieCallUserActivity() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation oeSendStatistic() : ptBoolean
+				operation oeStatistic() : ptBoolean
+			}
+			output interface outactDatabase {
+			}
+		}
+		
+		
 	}
 }

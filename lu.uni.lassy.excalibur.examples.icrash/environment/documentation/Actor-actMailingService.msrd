@@ -1,0 +1,16 @@
+/*
+@author michm
+@date Mon Mar 27 10:25:03 CEST 2017
+*/
+
+
+@@Actor icrash.environment.actMailingService
+@description "An actor who is responsible for sending mails to actors who are registered in the system with an e-mail address"
+//input events
+@inputEvent
+icrash.environment.actMailingService.inactMailingService.ieSendMail
+"Sends an e-mail to a given e-mail address"
+
+@endInputEvents
+//output events
+

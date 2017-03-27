@@ -1,0 +1,12 @@
+/*
+@author michm
+@date Mon Mar 27 10:09:40 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtTimestamp
+@description "Crash timestamp composed of hour, minute and second"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtTimestamp.time
+"The internal representation of the time stamp"
+@endAttributes

@@ -1,0 +1,28 @@
+/*
+@author michm
+@date Mon Mar 27 10:28:36 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actSystem.outactSystem.oeSendNotification
+@description "
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

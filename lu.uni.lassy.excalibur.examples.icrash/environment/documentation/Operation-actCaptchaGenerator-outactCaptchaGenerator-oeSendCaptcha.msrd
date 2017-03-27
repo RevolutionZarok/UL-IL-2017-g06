@@ -1,0 +1,35 @@
+/*
+@author michm
+@date Mon Mar 27 10:28:33 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha
+//parameters
+@parameter
+icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha.AdtCaptcha
+"The generated captcha test"
+@endParameters
+
+@description "Sends a generated captcha test to the system"
+//preProtocol descriptions
+@preP
+"the captcha generator has to be available"
+@preP
+"the captcha generator must have been notified first using ieGenerateCaptcha in order to generate a captcha test"
+@endPreP
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+//postFunctional descriptions
+@postF 
+"the received captcha test will be forwarded to an actor"
+@endPostF
+//postProtocol descriptions
+@postP 
+"the system has received the requested randomly generated captcha test to be able to forward the captcha test to an actor"
+@endPostP
+//example
+@example" "

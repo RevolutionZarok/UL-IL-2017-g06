@@ -1,0 +1,41 @@
+/*
+@author michm
+@date Mon Mar 27 10:25:06 CEST 2017
+*/
+
+
+@@Actor icrash.environment.actSystem
+@description ""
+//input events
+@inputEvent
+icrash.environment.actSystem.inactSystem.ieCallTimeAndCrisisNumber
+""
+@inputEvent
+icrash.environment.actSystem.inactSystem.ieCallUserActivity
+""
+@inputEvent
+icrash.environment.actSystem.inactSystem.ieCallTypeWithTimeAverage
+""
+@inputEvent
+icrash.environment.actSystem.inactSystem.oeSendStatistic
+""
+
+@endInputEvents
+//output events
+@outputEvent
+icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem
+""
+@outputEvent
+icrash.environment.actSystem.outactSystem.ugVictimSendFamilyNotification
+""
+@outputEvent
+icrash.environment.actSystem.outactSystem.ugWitnessSendFamilyNotification
+""
+@outputEvent
+icrash.environment.actSystem.outactSystem.oeChooseInformation
+""
+@outputEvent
+icrash.environment.actSystem.outactSystem.oeSendNotification
+""
+
+@endOutputEvents

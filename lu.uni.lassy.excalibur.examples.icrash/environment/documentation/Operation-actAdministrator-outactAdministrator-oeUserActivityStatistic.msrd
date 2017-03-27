@@ -1,0 +1,29 @@
+/*
+@author michm
+@date Mon Mar 27 10:45:17 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oeUserActivityStatistic
+@description "This function will send the user activity. This mean that it will shoa the user number with the time"
+//preProtocol descriptions
+@preP 
+"The function ugAdministarteTheSystem must be executed first"
+@preP 
+"The function statistic must be execute. This is the button statistic "
+@endPreP
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+//postFunctional descriptions
+@postF 
+"Got to the Database to find the information"
+@endPostF
+//postProtocol descriptions
+@postP 
+"Send back the information to the system and than to the administrator."
+@endPostP
+//example
+@example" "

@@ -1,0 +1,28 @@
+/*
+@author michm
+@date Mon Mar 27 10:45:27 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.ugAdministrateTheSystem
+@description "
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

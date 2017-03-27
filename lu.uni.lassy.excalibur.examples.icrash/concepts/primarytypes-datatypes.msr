@@ -9,7 +9,7 @@ import lu.uni.lassy.messir.libraries.calendar
 		
 		Primary Types {
    
-			 datatype dtAlertID extends dtString {
+			datatype dtAlertID extends dtString {
 				operation is():ptBoolean
 			}
 			datatype dtCrisisID extends dtString {
@@ -58,6 +58,37 @@ import lu.uni.lassy.messir.libraries.calendar
 			enum etHumanKind {
 				constants["witness", "victim", "anonymous"]
 				operation is():ptBoolean
+			}
+			
+			//Michel
+			datatype dtCaptcha {//TODO: link to images
+				attribute id: ptInteger
+				attribute question: ptString
+			}
+			datatype dtCaptchaResponse {
+				attribute id: ptInteger
+				attribute response: ptString//TODO: Type?
+			}
+			datatype dtCaptchaImage extends dtString{
+				attribute width : ptInteger
+				attribute height : ptInteger
+			}
+			
+			//Sam
+			datatype dtStatisticUserActivity{
+				attribute number: ptInteger
+				attribute time : dtTime
+			}
+			datatype dtStatisticCrisisinTime{
+				attribute number : ptInteger
+				attribute time : dtTime
+			}
+			datatype dtStatisticTypeCrisis{
+				attribute typeC : ptString
+				attribute time : dtTime
+			}
+			datatype dtTimestamp{
+				attribute time : dtTime
 			}
 		}
 	}

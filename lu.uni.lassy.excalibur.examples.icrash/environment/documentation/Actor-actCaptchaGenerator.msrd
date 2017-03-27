@@ -1,0 +1,23 @@
+/*
+@author michm
+@date Mon Mar 27 10:23:50 CEST 2017
+*/
+
+
+@@Actor icrash.environment.actCaptchaGenerator
+@description "Actor providing a randomly generated captcha test to hedge a users login process"
+//input events
+@inputEvent
+icrash.environment.actCaptchaGenerator.inactCaptchaGenerator.ieGenerateCaptcha
+"The request to the actor to generate and provide a captcha test"
+@inputEvent
+icrash.environment.actCaptchaGenerator.inactCaptchaGenerator.ieValidateCaptcha
+"The request to the actor to validate a response to a captcha test"
+
+@endInputEvents
+//output events
+@outputEvent
+icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha
+"The response by the actor which provides a captcha test to the system"
+
+@endOutputEvents

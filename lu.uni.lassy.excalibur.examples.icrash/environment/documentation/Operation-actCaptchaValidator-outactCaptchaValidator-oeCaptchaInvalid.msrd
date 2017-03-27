@@ -1,0 +1,35 @@
+/*
+@author michm
+@date Mon Mar 27 10:28:27 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid
+//parameters
+@parameter
+icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid.AdtCaptchaId
+"The id of the supplied captcha test"
+@endParameters
+
+@description "Returns an answer to the system to notify that the supplied captcha was invalid"
+//preProtocol descriptions
+@preP
+"The actor must have first generated a captcha test and stored it locally"
+@preP
+"The actor must have been supplied with a captcha response"
+@endPreP
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+//postFunctional descriptions
+@postF 
+"The actor notifies the system about the invalid captcha via oeCaptchaInvalid"
+@endPostF
+//postProtocol descriptions
+@postP 
+"The system is informed about the invalid captcha response and notifies the user about this fact"
+@endPostP
+//example
+@example" "

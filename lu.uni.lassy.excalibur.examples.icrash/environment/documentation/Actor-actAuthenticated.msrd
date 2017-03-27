@@ -6,6 +6,8 @@
 //input events
 @inputEvent icrash.environment.actAuthenticated.inactAuthenticated.ieMessage
 "allows for receiving general textual messages."
+@inputEvent icrash.environment.actAuthenticated.inactAuthenticated.ieConfirmCaptcha
+"The request of the system to the user to field a captcha test"
 
 @endInputEvents
 
@@ -14,5 +16,9 @@
 "sent to request authorization to request access secured system operations."
 @outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeLogout
 "sent to end the secured access to specific system operations."
+@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
+"sent to submit an answer to a previously given captcha test"
+@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert
+"sent to create a new alert"
 
 @endOutputEvents
