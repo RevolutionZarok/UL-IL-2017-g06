@@ -1,0 +1,62 @@
+\subsubsection{usergoal-ugUserActivity}
+
+\label{RE-use-case-ugUserActivity}
+
+
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{ugUserActivity}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{usergoal}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actAdministrator[active]}}
+\addnumberedsinglerow{}{\msrcode{actDatabase[proactive]}}
+
+
+\addrowheading{Secondary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actSystem[active]}}
+
+\addrowheading{Goal(s) description}
+\addsinglerow{}
+
+\addrowheading{Reuse}
+\addnumberedsinglerow{}{\msrucname{oeStatistic [1..*]}}
+\addnumberedsinglerow{}{\msrucname{ugSercurelyUserSystem [0..*]}}
+\addnumberedsinglerow{}{\msrucname{oeUserActivityStatistic [0..*]}}
+\addnumberedsinglerow{}{\msrucname{ugAdministrateTheSystem [1..*]}}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main Steps}
+\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{ugSercurelyUserSystem} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oeStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{oeUserActivityStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{ugAdministrateTheSystem} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actDatabase} executes the \msrucname{oeUserActivityStatistic} use case}
+\addrowheading{Steps Ordering Constraints}
+\addnumberedsinglerow{}{at least a}
+\addnumberedsinglerow{}{if b then previously a}
+\addnumberedsinglerow{}{if c then previously b}
+\addnumberedsinglerow{}{if d then previously c}
+
+\addrowheading{Additional Information}
+\addsinglerow{
+none
+}
+
+\end{usecase} 
+

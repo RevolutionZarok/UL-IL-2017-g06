@@ -1,0 +1,65 @@
+\subsubsection{usergoal-ugLogin}
+
+\label{RE-use-case-ugLogin}
+
+
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{ugLogin}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{usergoal}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actAuthenticated[active]}}
+
+
+\addrowheading{Secondary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actCaptchaGenerator[active]}}
+\addnumberedsinglerow{}{\msrcode{actCaptchaValidator[active]}}
+\addnumberedsinglerow{}{\msrcode{actMailingService[active]}}
+
+\addrowheading{Goal(s) description}
+\addsinglerow{}
+
+\addrowheading{Reuse}
+\addnumberedsinglerow{}{\msrucname{oeLogin [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeSendCaptcha [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeSubmitCaptcha [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeCaptchaInvalid [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeCaptchaValid [1..1]}}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main Steps}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeLogin} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaGenerator} executes the \msrucname{oeSendCaptcha} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeSubmitCaptcha} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaValidator} executes the \msrucname{oeCaptchaInvalid} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaValidator} executes the \msrucname{oeCaptchaValid} use case}
+\addrowheading{Steps Ordering Constraints}
+\addnumberedsinglerow{}{at least a}
+\addnumberedsinglerow{}{if b then previously a}
+\addnumberedsinglerow{}{if c then previously b}
+\addnumberedsinglerow{}{if d then previously c}
+\addnumberedsinglerow{}{if e then previously c}
+
+\addrowheading{Additional Information}
+\addsinglerow{
+none
+}
+
+\end{usecase} 
+

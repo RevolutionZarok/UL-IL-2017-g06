@@ -189,7 +189,6 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
 				operation ieCallTypeWithTimeAverage() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
 			}
 			output interface outactSystem {
 				operation ugSercurelyUserSystem() : ptBoolean
@@ -197,6 +196,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ugWitnessSendFamilyNotification() : ptBoolean
 				operation oeChooseInformation() : ptBoolean
 				operation oeSendNotification() : ptBoolean
+				operation oeSendStatistic() : ptBoolean
 			}
 		}
 		

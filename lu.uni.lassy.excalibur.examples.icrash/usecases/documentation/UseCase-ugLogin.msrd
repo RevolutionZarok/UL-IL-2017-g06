@@ -1,0 +1,24 @@
+/*
+@author michm
+@date Mon Mar 27 11:39:55 CEST 2017
+*/
+
+
+@@Use Case icrash.usecases.ugLogin.ugLogin
+@description ""
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

@@ -1,0 +1,60 @@
+\subsubsection{usergoal-ugVictimSendFamilyNotification}
+
+\label{RE-use-case-ugVictimSendFamilyNotification}
+
+
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{ugVictimSendFamilyNotification}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{usergoal}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actSystem[active]}}
+
+
+\addrowheading{Secondary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actAuthenticated[active]}}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[proactive]}}
+
+\addrowheading{Goal(s) description}
+\addsinglerow{}
+
+\addrowheading{Reuse}
+\addnumberedsinglerow{}{\msrucname{oeCreateAlert [1..*]}}
+\addnumberedsinglerow{}{\msrucname{oeCreateCrisis [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeUpdateCrisis [0..*]}}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main Steps}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeCreateAlert} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeCreateAlert} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeCreateCrisis} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oeChooseInformation} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeUpdateCrisis} use case}
+\addrowheading{Steps Ordering Constraints}
+\addnumberedsinglerow{}{if c then previously a or b}
+\addnumberedsinglerow{}{if d then previously a or b}
+\addnumberedsinglerow{}{if e then previously a or b}
+
+\addrowheading{Additional Information}
+\addsinglerow{
+none
+}
+
+\end{usecase} 
+

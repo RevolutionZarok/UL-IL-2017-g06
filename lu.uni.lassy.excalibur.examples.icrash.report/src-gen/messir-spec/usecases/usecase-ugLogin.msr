@@ -1,0 +1,50 @@
+/*
+* @author michm
+* @date Mon Mar 27 11:29:20 CEST 2017
+*/
+
+package icrash.usecases.ugLogin {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.usecases.subfunctions
+import icrash.environment
+
+
+	Use Case Model {
+		use case system usergoal ugLogin() {
+		actor actAuthenticated[primary, active]
+		actor actCaptchaGenerator[secondary, active]
+		actor actCaptchaValidator[secondary, active]
+		actor actMailingService[secondary, active]
+		
+		reuse oeLogin[1..1]
+		reuse oeSendCaptcha[1..1]
+		reuse oeSubmitCaptcha[1..1]
+		reuse oeCaptchaInvalid[1..1]
+		reuse oeCaptchaValid[1..1]
+		
+		step a: actAuthenticated
+		executes oeLogin
+		
+		step b: actCaptchaGenerator
+		executes oeSendCaptcha
+		
+		step c: actAuthenticated
+		executes oeSubmitCaptcha
+		
+		step d: actCaptchaValidator
+		executes oeCaptchaInvalid
+		
+		step e: actCaptchaValidator
+		executes oeCaptchaValid
+		
+		ordering constraint "at least a"
+		ordering constraint "if b then previously a"
+		ordering constraint "if c then previously b"
+		ordering constraint "if d then previously c"
+		ordering constraint "if e then previously c"
+		}
+	}
+
+
+}

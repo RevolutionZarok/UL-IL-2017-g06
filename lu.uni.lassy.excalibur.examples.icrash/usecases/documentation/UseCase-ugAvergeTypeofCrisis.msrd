@@ -1,0 +1,24 @@
+/*
+@author michm
+@date Mon Mar 27 11:39:59 CEST 2017
+*/
+
+
+@@Use Case icrash.usecases.ugUserActivity.ugAvergeTypeofCrisis
+@description ""
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

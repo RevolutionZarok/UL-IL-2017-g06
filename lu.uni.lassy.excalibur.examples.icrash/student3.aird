@@ -489,11 +489,32 @@
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateAlert.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCreateCrisis.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeUpdateCrisis.msrd</semanticResources>
-  <semanticResources>usecases/usecases.msr</semanticResources>
   <semanticResources>usecases/usecase-ugLogin.msr</semanticResources>
   <semanticResources>usecases/usecase-ugUserActivity.msr</semanticResources>
   <semanticResources>usecases/usecase-ugWitnessSendFamilyNotification.msr</semanticResources>
   <semanticResources>usecases/usecase-ugVictimSendFamilyNotification.msr</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeSendStatistic.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeSendCaptcha.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeSubmitCaptcha.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeCaptchaInvalid.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeCaptchaValid.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeStatistic.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeUserActivityStatistic.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeNumberOfCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeTimeOfTypeOfCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugSercurelyUserSystem.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeSendStatistic.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeCreateAlert.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeCreateCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeUpdateCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeSendNotification.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeChooseInformation.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugLogin.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugUserActivity.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugCrisisInTime.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugAvergeTypeofCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugVictimSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-ugWitnessSendFamilyNotification.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>
