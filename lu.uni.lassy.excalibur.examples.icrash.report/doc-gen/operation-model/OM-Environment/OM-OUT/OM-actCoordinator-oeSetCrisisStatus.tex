@@ -1,0 +1,43 @@
+\subsection{Operation Model for oeSetCrisisStatus}
+
+\label{OM-oeSetCrisisStatus}
+
+
+The \msrcode{oeSetCrisisStatus} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeSetCrisisStatus}{sent to define the handling status of a specific crisis.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis} 
+	\addnumbereddoublerow{}{AetCrisisStatus: etCrisisStatus}{the new status value} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one crisis in the pre state having the given id.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the crisis status attribute of the crisis instance having the given id is replaced by the given one and the requesting actor is notified of this update.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

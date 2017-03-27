@@ -1,0 +1,31 @@
+package icrash.usecases.suGlobalCrisisHandling {
+	import lu.uni.lassy.messir.libraries.primitives
+	import icrash.environment
+  import icrash.usecases.subfunctions
+	import icrash.usecases.ugSecurelyUseSystem
+	import icrash.usecases.ugManageCrisis
+  import icrash.usecases.ugMonitor
+   
+	Use Case Model {
+		use case system summary 
+		  suGlobalCrisisHandling() {
+			actor actCoordinator[primary,active]
+			
+			reuse ugSecurelyUseSystem[1..*]
+			reuse ugMonitor[1..*] 
+			reuse ugManageCrisis[1..*]
+
+			step a: actCoordinator 
+			        executes ugSecurelyUseSystem
+			step b: actCoordinator
+			        executes ugMonitor
+			step c: actCoordinator
+			        executes ugManageCrisis
+
+      ordering constraint 
+        "steps (a) (b) and (c) executions are interleaved 
+        (steps (b) and (c) have their protocol constrained by steps of (a))."
+      ordering constraint 
+          "steps (a) (b) and (c) can be executed multiple times."
+}
+}}

@@ -1,0 +1,20 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.string.dtString.subdtString
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.string.dtString.subdtString.StartIndex
+""
+@parameter
+lu.uni.lassy.messir.libraries.string.dtString.subdtString.EndIndex
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

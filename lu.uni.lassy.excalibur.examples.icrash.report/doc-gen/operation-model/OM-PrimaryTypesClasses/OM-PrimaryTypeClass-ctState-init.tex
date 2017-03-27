@@ -1,0 +1,78 @@
+\subsection{Operation Model for init}
+
+\label{OM-init}
+
+
+The \msrcode{init} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{init}{ used to initialize the current object as a new instance of the ctState type.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AnextValueForAlertID: dtInteger}{used to initialize the nextValueForAlertID field} 
+	\addnumbereddoublerow{}{AnextValueForCrisisID: dtInteger}{used to initialize the nextValueForCrisisID field} 
+	\addnumbereddoublerow{}{Aclock: dtDateAndTime}{used to initialize the clock field} 
+	\addnumbereddoublerow{}{AcrisisReminderPeriod: dtSecond}{used to initialize the crisisReminderPeriod field} 
+	\addnumbereddoublerow{}{AmaxCrisisReminderPeriod: dtSecond}{used to initialize the maxCrisisReminderPeriod field} 
+	\addnumbereddoublerow{}{AvpLastReminder: dtDateAndTime}{used to initialize the vpLastReminder field} 
+	\addnumbereddoublerow{}{AvpStarted: ptBoolean}{used to initialize the vpStarted field} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ 
+	true iff the system poststate includes the current object as a new ctState instance having its attributes equal to the ones provided as parameters. 
+	}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-ctState-init-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{init}.},label=OM-ctState-init-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{if
+	(
+	/* Post F01 */
+	let Self:ctState in
+	
+	Self.nextValueForAlertID = AnextValueForAlertID
+	and Self.nextValueForCrisisID = AnextValueForCrisisID
+	and Self.clock = Aclock
+	and Self.crisisReminderPeriod = AcrisisReminderPeriod
+	and Self.maxCrisisReminderPeriod = AmaxCrisisReminderPeriod
+	and Self.vpLastReminder = AvpLastReminder
+	and Self.vpStarted = AvpStarted
+	
+	and (Self.oclIsNew and self = Self)
+	)
+	then (result = true)
+	else (result = false)
+	endif}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

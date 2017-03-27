@@ -1,0 +1,131 @@
+package icrash.environment{
+	
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+	Environment Model { 
+
+		actor actMsrCreator role rnactMsrCreator cardinality [1..1] {
+		  
+		 operation init():ptBoolean
+		  
+		 input interface inactMsrCreator {
+		 }
+			output interface outactMsrCreator {
+				operation oeCreateSystemAndEnvironment(AqtyComCompanies:ptInteger ):ptBoolean
+			}
+		}
+
+		actor actAdministrator 
+						role rnactAdministrator 
+						cardinality [1..1] 
+						extends actAuthenticated {
+
+			operation init():ptBoolean
+
+			output interface outactAdministrator{
+				
+				operation oeAddCoordinator(
+											AdtCoordinatorID:dtCoordinatorID ,
+											AdtLogin:dtLogin , 
+											AdtPassword:dtPassword ):ptBoolean
+											
+				operation oeDeleteCoordinator(
+											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
+			}
+			
+			input interface inactAdministrator{
+				
+				operation ieCoordinatorAdded():ptBoolean
+				operation ieCoordinatorDeleted():ptBoolean
+	 		}
+		}
+		
+		actor actCoordinator 
+						role rnactCoordinator 
+						cardinality [0..*] 
+						extends actAuthenticated{
+
+			operation init():ptBoolean
+
+			output interface outactCoordinator{
+				operation oeInvalidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+				operation oeCloseCrisis(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
+				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
+				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeReportOnCrisis(
+											AdtCrisisID:dtCrisisID ,
+											AdtComment:dtComment 
+											):ptBoolean
+				operation oeSetCrisisStatus(
+											AdtCrisisID:dtCrisisID ,
+											AetCrisisStatus:etCrisisStatus 
+											):ptBoolean
+				operation oeSetCrisisType(
+                                          AdtCrisisID:dtCrisisID ,
+                                          AetCrisisType:etCrisisType
+                                          ):ptBoolean
+				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+			}
+			
+			input interface inactCoordinator{
+				operation ieSendAnAlert(ActAlert:ctAlert ):ptBoolean
+				operation ieSendACrisis(ActCrisis:ctCrisis ):ptBoolean
+	 		}
+		}
+		
+		actor actComCompany role rnactComCompany cardinality [0..*]{
+
+			operation init():ptBoolean
+
+			output interface outactComCompany{
+				operation oeAlert(
+										AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
+			}
+			
+			input interface inactComCompany{
+				operation ieSmsSend(AdtPhoneNumber:dtPhoneNumber , 
+														AdtSMS:dtSMS 
+														):ptBoolean
+	 		}
+		}
+
+		actor actAuthenticated role rnactAuthenticated cardinality [0..*]{
+
+			operation init():ptBoolean
+
+			output interface outactAuthenticated{
+				operation oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword ):ptBoolean
+				operation oeLogout():ptBoolean
+			}
+			
+			input interface inactAuthenticated{
+				operation ieMessage(AMessage:ptString):ptBoolean
+	 		}
+		}
+
+		actor actActivator[proactive] role rnactActivator cardinality [1..1]{
+
+			operation init():ptBoolean
+
+			output interface outactActivator{
+				proactive operation oeSollicitateCrisisHandling():ptBoolean
+				proactive operation oeSetClock(AcurrentClock:dtDateAndTime ):ptBoolean
+			}
+			
+			input interface inactActivator{
+	 		}
+		}
+	}
+}

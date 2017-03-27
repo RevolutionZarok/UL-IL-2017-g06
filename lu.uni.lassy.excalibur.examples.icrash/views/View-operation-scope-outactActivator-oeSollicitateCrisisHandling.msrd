@@ -1,0 +1,9 @@
+@@view operation-scope-outactActivator-oeSollicitateCrisisHandling
+@model Operation icrash.environment.actActivator.outactActivator.oeSollicitateCrisisHandling 
+@description 
+"shows concept model elements in the scope of the oeSollicitateCrisisHandling operation
+"
+@caption 
+"oeSollicitateCrisisHandling operation scope
+"
+@scale 0.75

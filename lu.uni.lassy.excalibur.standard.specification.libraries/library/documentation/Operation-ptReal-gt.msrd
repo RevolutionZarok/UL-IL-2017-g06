@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.primitives.ptReal.gt
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.primitives.ptReal.gt.AptReal
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.captcha.CaptchaUIController">
+  <children>
+    <GridPane layoutX="151.0" layoutY="87.0" prefHeight="284.0" prefWidth="298.0">
+      <children>
+        <ImageView fx:id="img0" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img0_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img1" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img1_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img2" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img2_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img3" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img3_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img4" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img4_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img5" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img5_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img6" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img6_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img7" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img7_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <ImageView fx:id="img8" fitHeight="90.0" fitWidth="90.0" onMouseClicked="#img8_onClick" pickOnBounds="true" preserveRatio="true" style="" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <Label fx:id="labelQuestion" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="406.0" prefWidth="572.0" text="fill in a question" />
+    <Button fx:id="btnSendCaptcha" layoutX="270.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#btnSendCaptcha_OnClick" text="Send" />
+    <Label alignment="CENTER" layoutX="14.0" layoutY="33.0" prefWidth="572.0" text="Answer the following CAPTCHA test by clicking on the pictures that correspond to the given question below" textAlignment="CENTER" wrapText="true" />
+  </children>
+</AnchorPane>

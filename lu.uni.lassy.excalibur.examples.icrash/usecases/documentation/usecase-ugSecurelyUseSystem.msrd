@@ -1,0 +1,20 @@
+@@Use Case icrash.usecases.ugSecurelyUseSystem.ugSecurelyUseSystem
+@description
+"
+the actAdministrator's goal is to follow an identification procedure to be allowed to add or delete the necessary crisis coordinators that will be granted the responsibility to handle alerts and crisis. 
+"
+@protocolCondition
+"
+the iCrash system has been deployed
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+the actAuthenticated is known by the system not to be logged.
+"
+@endPostConditions

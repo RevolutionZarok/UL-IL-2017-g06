@@ -1,0 +1,37 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler.AdtCrisisID
+"the identification information used to determine the crisis"
+@endParameters
+@description
+"sent to declare himself as been the handler of a crisis having the specified id."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+" there exist one crisis having the given id in the pre-state."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"the ctCrisis instance having the provided id is in handled status at poststate and is associated to the actor that sends the message (which himself is notified with a textual message as confirmation)."
+@postF 
+"All the alerts related to this crisis are sent to the actor such that he can decide how to handle them."
+@postF
+"if the crisis was already handled at pre-sate then the associated handler actor is notified about the change of handler for one of his crisis (n.b. it might be the same even if not relevant)."
+@postF
+"a message is sent to the communication company for any human related to an alert associated to the crisis. A human will receive as many messages as alerts he sent despite the fact that they might relate to the same crisis (i.e. one alert, one acknoledgement)."
+
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

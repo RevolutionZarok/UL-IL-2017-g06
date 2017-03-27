@@ -1,0 +1,16 @@
+\subsection{Primary types - Association types descriptions}
+
+
+
+
+The table below is providing comments on the association types of the primary types.
+
+\begin{associationtypes}
+\addheading{Undirected associations}
+\adddoublerow{assctAlertctCrisis}{a crisis is related to one or more alerts as the alerts judged to concern all the same crisis due to their location. An alert alerts exactly one crisis.}
+\adddoublerow{assctAlertctHuman}{ alerts are notified by human through the communication company. We need to keep an internal representation of those human to allow for communication of alert handling.}
+\adddoublerow{assctAuthenticatedactAuthenticated}{mainly used to determine if the login request of an authenticated actor can be granted based on the given credentials and the registered ones.}
+\adddoublerow{assctCoordinatoractCoordinator}{frequent messages must be sent to coordinator especially in relation to crisis they handle.}
+\adddoublerow{assctCrisisctCoordinator}{at any point in time we need to know if a coordinator is handling existing crisis or not.}
+\adddoublerow{assctHumanactComCompany}{ in order to communicate with humans who informed about potential crisis, we need to record the communication company to use to send them messages.}
+\end{associationtypes}

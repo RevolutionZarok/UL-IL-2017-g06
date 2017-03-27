@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.calendar.dtDate.lt
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.calendar.dtDate.lt.AdtDate
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

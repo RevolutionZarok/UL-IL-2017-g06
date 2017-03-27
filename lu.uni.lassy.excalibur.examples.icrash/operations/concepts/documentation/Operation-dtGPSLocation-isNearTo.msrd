@@ -1,0 +1,18 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo
+//parameters
+@parameter icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo.AGPSLocation
+"the GPS location to be compared to."
+@endParameters
+@description
+"used to determine if locations are considered enough close to be treated as equivalent in the application domain context. In the context of the iCrash system, we compute the distance between two GPS locations using the following Haversine formula.
+(more details can be found at: 
+  http://www.movable-type.co.uk/scripts/latlong.html
+  and http://www.gpsvisualizer.com/calculators\#distance
+)
+ "
+//postFunctional descriptions
+@postF 
+" if the Haversine formula (ACOS(SIN(lat1)*SIN(lat2)+COS(lat1)*COS(lat2)*COS(lon2-lon1))*6371, in which latitudes and longitudes are in radiansapplied to the two dtGPS coordinates is lower to 100 meters)
+then the predicate is true and false otherwise."
+@endPostF

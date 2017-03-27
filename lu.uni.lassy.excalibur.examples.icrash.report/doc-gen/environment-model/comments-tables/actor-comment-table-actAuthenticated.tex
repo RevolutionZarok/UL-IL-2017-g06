@@ -1,0 +1,25 @@
+\subsection{\msrcode{actAuthenticated} Actor}
+
+
+\begin{actortable}
+	\addheading{Actor}
+	
+	\adddoublerow{actAuthenticated}{abstract actor providing reusable input and output interfaces for actors that need to authenticate themselves.}
+	
+	
+	
+	
+
+	\addrowheading{OutputInterfaces}
+	\addnumbereddoublerow{OUT}{\hypertarget{actAuthenticated.outactAuthenticated.oeLogin}
+			{\msrcode{oeLogin(AdtLogin:dtLogin, AdtPassword:dtPassword):ptBoolean}}}
+			{sent to request authorization to request access secured system operations.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actAuthenticated.outactAuthenticated.oeLogout}
+			{\msrcode{oeLogout():ptBoolean}}}
+			{sent to end the secured access to specific system operations.}
+	
+	\addrowheading{InputInterfaces}
+	\addnumbereddoublerow{IN}{\msrcode{ieMessage(AMessage:ptString):ptBoolean}}
+							 {allows for receiving general textual messages.}
+	
+\end{actortable}

@@ -1,0 +1,119 @@
+package icrash.concepts.primarytypes.classes {
+	
+import icrash.concepts.primarytypes.datatypes
+import icrash.environment
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+	Concept Model {
+		
+		Primary Types{
+		
+			state class ctState {
+				attribute nextValueForAlertID:dtInteger
+				attribute nextValueForCrisisID:dtInteger
+				attribute clock:dtDateAndTime
+				attribute crisisReminderPeriod:dtSecond
+				attribute maxCrisisReminderPeriod:dtSecond
+				attribute vpLastReminder:dtDateAndTime
+				attribute vpStarted:ptBoolean
+				
+				operation init(	AnextValueForAlertID:dtInteger,
+												AnextValueForCrisisID:dtInteger,
+				 								Aclock:dtDateAndTime,
+												AcrisisReminderPeriod:dtSecond ,
+												AmaxCrisisReminderPeriod:dtSecond ,
+												AvpLastReminder:dtDateAndTime ,
+												AvpStarted:ptBoolean ): ptBoolean
+			}
+	
+			class ctAlert role rnctAlert cardinality [0..*]{
+				attribute id:dtAlertID
+				attribute status: etAlertStatus
+				attribute location:dtGPSLocation
+				attribute instant:dtDateAndTime
+				attribute comment:dtComment
+				
+				operation init(     	Aid:dtAlertID ,
+										Astatus:etAlertStatus ,
+										Alocation:dtGPSLocation ,
+										Ainstant:dtDateAndTime ,
+										Acomment:dtComment ):ptBoolean
+				operation isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
+			 
+			}
+			
+			class ctCrisis role rnctCrisis cardinality [0..*]{
+				attribute id:dtCrisisID
+				attribute type:etCrisisType
+				attribute status: etCrisisStatus
+				attribute location:dtGPSLocation
+				attribute instant:dtDateAndTime
+				attribute comment:dtComment
+				
+				operation init(
+										Aid:dtCrisisID ,
+										Atype:etCrisisType ,
+										Astatus:etCrisisStatus ,
+										Alocation:dtGPSLocation ,
+										Ainstant:dtDateAndTime ,
+										Acomment:dtComment ):ptBoolean
+										
+				operation handlingDelayPassed():ptBoolean
+        operation maxHandlingDelayPassed():ptBoolean
+				operation isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
+				operation isAllocatedIfPossible():ptBoolean
+			}
+			
+
+
+			class ctHuman role rnctHuman cardinality [0..*]{
+				attribute id:dtPhoneNumber
+				attribute kind:etHumanKind
+				
+				operation init(
+										Aid:dtPhoneNumber ,
+										Akind:etHumanKind ):ptBoolean
+        operation isAcknowledged():ptBoolean
+			}
+
+
+			class ctAuthenticated 
+					role rnctAuthenticated 
+					cardinality [0..*]{
+
+				attribute login:dtLogin
+				attribute pwd: dtPassword
+				attribute vpIsLogged:ptBoolean
+				
+				operation init(
+										Alogin:dtLogin ,
+										Apwd:dtPassword ):ptBoolean
+			}
+			
+			class ctCoordinator 
+					role rnctCoordinator
+					cardinality [0..*]
+					extends ctAuthenticated{
+			
+				attribute id:dtCoordinatorID
+				
+				operation init(
+										Aid:dtCoordinatorID ,
+										Alogin:dtLogin ,
+										Apwd:dtPassword ):ptBoolean
+			}
+
+			class ctAdministrator 
+					role rnctAdministrator
+					cardinality [1..1]
+					extends ctAuthenticated{
+
+				operation init(
+										Alogin:dtLogin ,
+										Apwd:dtPassword ):ptBoolean
+			}
+		}
+	}
+}

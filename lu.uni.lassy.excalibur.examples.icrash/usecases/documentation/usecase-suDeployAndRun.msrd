@@ -1,0 +1,19 @@
+@@Use Case icrash.usecases.suDeployAndRun.suDeployAndRun
+@description
+"The goal is to install the iCrash system on its infrastructure and to exploit its capacities related to the secure administration and efficient handling of car crash situations depending on alerts received. 
+"
+@protocolCondition
+"
+the iCrash system has never been deployed and used
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+the iCrash system has been created and has handled the crisis situations for which it received alerts through the communication company.
+"
+@endPostConditions

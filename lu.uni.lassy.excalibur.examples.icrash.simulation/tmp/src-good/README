@@ -1,0 +1,346 @@
+ findall([TestNumber,StepNumber,StepResult],
+         systemUnitTest(TestNumber,StepNumber,StepResult),
+         FlatResultsList),
+ samsort(FlatResultsList,SortedFlatResultsList),
+ findall(N,
+         member([N,_,_],SortedFlatResultsList),
+         TestsNumbers),
+ remove_dups(TestsNumbers,TestsNumbersSet),
+ findall([N,L],
+         (member(N,TestsNumbersSet),
+          findall([StepNumber,StepResult],
+                  member([N,StepNumber,StepResult],SortedFlatResultsList),
+                  L)
+         ),
+          ResultsList),
+
+msrTest([[messimMetaModel,unit,1,1],
+         [[target,isTypeOf],
+          [context,Context],
+          [inputParameters,InputParameters],
+          [outputParameters,OutputParameters],
+          [comments,Comments],
+          TestResult]
+        ]):-
+((
+%% Context Declaration
+%% N.A.
+
+%% Input Parameters Declaration
+ATypeNameAtom = _ ,
+msrVar(ptBoolean,AptBoolean),
+
+%% Output Parameters Declaration
+
+%% Context Specification
+%% N.A.
+
+%% Input Parameters Specification
+ATypeNameAtom = ptBoolean ,
+AptBoolean = [ptBoolean , true ],
+
+%% Output Parameters Specification
+
+%% Test Case Specification
+Target = isTypeOf,
+ParametersList = 
+[ ATypeNameAtom,
+  AptBoolean
+],
+GoalGet=..[Target | ParametersList],
+
+%% Oracle specification
+OracleGet=..[true]
+)
+->
+%% Test Interpretation
+((GoalGet,!)
+-> ((OracleGet,!)
+   -> TestResult = success
+   ; TestResult = failedAtOracle)
+; ((OracleGet,!)
+   -> TestResult = failedAtGoal
+   ; TestResult = failedAtGoalAndOracle)
+)
+; TestResult = failedAtTestDeclarationOrSpecification
+),
+%% Test Outcome
+Context = [],
+InputParameters = [['ATypeNameAtom',ATypeNameAtom],
+                   ['AptBoolean',AptBoolean]
+                  ],
+OutputParameters = [],
+Comments = 'test isTypeOf ptBoolean with a known ptBoolean.'
+.
+
+
+
+
+
+
+
+msrTest([[system,unit,1,4],
+         [[target,setField],
+          [context,Context],
+          [inputParameters,InputParameters],
+          [outputParameters,OutputParameters],
+          [comments,Comments],
+          TestResult]
+        ]):-
+((  
+%% Context Declaration
+%% N.A.
+
+%% Input Parameters Declaration
+msrVar(dtSecuredSMS,AdtSecuredSMSValue),
+write(AdtSecuredSMSValue),
+APath = _ ,
+msrVar(ptString,AptString),
+
+%% Output Parameters Declaration
+msrVar(dtSecuredSMS,AdtSecuredSMSOutValue),
+
+%% Context Specification
+%% N.A.
+false,
+%% Input Parameters Specification
+AdtSecuredSMSValue = 
+[dtSecuredSMS,
+ [[key,[dtMyString,[[value,[ptString,cryptokey]]],[]]]],
+ [[dtSMS,[],[[dtMyString,
+              [[value,[ptString,ilfaitbeautoutvabien]]],[]]]]]],
+APath = [key,value],
+AptString = [ptString,strongcryptokey],
+
+%% Output Parameters Specification
+
+%% Test Specification
+Target = ',',
+ParametersList = 
+[ findall(A,(msrop(A,create,X,Y1),
+
+  isTypeOf(A,Y1)),L),
+        length(L,N),
+        allTypesDefinition(AllTypesList),
+        findall(B,(member([_C,[B,_D]],AllTypesList)),
+                L2),
+        length(L2,P),
+        write(L),write('  \n '),write(L2),
+        IntegratedGoal=..[=,N,P],
+        IntegratedGoal
+        
+[ AdtSecuredSMSValue,
+  APath,
+  AptString,
+  AdtSecuredSMSOutValue
+],
+GoalGet=..[Target | ParametersList],
+
+%% Oracle specification
+OracleGet=..[msrNav,[AdtSecuredSMSOutValue],APath,[AptString]]
+)
+->
+%% Test Interpretation
+((GoalGet,!)
+-> ((OracleGet,!)
+   -> TestResult = success
+   ; TestResult = failedAtOracle)
+; ((OracleGet,!)
+   -> TestResult = failedAtGoal
+   ; TestResult = failedAtGoalAndOracle)
+)
+; TestResult = failedAtTestDeclarationOrSpecification
+),
+%% Test Outcome
+Context = [],
+InputParameters = [['AdtSecuredSMSValue',AdtSecuredSMSValue],
+                   ['APath',APath],
+                   ['AptString',AptString]
+                  ],
+OutputParameters = [['AdtSecuredSMSOutValue', AdtSecuredSMSOutValue]
+                    ],
+Comments = 'Test setField with a field path.'
+.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% empty test template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+msrTest([[system,unit,1,1],
+         [[target,Target],
+          [context,Context],
+          [inputParameters,InputParameters],
+          [outputParameters,OutputParameters],
+          [comments,Comments],
+          TestResult]
+        ]):-
+%%-----------------------------------------------
+
+%% Context Declaration
+
+%% Input Parameters Declaration
+
+%% Output Parameters Declaration
+
+%% Context Specification
+
+%% Input Parameters Specification
+
+%% Output Parameters Specification
+
+%% Test Case Specification
+Target = XXXX,
+ParametersList = 
+        [
+        ],
+GoalGet=..[Target | ParametersList],
+
+%% Oracle specification
+OracleGet=..[XXGoal | XXParams],
+
+%% Test Interpretation
+((GoalGet,!)
+-> ((OracleGet,!)
+   -> TestResult = success
+   ; TestResult = failedAtOracle)
+; ((OracleGet,!)
+   -> TestResult = failedAtGoal
+   ; TestResult = failedAtGoalAndOracle)
+),
+
+%% Test Outcome
+Context = [],
+InputParameters = [
+                  ],
+OutputParameters = [],
+Comments = 'XXX'
+.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Semi filled test template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+msrTest([[system,unit,1,1],
+         [[target,msrop],
+          [context,Context],
+          [inputParameters,InputParameters],
+          [outputParameters,OutputParameters],
+          [comments,Comments],
+          TestResult]
+        ]):-
+%%-----------------------------------------------
+
+%% Input Parameters Declaration
+msrVar(dtAlertID, AdtAlertID),
+msrVar(dtPhoneNumber, AdtPhoneNumber),
+msrVar(dtComment, AdtComment),
+msrVar(ctAlert, TheAlert),
+
+%% Output Parameters Declaration
+msrVar(ptBoolean,OperationResult),
+
+%% Context Specification
+%% N.A.
+
+%% Input Parameters Specification
+msrop(dtAlertID,new,[bound],AdtAlertID),
+msrop(dtPhoneNumber,new,[bound],AdtPhoneNumber),
+msrop(dtComment,new,[bound],AdtComment),
+
+%% Output Parameters Specification
+OperationResult = [ptBoolean,true],
+
+%% Test Case Specification
+Predicate = msrop,
+ParametersList = 
+        [ctAlert,
+         init,
+         [TheAlert,AdtAlertID,AdtPhoneNumber,AdtComment],
+         OperationResult],
+GoalGet=..[Predicate | ParametersList],
+
+%% Oracle specification
+OracleGet=..[msrNav | [[TheAlert],[phoneNumber],[AdtPhoneNumber]]],
+
+%% Test Interpretation
+((GoalGet,!)
+-> ((OracleGet,!)
+   -> TestResult = success
+   ; TestResult = failedAtOracle)
+; ((OracleGet,!)
+   -> TestResult = failedAtGoal
+   ; TestResult = failedAtGoalAndOracle)
+),
+
+%% Test Outcome
+Context = [],
+InputParameters = [['ATypeName',ctAlert],
+                   ['AnOperationName',init],
+                   ['AListOfParameters',
+                    [TheAlert,AdtAlertID,AdtPhoneNumber,AdtComment]],
+                   ['AnOperationResult',OperationResult]
+                  ],
+OutputParameters = [],
+Comments = 'test init operation for a ctAlert instance'
+.
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%% RUSHES
+%%%%%%%%%%%%%%%%%%%%
+
+filepaths.pl
+
+initTestFiles(FailureName,SuccessName):-
+msrFilePath(projectBaseFolderPath,ProjectPath),
+datime(R),R = datime(Year,Month,Day,Hours,Minutes,Seconds),
+atomic_list_concat([ProjectPath,'/out/',
+                    Year,'-',
+                    Month,'-',
+                    Day,'-',
+                    Hours,'-',
+                    Minutes,'-',
+                    Seconds,'-',
+                    SuccessName,
+                    '.txt'
+                   ],
+                   SuccessFile),
+( \+(file_exists(SuccessFile));
+   ((file_exists(SuccessFile)) , 
+    delete_file(SuccessFile)) 
+),
+assert(msrFilePath(SuccessName,SuccessFile)),
+atomic_list_concat([ProjectPath,'/out/',
+                    Year,'-',
+                    Month,'-',
+                    Day,'-',
+                    Hours,'-',
+                    Minutes,'-',
+                    Seconds,'-',
+                    FailureName,
+                    '.txt'
+                   ],
+                   FailureFile),
+( \+(file_exists(FailureFile));
+   ((file_exists(FailureFile)) , 
+    delete_file(FailureFile)) 
+),
+assert(msrFilePath(FailureName,FailureFile)),
+atomic_list_concat([ProjectPath,'/out/',
+                    SuccessName,
+                    '.txt'
+                   ],
+                   CstSuccessFile),
+( \+(file_exists(CstSuccessFile));
+   ((file_exists(CstSuccessFile)) , 
+    delete_file(CstSuccessFile)) 
+),
+assert(msrFilePath(messimUnitTestResultsSuccessCst,CstSuccessFile)),
+atomic_list_concat([ProjectPath,'/out/',
+                    FailureName
+                   ],
+                   CstFailureFile),
+( \+(file_exists(CstFailureFile));
+   ((file_exists(CstFailureFile)) , 
+    delete_file(CstFailureFile)) 
+),
+assert(msrFilePath(messimUnitTestResultsFailureCst,CstFailureFile)).
+

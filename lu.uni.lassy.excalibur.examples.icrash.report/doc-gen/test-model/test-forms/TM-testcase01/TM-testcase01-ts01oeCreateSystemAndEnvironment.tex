@@ -1,0 +1,65 @@
+	\subsubsection{testcase01-ts01oeCreateSystemAndEnvironment-actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment}
+	\label{TM-testcase01-ts01oeCreateSystemAndEnvironment-actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment}
+
+	The \msrcode{testcase01-ts01oeCreateSystemAndEnvironment-actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts01oeCreateSystemAndEnvironment}{This test step initializes the system state and environment.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:Creator}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment}{actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment} (AqtyComCompanies)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{Creator:icrash.environment.actMsrCreator}
+		{only actMsrtCreator actors can trigger the system and environment creation and initialization.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{the number of communication company actor instances present in the environment is equal to four to represent all the communication companies available in Luxembourg.}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{true for testing only the executability (is available and can be triggered) of the operation.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts01oeCreateSystemAndEnvironment-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts01oeCreateSystemAndEnvironment}.},label=TM-testcase01-ts01oeCreateSystemAndEnvironment-MCL-LST]
+
+	variables{
+		Creator:actMsrCreator
+		AqtyComCompanies: ptInteger
+	}
+	
+	constraints{
+		AqtyComCompanies = 4
+	}
+	
+	oracle{
+		constraints{
+			true
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

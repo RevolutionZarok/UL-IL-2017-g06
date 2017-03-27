@@ -1,0 +1,20 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeLogout hidden
+@description
+"goal is to end the secured access to specific system operations.
+"
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

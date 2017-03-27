@@ -1,0 +1,457 @@
+@@Test Case lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01 
+@description
+"this positive test case intends to verify the correctness of the execution of a simple instance of the \msrcode{suDeployAndRun} use case."
+//---------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts01oeCreateSystemAndEnvironment
+@description
+"This test step initializes the system state and environment."
+@variable
+Creator:icrash.environment.actMsrCreator
+"only actMsrtCreator actors can trigger the system and environment creation and initialization."
+@endVariables
+@constraint 
+"the number of communication company actor instances present in the environment is equal to four to represent all the communication companies available in Luxembourg."
+@endConstraints
+@oracleConstraint 
+"true for testing only the executability (is available and can be triggered) of the operation."
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts02oeSetClock
+@description
+"test the update of the current time."
+@variable
+TheActor:actActivator
+"proactive actor responsible of requesting the update of the system's clock."
+@endVariables
+@constraint
+"TheActor is any instance existing in the current environment status."
+@constraint
+"ACurrentClock is a fixed date equal to the 24th November 2017 at 15:20:00 using a 24-hours notation~\footnote{for more details see the ISO 8601 Data elements and interchange formats - Information interchange - Representation of dates and times - http://www.iso.org/iso/home/standards/iso8601.htm}."
+@endConstraints
+@oracleConstraint 
+"true for testing only the executability (is available and can be triggered) of the operation."
+@endOracleConstraints
+
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts03oeLogin
+@description
+"test the authentified access of the administrator"
+@variable
+TheActor:actAdministrator
+"an actAdministor actor as subtype of actAuthenticated can send oeLogin messages to the system."
+@endVariables
+@constraint
+"TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is thus expected that there exist at least one."
+@constraint
+"AdtLogin has its value attribute equal to the primitive string 'icrashadmin' (which is the correct administrator login known by the system after the step one.)"
+@constraint
+"AdtPassword has its value attribute equal to the primitive string '7WXC1359' (which is the correct administrator password known by the system after the step one.)"
+@endConstraints
+@oracleConstraint 
+"the \msrcode{AMessage} value is expected to be equal to the primitive string 'You are logged ! Welcome ...'"
+@oracleConstraint
+"TheActor receives from system ieMessage(AMessage)"
+@endOracleConstraints
+
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts04oeAddCoordinator
+@description
+"to test the add of a new coordinator by an administrator."
+@variable
+TheActor:actAdministrator
+"actAdministor actors as being the only one allowed to add coordinators."
+@endVariables
+@constraint
+"TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is expected that there exists at least one which is the same during all the test case."
+@constraint
+"AdtCoordinatorID is equal to 1 to set the new coordinator ID"
+@constraint
+"AdtLogin has its value attribute equal to the primitive string 'steve' which is the ID defined for the new coordinator."
+@constraint
+"AdtPassword has its value attribute equal to the primitive string 'pwdMessirExcalibur2017' which is the password to be set for steve."
+@endConstraints
+@oracleConstraint
+"the administrator should have been acknowledged for the adding of the new coordinator."
+@endOracleConstraints
+
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts05oeLogout
+@description
+"to test the loggout of a connected administrator."
+@variable
+TheActor:actAdministrator
+"an actAdministor actor as subtype of actAuthenticated can send oeLogout messages to the system."
+@endVariables
+@constraint
+"TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is expected that there exists at least one which is the same during all the test case."
+@endConstraints
+@oracleConstraint
+"the \msrcode{AMessage} value is expected to be equal to the primitive string 'You are logged out ! Good Bye ...'"
+@oracleConstraint
+"the administrator should have received the messahe AMessage."
+@endOracleConstraints
+
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts06oeSetClock02
+@description
+"test the update of the current time."
+@variable
+TheActor:icrash.environment.actActivator
+"proactive actors responsible of requesting the update of the system's clock."
+@endVariables
+@constraint
+"TheActor is any instance existing in the current environment status."
+@constraint
+"ACurrentClock is a fixed date equal to the 26th November 2017 at 10:15:00 using a 24-hours notation."
+@endConstraints
+@oracleConstraint 
+"true for testing only the executability (is available and can be triggered) of the operation."
+@endOracleConstraints
+
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts07oeAlert1
+@description
+"tests the declaration of a new alert functionality."
+@variable
+TheActor:actComCompany
+"actComCompany actors transfer alert declaration messages."
+@endVariables
+@constraint
+"TheActor is any instance existing in the current environment status. It is expected to exist at least one."
+@constraint
+"AetHumanKind is equal to witness"
+@constraint
+"AdtDate is equal to the 26th of November 2017"
+@constraint
+"AdtTime is equal to 10:10:16 using a 24-hours."
+@constraint
+"AdtPhoneNumber is equal to the ptString value '+3524666445252'."
+@constraint
+"AdtGPSLocation is equal to (49.627675 , 6.159590)."
+@constraint
+"AdtComment is equal to '3 cars involved in an accident.'"
+@endConstraints
+@oracleConstraint
+"AdtSMS is equal to the ptString 'Your alert has been registered. We will handle it and keep you informed'."
+@oracleConstraint
+"AdtSMS is sent to the phone number AdtPhoneNumber using the communication company having sent the alert using its ieSmsSend input message."
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts08oeSetClock03
+@description
+"test the update of the current time."
+@variable
+TheActor:actActivator
+"proactive actor responsible of requesting the update of the system's clock."
+@endVariables
+@constraint
+"TheActor is any instance existing in the current environment status."
+@constraint
+"ACurrentClock is a fixed date equal to the 26th November 2017 at 10:30:00 using a 24-hours notation."
+@endConstraints
+@oracleConstraint 
+"true for testing only the executability (is available and can be triggered) of the operation."
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts09oeSollicitateCrisisHandling
+@description
+"test the proactive sollication to handle an alert."
+@variable
+TheActor:icrash.environment.actActivator
+"proactive actor responsible of triggering sollicitation functionality."
+@endVariables
+@constraint
+"TheActor is any instance existing in the current environment status. It is expected to exist at least one."
+@endConstraints
+@oracleVariable
+TheAdministrator:actAdministrator
+"actAdministrator actors can be sollicitated to handle alerts."
+@oracleVariable
+TheCoordinator:actCoordinator
+"actCoordinator actors can be sollicitated to handle alerts."
+@oracleVariable
+AMessageForCrisisHandlers:ptString
+"messages sent to sollicitated actors are of type ptString."
+@endOracleVariables
+@oracleConstraint
+"TheAdministrator is any instance existing in the current environment status. It is expected to exist at least one."
+@oracleConstraint
+"TheCoordinator is any instance existing in the current environment status. It is expected to exist at least one."
+@oracleConstraint
+"AMessageForCrisisHandlers is equal to the ptString 'There are alerts pending since more than the defined delay. Please REACT !'"
+@oracleConstraint
+"TheCoordinator and TheAdministrator have received the message AMessageForCrisisHandlers."
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts10oeLogin02
+@description
+"test the authentified access of the coordinator"
+@variable
+TheActor:actCoordinator
+"an actCoordinator actor as subtype of actAuthenticated can send oeLogin messages to the system."
+@endVariables
+@constraint
+"TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is thus expected that there exist at least one."
+@constraint
+"AdtLogin has its value attribute equal to the primitive string 'icrashadmin' (which is the correct administrator login known by the system after the step one.)"
+@constraint
+"AdtPassword has its value attribute equal to the primitive string '7WXC1359' (which is the correct administrator password known by the system after the step one.)"
+@endConstraints
+@oracleConstraint 
+"the \msrcode{AMessage} value is expected to be equal to the primitive string 'You are logged ! Welcome ...'"
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts11oeGetCrisisSet
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AetCrisisStatus:icrash.concepts.primarytypes.datatypes.etCrisisStatus
+"cf. actor documentation"
+@variable
+ActCrisis:icrash.concepts.primarytypes.classes.ctCrisis
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AetCrisisStatus value is pending"
+@endConstraints
+@oracleConstraint
+"ActCrisis is any ctCrisis instance that has been sent to TheActor."
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts12oeSetCrisisHandler
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+TheComCompany:icrash.environment.actComCompany
+"cf. actor documentation"
+@variable
+TheCoordinator:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID
+"cf. actor documentation"
+@variable
+AMessage:lu.uni.lassy.messir.libraries.primitives.ptString
+"cf. actor documentation"
+@variable
+AdtPhoneNumber:icrash.concepts.primarytypes.datatypes.dtPhoneNumber
+"cf. actor documentation"
+@variable
+AdtSMS:icrash.concepts.secondarytypes.datatypes.dtSMS
+"cf. actor documentation"
+@variable
+ActAlert:icrash.concepts.primarytypes.classes.ctAlert
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AdtCrisisID as a value of 1"
+@constraint
+"AMessage is the string 'You are now considered as handling the crisis !'
+"
+@constraint
+"AdtPhoneNumber"
+@constraint
+"AdtSMS has for value the string 'The handling of your alert by our services is in progress !'
+"
+@endConstraints
+@oracleConstraint
+"there is a communication company actor that received the message ieSmsSend(AdtPhoneNumber,AdtSMS)"
+@oracleConstraint
+"there is a coordinator actor that received an alert using the message ieSendAnAlert(ActAlert)"
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts13oeSetClock04
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actActivator
+"cf. actor documentation"
+@variable
+ACurrentClock:lu.uni.lassy.messir.libraries.calendar.dtDateAndTime
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor"
+@constraint
+"ACurrentClock"
+@endConstraints
+
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts14oeValidateAlert
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AdtAlertID:icrash.concepts.primarytypes.datatypes.dtAlertID
+"cf. actor documentation"
+@variable
+AMessage:lu.uni.lassy.messir.libraries.primitives.ptString
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AdtAlertID"
+@constraint
+"AMessage"
+@endConstraints
+@oracleConstraint
+""
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts15oeAlert2
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actComCompany
+"cf. actor documentation"
+@variable
+AetHumanKind:icrash.concepts.primarytypes.datatypes.etHumanKind
+"cf. actor documentation"
+@variable
+AdtDate:lu.uni.lassy.messir.libraries.calendar.dtDate
+"cf. actor documentation"
+@variable
+AdtTime:lu.uni.lassy.messir.libraries.calendar.dtTime
+"cf. actor documentation"
+@variable
+AdtPhoneNumber:icrash.concepts.primarytypes.datatypes.dtPhoneNumber
+"cf. actor documentation"
+@variable
+AdtGPSLocation:icrash.concepts.primarytypes.datatypes.dtGPSLocation
+"cf. actor documentation"
+@variable
+AdtComment:icrash.concepts.primarytypes.datatypes.dtComment
+"cf. actor documentation"
+@variable
+AdtSMS:icrash.concepts.secondarytypes.datatypes.dtSMS
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor"
+@constraint
+"AetHumanKind"
+@constraint
+"AdtDate"
+@constraint
+"AdtTime"
+@constraint
+"AdtPhoneNumber"
+@constraint
+"AdtGPSLocation"
+@constraint
+"AdtComment"
+@constraint
+"AdtSMS"
+@endConstraints
+@oracleConstraint
+""
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts16oeSetClock05
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actActivator
+"cf. actor documentation"
+@variable
+ACurrentClock:lu.uni.lassy.messir.libraries.calendar.dtDateAndTime
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor"
+@constraint
+"ACurrentClock"
+@endConstraints
+
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts17oeSetCrisisStatus
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID
+"cf. actor documentation"
+@variable
+AetCrisisStatus:icrash.concepts.primarytypes.datatypes.etCrisisStatus
+"cf. actor documentation"
+@variable
+AMessage:lu.uni.lassy.messir.libraries.primitives.ptString
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AdtCrisisID"
+@constraint
+"AetCrisisStatus"
+@constraint
+"AMessage"
+@endConstraints
+@oracleConstraint
+""
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts18oeReportOnCrisis
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID
+"cf. actor documentation"
+@variable
+AdtComment:icrash.concepts.primarytypes.datatypes.dtComment
+"cf. actor documentation"
+@variable
+AMessage:lu.uni.lassy.messir.libraries.primitives.ptString
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AdtCrisisID"
+@constraint
+"AdtComment"
+@constraint
+"AMessage"
+@endConstraints
+@oracleConstraint
+""
+@endOracleConstraints
+//--------------------------------------------------------------------
+@Test Step lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.testcase01.ts19oeCloseCrisis
+@description
+"cf. actor documentation"
+@variable
+TheActor:icrash.environment.actCoordinator
+"cf. actor documentation"
+@variable
+AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID
+"cf. actor documentation"
+@variable
+AMessage:lu.uni.lassy.messir.libraries.primitives.ptString
+"cf. actor documentation"
+@endVariables
+@constraint
+"TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value"
+@constraint
+"AdtCrisisID"
+@constraint
+"AMessage"
+@endConstraints
+@oracleConstraint
+""
+@endOracleConstraints

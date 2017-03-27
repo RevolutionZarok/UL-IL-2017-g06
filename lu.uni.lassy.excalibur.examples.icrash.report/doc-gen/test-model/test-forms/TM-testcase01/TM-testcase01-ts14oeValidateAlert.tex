@@ -1,0 +1,77 @@
+	\subsubsection{testcase01-ts14oeValidateAlert-actCoordinator.outactCoordinator.oeValidateAlert}
+	\label{TM-testcase01-ts14oeValidateAlert-actCoordinator.outactCoordinator.oeValidateAlert}
+
+	The \msrcode{testcase01-ts14oeValidateAlert-actCoordinator.outactCoordinator.oeValidateAlert} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts14oeValidateAlert}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actCoordinator.outactCoordinator.oeValidateAlert}{actCoordinator.outactCoordinator.oeValidateAlert} (AdtAlertID)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actCoordinator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtAlertID:icrash.concepts.primarytypes.datatypes.dtAlertID}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AMessage:lu.uni.lassy.messir.libraries.primitives.ptString}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value}
+		\addnumberedsinglerow{C}{AdtAlertID}
+		\addnumberedsinglerow{C}{AMessage}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts14oeValidateAlert-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts14oeValidateAlert}.},label=TM-testcase01-ts14oeValidateAlert-MCL-LST]
+
+	variables{
+		TheActor : actCoordinator
+		AdtAlertID : dtAlertID
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactCoordinator
+		            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+		            ->any2(true)
+	}
+	
+	oracle{
+		variables{
+			AMessage:ptString
+		}
+		constraints{
+			AMessage = 'The Alert is now declared as valid !'
+			TheActor.actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

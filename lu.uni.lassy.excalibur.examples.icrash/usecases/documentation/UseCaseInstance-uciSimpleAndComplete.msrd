@@ -1,0 +1,15 @@
+@@Instance Use Case icrash.usecases.suDeployAndRun.uciSimpleAndComplete hidden
+@description
+"use case instance for the summary use case \msrcode{suDeployAndRun} illustrating a simple and complete interaction scenario primarily handled by an administrator in a concrete situation.
+"
+@remark
+"shows the system initilization and the first administrative tasks by the administrator. "
+@remark
+"The unique and always existing \msrcode{actMsrCreator} actor instance (named here \msrcode{theCreator}) requests the initialization of the system and its environment (made of one administrator identified here by \msrcode{bill}), one activator actor (identified by \msrcode{theClock}) and indicating that the number of communication company actor instances for the system's environment is 4 (one of them is identified here by \msrcode{tango})"
+@remark
+"the administrator logs in to initialize a coordinator"
+@remark 
+"an alert is received. Time is goind one without having the coordinator handling the alert which let's the proactive actor trigger the automatic sollicitation of crisis handling."
+@remark
+"shows an instantiated case of handling of a crisis by a coordinator until its closure after reporting."
+@endRemarks

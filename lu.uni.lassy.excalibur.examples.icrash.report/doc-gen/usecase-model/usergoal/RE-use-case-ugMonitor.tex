@@ -1,0 +1,68 @@
+\subsubsection{usergoal-ugMonitor}
+
+\label{RE-use-case-ugMonitor}
+
+
+
+the actCoordinator's goal is to get the detailed list of existing crisis or alerts to decide on next actions to undertake. 
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{ugMonitor}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{usergoal}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[active]}}
+
+
+
+\addrowheading{Goal(s) description}
+\addsinglerow{
+the actCoordinator's goal is to get the detailed list of existing crisis or alerts to decide on next actions to undertake. 
+}
+
+\addrowheading{Reuse}
+\addnumberedsinglerow{}{\msrucname{oeGetCrisisSet [0..*]}}
+\addnumberedsinglerow{}{\msrucname{oeGetAlertsSet [0..*]}}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{
+the iCrash system has been deployed
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+none
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{
+none
+}
+
+\addrowheading{Main Steps}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeGetAlertsSet} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeGetCrisisSet} use case}
+
+
+\end{usecase} 
+
+
+Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugMonitor}
+shows the use case diagram for the ugMonitor user goal use case
+
+\begin{figure}[htbp]
+\begin{center}
+
+\includegraphics[
+angle=0
+,scale=0.75
+]{./images-report-gen/usecase-model/usergoal/uc-ugMonitor.eps}
+\end{center}
+\caption[lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugMonitor]{ ugMonitor user goal use case}
+\label{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugMonitor}
+\end{figure}
+\vspace{0.5cm}

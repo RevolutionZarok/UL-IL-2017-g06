@@ -1,0 +1,8 @@
+@@view cm-pt-ct-lv-03-partb-ctAlert
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 3
+@description 'shows the local view of the ctAlert primary type class type.'
+@caption 'local view of the ctAlert primary type'
+@scale 0.80

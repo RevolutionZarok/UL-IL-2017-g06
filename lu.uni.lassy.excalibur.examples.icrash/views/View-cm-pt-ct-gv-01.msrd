@@ -1,0 +1,13 @@
+@@view cm-pt-ct-gv-01
+@model Concept
+@level Global
+@sublevel Primary Class
+@number 1
+@description 
+"
+shows the global view on primary types class types showing the association(s) types with the actor classes of the environment model.
+"
+@caption 
+" Primary types class types global view - cm-pt-ct-gv-01
+"
+@scale  MaxWidth

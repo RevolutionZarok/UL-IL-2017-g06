@@ -1,0 +1,4 @@
+@@view uc-oeCloseCrisis inappendix
+@model Use-Case icrash.usecases.subfunctions.oeCloseCrisis
+@description "shows the use case diagram for the oeCloseCrisis subfunction use case"
+@caption ' oeCloseCrisis subfunction use case'

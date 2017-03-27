@@ -1,0 +1,42 @@
+\subsection{Operation Model for oeValidateAlert}
+
+\label{OM-oeValidateAlert}
+
+
+The \msrcode{oeValidateAlert} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeValidateAlert}{sent to indicate that a specific alert is not a fake.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtAlertID: dtAlertID}{the identification information used to determine the alert instance} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{ it is supposed that there exist one ctAlert instance with the same \msrcode{id} attribute value as the one provided by the coordinator actor who wants to validate.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the ctAlert class instance having the provided id is considered as valid in the post state and the coordinator actor is informed about the satisfaction of its request.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

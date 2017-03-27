@@ -1,0 +1,11 @@
+\newenvironment{msrProblem}[1][]{
+\vspace{0.25cm} \hrule \vspace{0.25cm}
+\refstepcounter{msrProblemNumber}\par\medskip
+\noindent \textbf{Problem~\themsrProblemNumber. #1} \rmfamily}
+{\medskip}
+
+\newenvironment{msrSolution}[1][]
+{\par\medskip
+\noindent \textbf{Solution~\themsrProblemNumber. #1} 
+\rmfamily}
+{\medskip}

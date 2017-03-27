@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.primitives.ptInteger.add
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.primitives.ptInteger.add.AptInteger
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

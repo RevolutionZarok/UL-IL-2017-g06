@@ -1,0 +1,255 @@
+ 
+
+%%%%%%%%%%%%% NEW %%%%%%%%%%%%%%%
+
+%\usepackage{enumitem}
+% \usepackage{bpmn-events}
+% \usepackage{bpmn-gateways}
+%\usepackage{tikz-bpmn}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+\usetheme{Montpellier} 
+\setbeamertemplate{footline}[frame number]
+\usefonttheme[]{serif}  
+\usepackage{amsmath, latexsym, color, graphicx, amssymb, bm, here}
+\usepackage{epsf, epsfig, pifont,tikz,subfigure}
+\usepackage{graphics, calrsfs}
+\usepackage{times} 
+\usepackage{fancybox,calc}
+\usepackage{palatino,mathpazo}
+\usepackage{amsfonts}
+%\usepackage{wrapfig} 
+\usepackage{multicol}\columnseprule 0.2pt\raggedcolumns
+
+\usepackage{sidecap}
+%\usepackage{movie15} - replaced by media9
+\usepackage{media9}
+\usepackage{hyperref}
+\hypersetup{
+}    
+
+\usepackage{styles/handoutWithNotes}
+\usepackage{pgf,pgfarrows,pgfnodes}
+
+%\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{uncial}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usepackage{pdfrender}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{everypage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mybox}[2]{\par\noindent\colorbox{#1}
+{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{#2}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%      FROM ANTON        %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%to hightlight text
+\usepackage{soul}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%   FROM MESSIR REPORT   %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\usepackage[english]{babel}
+%--------------------------------------------
+\usepackage{upquote}
+%\usepackage{url}  
+\usepackage{tabularx}
+\usepackage{enumerate}
+\usepackage{longtable}
+%--------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{uncial} 
+\usepackage{ascii}
+%--------------------------------------------
+ 
+\usepackage[xindy,toc]{glossaries}
+\immediate\write18{makeglossaries \jobname}
+
+\makeglossaries
+
+\usepackage{makeidx}
+\makeindex
+
+%--our packages
+%\usepackage{cite} 
+\usepackage{verbatim}
+\usepackage{spverbatim}
+\usepackage{alltt}
+% -> generates FATAL ERROR \usepackage{MnSymbol}
+%\usepackage{subfigure} % use for side-by-side figures
+\usepackage{fancyvrb} 
+\usepackage{amsmath} 
+%--------------------------------------------
+\usepackage{styles/asm} 
+\usepackage{array}
+\usepackage{graphicx}
+%--------------------------------------------
+%\geometry{hmargin=2.5cm, vmargin=3cm}
+%--------------------------------------------
+\newcounter{def} 
+%\usepackage{appendix}
+\usepackage{eso-pic,everyshi,ifthen,calc}
+\usepackage[final]{pdfpages}
+%\def\Remark{\noindent\textit{Remark : }} 
+%--------------------------------------------
+% for nested relative paths in imported files
+\usepackage{import}
+%--------------------------------------------
+%\usepackage{pdfsync}            
+\usepackage{microtype}
+%--------------------------------------------
+%for french characters directly typed in French
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes} 
+%--------------------------------------------
+% For long words split
+\usepackage{hyphenat}
+\usepackage{xstring}
+\usepackage{forloop}
+
+\newsavebox\MyBreakChar%
+\sbox\MyBreakChar{}% char to display the break after non char
+\newsavebox\MySpaceBreakChar%
+\sbox\MySpaceBreakChar{\hyp}% char to display the break after space
+\makeatletter%
+\newcommand*{\BreakableChar}[1][\MyBreakChar]{%
+  \leavevmode%
+  \prw@zbreak%
+  \discretionary{\usebox#1}{}{}%
+  \prw@zbreak%
+}%
+\makeatother
+
+\newcounter{index}%
+\newcommand{\AddBreakableChars}[1]{%
+  \StrLen{#1 }[\stringLength]%
+  \forloop[1]{index}{1}{\value{index}<\stringLength}{%
+    \StrChar{#1}{\value{index}}[\currentLetter]%
+    \IfStrEqCase{\currentLetter}{%
+        % All the characters where you don't want hypen
+        {,}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {]}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {)}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {-}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {/}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        { }{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {[}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {(}{\currentLetter\BreakableChar[\MyBreakChar]}%        
+        {a}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {e}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        % All the charactes where a break should have a hypen
+%        { }{\currentLetter\BreakableChar[\MySpaceBreakChar]}
+%        {b}{\currentLetter\BreakableChar[\MySpaceBreakChar]}%
+    }[\currentLetter]%
+  }%
+}%
+  
+%--------------------------------------------
+% to change certain pages to landscape mode
+\usepackage{pdflscape}    
+%--------------------------------------------
+% for Messir tables
+%\usepackage[table]{xcolor} 
+%--------------------------------------------
+% for UML TikZ Figures
+%\usepackage[table]{xcolor}  
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{styles/tikz-uml} 
+\sloppy
+\hyphenpenalty 10000000
+\lstdefinelanguage{tikzuml}{language=[LaTeX]TeX, classoffset=0, morekeywords={umlbasiccomponent, umlprovidedinterface, umlrequiredinterface, umldelegateconnector, umlassemblyconnector, umlVHVassemblyconnector, umlHVHassemblyconnector, umlnote, umlusecase, umlactor, umlinherit, umlassoc, umlVHextend, umlinclude, umlstateinitial, umlbasicstate, umltrans, umlstatefinal, umlVHtrans, umlHVtrans, umldatabase, umlmulti, umlobject, umlfpart, umlcreatecall, umlclass, umlvirt, umlunicompo, umlimport, umlaggreg}, keywordstyle=\color{DarkBlue}, classoffset=1, morekeywords={umlcomponent, umlsystem, umlstate, umlseqdiag, umlcall, umlcallself, umlfragment, umlpackage}, keywordstyle=\color{DarkRed}, classoffset=0,  sensitive=true, morecomment=[l]{\%}}
+
+ %--------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{arrows,chains,shapes,arrows,matrix,positioning,scopes}
+\usetikzlibrary{calc,matrix,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing,decorations.markings}
+\usetikzlibrary{spy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[absolute,overlay]{textpos}
+\usepackage{everypage}
+\usepackage{multirow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lightgray}{RGB}{201,201,201}
+\definecolor{lightred}{RGB}{250,112,97}
+\definecolor{lightgreen}{RGB}{179,250,140}
+
+\definecolor{msrtextcl}{RGB}{0,0,0}
+\definecolor{msrkeycl}{RGB}{127,0,85}
+\definecolor{msrcmtcl}{RGB}{201,201,201}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%for time line tables
+\newcommand\ytl[5]{
+\parbox[b]{8em}{\hfill{\color{#2}\bfseries\sffamily #3}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{\textwidth}{\vspace{#1pt}\color{#4}\raggedright\sffamily #5\\[7pt]}\\[-3pt]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamerfont{author}{size=\Huge}
+\setbeamerfont{institute}{size=\normalsize\itshape}
+\setbeamerfont{title}{size=\fontsize{30}{36}\bfseries}
+\setbeamerfont{subtitle}{size=\Large\normalfont\slshape}
+
+\setbeamertemplate{itemize item}{$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{$\bullet$}
+\setbeamertemplate{itemize subsubitem}{$\circ$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Global Background must be put in preamble
+\usebackgroundtemplate
+{%
+  \parbox[c][\paperheight][c]{\paperwidth}
+    {\centering\includegraphics[width=\paperwidth]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/slides/UL_slide_footerv4.pdf}
+     \freeblock{20}{2}{15.35}{\textit{\tiny \msrAuthorName - \today~(\currenttime) - \msrInstitute }}
+     \freeblock{2}{1.7}{15.33}{\includegraphics[scale=0.025]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/logos/messir/final/Messir/Vector/Messir-centred-all-no-OS-no-TXv3.pdf}}
+     \freeblock{2}{0.03}{14.7}{\includegraphics[scale=0.050]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/copyrights-stample-02-blue.pdf}}
+%     \freeblock{2}{15}{0.3}{\includegraphics[scale=0.08]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/copyrights-stample-02-blue.pdf}}
+                
+    }
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For including a TOC for parts
+\makeatletter
+\AtBeginPart{%
+  \addtocontents{toc}{\protect\beamer@partintoc{\the\c@part}{\beamer@partnameshort}{\the\c@page}}%
+}
+%% number, shortname, page.
+\providecommand\beamer@partintoc[3]{%
+  \ifnum\c@tocdepth=-1\relax
+    \msrfontclb{(#1):} \msrtxtclb{CadetBlue}{#2} \textit{\scriptsize (slide #3)} 
+    \vspace{-0.1cm}
+    \par
+  \fi
+}
+\define@key{beamertoc}{onlyparts}[]{%
+  \c@tocdepth=-1\relax
+}
+\makeatother%
+
+% For reducing TOC line spacing
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\patchcmd{\beamer@subsectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+% For setting item spacing
+% ex: {\setlistspacing{2}{2ex} \begin{frame} \ldots \end{frame}}
+
+\makeatletter
+\newcommand{\setlistspacing}[2]{\def\@ld{#1}\expandafter\def\csname
+@list\romannumeral\@ld \endcsname{\leftmargin\csname
+leftmargin\romannumeral\@ld \endcsname
+              \topsep    #2
+              \parsep    0\p@   \@plus\p@
+              \itemsep   #2}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

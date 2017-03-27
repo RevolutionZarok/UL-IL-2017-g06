@@ -1,0 +1,68 @@
+\subsection{Operation Model for init}
+
+\label{OM-init}
+
+
+The \msrcode{init} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{init}{ used to initialize the current object as a new instance of the ctAdministrator type.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{Alogin: dtLogin}{used to initialize the login field} 
+	\addnumbereddoublerow{}{Apwd: dtPassword}{used to initialize the password field} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ 
+	true iff the system poststate includes the current object as a new ctAdministrator instance having its login and password attributes equal to the one provided as parameters and its vpIsLogged attribute equal to false. }
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-ctAdministrator-init-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{init}.},label=OM-ctAdministrator-init-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{if
+	(
+	let Self:ctAdministrator in
+	/* Post F01 */
+	Self.login(Alogin)
+	and Self.pwd = Apwd
+	and Self.vpIsLogged = false
+	
+	/* Post F02 */
+	and (Self.oclIsNew and self = Self)
+	)
+	then (result = true)
+	else (result = false)
+	endif}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

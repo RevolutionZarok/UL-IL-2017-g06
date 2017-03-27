@@ -1,0 +1,360 @@
+\ifglsentryexists{real number}{}%
+{%
+\gls@defglossaryentry{real number}%
+{%
+name={real},%
+sort={real},%
+type={main},%
+first={real},%
+firstplural={reals},%
+text={real},%
+plural={reals},%
+description={name of the set of real numbers},%
+descriptionplural={name of the set of real numbers},%
+symbol={\ensuremath {\mathbb {R}}},%
+symbolplural={\ensuremath {\mathbb {R}}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{systop}{}%
+{%
+\gls@defglossaryentry{systop}%
+{%
+name={\msrglsstyle {system operation}},%
+sort={\msrglsstyle {system operation}},%
+type={main},%
+first={\protect \emph {system operation}},%
+firstplural={system operations},%
+text={\protect \emph {system operation}},%
+plural={system operations},%
+description={a functionality of the system that can be triggered by a message sent by an actor belonging to the environment.},%
+descriptionplural={a functionality of the system that can be triggered by a message sent by an actor belonging to the environment.},%
+symbol={\msrglsstyle {system operation}},%
+symbolplural={\msrglsstyle {system operation}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{protmod}{}%
+{%
+\gls@defglossaryentry{protmod}%
+{%
+name={\msrglsstyle {Protocol Model}},%
+sort={\msrglsstyle {Protocol Model}},%
+type={main},%
+first={\protect \emph {Protocol Model}},%
+firstplural={protocol models},%
+text={\protect \emph {Protocol Model}},%
+plural={protocol models},%
+description={},%
+descriptionplural={},%
+symbol={\msrglsstyle {protocol model}},%
+symbolplural={\msrglsstyle {protocol model}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{societics}{}%
+{%
+\gls@defglossaryentry{societics}%
+{%
+name={\msrglsstyle {Societics}},%
+sort={\msrglsstyle {Societics}},%
+type={main},%
+first={\protect \emph {Societics}},%
+firstplural={\protect \emph {Societics}s},%
+text={\protect \emph {Societics}},%
+plural={\protect \emph {Societics}s},%
+description={Represents the fields of hardware/software systems used for the society extension.},%
+descriptionplural={Represents the fields of hardware/software systems used for the society extension.},%
+symbol={\msrglsstyle {societics}},%
+symbolplural={\msrglsstyle {societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{direct actor}{}%
+{%
+\gls@defglossaryentry{direct actor}%
+{%
+name={\msrglsstyle {direct actor}},%
+sort={\msrglsstyle {direct actor}},%
+type={main},%
+first={\protect \emph {direct actor}},%
+firstplural={direct actors},%
+text={\protect \emph {direct actor}},%
+plural={direct actors},%
+description={an actor that interacts directly with the system. It thus belongs to the environment.},%
+descriptionplural={an actor that interacts directly with the system. It thus belongs to the environment.},%
+symbol={\msrglsstyle {direct actor}},%
+symbolplural={\msrglsstyle {direct actor}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{indirect actor}{}%
+{%
+\gls@defglossaryentry{indirect actor}%
+{%
+name={\msrglsstyle {indirect actor}},%
+sort={\msrglsstyle {indirect actor}},%
+type={main},%
+first={\protect \emph {indirect actor}},%
+firstplural={\protect \emph {indirect actors}},%
+text={\protect \emph {indirect actor}},%
+plural={\protect \emph {indirect actors}},%
+description={an actor that interacts indirectly with the system through a direct actor. It thus belongs the domain but not to the environment.},%
+descriptionplural={an actor that interacts indirectly with the system through a direct actor. It thus belongs the domain but not to the environment.},%
+symbol={\msrglsstyle {indirect actor}},%
+symbolplural={\msrglsstyle {indirect actor}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{abstract actor}{}%
+{%
+\gls@defglossaryentry{abstract actor}%
+{%
+name={\msrglsstyle {abstract actor}},%
+sort={\msrglsstyle {abstract actor}},%
+type={main},%
+first={\protect \emph {abstract actor}},%
+firstplural={\protect \emph {abstract actors}},%
+text={\protect \emph {abstract actor}},%
+plural={\protect \emph {abstract actors}},%
+description={an actor that is not},%
+descriptionplural={an actor that is not},%
+symbol={\msrglsstyle {abstract actor}},%
+symbolplural={\msrglsstyle {abstract actor}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{socext}{}%
+{%
+\gls@defglossaryentry{socext}%
+{%
+name={\msrglsstyle {Society extension}},%
+sort={\msrglsstyle {Society extension}},%
+type={main},%
+first={\protect \emph {Society extension}},%
+firstplural={\protect \emph {Society extension}s},%
+text={\protect \emph {Society extension}},%
+plural={\protect \emph {Society extension}s},%
+description={The society obtained by grouping people using natural means extended with artificial means.},%
+descriptionplural={The society obtained by grouping people using natural means extended with artificial means.},%
+symbol={\msrglsstyle {societics}},%
+symbolplural={\msrglsstyle {societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{usecase}{}%
+{%
+\gls@defglossaryentry{usecase}%
+{%
+name={\msrglsstyle {Use case}},%
+sort={\msrglsstyle {Use case}},%
+type={main},%
+first={\protect \emph {Use case}},%
+firstplural={\protect \emph {Use case}s},%
+text={\protect \emph {Use case}},%
+plural={\protect \emph {Use case}s},%
+description={A use case describes a sequence of actions that provide something of measurable value to an actor. and is drawn as a horizontal ellipse.},%
+descriptionplural={A use case describes a sequence of actions that provide something of measurable value to an actor. and is drawn as a horizontal ellipse.},%
+symbol={{\msrglsstyle {Use case}} plural},%
+symbolplural={{\msrglsstyle {Use case}} plural},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{actor}{}%
+{%
+\gls@defglossaryentry{actor}%
+{%
+name={\msrglsstyle {actor}},%
+sort={\msrglsstyle {actor}},%
+type={main},%
+first={\protect \emph {actor}},%
+firstplural={actors},%
+text={\protect \emph {actor}},%
+plural={actors},%
+description={An actor is a person, organization, or external system that plays a role in one or more interactions with the system},%
+descriptionplural={An actor is a person, organization, or external system that plays a role in one or more interactions with the system},%
+symbol={\msrglsstyle {actor}},%
+symbolplural={\msrglsstyle {actor}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{socialware}{}%
+{%
+\gls@defglossaryentry{socialware}%
+{%
+name={\msrglsstyle {Societics}},%
+sort={\msrglsstyle {Societics}},%
+type={main},%
+first={\protect \emph {Societics}},%
+firstplural={\protect \emph {Societics}s},%
+text={\protect \emph {Societics}},%
+plural={\protect \emph {Societics}s},%
+description={Represents the fields of hardware/software systems used for the society extension.},%
+descriptionplural={Represents the fields of hardware/software systems used for the society extension.},%
+symbol={\msrglsstyle {Societics}},%
+symbolplural={\msrglsstyle {Societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{system operation}{}%
+{%
+\gls@defglossaryentry{system operation}%
+{%
+name={system operation},%
+sort={system operation},%
+type={main},%
+first={system operation},%
+firstplural={system operation},%
+text={system operation},%
+plural={system operation},%
+description={a functionality of the system that can be triggered by a message sent by an actor belonging to the environment.},%
+descriptionplural={a functionality of the system that can be triggered by a message sent by an actor belonging to the environment.},%
+symbol={\msrglsstyle {system operation}},%
+symbolplural={\msrglsstyle {system operation}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

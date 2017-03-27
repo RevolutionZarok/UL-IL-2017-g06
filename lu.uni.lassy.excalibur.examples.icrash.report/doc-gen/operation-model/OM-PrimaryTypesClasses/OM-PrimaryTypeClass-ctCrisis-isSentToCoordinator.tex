@@ -1,0 +1,61 @@
+\subsection{Operation Model for isSentToCoordinator}
+
+\label{OM-isSentToCoordinator}
+
+
+The \msrcode{isSentToCoordinator} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{isSentToCoordinator}{used to provide a given coordinator with current crisis information.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AactCoordinator: actCoordinator}{the message destination actor} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ true iff the message ieSendACrisis is sent by the simulator to the input interface of the given coordinator actor with the current crisis as parameter value.
+	}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-ctCrisis-isSentToCoordinator-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{isSentToCoordinator}.},label=OM-ctCrisis-isSentToCoordinator-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{if 
+	(
+	/* Post F01 */
+	  AactCoordinator.rnInterfaceIN.ieSendACrisis(self)
+	)
+	then (result = true)
+	else (result = false)
+	endif}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

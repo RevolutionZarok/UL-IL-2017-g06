@@ -1,0 +1,33 @@
+@@Actor icrash.environment.actCoordinator
+
+@description
+"represents actor responsible of handling one or several crisis for the \msricrash system."
+//input events
+@inputEvent icrash.environment.actCoordinator.inactCoordinator.ieSendAnAlert
+"allows for receiving a requested ctAlert instance."
+@inputEvent icrash.environment.actCoordinator.inactCoordinator.ieSendACrisis
+"allows for receiving a requested ctCrisis instance."
+
+@endInputEvents
+
+//output events
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeInvalidateAlert
+"sent to indicate that an alert should be considered as closed."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis
+"sent to indicate that a crisis should be considered as closed."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeGetAlertsSet
+"sent to request all the ctAlert instances having a specific status."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeGetCrisisSet
+"sent to request all the ctCrisis instances having a specific status."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler
+"sent to declare himself as been the handler of a crisis having the specified id."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
+"sent to update the textual information available for a specific handled crisis."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus
+"sent to define the handling status of a specific crisis."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisType
+"sent to define the gravity type of a specific crisis."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeValidateAlert
+"sent to indicate that a specific alert is not a fake."
+
+@endOutputEvents

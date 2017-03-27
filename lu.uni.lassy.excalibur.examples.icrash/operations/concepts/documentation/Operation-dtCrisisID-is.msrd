@@ -1,0 +1,11 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtCrisisID.is
+@description
+" used to determine which strings are considered as valid crisis identifiers."
+//postFunctional descriptions
+@postF 
+" if the length of the value attribute of a dtCrisisID is a ptInteger greater than zero 
+and lower or equal to 10 than the operation returns the ptBoolean true, else the ptBoolean false."
+@endPostF
+//example
+@example""

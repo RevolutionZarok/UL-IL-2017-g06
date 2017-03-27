@@ -1,0 +1,9 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctCrisis.handlingDelayPassed
+
+@description
+"used to determine if the crisis stood too longly in a pending status since last reminder."
+//postFunctional descriptions
+@postF 
+"true iff the crisis is in pending status and if the duration between the current ctState clock information and the last reminder is greater than the crisis reminder period duration."
+@endPostF

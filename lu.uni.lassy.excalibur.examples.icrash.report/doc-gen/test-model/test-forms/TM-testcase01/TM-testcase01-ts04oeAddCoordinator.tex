@@ -1,0 +1,73 @@
+	\subsubsection{testcase01-ts04oeAddCoordinator-actAdministrator.outactAdministrator.oeAddCoordinator}
+	\label{TM-testcase01-ts04oeAddCoordinator-actAdministrator.outactAdministrator.oeAddCoordinator}
+
+	The \msrcode{testcase01-ts04oeAddCoordinator-actAdministrator.outactAdministrator.oeAddCoordinator} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts04oeAddCoordinator}{to test the add of a new coordinator by an administrator.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actAdministrator.outactAdministrator.oeAddCoordinator}{actAdministrator.outactAdministrator.oeAddCoordinator} (AdtCoordinatorID, AdtLogin, AdtPassword)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:actAdministrator}
+		{actAdministor actors as being the only one allowed to add coordinators.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is expected that there exists at least one which is the same during all the test case.}
+		\addnumberedsinglerow{C}{AdtCoordinatorID is equal to 1 to set the new coordinator ID}
+		\addnumberedsinglerow{C}{AdtLogin has its value attribute equal to the primitive string 'steve' which is the ID defined for the new coordinator.}
+		\addnumberedsinglerow{C}{AdtPassword has its value attribute equal to the primitive string 'pwdMessirExcalibur2017' which is the password to be set for steve.}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{the administrator should have been acknowledged for the adding of the new coordinator.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts04oeAddCoordinator-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts04oeAddCoordinator}.},label=TM-testcase01-ts04oeAddCoordinator-MCL-LST]
+
+	variables{
+		TheActor : actAdministrator
+		AdtCoordinatorID : dtCoordinatorID
+		AdtLogin:dtLogin
+		AdtPassword:dtPassword
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactAdministrator->any2(true)
+		AdtCoordinatorID.value.eq('1')
+		AdtLogin.value.eq('steve')
+		AdtPassword.value.eq('pwdMessirExcalibur2017')
+	}
+	
+	oracle{
+		constraints{
+			TheActor.inactAdministrator.ieCoordinatorAdded()
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

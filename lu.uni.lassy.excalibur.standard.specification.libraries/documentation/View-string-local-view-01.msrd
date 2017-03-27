@@ -1,0 +1,8 @@
+
+@@view string-local-view-01 
+@model Concept
+@level Local
+@sublevel Primary Datatype
+@number 3
+@description "string-local-view-01"
+@caption ""

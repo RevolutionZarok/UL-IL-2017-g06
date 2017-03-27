@@ -1,0 +1,61 @@
+/*
+* Copyright University of Luxembourg
+* 
+* This file is part of EXCALIBUR.
+* EXCALIBUR is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, version 3 of the License.
+* 
+* EXCALIBUR is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with EXCALIBUR in the COPYING.txt file. 
+* If not, see <http://www.gnu.org/licenses/>.
+* 
+* Last Modification:
+*  
+* @author nicolas.guelfi
+* @date Mon May 06 18:10:54 CEST 2013
+*/
+
+package lu.uni.lassy.messir.libraries.string{
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+
+	Concept Model  {
+
+		Primary Types {
+				
+			datatype dtString {
+				attribute value:ptString
+				
+				// Type checking Operation
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+
+				operation length() : dtInteger
+				operation dtStringConcat(AdtString:dtString) : dtString
+				operation subdtString(StartIndex:dtInteger,
+															EndIndex:dtInteger
+												 			) : dtString
+
+				operation toLower():dtString
+				operation toUpper():dtString
+				
+				operation eq(AdtString:dtString):ptBoolean
+				operation neq(AdtString:dtString):ptBoolean
+				operation geq(AdtString:dtString) : ptBoolean
+				operation leq(AdtString:dtString) : ptBoolean
+				operation lt(AdtString:dtString) : ptBoolean
+				operation gt(AdtString:dtString) : ptBoolean
+			
+				// Conversion Operations 
+				operation toptString():ptString
+				}
+		}
+	}
+}

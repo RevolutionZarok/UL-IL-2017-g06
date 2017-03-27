@@ -1,0 +1,8 @@
+@@view cm-pt-ct-lv-04-partc-ctCrisis
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 4
+@description 'shows the local view of the ctCrisis primary type class type.'
+@caption 'local view of the ctCrisis primary type'
+@scale 0.80

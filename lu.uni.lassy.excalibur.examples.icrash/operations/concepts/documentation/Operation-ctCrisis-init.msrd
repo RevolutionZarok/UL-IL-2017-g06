@@ -1,0 +1,26 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctCrisis.init
+//parameters
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Aid
+"used to initialize the id field"
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Atype
+"used to initialize the type field"
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Astatus
+"used to initialize the status field"
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Alocation
+"used to initialize the location field"
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Ainstant
+"used to initialize the instant field"
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Acomment
+"used to initialize the comment field"
+@endParameters
+@description
+" used to initialize the current object as a new instance of the ctCrisis type."
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new ctCrisis instance having its attributes equal to the ones provided as parameters.
+"
+@endPostF
+
+//example
+@example ""

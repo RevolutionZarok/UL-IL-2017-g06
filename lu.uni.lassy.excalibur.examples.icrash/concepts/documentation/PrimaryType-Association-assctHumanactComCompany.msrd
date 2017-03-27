@@ -1,0 +1,4 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctHumanactComCompany
+
+@description
+" in order to communicate with humans who informed about potential crisis, we need to record the communication company to use to send them messages."

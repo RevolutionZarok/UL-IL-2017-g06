@@ -1,0 +1,5 @@
+@@view uc-ugManageCrisis
+@model Use-Case icrash.usecases.ugManageCrisis.ugManageCrisis
+@description "shows the use case diagram for the ugManageCrisis user goal use case"
+@caption ' ugManageCrisis user goal use case'
+@scale 0.75

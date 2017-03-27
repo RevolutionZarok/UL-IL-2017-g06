@@ -1,0 +1,8 @@
+@@Primary Type Enumeration icrash.concepts.primarytypes.datatypes.etHumanKind
+@description 
+"
+this type is used to indicate the kind of human that informs about a car crash crisis.
+"
+@operation icrash.concepts.primarytypes.datatypes.etHumanKind.is
+ "used to determine which litteral belongs to the enumeration."
+@endOperations

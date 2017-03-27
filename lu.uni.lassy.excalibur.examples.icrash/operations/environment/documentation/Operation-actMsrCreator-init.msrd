@@ -1,0 +1,4 @@
+@@Operation
+icrash.environment.actMsrCreator.init
+@description
+"used to create an instance of the actor together with its interface instances and update the assocations with the \msrcode{ctState} instance."

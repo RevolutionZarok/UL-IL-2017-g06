@@ -1,0 +1,9 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtLatitude.is
+
+@description
+"used to determine which strings are considered as valid dtLatitude."
+//postFunctional descriptions
+@postF 
+" is true if the value is a real in the interval [-90.0 , +90.0]."
+@endPostF

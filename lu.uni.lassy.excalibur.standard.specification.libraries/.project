@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>lu.uni.lassy.excalibur.standard.specification.libraries</name>
+	<comment></comment>
+	<projects>
+		<project>lu.uni.lassy.excalibur.standard.simulation.libraries</project>
+		<project>lu.uni.lassy.excalibur.standard.specification.libraries</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>net.sourceforge.texlipse.builder.TexlipseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
+		<nature>org.eclipse.sirius.nature.modelingproject</nature>
+		<nature>lu.uni.lassy.messir.libraries.standard.projectnature</nature>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+		<nature>lu.uni.lassy.excalibur.ui.projectnature</nature>
+		<nature>lu.uni.lassy.excalibur.libraries.standard.projectnature</nature>
+	</natures>
+</projectDescription>

@@ -1,0 +1,20 @@
+@@Use Case icrash.usecases.ugManageCrisis.ugManageCrisis
+@description
+"
+The goal is to do an action that makes the handling of a crisis or an alert progress. 
+"
+@protocolCondition
+"
+the iCrash system has been deployed
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+there exist one alert or one crisis whose related information has been changed.
+"
+@endPostConditions

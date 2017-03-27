@@ -1,0 +1,127 @@
+/*
+* Copyright University of Luxembourg
+* 
+* This file is part of EXCALIBUR.
+* EXCALIBUR is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, version 3 of the License.
+* 
+* EXCALIBUR is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with EXCALIBUR in the COPYING.txt file. 
+* If not, see <http://www.gnu.org/licenses/>.
+* 
+* Last Modification:
+*  
+* @author nicolas.guelfi
+* @date Mon May 06 18:10:54 CEST 2013
+*/
+
+package lu.uni.lassy.messir.libraries.math{
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.string
+	
+	Concept Model  {
+
+		Primary Types {
+
+			
+			datatype dtInteger{
+				attribute value:ptInteger
+				// Type checking Operation
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+
+				// Arithmetic Operations 
+				operation add(AdtInteger:dtInteger): dtInteger
+				operation sub(AdtInteger:dtInteger): dtInteger
+				operation mul(AdtInteger:dtInteger): dtInteger
+				operation frac(AdtInteger:dtInteger): dtReal
+				operation msrdiv(AdtInteger:dtInteger): dtInteger
+				operation power(AExp:dtInteger): dtInteger
+				operation mod(AdtInteger:dtInteger): dtInteger
+			
+				operation sqrt(): dtReal
+        operation msrabs(): dtInteger
+        operation opp(): dtInteger
+        operation sqr(): dtInteger
+				
+				// Logical Operations
+				operation eq(AdtInteger:dtInteger): ptBoolean
+				operation neq(AdtInteger:dtInteger): ptBoolean
+				operation geq(AdtInteger:dtInteger): ptBoolean
+				operation leq(AdtInteger:dtInteger): ptBoolean
+				operation lt(AdtInteger:dtInteger): ptBoolean
+				operation gt(AdtInteger:dtInteger): ptBoolean
+				
+				// Trigonometric Operations 
+				// default is radian
+				operation cos(): dtReal
+				operation acos(): dtReal
+				operation tan(): dtReal
+				operation atan(): dtReal
+				operation sin(): dtReal
+				operation asin(): dtReal
+				operation toDeg(): dtReal
+				operation toRad(): dtReal
+				
+				// Conversion Operations 
+				operation asdtReal():dtReal
+				operation todtString():dtString
+				operation asptInteger():ptInteger
+				}
+				
+			datatype dtReal {
+				attribute value:ptReal
+				
+				// Type checking Operation
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+
+				// Arithmetic Operations 
+				operation add(AdtReal:dtReal): dtReal
+				operation sub(AdtReal:dtReal): dtReal
+				operation mul(AdtReal:dtReal): dtReal
+				operation frac(AdtReal:dtReal) : dtReal
+				operation msrdiv(AdtReal:dtReal): dtInteger
+				operation power(AdtReal:dtReal): dtReal
+				
+				operation msrround() : dtInteger
+				operation sqrt(): dtReal
+				operation msrabs(): dtReal
+				operation opp(): dtReal
+				operation sqr(): dtReal
+
+				// Logical Operations
+				operation eq(AdtReal:dtReal): ptBoolean
+				operation neq(AdtReal:dtReal): ptBoolean
+				operation geq(AdtReal:dtReal): ptBoolean
+				operation leq(AdtReal:dtReal): ptBoolean
+				operation lt(AdtReal:dtReal): ptBoolean
+				operation gt(AdtReal:dtReal): ptBoolean
+
+
+				// Trigonometric Operations 
+				// default is radian
+				operation cos(): dtReal
+				operation acos(): dtReal
+				operation tan(): dtReal
+				operation atan(): dtReal
+				operation sin(): dtReal
+				operation asin(): dtReal
+				operation toDeg(): dtReal
+				operation toRad(): dtReal
+
+				// Conversion Operations 
+				operation asdtInteger():dtInteger
+			 	operation todtString() : dtString
+				operation asptReal():ptReal
+			}
+		}
+	}
+}

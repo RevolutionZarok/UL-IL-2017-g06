@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtLatitude
+
+@description
+"used to define a latitude value of a geograpical positions on earth."
+
+@operation icrash.concepts.primarytypes.datatypes.dtLatitude.is
+ "used to determine which strings are considered as valid dtLatitude."
+
+@endOperations

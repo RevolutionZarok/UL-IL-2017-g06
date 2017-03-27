@@ -1,0 +1,81 @@
+	\subsubsection{testcase01-ts18oeReportOnCrisis-actCoordinator.outactCoordinator.oeReportOnCrisis}
+	\label{TM-testcase01-ts18oeReportOnCrisis-actCoordinator.outactCoordinator.oeReportOnCrisis}
+
+	The \msrcode{testcase01-ts18oeReportOnCrisis-actCoordinator.outactCoordinator.oeReportOnCrisis} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts18oeReportOnCrisis}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actCoordinator.outactCoordinator.oeReportOnCrisis}{actCoordinator.outactCoordinator.oeReportOnCrisis} (AdtCrisisID, AdtComment)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actCoordinator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtComment:icrash.concepts.primarytypes.datatypes.dtComment}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AMessage:lu.uni.lassy.messir.libraries.primitives.ptString}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value}
+		\addnumberedsinglerow{C}{AdtCrisisID}
+		\addnumberedsinglerow{C}{AdtComment}
+		\addnumberedsinglerow{C}{AMessage}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts18oeReportOnCrisis-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts18oeReportOnCrisis}.},label=TM-testcase01-ts18oeReportOnCrisis-MCL-LST]
+
+	variables{
+		TheActor : actCoordinator
+		AdtCrisisID : dtCrisisID
+		AdtComment : dtComment
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactCoordinator
+		            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+		            ->any2(true)
+	}
+	
+	oracle{
+		variables{
+			AMessage:ptString
+		}
+		constraints{
+			AMessage = 'The crisis comment has been updated !'
+			TheActor.inactAuthenticated.ieMessage(AMessage)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

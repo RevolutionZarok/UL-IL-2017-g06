@@ -1,0 +1,15 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctAdministrator.init
+//parameters
+@parameter icrash.concepts.primarytypes.classes.ctAdministrator.init.Alogin
+"used to initialize the login field"
+@parameter icrash.concepts.primarytypes.classes.ctAdministrator.init.Apwd
+"used to initialize the password field"
+@endParameters
+@description
+" used to initialize the current object as a new instance of the ctAdministrator type."
+//postFunctional descriptions
+@postF 
+" 
+true iff the system poststate includes the current object as a new ctAdministrator instance having its login and password attributes equal to the one provided as parameters and its vpIsLogged attribute equal to false. "
+@endPostF

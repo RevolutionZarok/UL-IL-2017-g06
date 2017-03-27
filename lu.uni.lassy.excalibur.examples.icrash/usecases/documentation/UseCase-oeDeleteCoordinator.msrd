@@ -1,0 +1,22 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeDeleteCoordinator hidden
+@description
+"goal is to delete an existing coordinator in the system's post state and environment's post state.
+"
+@parameter icrash.usecases.subfunctions.oeDeleteCoordinator.AdtCoordinatorID ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

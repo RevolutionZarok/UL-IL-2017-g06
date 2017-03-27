@@ -1,0 +1,634 @@
+package lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.instance01 {
+
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.associations
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.primarytypes.datatypes
+import lu.uni.lassy.excalibur.examples.icrash.tests.testcase01
+import icrash.environment
+
+
+Test Model { 
+  test case instance instance01:testcase01{
+//----------------------------------------------------
+    test step instance tsi01:testcase01.ts01oeCreateSystemAndEnvironment{
+      variables {
+        theCreator:testcase01.ts01oeCreateSystemAndEnvironment.Creator = "theCreator"
+        AqtyComCompanies : testcase01.ts01oeCreateSystemAndEnvironment.AqtyComCompanies="4"
+        }
+        oracle {
+         satisfaction = "true"
+       }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi02: testcase01.ts02oeSetClock{
+      variables {
+        theClock:testcase01.ts02oeSetClock.TheActor = "theClock"
+        ACurrentClock : testcase01.ts02oeSetClock.ACurrentClock= "2017:11:24 - 03:20:00"
+        }
+        oracle {
+         satisfaction = "true"
+        }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi03: testcase01.ts03oeLogin{
+      variables {
+        bill:testcase01.ts03oeLogin.TheActor="bill"
+        AdtLogin : testcase01.ts03oeLogin.AdtLogin= "icrashadmin"
+        AdtPassword : testcase01.ts03oeLogin.AdtPassword= "7WXC1359"
+        }
+        oracle {
+         satisfaction = "true"
+         received message {
+           AMessage : testcase01.ts03oeLogin.AMessage= 'You are logged ! Welcome ...'
+           tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+       }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi04: testcase01.ts04oeAddCoordinator{
+      variables {
+        reuse tsi03.bill as testcase01.ts04oeAddCoordinator.TheActor
+        AdtCoordinatorID : testcase01.ts04oeAddCoordinator.AdtCoordinatorID = "1"
+        AdtLogin :testcase01.ts04oeAddCoordinator.AdtLogin= "steve"
+        AdtPassword : testcase01.ts04oeAddCoordinator.AdtPassword = "pwdMessirExcalibur2017"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         tsi03.bill received from system actAdministrator.inactAdministrator.ieCoordinatorAdded()
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi05: testcase01.ts05oeLogout{
+      variables {
+        reuse tsi03.bill as testcase01.ts05oeLogout.TheActor 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts05oeLogout.AMessage= 'You are logged out ! Good Bye ...'
+         tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi06: testcase01.ts06oeSetClock02{
+      variables {
+        reuse tsi02.theClock as testcase01.ts06oeSetClock02.TheActor 
+        ACurrentClock : testcase01.ts06oeSetClock02.ACurrentClock=  "2017:11:26 - 10:15:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi07: testcase01.ts07oeAlert1{
+      variables {
+        tango:testcase01.ts07oeAlert1.TheActor ="tango"
+        AetHumanKind : testcase01.ts07oeAlert1.AetHumanKind = "witness"
+        AdtDate : testcase01.ts07oeAlert1.AdtDate = "2017:11:26"
+        AdtTime : testcase01.ts07oeAlert1.AdtTime = "10:10:16"
+        AdtPhoneNumber : testcase01.ts07oeAlert1.AdtPhoneNumber = "+3524666445252"
+        AdtGPSLocation : testcase01.ts07oeAlert1.AdtGPSLocation = "49.627675:6.159590"
+        AdtComment : testcase01.ts07oeAlert1.AdtComment = "3 cars involved in an accident."
+       }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AdtSMS : testcase01.ts07oeAlert1.AdtSMS= 'Your alert has been registered. We will handle it and keep you informed'
+					tsi07.tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+					
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+
+//----------------------------------------------------
+    test step instance tsi08: testcase01.ts08oeSetClock03{
+      variables {
+        reuse tsi02.theClock as testcase01.ts08oeSetClock03.ACurrentClock 
+        ACurrentClock : testcase01.ts08oeSetClock03.ACurrentClock = "2017:11:26 - 10:30:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi09: testcase01.ts09oeSollicitateCrisisHandling{
+      variables {
+        reuse tsi02.theClock as testcase01.ts09oeSollicitateCrisisHandling.TheActor
+        reuse tsi03.bill as testcase01.ts09oeSollicitateCrisisHandling.TheAdministrator 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+           steve:testcase01.ts09oeSollicitateCrisisHandling.TheCoordinator ="steve"
+           AMessageForCrisisHandlers : testcase01.ts09oeSollicitateCrisisHandling.AMessageForCrisisHandlers= 'There are alerts pending since more than the defined delay. Please REACT !'
+					
+         tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessageForCrisisHandlers)
+         tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessageForCrisisHandlers)
+										}
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+
+//----------------------------------------------------
+    test step instance tsi10: testcase01.ts10oeLogin02{
+      variables {
+        reuse tsi09.steve as testcase01.ts10oeLogin02.TheActor 
+        AdtLogin : testcase01.ts10oeLogin02.AdtLogin = "steve"
+        AdtPassword : testcase01.ts10oeLogin02.AdtPassword= "pwdMessirExcalibur2017" 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts10oeLogin02.AMessage= 'You are logged ! Welcome ...'
+					tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+					
+         }
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi11: testcase01.ts11oeGetCrisisSet{
+      variables {
+        reuse tsi09.steve as testcase01.ts11oeGetCrisisSet.TheActor 
+        AetCrisisStatus : testcase01.ts11oeGetCrisisSet.AetCrisisStatus = "pending"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         ActCrisis : testcase01.ts11oeGetCrisisSet.ActCrisis= "crisis with ID 1 details"
+					tsi09.steve received from system actCoordinator.inactCoordinator.ieSendACrisis(ActCrisis)
+         }
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi12: testcase01.ts12oeSetCrisisHandler{
+      variables {
+        reuse tsi09.steve as testcase01.ts12oeSetCrisisHandler.TheActor
+        AdtCrisisID : testcase01.ts12oeSetCrisisHandler.AdtCrisisID = "1"
+        
+         reuse tsi07.tango as testcase01.ts12oeSetCrisisHandler.TheComCompany
+         
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+          AMessage : testcase01.ts12oeSetCrisisHandler.AMessage= 'You are now considered as handling the crisis !'
+					AdtSMS : testcase01.ts12oeSetCrisisHandler.AdtSMS= 'The handling of your alert by our services is in progress !'
+					AdtPhoneNumber : testcase01.ts12oeSetCrisisHandler.AdtPhoneNumber= "+3524666445252"
+					
+					tsi07.tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+					tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+					
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi13: testcase01.ts13oeSetClock04{
+      variables {
+        reuse tsi02.theClock as testcase01.ts13oeSetClock04.TheActor 
+          ACurrentClock : testcase01.ts13oeSetClock04.ACurrentClock = "2017:11:26 - 10:45:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi14: testcase01.ts14oeValidateAlert{
+      variables {
+        reuse tsi09.steve as testcase01.ts14oeValidateAlert.TheActor 
+        AdtAlertID : testcase01.ts14oeValidateAlert.AdtAlertID = "1"
+       }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts14oeValidateAlert.AMessage= 'The Alert is now declared as valid !'
+				 tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+					
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi15: testcase01.ts15oeAlert2{
+      variables {
+        reuse tsi07.tango as testcase01.ts15oeAlert2.TheActor 
+        AetHumanKind : testcase01.ts15oeAlert2.AetHumanKind ="witness"
+        AdtDate : testcase01.ts15oeAlert2.AdtDate= "2017:11:26"
+        AdtTime : testcase01.ts15oeAlert2.AdtTime= "10:20:00"
+        AdtPhoneNumber : testcase01.ts15oeAlert2.AdtPhoneNumber= "+3524666445000"
+        AdtGPSLocation : testcase01.ts15oeAlert2.AdtGPSLocation= "49.627095:6.160251"
+        AdtComment : testcase01.ts15oeAlert2.AdtComment= "A car crash just happened."
+      }
+      message {
+				tsi07.tango sent to system testcase01.ts15oeAlert2.out : actComCompany.outactComCompany.oeAlert(AetHumanKind,AdtDate,AdtTime,AdtPhoneNumber,AdtGPSLocation,AdtComment)
+				
+			}
+      oracle {
+         satisfaction = "true"
+         received message {
+         AdtSMS : testcase01.ts15oeAlert2.AdtSMS= 'Your alert has been registered. We will handle it and keep you informed'
+					tsi07.tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+					
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi16: testcase01.ts16oeSetClock05{
+      variables {
+        reuse tsi02.theClock as testcase01.ts16oeSetClock05.TheActor 
+        ACurrentClock : testcase01.ts16oeSetClock05.ACurrentClock = "2017:11:26 - 12:45:00"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi17: testcase01.ts17oeSetCrisisStatus{
+      variables {
+        reuse tsi09.steve as testcase01.ts17oeSetCrisisStatus.TheActor 
+        AdtCrisisID : testcase01.ts17oeSetCrisisStatus.AdtCrisisID = "1"
+        AetCrisisStatus : testcase01.ts17oeSetCrisisStatus.AetCrisisStatus= "solved"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts17oeSetCrisisStatus.AMessage= "The crisis status has been updated !"
+					tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi18: testcase01.ts18oeReportOnCrisis{
+      variables {
+        reuse tsi09.steve as testcase01.ts18oeReportOnCrisis.TheActor 
+        AdtCrisisID : testcase01.ts18oeReportOnCrisis.AdtCrisisID = "1"
+        AdtComment : testcase01.ts18oeReportOnCrisis.AdtComment= "3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts18oeReportOnCrisis.AMessage= 'The crisis comment has been updated !'
+					tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+					
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi19: testcase01.ts19oeCloseCrisis{
+      variables {
+        reuse tsi09.steve as testcase01.ts19oeCloseCrisis.TheActor 
+        AdtCrisisID : testcase01.ts19oeCloseCrisis.AdtCrisisID = "1"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+          AMessage : testcase01.ts19oeCloseCrisis.AMessage= 'The crisis is now closed !'
+          
+        tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+      
+   }
+//----------------------------------------------------
+//----------------------------------------------------
+//----------------------------------------------------
+  test case instance instance01Part01:testcase01{
+//----------------------------------------------------
+    test step instance tsi01:testcase01.ts01oeCreateSystemAndEnvironment{
+      variables {
+        theCreator:testcase01.ts01oeCreateSystemAndEnvironment.Creator = "theCreator"
+        AqtyComCompanies : testcase01.ts01oeCreateSystemAndEnvironment.AqtyComCompanies="4"
+        }
+        oracle {
+         satisfaction = "true"
+       }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi02: testcase01.ts02oeSetClock{
+      variables {
+        theClock:testcase01.ts02oeSetClock.TheActor = "theClock"
+        ACurrentClock : testcase01.ts02oeSetClock.ACurrentClock= "2017:11:24 - 03:20:00"
+        }
+        oracle {
+         satisfaction = "true"
+        }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi03: testcase01.ts03oeLogin{
+      variables {
+        bill:testcase01.ts03oeLogin.TheActor="bill"
+        AdtLogin : testcase01.ts03oeLogin.AdtLogin= "icrashadmin"
+        AdtPassword : testcase01.ts03oeLogin.AdtPassword= "7WXC1359"
+        }
+        oracle {
+         satisfaction = "true"
+         received message {
+           AMessage : testcase01.ts03oeLogin.AMessage= 'You are logged ! Welcome ...'
+           tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+       }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi04: testcase01.ts04oeAddCoordinator{
+      variables {
+        reuse tsi03.bill as testcase01.ts04oeAddCoordinator.TheActor
+        AdtCoordinatorID : testcase01.ts04oeAddCoordinator.AdtCoordinatorID = "1"
+        AdtLogin :testcase01.ts04oeAddCoordinator.AdtLogin= "steve"
+        AdtPassword : testcase01.ts04oeAddCoordinator.AdtPassword = "pwdMessirExcalibur2017"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         tsi03.bill received from system actAdministrator.inactAdministrator.ieCoordinatorAdded()
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi05: testcase01.ts05oeLogout{
+      variables {
+        reuse tsi03.bill as testcase01.ts05oeLogout.TheActor 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts05oeLogout.AMessage= 'You are logged out ! Good Bye ...'
+         tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi06: testcase01.ts06oeSetClock02{
+      variables {
+        reuse tsi02.theClock as testcase01.ts06oeSetClock02.TheActor 
+        ACurrentClock : testcase01.ts06oeSetClock02.ACurrentClock=  "2017:11:26 - 10:15:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi07: testcase01.ts07oeAlert1{
+      variables {
+        tango:testcase01.ts07oeAlert1.TheActor ="tango"
+        AetHumanKind : testcase01.ts07oeAlert1.AetHumanKind = "witness"
+        AdtDate : testcase01.ts07oeAlert1.AdtDate = "2017:11:26"
+        AdtTime : testcase01.ts07oeAlert1.AdtTime = "10:10:16"
+        AdtPhoneNumber : testcase01.ts07oeAlert1.AdtPhoneNumber = "+3524666445252"
+        AdtGPSLocation : testcase01.ts07oeAlert1.AdtGPSLocation = "49.627675:6.159590"
+        AdtComment : testcase01.ts07oeAlert1.AdtComment = "3 cars involved in an accident."
+       }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AdtSMS : testcase01.ts07oeAlert1.AdtSMS= 'Your alert has been registered. We will handle it and keep you informed'
+          tsi07.tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+          
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+
+//----------------------------------------------------
+    test step instance tsi08: testcase01.ts08oeSetClock03{
+      variables {
+        reuse tsi02.theClock as testcase01.ts08oeSetClock03.ACurrentClock 
+        ACurrentClock : testcase01.ts08oeSetClock03.ACurrentClock = "2017:11:26 - 10:30:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi09: testcase01.ts09oeSollicitateCrisisHandling{
+      variables {
+        reuse tsi02.theClock as testcase01.ts09oeSollicitateCrisisHandling.TheActor
+        reuse tsi03.bill as testcase01.ts09oeSollicitateCrisisHandling.TheAdministrator 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+           steve:testcase01.ts09oeSollicitateCrisisHandling.TheCoordinator ="steve"
+           AMessageForCrisisHandlers : testcase01.ts09oeSollicitateCrisisHandling.AMessageForCrisisHandlers= 'There are alerts pending since more than the defined delay. Please REACT !'
+          
+         tsi03.bill received from system actAuthenticated.inactAuthenticated.ieMessage(AMessageForCrisisHandlers)
+         tsi09.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessageForCrisisHandlers)
+                    }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+      }
+
+//----------------------------------------------------
+//----------------------------------------------------
+//----------------------------------------------------
+  test case instance instance01Part02:testcase01{
+
+    test step instance tsi10: testcase01.ts10oeLogin02{
+      variables {
+        steve : testcase01.ts10oeLogin02.TheActor 
+        AdtLogin : testcase01.ts10oeLogin02.AdtLogin = "steve"
+        AdtPassword : testcase01.ts10oeLogin02.AdtPassword= "pwdMessirExcalibur2017" 
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts10oeLogin02.AMessage= 'You are logged ! Welcome ...'
+          steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+          
+         }
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi11: testcase01.ts11oeGetCrisisSet{
+      variables {
+        reuse tsi10.steve as testcase01.ts11oeGetCrisisSet.TheActor 
+        AetCrisisStatus : testcase01.ts11oeGetCrisisSet.AetCrisisStatus = "pending"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         ActCrisis : testcase01.ts11oeGetCrisisSet.ActCrisis= "crisis with ID 1 details"
+          tsi10.steve received from system actCoordinator.inactCoordinator.ieSendACrisis(ActCrisis)
+         }
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi12: testcase01.ts12oeSetCrisisHandler{
+      variables {
+        reuse tsi10.steve as testcase01.ts12oeSetCrisisHandler.TheActor
+        AdtCrisisID : testcase01.ts12oeSetCrisisHandler.AdtCrisisID = "1"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+          tango : testcase01.ts12oeSetCrisisHandler.TheComCompany
+          AMessage : testcase01.ts12oeSetCrisisHandler.AMessage= 'You are now considered as handling the crisis !'
+          AdtSMS : testcase01.ts12oeSetCrisisHandler.AdtSMS= 'The handling of your alert by our services is in progress !'
+          AdtPhoneNumber : testcase01.ts12oeSetCrisisHandler.AdtPhoneNumber= "+3524666445252"
+          
+          tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+          tsi10.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+          
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi13: testcase01.ts13oeSetClock04{
+      variables {
+          theClock : testcase01.ts13oeSetClock04.TheActor 
+          ACurrentClock : testcase01.ts13oeSetClock04.ACurrentClock = "2017:11:26 - 10:45:00"
+      }
+      oracle {
+         satisfaction = "true"
+      }
+      test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi14: testcase01.ts14oeValidateAlert{
+      variables {
+        reuse tsi10.steve as testcase01.ts14oeValidateAlert.TheActor 
+        AdtAlertID : testcase01.ts14oeValidateAlert.AdtAlertID = "1"
+       }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts14oeValidateAlert.AMessage= 'The Alert is now declared as valid !'
+         tsi10.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+          
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi15: testcase01.ts15oeAlert2{
+      variables {
+        reuse tsi12.tango as testcase01.ts15oeAlert2.TheActor 
+        AetHumanKind : testcase01.ts15oeAlert2.AetHumanKind ="witness"
+        AdtDate : testcase01.ts15oeAlert2.AdtDate= "2017:11:26"
+        AdtTime : testcase01.ts15oeAlert2.AdtTime= "10:20:00"
+        AdtPhoneNumber : testcase01.ts15oeAlert2.AdtPhoneNumber= "+3524666445000"
+        AdtGPSLocation : testcase01.ts15oeAlert2.AdtGPSLocation= "49.627095:6.160251"
+        AdtComment : testcase01.ts15oeAlert2.AdtComment= "A car crash just happened."
+      }
+      message {
+        tsi12.tango sent to system testcase01.ts15oeAlert2.out : actComCompany.outactComCompany.oeAlert(AetHumanKind,AdtDate,AdtTime,AdtPhoneNumber,AdtGPSLocation,AdtComment)
+        
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AdtSMS : testcase01.ts15oeAlert2.AdtSMS= 'Your alert has been registered. We will handle it and keep you informed'
+          tsi12.tango received from system actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+          
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi16: testcase01.ts16oeSetClock05{
+      variables {
+        reuse tsi13.theClock as testcase01.ts16oeSetClock05.TheActor 
+        ACurrentClock : testcase01.ts16oeSetClock05.ACurrentClock = "2017:11:26 - 12:45:00"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi17: testcase01.ts17oeSetCrisisStatus{
+      variables {
+        reuse tsi10.steve as testcase01.ts17oeSetCrisisStatus.TheActor 
+        AdtCrisisID : testcase01.ts17oeSetCrisisStatus.AdtCrisisID = "1"
+        AetCrisisStatus : testcase01.ts17oeSetCrisisStatus.AetCrisisStatus= "solved"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts17oeSetCrisisStatus.AMessage= "The crisis status has been updated !"
+          tsi10.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi18: testcase01.ts18oeReportOnCrisis{
+      variables {
+        reuse tsi10.steve as testcase01.ts18oeReportOnCrisis.TheActor 
+        AdtCrisisID : testcase01.ts18oeReportOnCrisis.AdtCrisisID = "1"
+        AdtComment : testcase01.ts18oeReportOnCrisis.AdtComment= "3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+         AMessage : testcase01.ts18oeReportOnCrisis.AMessage= 'The crisis comment has been updated !'
+         tsi10.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+          
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+//----------------------------------------------------
+    test step instance tsi19: testcase01.ts19oeCloseCrisis{
+      variables {
+        reuse tsi10.steve as testcase01.ts19oeCloseCrisis.TheActor 
+        AdtCrisisID : testcase01.ts19oeCloseCrisis.AdtCrisisID = "1"
+      }
+      oracle {
+         satisfaction = "true"
+         received message {
+          AMessage : testcase01.ts19oeCloseCrisis.AMessage= 'The crisis is now closed !'
+          
+        tsi10.steve received from system actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+         
+         }
+      }
+       test results {pre-protocol = "true"  pre-functional = "true" post-functional = "true"}
+      }
+      
+   }
+ }
+ 
+}

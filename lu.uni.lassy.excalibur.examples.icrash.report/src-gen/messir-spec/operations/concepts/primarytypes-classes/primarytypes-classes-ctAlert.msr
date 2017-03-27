@@ -1,0 +1,51 @@
+package icrash.operations.concepts.primarytypes.classes.ctAlert{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+import icrash.environment
+
+Operation Model {
+	
+operation: icrash.concepts.primarytypes.classes.ctAlert.init(Aid:dtAlertID , Astatus:etAlertStatus , Alocation:dtGPSLocation , Ainstant:dtDateAndTime , Acomment:dtComment 
+):ptBoolean{
+postF{
+if
+(
+/* Post F01 */
+let Self:ctAlert in
+Self.id = Aid
+and Self.status = Astatus
+and Self.location = Alocation
+and Self.instant = Ainstant
+and Self.comment = Acomment
+/* Post F02 */
+and (Self.oclIsNew and self = Self)
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctAlert-init.pl"}
+}
+
+operation: icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
+{
+postF{ 
+if
+(
+/* Post F01 */
+AactCoordinator.rnInterfaceIN.ieSendAnAlert(self)
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctAlert-isSentToCoordinator.pl"}
+
+}
+}
+}

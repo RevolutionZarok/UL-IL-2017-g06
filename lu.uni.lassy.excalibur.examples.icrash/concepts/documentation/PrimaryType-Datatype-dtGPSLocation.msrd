@@ -1,0 +1,20 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtGPSLocation
+
+@description
+"used to define coordinates of geograpical positions on earth. It is defined a couple made of a latitude and a longitude."
+
+@attribute icrash.concepts.primarytypes.datatypes.dtGPSLocation.latitude
+ "for the latitude part of the coordinate."
+
+@attribute icrash.concepts.primarytypes.datatypes.dtGPSLocation.longitude
+ "for the longitude part of the coordinate."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.datatypes.dtGPSLocation.is
+ "used to determine which couples are considered as valid dtGPSLocation values."
+
+@operation icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo
+ "used to determine if locations are considered enough close to be treated as equivalent in the application domain context."
+
+@endOperations

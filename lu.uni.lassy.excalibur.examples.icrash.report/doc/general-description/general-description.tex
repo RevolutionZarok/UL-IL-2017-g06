@@ -1,0 +1,67 @@
+% Last Modification:
+% @author AUTHOR_NAME
+% @date TODAY_DATE
+
+\chapter{General Description}
+\label{chap:general_description}
+
+\input{doc/general-description/general-description-00-Hat.tex}
+
+\section{Domain Stakeholders}
+\label{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-stakeholders}
+\input{doc/general-description/general-description-Stakeholders.tex}
+
+\subsection{Communication Company}
+\input{doc/general-description/general-description-Stakeholders-CommunicationCompany.tex}
+
+\subsection{Humans}
+\input{doc/general-description/general-description-Stakeholders-Human.tex}
+
+\subsection{Coordinators}
+\input{doc/general-description/general-description-Stakeholders-Coordinator.tex}
+
+\subsection{Administrator}
+\input{doc/general-description/general-description-Stakeholders-Administrator.tex}
+
+\subsection{Creator}
+\input{doc/general-description/general-description-Stakeholders-Creator.tex}
+
+\subsection{Activator}
+\input{doc/general-description/general-description-Stakeholders-Activator.tex}
+
+\newpage
+
+\section{System's Actors}
+\label{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-actors}
+
+
+The objective of this section is not to provide the full requirement elicitation document in this section but to reuse a part of this document to provide a informal introduction to the \msrmessir specification of the system under development. The use case model is made of a use case diagrams modelling abstractly and informally the actors and their use cases together with a set of use cases descriptions. 
+In addition, those diagrams and description tables are adapted to the \msrmessir specification since actor and messages names together with parameters are partly adapted to be consistent with the specification identifiers (see \cite{messirbook} for more details). 
+
+Among all the stakeholders presented in the previous section, we can determine five types of \glspl{direct actor}\footnote{The naming conventions in \msrmessir propose to start each type name by lowercase letters indicating the meta model type used (i.e. act for actors, ct for class type, \ldots. In addition to ease the reading it makes the translational semantics into Prolog code more straightforward.}: 
+\begin{itemize}
+  \item \msrcode{actComCompany}: for the Communication Company stakeholder.
+  \item \msrcode{actAdministrator}: for the Administrator stakeholder.
+  \item \msrcode{actCoordinator}: for the Coordinators stakeholders.
+  \item \msrcode{actActivator}: for the Activator stakeholder.
+  \item \msrcode{actMsrCreator}: for the Creator stakeholder.
+\end{itemize}
+ 
+In addition to those system actors, we can add five other types of actors related to the system's ones. Those five actors are grouped into two categories:
+\begin{itemize}
+  \item \Glspl{indirect actor}  
+  \begin{itemize}
+    \item \textit{Witness}: for any human that is a witness of a car crash
+    \item \textit{Victim}: for any human that is a victim of a car crash
+    \item \textit{Anonymous}: for any human that want to inform about a car crash while staying anonymous.
+  \end{itemize}
+  
+  \item \Glspl{abstract actor}
+	\begin{itemize}
+    \item \msrcode{actHuman}: represent abstractly any kind of human being actor wanting to communicate with the ABC system in the context of a car crash.
+    \item \msrcode{actAuthenticated}: for the logical Activator stakeholder.
+  \end{itemize}
+
+\end{itemize}
+
+

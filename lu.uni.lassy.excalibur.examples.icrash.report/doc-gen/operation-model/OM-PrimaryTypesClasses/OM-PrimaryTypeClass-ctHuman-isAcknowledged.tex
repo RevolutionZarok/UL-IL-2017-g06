@@ -1,0 +1,35 @@
+\subsection{Operation Model for isAcknowledged}
+
+\label{OM-isAcknowledged}
+
+
+The \msrcode{isAcknowledged} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{isAcknowledged}{ used to specify the property of having sent an alert acknowledge message to the human having declared the alert through its own communication company.}
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{
+	true iff the message ieSmsSend is sent to the related input interface of the related communication company actor with the human phone number and the generic message 'The handling of your alert by our services is in progress !'
+	}
+
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

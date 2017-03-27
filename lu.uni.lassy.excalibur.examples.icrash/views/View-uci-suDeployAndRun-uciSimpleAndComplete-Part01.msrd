@@ -1,0 +1,10 @@
+
+@@view uci-suDeployAndRun-uciSimpleAndComplete-Part01
+@instance Use-Case icrash.usecases.suDeployAndRun.uciSimpleAndCompletePart01
+@description 
+"shows the sequence diagram representing the first part of a simple and complete use case instance for the summary use case \msrcode{suDeployAndRun}.
+"
+@caption 
+"uci-suDeployAndRun-uciSimpleAndComplete-Part01
+"
+@scale MaxHeight

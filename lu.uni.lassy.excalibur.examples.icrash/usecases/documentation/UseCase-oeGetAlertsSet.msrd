@@ -1,0 +1,22 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeGetAlertsSet hidden
+@description
+"goal is to request all the ctAlert instances having a specific status.
+"
+@parameter icrash.usecases.subfunctions.oeGetAlertsSet.AetAlertStatus ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>lu.uni.lassy.excalibur.standard.specification.libraries.report</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>net.sourceforge.texlipse.builder.TexlipseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>lu.uni.lassy.excalibur.documentation.ui.projectnature</nature>
+		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
+	</natures>
+</projectDescription>

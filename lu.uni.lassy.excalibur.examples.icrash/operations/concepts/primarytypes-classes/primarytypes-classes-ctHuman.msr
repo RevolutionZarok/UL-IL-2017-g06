@@ -1,0 +1,34 @@
+package icrash.operations.concepts.primarytypes.classes.ctHuman.init {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.concepts.primarytypes.datatypes
+
+import icrash.concepts.primarytypes.classes
+
+Operation Model {
+
+operation: icrash.concepts.primarytypes.classes.ctHuman.init(Aid:dtPhoneNumber, Akind:etHumanKind):ptBoolean
+{
+postF{ 
+if
+(
+/* Post F01 */
+let Self:ctHuman in
+
+Self.id = Aid
+and Self.kind = Akind
+
+/* Post F02 */
+and (Self.oclIsNew and self = Self)
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctHuman-init.pl"}
+}
+operation: icrash.concepts.primarytypes.classes.ctHuman.isAcknowledged():ptBoolean{
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctHuman-isAcknowledged.pl"}
+}
+}
+}

@@ -1,0 +1,32 @@
+@@Operation
+icrash.environment.actActivator.outactActivator.oeSollicitateCrisisHandling
+
+@description
+"A proactive message (message of a pro-active actor with no parameter triggered automatically if the pre protocol condition is true) used to avoid crisis to stay too long in an not handled status."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+" there exist some crisis that are in pending status and for which the duration between the current ctState clock information and the last reminder is greater than the crisis reminder period duration."
+@endPreP
+
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"if there exist coordinators and crisis who stood in a not handled status more than the maximum allowed time 
+then those crisis are randomly allocated to the existing coordinators."
+@postF
+"for all other crisis who stood too longly in a not handled status but not more than the maximum delay allowed 
+then a reminder message is sent to the administrator and all coordinator actors of the environment to sollicitate handling of those crisis."
+
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"the value of the last reminder known by the system at post state is the system's clock value."
+@endPostP

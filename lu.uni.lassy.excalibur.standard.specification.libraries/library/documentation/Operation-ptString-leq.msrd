@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.primitives.ptString.leq
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.primitives.ptString.leq.AptString
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

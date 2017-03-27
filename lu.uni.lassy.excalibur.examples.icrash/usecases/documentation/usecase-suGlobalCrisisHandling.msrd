@@ -1,0 +1,14 @@
+@@Use Case icrash.usecases.suGlobalCrisisHandling.suGlobalCrisisHandling
+@description 
+"the actCoordinator's goal is to monitor the alerts received and the corresponding crisis in order to act as necessary to handle the crisis. "
+@protocolCondition 
+" the iCrash system has been deployed"
+@protocolCondition 
+"the coordinator actor involded in the use case has been declared by the actor actAdministrator"
+@endProtocolConditions
+@preCondition 
+"none"
+@endPreConditions
+@postCondition 
+" modifications have been made by the coordinator on existing alerts or crisis OR the coordinator requested an updated status on existing alerts or crisis."
+@endPostConditions

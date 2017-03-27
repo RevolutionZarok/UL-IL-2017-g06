@@ -1,0 +1,23 @@
+package icrash.operations.concepts.primarytypes.datatypes.etHumanKind{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+			
+		operation: icrash.concepts.primarytypes.datatypes.etHumanKind.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( self = witness
+            or self = victim
+            or self = anonymous
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesDatatypes-etHumanKind-is.pl"}
+}
+}
+}

@@ -1,0 +1,9 @@
+
+@@view em-gv-02 hidden
+@model Environment
+@level Global
+@number 7
+
+@description "Abstract view of system's state and related environment actors"
+@caption "Abstract view of system's state and related environment actors"
+@scale 0.80

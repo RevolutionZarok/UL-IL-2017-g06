@@ -1,0 +1,22 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeSetClock hidden
+@description
+"goal is to statically set the date and time information in the system's state.
+"
+@parameter icrash.usecases.subfunctions.oeSetClock.AcurrentClock ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

@@ -1,0 +1,130 @@
+\usepackage{etex}  
+
+\newcounter{def} 
+
+\usepackage{morefloats}
+\usepackage{tkz-kiviat}   
+\usepackage{xparse} 
+\usepackage{xkeyval} 
+\usepackage[integrals]{wasysym}
+\usepackage{bchart} 
+\usepackage{databar,datapie,dataplot}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable} 
+\usepackage{filecontents}
+\pgfplotsset{compat=1.8}
+\usepackage{booktabs,colortbl}
+\usepackage{adjustbox} 
+\usepackage{transparent}
+\usepackage{animate}
+\usepackage{setspace}
+\usepackage{datetime}
+\usepackage{amsmath, latexsym, color, graphicx, amssymb, bm, here}
+\usepackage{epsf, epsfig, pifont,tikz,subfigure}
+\usepackage{graphics, calrsfs}
+\usepackage{times} 
+\usepackage{fancybox,calc}
+\usepackage{palatino,mathpazo}
+\usepackage{amsfonts}
+\usepackage{multicol}\columnseprule 0.2pt\raggedcolumns
+\usepackage{sidecap}
+\usepackage{media9}
+\usepackage{pgf,pgfarrows,pgfnodes}
+\usepackage{graphicx}
+\usepackage{uncial}
+\usepackage{tikz}
+\usepackage{pdfrender}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{everypage}
+\usepackage{soul}%to hightlight text
+\usepackage[english]{babel}
+\usepackage{upquote}
+\usepackage{tabularx}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{uncial} 
+\usepackage{ascii}
+\usepackage{verbatim}
+\usepackage{spverbatim}
+\usepackage{alltt}
+\usepackage{fancyvrb} 
+\usepackage{amsmath} 
+\usepackage{styles/asm} 
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{eso-pic,everyshi,ifthen,calc}
+\usepackage[final]{pdfpages}
+\usepackage{import}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes} 
+\usepackage{hyphenat}
+\usepackage{xstring}
+\usepackage{forloop}
+\usepackage{pdflscape}    
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{styles/tikz-uml} 
+\usepackage[absolute,overlay]{textpos}
+\usepackage{everypage}
+\usepackage{multirow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{arrows,chains,shapes,arrows,matrix,positioning,scopes}
+\usetikzlibrary{calc,matrix,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing,decorations.markings}
+\usetikzlibrary{spy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newsavebox\MyBreakChar%
+\sbox\MyBreakChar{}% char to display the break after non char
+\newsavebox\MySpaceBreakChar%
+\sbox\MySpaceBreakChar{\hyp}% char to display the break after space
+\makeatletter%
+\newcommand*{\BreakableChar}[1][\MyBreakChar]{%
+  \leavevmode%
+  \prw@zbreak%
+  \discretionary{\usebox#1}{}{}%
+  \prw@zbreak%
+}%
+\makeatother
+
+\newcounter{index}%
+\newcommand{\AddBreakableChars}[1]{%
+  \StrLen{#1 }[\stringLength]%
+  \forloop[1]{index}{1}{\value{index}<\stringLength}{%
+    \StrChar{#1}{\value{index}}[\currentLetter]%
+    \IfStrEqCase{\currentLetter}{%
+        % All the characters where you don't want hypen
+        {,}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {]}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {)}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {-}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {/}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        { }{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {[}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {(}{\currentLetter\BreakableChar[\MyBreakChar]}%        
+        {a}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {e}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        % All the charactes where a break should have a hypen
+%        { }{\currentLetter\BreakableChar[\MySpaceBreakChar]}
+%        {b}{\currentLetter\BreakableChar[\MySpaceBreakChar]}%
+    }[\currentLetter]%
+  }%
+}%
+  
+\sloppy
+\hyphenpenalty 10000000
+\lstdefinelanguage{tikzuml}{language=[LaTeX]TeX, classoffset=0, morekeywords={umlbasiccomponent, umlprovidedinterface, umlrequiredinterface, umldelegateconnector, umlassemblyconnector, umlVHVassemblyconnector, umlHVHassemblyconnector, umlnote, umlusecase, umlactor, umlinherit, umlassoc, umlVHextend, umlinclude, umlstateinitial, umlbasicstate, umltrans, umlstatefinal, umlVHtrans, umlHVtrans, umldatabase, umlmulti, umlobject, umlfpart, umlcreatecall, umlclass, umlvirt, umlunicompo, umlimport, umlaggreg}, keywordstyle=\color{DarkBlue}, classoffset=1, morekeywords={umlcomponent, umlsystem, umlstate, umlseqdiag, umlcall, umlcallself, umlfragment, umlpackage}, keywordstyle=\color{DarkRed}, classoffset=0,  sensitive=true, morecomment=[l]{\%}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lightgray}{RGB}{201,201,201}
+\definecolor{lightred}{RGB}{250,112,97}
+\definecolor{lightgreen}{RGB}{179,250,140}
+
+\definecolor{msrtextcl}{RGB}{0,0,0}
+\definecolor{msrkeycl}{RGB}{127,0,85}
+\definecolor{msrcmtcl}{RGB}{201,201,201}
+

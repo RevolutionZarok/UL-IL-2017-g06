@@ -1,0 +1,72 @@
+	\subsubsection{testcase01-ts13oeSetClock04-actActivator.outactActivator.oeSetClock}
+	\label{TM-testcase01-ts13oeSetClock04-actActivator.outactActivator.oeSetClock}
+
+	The \msrcode{testcase01-ts13oeSetClock04-actActivator.outactActivator.oeSetClock} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts13oeSetClock04}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actActivator.outactActivator.oeSetClock}{actActivator.outactActivator.oeSetClock} (ACurrentClock)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actActivator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{ACurrentClock:lu.uni.lassy.messir.libraries.calendar.dtDateAndTime}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor}
+		\addnumberedsinglerow{C}{ACurrentClock}
+
+
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts13oeSetClock04-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts13oeSetClock04}.},label=TM-testcase01-ts13oeSetClock04-MCL-LST]
+
+	variables{
+		TheActor:actActivator
+		ACurrentClock:dtDateAndTime
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactActivator->any2(true)
+		ACurrentClock.date.year.value = 2017
+		ACurrentClock.date.month.value = 11
+		ACurrentClock.date.day.value = 26
+		ACurrentClock.time.hour.value = 10
+		ACurrentClock.time.minute.value = 45
+		ACurrentClock.time.second.value = 00
+	}
+	
+	oracle{
+		constraints{
+			true
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

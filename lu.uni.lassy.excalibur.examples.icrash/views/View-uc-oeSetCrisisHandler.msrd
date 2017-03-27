@@ -1,0 +1,10 @@
+
+@@view uc-oeSetCrisisHandler
+@model Use-Case icrash.usecases.subfunctions.oeSetCrisisHandler
+@description 
+"shows the use case diagram for the oeSetCrisisHandler subfunction use case
+"
+@caption 
+"oeSetCrisisHandler subfunction use case
+"
+@scale 0.75

@@ -1,0 +1,24 @@
+package icrash.operations.concepts.primarytypes.datatypes.dtCrisisID{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+			
+		operation: icrash.concepts.primarytypes.datatypes.dtCrisisID.is():ptBoolean{
+    
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( self.value.length().gt(0)
+            and self.value.length().leq(10)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+    }
+    prolog{"src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtCrisisID-is.pl"}
+	}
+}
+}

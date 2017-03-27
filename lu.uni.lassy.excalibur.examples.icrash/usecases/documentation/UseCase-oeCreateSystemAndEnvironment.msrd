@@ -1,0 +1,23 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeCreateSystemAndEnvironment hidden
+@description
+"
+this is a fondamental and mandatory sub function use case needed to allow any behavior specification or simulation.
+"
+@parameter icrash.usecases.subfunctions.oeCreateSystemAndEnvironment.AqtyComCompanies ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

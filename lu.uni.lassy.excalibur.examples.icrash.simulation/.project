@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>lu.uni.lassy.excalibur.examples.icrash.simulation</name>
+	<comment></comment>
+	<projects>
+		<project>lu.uni.lassy.excalibur.standard.simulation.libraries</project>
+		<project>Prolog Reference</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/org.eclipse.xtext.ui.shared.xtextBuilder.launch</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>se.sics.sicstus.ide.prologBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>lu.uni.lassy.excalibur.simulation.ui.projectnature</nature>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+		<nature>se.sics.sicstus.ide.prologNature</nature>
+	</natures>
+</projectDescription>

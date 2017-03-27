@@ -1,0 +1,14 @@
+@@Secondary Type Datatype icrash.concepts.secondarytypes.datatypes.dtSMS
+
+@description
+"a datatype made of a string value used to send textual information to human mobile devices."
+
+@attribute  icrash.concepts.secondarytypes.datatypes.dtSMS.value
+ "the textual information."
+
+@endAttributes
+
+@operation icrash.concepts.secondarytypes.datatypes.dtSMS.is
+ "used to determine which strings are considered as valid comments."
+
+@endOperations

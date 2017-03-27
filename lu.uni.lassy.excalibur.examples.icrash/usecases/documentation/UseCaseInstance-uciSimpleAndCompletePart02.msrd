@@ -1,0 +1,10 @@
+
+@@Instance Use Case icrash.usecases.suDeployAndRun.uciSimpleAndCompletePart02
+@description
+"Second part of a simple and complete use case instance for the summary use case \msrcode{suDeployAndRun} illustrating a simple and complete interaction scenario primarily handled by an administrator in a concrete situation. 
+"
+@remark
+"starts when the coordinator logs in the system until the full handling of all the existing crisis."
+@remark
+"shows an instantiated case of handling of a crisis by a coordinator until its closure after reporting."
+@endRemarks

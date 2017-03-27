@@ -1,0 +1,31 @@
+@@Operation
+icrash.environment.actActivator.outactActivator.oeSetClock
+//parameters
+@parameter icrash.environment.actActivator.outactActivator.oeSetClock.AcurrentClock
+" the date and time to be considered as the actual one."
+@endParameters
+@description
+" 
+An active message used to statically set the date and time information in the system's state. 
+"
+//preProtocol descriptions
+@preP
+" the system is supposed to be created and initialized and the provided date and time value is greater than the one known by the system."
+@endPreP
+
+//preFunctional descriptions
+@preF
+" none "
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" 
+the ctState instance post-state is updated to have its clock attribute equal to the given date and time.
+"
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP

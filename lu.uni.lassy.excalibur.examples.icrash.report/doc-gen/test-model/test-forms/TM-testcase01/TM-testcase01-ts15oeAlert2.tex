@@ -1,0 +1,106 @@
+	\subsubsection{testcase01-ts15oeAlert2-actComCompany.outactComCompany.oeAlert}
+	\label{TM-testcase01-ts15oeAlert2-actComCompany.outactComCompany.oeAlert}
+
+	The \msrcode{testcase01-ts15oeAlert2-actComCompany.outactComCompany.oeAlert} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts15oeAlert2}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actComCompany.outactComCompany.oeAlert}{actComCompany.outactComCompany.oeAlert} (AetHumanKind, AdtDate, AdtTime, AdtPhoneNumber, AdtGPSLocation, AdtComment)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actComCompany}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AetHumanKind:icrash.concepts.primarytypes.datatypes.etHumanKind}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtDate:lu.uni.lassy.messir.libraries.calendar.dtDate}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtTime:lu.uni.lassy.messir.libraries.calendar.dtTime}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtPhoneNumber:icrash.concepts.primarytypes.datatypes.dtPhoneNumber}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtGPSLocation:icrash.concepts.primarytypes.datatypes.dtGPSLocation}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtComment:icrash.concepts.primarytypes.datatypes.dtComment}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtSMS:icrash.concepts.secondarytypes.datatypes.dtSMS}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor}
+		\addnumberedsinglerow{C}{AetHumanKind}
+		\addnumberedsinglerow{C}{AdtDate}
+		\addnumberedsinglerow{C}{AdtTime}
+		\addnumberedsinglerow{C}{AdtPhoneNumber}
+		\addnumberedsinglerow{C}{AdtGPSLocation}
+		\addnumberedsinglerow{C}{AdtComment}
+		\addnumberedsinglerow{C}{AdtSMS}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts15oeAlert2-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts15oeAlert2}.},label=TM-testcase01-ts15oeAlert2-MCL-LST]
+
+	variables{
+		TheActor : actComCompany
+		AetHumanKind:etHumanKind
+		AdtDate:dtDate
+		AdtTime:dtTime
+		AdtPhoneNumber:dtPhoneNumber
+		AdtGPSLocation:dtGPSLocation
+		AdtComment:dtComment
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactComCompany->any2(true)
+		AetHumanKind = witness
+		AdtDate.year.value = 2017
+		AdtDate.month.value = 11
+		AdtDate.day.value = 26
+		AdtTime.hour.value = 10
+		AdtTime.minute.value = 20
+		AdtTime.second.value = 00
+		AdtPhoneNumber.value = '+3524666445000'
+		AdtGPSLocation.latitude.value = 49.627095
+		AdtGPSLocation.longitude.value = 6.160251
+		AdtComment.value = 'A car crash just happened.'
+	}
+	
+	oracle{
+		variables{
+			AdtSMS:dtSMS
+		}
+		constraints{
+			AdtSMS.value = 'Your alert has been registered. We will handle it and keep you informed'
+			TheActor.actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

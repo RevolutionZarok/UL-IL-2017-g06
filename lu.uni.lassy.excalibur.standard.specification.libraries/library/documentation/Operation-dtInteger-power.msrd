@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.math.dtInteger.power
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.math.dtInteger.power.AExp
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

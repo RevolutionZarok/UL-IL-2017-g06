@@ -1,0 +1,36 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis.AdtCrisisID
+"the identification information used to determine the crisis to close"
+@endParameters
+@description
+"sent to indicate that a crisis should be considered as closed."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+"it is supposed that there exist one ctCrisis instance with the same \msrcode{id} attribute value as the one provided by the coordinator actor who wants to close."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"the ctCrisis class instance having the provided id is considered closed in the post state."
+@postF
+"There is no handler declared in the system as associated to the crisis."
+@postF
+"all the alert instances associated to this crisis do not belong any more to the system's post state."
+@postF
+"the coordinator actor is informed about the satisfaction of its request."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP

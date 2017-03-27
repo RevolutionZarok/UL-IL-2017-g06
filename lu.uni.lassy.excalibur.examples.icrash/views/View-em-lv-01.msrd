@@ -1,0 +1,10 @@
+@@view em-lv-01
+@model Environment 
+@level Local
+@number 01
+@description 
+"
+shows the local view giving the second part of the environment model of the system in term of its state class, actors with their input and output interfaces and all related associations.
+"
+@caption "environment model local view - Part 1"
+@scale 0.80

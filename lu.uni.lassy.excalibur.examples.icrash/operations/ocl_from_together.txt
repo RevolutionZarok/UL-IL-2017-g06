@@ -1,0 +1,1041 @@
+/****************************************/
+/* Operations Specification */
+/****************************************/
+
+/***************************************
+MSRCreatorActor
+***************************************/
+
+/*** createSystemAndEnvironment ***/
+
+context Environment::outactMsrCreator::oeCreateSystemAndEnvironment(
+AqtyComCompanies: libraries::ptInteger)
+/*--------------------------------------------*/
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Pre Functional:*/
+/* PreF01 */
+and true
+
+/* Pre Protocol:*/
+/* PreP01 */
+and TheSystem.vpStarted = false
+/*--------------------------------------------*/
+post:
+let AoutactMsrCreator:Environment::outactMsrCreator in 
+let AinactMsrCreator:Environment::inactMsrCreator in 
+let ActAdministrator:PrimaryTypesClasses::ctAdministrator in
+let AinactAdministrator:Environment::inactAdministrator in
+let AoutactAdministrator:Environment::outactAdministrator in
+let AdtLogin: PrimaryTypesDataTypes::dtLogin in
+let AdtPassword: PrimaryTypesDataTypes::dtPassword in
+let AdtTime: libraries::dtTime in
+let AdtDate: libraries::dtDate in
+let ACrisisReminderPeriod: libraries::ptInteger in
+
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PostF01 */ 
+and TheSystem.rnactComCompany->size() = AqtyComCompanies
+and TheSystem.rnactComCompany
+	->forAll(p | p.msrCreateactComCompany())
+
+/* PostF02 */
+and TheSystem.rnactAdministrator->size() = 1
+and TheSystem.rnactAdministrator
+	->forAll(p | p.msrCreateAdministratorActor())	
+
+/* PostF03 */	
+and AdtLogin = 'icrashadmin'
+and AdtPassword = '7WXC1359'
+and ActAdministrator.msrCreateAdministrator(AdtLogin,AdtPassword,false)
+and ActAdministrator.rnactAdministrator
+	= TheSystem.rnactAdministrator
+and ActAdministrator.rnactAuthenticated
+	= TheSystem.rnactAdministrator	
+					
+/* PostF04 */
+and TheSystem.rnactActivator.msrCreateActivatorActor()
+			
+/* PostF05 */
+and TheSystem.clock.date.isInitialDate()
+and TheSystem.clock.time.isMidnight()
+and TheSystem.crisisReminderPeriod = 300
+and TheSystem.initialCrisisReminderPeriod = 300
+and TheSystem.maxCrisisHandlingDelay = 900
+and TheSystem.nextValueForAlertID = 1
+and TheSystem.nextValueForAlertID = 1
+
+/* Post Protocol:*/
+/* PostP01 */
+and TheSystem.vpStarted = true
+
+/* Post Messir */
+/* Post M01 */
+/* each newly class instance of Adt concept model or of Adt actor classes 
+ust be added  to Adt associated composition relationships */
+/*--------------------------------------------*/
+
+
+/***************************************
+actComCompany
+***************************************/
+
+/*** alert ***/
+context Environment::outactComCompany::oeAlert(
+Aetkind: PrimaryTypesDataTypes::etHumanKind, 
+AdtDate: libraries::dtDate, 
+AdtTime: libraries::dtTime, 
+AdtPhoneNumber: PrimaryTypesDataTypes::dtPhoneNumber, 
+AdtGPSLocation: PrimaryTypesDataTypes::dtGPSLocation, 
+AdtComment: PrimaryTypesDataTypes::dtComment)
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Pre Functional:*/
+/* PreF01 */
+and (	AdtDate.lt(TheSystem.clock.date) 
+		or (	AdtDate.eq(TheSystem.clock.date) 
+				and AdtTime.gt(TheSystem.clock.time)))
+/*--------------------------------------------*/
+post: 
+let ActHuman:PrimaryTypesClasses::ctHuman in
+let ActAlert:PrimaryTypesClasses::ctAlert in
+let AAlertInstant:libraries::dtDateAndTime in
+let AetAlertStatus:PrimaryTypesDataTypes::etAlertStatus in
+let ActAlertNearBy:PrimaryTypesClasses::ctAlert in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+let AdtCrisisID:PrimaryTypesDataTypes::dtCrisisID in
+let AdtCrisisType:PrimaryTypesDataTypes::etCrisisType in
+let AetCrisisStatus:PrimaryTypesDataTypes::etCrisisStatus in
+let ACrisisInstant:libraries::dtDateAndTime in
+let ACrisisdtComment:PrimaryTypesDataTypes::dtComment in	
+let AdtMessage:PrimaryTypesDataTypes::ptString in	
+let AdtSMS:SecondaryTypesDataTypes::dtSMS in
+let AdtAlertID:PrimaryTypesDataTypes::dtAlertID in
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* Post F01 */
+and 
+if TheSystem.human->select(p | p.id=AdtPhoneNumber and p.kind = Aetkind)->size()=1
+then (ActHuman = TheSystem.human->any(p | p.id=AdtPhoneNumber and p.kind = Aetkind))
+else ActHuman.msrCreateHuman(AdtPhoneNumber,kind)
+endif
+
+/* PostF02 */
+and TheSystem.nextValueForAlertID@pre.toString(AdtAlertID)
+and TheSystem.nextValueForAlertID
+	= TheSystem.nextValueForAlertID@pre + 1
+	
+/* PostF03 */
+and AAlertInstant.date = AdtDate
+and AAlertInstant.time = AdtTime
+and ActAlert.msrCreateAlert(
+		AdtAlertID,
+		AetAlertStatus,
+		AdtGPSLocation,
+		AAlertInstant,
+		AdtComment)
+
+/* PostF04 */
+and ActHuman.alert->includes(ActAlert)
+
+/* PostF05 */
+and AdtSMS='Your alert is registered.'
+and ActHuman.actComCompany.InterfaceIN^smsSend(AdtPhoneNumber,AdtSMS)
+
+/* PostF06 */
+and if TheSystem.alert->exists(a | a.location.isNearTo(ActAlert.location))
+	then 	AetAlertStatus = DataTypes::etAlertStatus::valid
+			and ActAlertNearBy 
+				= TheSystem.alert->any(a | a.location.isNearTo(ActAlert.location))
+			and ActAlert.crisis = ActAlertNearBy.crisis
+			
+/* PostF07 */
+and AdtMessage
+	=	'Adt alert with ID'
+		.concat(AdtAlertID)
+		.concat(' has been created and attached to Adt crisis with ID ')
+		.concat(ActAlert.crisis.id)
+		.concat('.')
+and ActAlert.crisis.coordinator.coordinatorActor.InterfaceIN
+				^message(AdtMessage)
+			
+/* PostF08 */
+	else  	AetAlertStatus = DataTypes::etAlertStatus::pending
+			and AdtCrisisID = TheSystem.nextValueForCrisisID@pre
+			and TheSystem.nextValueForCrisisID 
+				= TheSystem.nextValueForCrisisID@pre + 1
+			and AdtCrisisType = DataTypes::CrisisType::small
+			and AetCrisisStatus = DataTypes::CrisisStatus::pending
+			and ActCrisis.instant = ActAlert.instant
+			and ACrisisdtComment = 'no reporting yet defined'
+			and ActCrisis.msrCreateCrisis(	AdtCrisisID,
+											AdtCrisisType,
+											AetCrisisStatus,
+											ACrisisInstant,
+											ACrisisdtComment)
+	endif
+		
+/* Post Protocol:*/
+/* Post P01 */
+and true
+
+/* Post Messir */
+/* Post M01 */
+and ActHuman.id.is()
+and ActAlert.location.is()
+and ActAlert.instant.date.isMyDate()
+and ActAlert.instant.time.is()
+and ActAlert.comment.is()
+and ActAlert.id.isAlertID()
+ 
+/*--------------------------------------------*/
+
+
+
+/***************************************
+actAuthenticated
+***************************************/
+
+/*** login ***/
+
+context Environment::outactAuthenticated::oeLogin(AdtLogin: PrimaryTypesDataTypes::dtLogin, AdtPassword: PrimaryTypesDataTypes::dtPassword)
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+pre:
+let theSystem:PrimaryTypesClasses::ctState in
+theSystem = self.rnActor.rnSystem 
+
+/* Pre Functional:*/
+/* PreF01 */
+
+and true
+
+/* Pre Protocol:*/
+/* PreP01 */
+and AdtLogin.is()
+and self.rnActor.rnctAuthenticated.vpIsLogged = false
+
+/*--------------------------------------------*/
+post:
+let theSystem:PrimaryTypesClasses::ctState in
+let Atext:String in
+theSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PreF01 */
+and if (self.rnActor.rnctAuthenticated.pwd = AdtPassword
+		and self.rnActor.rnctAuthenticated.login = AdtLogin)
+	then self.rnActor.InterfaceIN
+					^ieMessage('logged')
+	else self.rnActor.InterfaceIN
+					^ieMessage('wrong identification information ! Try again ...')
+		and self.rnActor.rnSystem.rnctAdministrator.rnactAdministrator.InterfaceIN
+					^ieMessage('Intrusion temptative')
+		and self.rnActor.rnSystem.rnctAdministrator.rnactAdministrator.InterfaceOUT 
+			= self
+	endif
+
+/* Pre Protocol:*/
+/* PreP01 */
+and true
+
+/*** logout ***/ 
+
+context Environment::outactAuthenticated::logout()
+/*--------------------------------------------*/
+pre: 
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01 */
+true
+/* Pre Functional:*/
+/* Pre F01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */
+and self.rnActor.authenticated.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+/* Post Functional:*/
+/* Post F01 */
+self.rnActor.InterfaceIN
+		^message('You are now logged out !')
+
+/* Post Protocol:*/
+/* Post P01 */
+and self.rnActor.authenticated.vpIsLogged = false
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+
+/***************************************
+AdministratorActor
+***************************************/
+
+/*** addCoordinator ***/
+
+context Environment::outactAdministrator::addCoordinator(
+aCoordinatorID: PrimaryTypesDataTypes::dtCoordinatorID, 
+aLogin: PrimaryTypesDataTypes::dtLogin,
+aPassword: PrimaryTypesDataTypes::dtPassword)
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01*/
+and aCoordinatorID.isCoordinatorID()
+and aLogin.isLogin()
+and aPassword.isPassword()
+/* Pre Functional:*/
+/* Pre F01*/
+and not (TheSystem.coordinator->exists(coord | coord.id = aCoordinatorID))
+
+/* Pre Protocol:*/
+and self.rnActor.authenticated.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let AdtCoordinator:PrimaryTypesClasses::ctCoordinator in
+let AdtCoordinatorActor:Environment::CoordinatorActor in
+let AdtCoordinatorActorInputInterface:
+		Environment::CoordinatorInputInterface in
+let AdtCoordinatorActorOutputInterface:
+		Environment::CoordinatorOutputInterface in
+		
+/* Post Functional:*/
+/* Post F01 */
+AdtCoordinator.msrCreateCoordinator(
+	aCoordinatorID,
+	aLogin,
+	aPassword,
+	false)
+		
+/* Post F02 */
+and AdtCoordinatorActor.msrCreateCoordinatorActor()
+
+/* Post F03 */
+and AdtCoordinator.coordinatorActor
+	= AdtCoordinatorActor
+and AdtCoordinator.rnactAuthenticated
+	= AdtCoordinatorActor
+		
+/* Post F04 */
+and self.rnActor.InterfaceIN^coordinatorAdded()
+
+/* Post Protocol:*/
+/* Post P01 */
+and AdtCoordinator.vpIsLogged = false
+
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+  
+/*** deleteCoordinator ***/
+
+context Environment::outactAdministrator::deleteCoordinator(
+aCoordinatorID: PrimaryTypesDataTypes::dtCoordinatorID)
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01 */
+and aCoordinatorID.isCoordinatorID()
+/* Pre Functional:*/
+/* Pre F01 */
+and (TheSystem.coordinator
+		->exists(coord | coord.id = aCoordinatorID))
+/* Pre Protocol:*/
+/* Pre P01 */
+and self.rnActor.authenticated.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and let AdtCoordinator:PrimaryTypesClasses::ctCoordinator in
+AdtCoordinator 
+= 	TheSystem.coordinator
+	->select(coord | coord.id = aCoordinatorID)
+and AdtCoordinator.msrDestroy()
+/* Post F02 */
+and AdtCoordinator.coordinatorActor.msrDestroy()
+/* Post Protocol:*/
+/* Post P01 */
+and true
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+
+/***************************************
+CoordinatorActor
+***************************************/
+
+/*** getAlertsSet ***/
+
+context Environment::CoordinatorOutputInterface::getAlertsSet(
+anAlertStatus:PrimaryTypesDataTypes::etAlertStatus)
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true /* is deducible */
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and let ActAlerts:IntermediateDataTypeModel::ctAlertsSet in 
+ActAlerts.alert = self.rnActor.rnSystem.alert
+->select(a:PrimaryTypesClasses::ctAlert | a.status = anAlertStatus)
+and self.rnActor.InterfaceIN^alertsSet(ActAlerts)
+
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+/*--------------------------------------------*/
+
+/*** getCrisisSet ***/
+
+context Environment::CoordinatorOutputInterface::getCrisisSet(
+aCrisisStatus:PrimaryTypesDataTypes::etCrisisStatus)
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true /* is deducible */
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and let ActCrisisSet:IntermediateDataTypeModel::CrisisSet in 
+ActCrisisSet.crisis = TheSystem.crisis
+->select(a:PrimaryTypesClasses::ctCrisis  | a.status = aCrisisStatus)
+and self.rnActor.InterfaceIN^crisisSet(ActCrisisSet)
+
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+/*--------------------------------------------*/
+
+/*** CloseAlert ***/  
+
+context Environment::CoordinatorOutputInterface::closeAlert(
+anAlertID: PrimaryTypesDataTypes::dtAlertID)
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */ 
+and let ActAlert:PrimaryTypesClasses::ctAlert in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+ActAlert->asBag() 
+=	TheSystem.alert
+	->select(a:PrimaryTypesClasses::ctAlert | 
+				a.id = anAlertID)
+and ActAlert.status = DataTypes::etAlertStatus::pending
+/* PreF02 */
+and ActCrisis = ActAlert.crisis
+and not ActCrisis.oclIsUndefined()
+and not (ActCrisis.status = DataTypes::CrisisStatus::solved)
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true 
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+let ActAlert:PrimaryTypesClasses::ctAlert in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and ActAlert = TheSystem.alert
+		->select(a:PrimaryTypesClasses::ctAlert | a.id = anAlertID)
+and if self.rnActor.coordinator.crisis.alert->includes(ActAlert)
+	then 	ActAlert.status = DataTypes::etAlertStatus::invalid
+			and self.rnActor.InterfaceIN^message('Adt Alert is now invalid.')
+	else 	self.rnActor.InterfaceIN^message(
+				'You can only close alerts that are related to crisis 
+				that you are handling. ')
+	endif
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+/*--------------------------------------------*/
+
+/*** validateAlert ***/  
+
+context Environment::CoordinatorOutputInterface::validateAlert(
+anAlertID: PrimaryTypesDataTypes::dtAlertID)
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */ 
+and let ActAlert:PrimaryTypesClasses::ctAlert in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+ActAlert->asBag() 
+=	TheSystem.alert
+	->select(a:PrimaryTypesClasses::ctAlert | 
+				a.id = anAlertID)
+and ActAlert.status = DataTypes::etAlertStatus::pending
+/* PreF02 */
+and ActCrisis = ActAlert.crisis
+and not ActCrisis.oclIsUndefined()
+and not (ActCrisis.status = DataTypes::CrisisStatus::solved)
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true 
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+let ActAlert:PrimaryTypesClasses::ctAlert in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and ActAlert = TheSystem.alert
+		->select(a:PrimaryTypesClasses::ctAlert | a.id = anAlertID)
+and if self.rnActor.coordinator.crisis.alert->includes(ActAlert)
+	then 	ActAlert.status = DataTypes::etAlertStatus::valid
+			and self.rnActor.InterfaceIN^message('Adt Alert is now valid.')
+	else 	self.rnActor.InterfaceIN^message(
+				'You can only validate alerts that are related to crisis 
+				that you are handling. ')
+	endif
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+/*--------------------------------------------*/
+
+/*** handleCrisis ***/  
+
+context Environment::CoordinatorOutputInterface::handleCrisis(
+aCrisisID:PrimaryTypesDataTypes::dtCrisisID)
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */ 
+and let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+ActCrisis
+= 	TheSystem.crisis
+	->select(a:PrimaryTypesClasses::ctCrisis  | 
+				a.id = aCrisisID )
+and ActCrisis.status = DataTypes::CrisisStatus::pending
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true 
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and ActCrisis = TheSystem.crisis
+		->select(a:PrimaryTypesClasses::ctCrisis  | a.id = aCrisisID)
+and if  not ActCrisis.coordinator.oclIsUndefined()
+	then 	self.rnActor.InterfaceIN^message(
+				'You can only handle a crisis that is not already handled !')
+	else	ActCrisis.status = DataTypes::CrisisStatus::handled
+			and self.rnActor.InterfaceIN
+				^message('Adt crisis is now declared as handled by you.')
+/* Post F02 */
+			and TheSystem@pre.crisis
+						->select(c:PrimaryTypesClasses::ctCrisis | 
+									TheSystem.clock.toSecondsQty() 
+									- c.instant.toSecondsQty() 
+									> TheSystem.maxCrisisHandlingDelay
+								)->size()=1	
+				implies 	TheSystem.crisisReminderPeriod
+							= TheSystem.initialCrisisReminderPeriod
+	endif
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+
+/*--------------------------------------------*/
+
+/*** closeCrisis ***/  
+
+context Environment::CoordinatorOutputInterface::closeCrisis(
+aCrisisID:PrimaryTypesDataTypes::dtCrisisID)
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Functional:*/
+/* PreF01 */ 
+and let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+ActCrisis
+= 	TheSystem.crisis
+	->select(a:PrimaryTypesClasses::ctCrisis  | 
+				a.id = aCrisisID )
+/* Pre Protocol:*/
+/* Pre P01 */ 
+and TheSystem.vpStarted=true 
+and self.rnActor.coordinator.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and ActCrisis = TheSystem.crisis
+		->select(a:PrimaryTypesClasses::ctCrisis  | a.id = aCrisisID)
+and if 	not ActCrisis.coordinator.oclIsUndefined()
+		and ActCrisis.coordinator = self.rnActor.coordinator
+	then	ActCrisis.status = DataTypes::CrisisStatus::solved
+			and ActCrisis.coordinator->isEmpty()
+			and self.rnActor.InterfaceIN
+					^message('Adt crisis is now closed.')
+	else 	self.rnActor.InterfaceIN^message(
+				'You can only close a crisis that is handled by you !')
+	endif
+/* Post Protocol:*/
+/* Post P01 */ 
+and true
+/*--------------------------------------------*/
+
+/***************************************
+Activator Actor
+***************************************/
+/* MSRHERE */
+
+/*** setClock ***/  
+
+context Environment::ActivatorOutputInterface::setClock()
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+let AdtDelay:PrimaryTypesDataTypes::dtSecond in
+TheSystem = self.rnActor.rnSystem
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01 */
+and true
+/* Pre Functional:*/
+/* Pre F01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */
+and AdtDelay = 10
+and TheSystem.clock.date.toSecondsQty()
+	+ TheSystem.clock.time.toSecondsQty()
+	>=
+	self.rnActor.currentClock.date.toSecondsQty()
+	+self.rnActor.currentClock.time.toSecondsQty()
+	+ AdtDelay	
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and TheSystem.clock = self.rnActor.currentClock
+/* Post Protocol:*/
+/* Post P01 */
+and true
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+
+/*** sollicitateCrisisHandling ***/  
+
+context Environment::ActivatorOutputInterface::sollicitateCrisisHandling()
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01 */
+and true
+/* Pre Functional:*/
+/* Pre F01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */
+and TheSystem.crisis
+	->select(c:PrimaryTypesClasses::ctCrisis | 
+		TheSystem.clock.toSecondsQty() 
+		- c.instant.toSecondsQty() 
+		> TheSystem.maxCrisisHandlingDelay
+		)->size()>=1
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* Post F01 */
+and TheSystem.rnactAdministrator.InterfaceIN
+	^message(	'Adtre are alerts not treated since 
+				more than Adt defined delay. Please REACT !')
+	
+/* Post F02 */
+and TheSystem.coordinatorActorPart
+	->forAll( c | 	c.InterfaceIN
+					^message(	'Adtre are alerts not treated since 
+								more than Adt defined delay. Please REACT !'))
+								
+/* Post Protocol:*/
+/* Post P01 */
+and TheSystem.maxCrisisHandlingDelay 
+	= 	TheSystem.maxCrisisHandlingDelay@pre 
+		+ TheSystem.crisisReminderPeriod
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+context Environment::outactActivator::oeSetClock(currentClock: libraries::dtDateAndTime)
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+pre:
+
+/* Pre Functional:*/
+/* PreF01 */
+currentClock.is()
+
+/* Pre Protocol:*/
+/* PreP01 */
+and true
+/*--------------------------------------------*/
+post:
+let theSystem:PrimaryTypesClasses::ctState in
+theSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PreF01 */
+and theSystem.clock = currentClock
+
+/* Pre Protocol:*/
+/* PreP01 */ 
+and true
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+context Environment::outactAuthenticated::oeLogin(AdtLogin: PrimaryTypesDataTypes::dtLogin, AdtPassword: PrimaryTypesDataTypes::dtPassword)
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+pre:
+let theSystem:PrimaryTypesClasses::ctState in
+theSystem = self.rnActor.rnSystem 
+
+/* Pre Functional:*/
+/* PreF01 */
+
+and true
+
+/* Pre Protocol:*/
+/* PreP01 */
+and AdtLogin.is()
+and self.rnActor.rnctAuthenticated.vpIsLogged = false
+
+/*--------------------------------------------*/
+post:
+let theSystem:PrimaryTypesClasses::ctState in
+let Atext:String in
+theSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PreF01 */
+and if (self.rnActor.rnctAuthenticated.pwd = AdtPassword
+		and self.rnActor.rnctAuthenticated.login = AdtLogin)
+	then self.rnActor.InterfaceIN
+					^ieMessage('logged')
+	else self.rnActor.InterfaceIN
+					^ieMessage('wrong identification information ! Try again ...')
+		and self.rnActor.rnSystem.rnctAdministrator.rnactAdministrator.InterfaceIN
+					^ieMessage('Intrusion temptative')
+		and self.rnActor.rnSystem.rnctAdministrator.rnactAdministrator.InterfaceOUT 
+			= self
+	endif
+
+/* Pre Protocol:*/
+/* PreP01 */
+and true
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+
+/*** DRAFT CODE self.rnActor.coordinator.crisis->includes(ActCrisis) *****/
+
+/*** XXXXX ***/ /* nnn,mmm */
+
+context Environment::Coordinator::msrDestroy():Boolean
+/*--------------------------------------------*/
+pre: 
+/* Pre Messir - may be incomplete (cf. see rationals) */
+/* Pre M01 */
+true
+/* Pre Functional:*/
+/* Pre F01 */
+and true
+/* Pre Protocol:*/
+/* Pre P01 */
+and true
+/*--------------------------------------------*/
+post: 
+let TheSystem:PrimaryTypesClasses::ctState in
+/* Post Functional:*/
+/* Post F01 */
+true
+/* Post Protocol:*/
+/* Post P01 */
+and true
+/* Post Messir */
+/* Post M01 */
+and true
+/*--------------------------------------------*/
+
+/****************************************/
+/****************************************/
+/************ NEW INCREMENTAL************/
+/****************************************/
+/****************************************/
+/****************************************/
+
+
+/* Time Related Logical Relationships */
+/****************************************/
+/****** gt ******/
+context libraries::dtTime::gt(AdtTime:libraries::dtTime):Boolean
+pre:
+/* Pre Functional:*/
+/* Pre F01 */
+true
+post: 
+let TheResult:Boolean in
+if 
+(
+/* Post Functional:*/
+/* Post F01 toSecondsQty().gt(AdtTime.toSecondsQty())*/
+self.toSecondsQty().gt(AdtTime.toSecondsQty())
+)
+then TheResult = true
+else TheResult = false
+endif
+and result = TheResult
+
+
+/****** gt ******/
+context libraries::dtTime::gt(AdtTime:libraries::dtTime):Boolean
+pre:
+/* Pre Functional:*/
+/* Pre F01 */
+true
+post: 
+let TheResult:Boolean in
+if 
+(
+/* Post Functional:*/
+/* Post F01 toSecondsQty().gt(AdtTime.toSecondsQty())*/
+self.toSecondsQty().gt(AdtTime.toSecondsQty())
+)
+then TheResult = true
+else TheResult = false
+endif
+and result = TheResult
+
+/****** lt ******/
+context libraries::dtTime::
+lt(AdtTime:libraries::dtTime):Boolean
+post:
+result = self.toSecondsQty().lt(AdtTime.toSecondsQty())
+
+/****** eq ******/
+context libraries::dtTime::eq(AdtTime:libraries::dtTime):Boolean
+pre:true
+post: 
+result = self.toSecondsQty().value = AdtTime.toSecondsQty().value
+
+/****** isHour ******/
+context libraries::dtMinute::isHour():Boolean
+pre:true
+post: 
+let Zero:libraries::ptInteger in 
+let TwentyThree:libraries::ptInteger in 
+result = self.value.geq(Zero) and self.value.leq(TwentyThree)
+
+
+/****************************************/
+/* Operations Specification */
+/****************************************/
+
+/***************************************
+MSRCreatorActor
+***************************************/
+
+/*** createSystemAndEnvironment ***/
+
+context Environment::outactMsrCreator::
+oeCreateSystemAndEnvironment(AqtyComCompanies: libraries::ptInteger)
+/*--------------------------------------------*/
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Pre Functional:*/
+/* PreF01 */
+and true
+
+/* Pre Protocol:*/
+/* PreP01 */
+and TheSystem.vpStarted = false
+/*--------------------------------------------*/
+post:
+let AoutactMsrCreator:Environment::outactMsrCreator in 
+let AinactMsrCreator:Environment::inactMsrCreator in 
+let ActAdministrator:PrimaryTypesClasses::ctAdministrator in
+let AinactAdministrator:Environment::inactAdministrator in
+let AoutactAdministrator:Environment::outactAdministrator in
+let AdtLogin: PrimaryTypesDataTypes::dtLogin in
+let AdtPassword: PrimaryTypesDataTypes::dtPassword in
+let AdtTime: libraries::dtTime in
+let AdtDate: libraries::dtDate in
+let ACrisisReminderPeriod: libraries::ptInteger in
+
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PostF01 */ 
+and TheSystem.rnactComCompany->size() = AqtyComCompanies
+and TheSystem.rnactComCompany
+	->forAll(p | p.msrCreateactComCompany())
+
+/* PostF02 */
+and TheSystem.rnactAdministrator->size() = 1
+and TheSystem.rnactAdministrator
+	->forAll(p | p.msrCreateAdministratorActor())	
+
+/* PostF03 */	
+and AdtLogin = 'icrashadmin'
+and AdtPassword = '7WXC1359'
+and ActAdministrator.msrCreateAdministrator(AdtLogin,AdtPassword,false)
+and ActAdministrator.rnactAdministrator
+	= TheSystem.rnactAdministrator
+and ActAdministrator.rnactAuthenticated
+	= TheSystem.rnactAdministrator	
+					
+/* PostF04 */
+and TheSystem.rnactActivator.msrCreateActivatorActor()
+and TheSystem.rnctCrisis->forAll(true)
+			
+/* PostF05 */
+and TheSystem.clock.date.isInitialDate()
+and TheSystem.clock.time.isMidnight()
+and TheSystem.crisisReminderPeriod = 300
+and TheSystem.initialCrisisReminderPeriod = 300
+and TheSystem.maxCrisisHandlingDelay = 900
+and TheSystem.nextValueForAlertID = 1
+and TheSystem.nextValueForAlertID = 1
+
+/* Post Protocol:*/
+/* PostP01 */
+and TheSystem.vpStarted = true
+
+/*--------------------------------------------*/
+
+/***************************************
+actAuthenticated
+***************************************/
+
+/*** login ***/
+
+context Environment::outactAuthenticated::oeLogin(
+AdtLogin: PrimaryTypesDataTypes::dtLogin,
+AdtPassword: PrimaryTypesDataTypes::dtPassword)
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+pre:
+let theSystem:PrimaryTypesClasses::ctState in
+theSystem = self.rnActor.rnSystem 
+/* Pre Functional:*/
+/* PreF01 */
+and true
+/* Pre Protocol:*/
+/* PreP01 */
+and AdtLogin.is()
+and self.rnActor.rnctAuthenticated.vpIsLogged = false
+/*--------------------------------------------*/
+post:
+let theSystem:PrimaryTypesClasses::ctState in
+let Atext:String in
+theSystem = self.rnActor.rnSystem
+/* Post Functional:*/
+/* PreF01 */
+and if (self.rnActor.rnctAuthenticated.pwd = AdtPassword
+		and self.rnActor.rnctAuthenticated.login = AdtLogin)
+	then self.rnActor.InterfaceIN
+					^ieMessage('logged')
+	else self.rnActor.InterfaceIN
+					^ieMessage('wrong identification information ! Try again ...')
+		and self.rnActor.rnSystem.rnactAdministrator.rnactAdministrator.InterfaceIN
+					^ieMessage('Intrusion temptative')
+		and self.rnActor.rnSystem.rnactAdministrator.rnactAdministrator.InterfaceOUT 
+			= self
+	endif
+
+/* Pre Protocol:*/
+/* PreP01 */
+and true
+
+/*** logout ***/ 
+
+context Environment::outactAuthenticated::oeLogout()
+/*--------------------------------------------*/
+/* Pre Functional:*/
+/* Pre F01 */
+true
+/* Pre Protocol:*/
+/* Pre P01 */
+and self.rnActor.authenticated.vpIsLogged = true
+/*--------------------------------------------*/
+post: 
+let AdtString:libraries::dtString in
+/* Post Functional:*/
+/* Post F01 */
+AdtString.value = 'You are now logged out !'
+ and self.rnActor.InterfaceIN
+		^ieMessage(AdtString)
+
+/* Post Protocol:*/
+/* Post P01 */
+and self.rnActor.authenticated.vpIsLogged = false
+
+/*--------------------------------------------*/
+

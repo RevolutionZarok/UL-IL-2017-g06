@@ -1,0 +1,112 @@
+theSystem(TheSystem),
+msrVar(dtLogin,AdtLogin),
+msrNav([AdtLogin],
+         [value,eq,[[ptString,'steve']]],
+         [[ptBoolean,true]]),
+msrNav([TheSystem],
+       [msmAtPre,rnactCoordinator,
+        msrSelect,rnctCoordinator,login,eq,[AdtLogin]],
+       [TheActor]).
+
+%% Input Parameters Specification
+
+         
+         
+*********** ORIGINAL VERSION ***************
+
+setRecords(AnObject,[ARoleName],ARecordsList):-
+ % a† utiliser si seuls les oid sont dans les associations
+ % getObjects([AKeyValue],[AnObject]),
+ % simpleListListing([AnObject,[ARoleName],ARecordsList]),
+ (var(ARecordsList)
+ -> (msrException([msrexInterface,
+                  setRecords,
+                  [AnObject,
+                   [ARoleName],
+                   ARecordsList],
+                  'ARecordsList is a variable']))
+ ;
+ (
+ getType(AnObject,SourceType),
+ getRelationNameAndDimension(SourceType,
+                              ARoleName,
+                              RelationName,
+                              _TargetType,
+                              ASourceRoleName),
+ 
+% currentMessamVersion(Version),
+  msmop(getMsmVersionAtPost,[],Version),
+ messam(Version,relations,RelationName,CurrentStatus),
+
+  findall([[ASourceRoleName,AnObject],
+          [ARoleName,AValue]],
+         (member(Record,ARecordsList),
+          member([ASourceRoleName,AnObject],Record)),
+         RecordsToDelete),
+
+ subtract(CurrentStatus,RecordsToDelete,ReducedStatus),
+                           
+ findall([[ASourceRoleName,AnObject],
+          [ARoleName,AValue]],
+         (member(AValue,ARecordsList)),
+         NewStatus),
+
+ append(NewStatus,ReducedStatus,NewRecordsList),
+ 
+ msmop(updateAll,[relations,
+                  RelationName,
+                  NewRecordsList],
+       [])
+ )).
+
+************************************************
+
+msrop(dtInteger,new,[1],I),
+msrop(dtInteger,new,[5],J),
+msrop(dtInteger,new,[4],K),
+msrNav([I,J],[msrSelect,[geq,[K]]],L).
+
+
+msrop(dtInteger,new,[1],I),
+msrop(dtInteger,new,[5],J),
+msrop(dtInteger,new,[4],K),
+msrop(dtInteger,geq,[J,I],K).
+msrNav([I,J],[msrSelect,[geq,[K]]],L).
+
+
+/* PostF01 */
+ msrNav([Self],
+        [msmAtPre,rnActor,rnSystem,nextValueForAlertID],
+        [TheNextptIntegerValue]),
+ 
+ msrNav([TheNextptIntegerValue],
+       [add,[[ptInteger,1]]],
+       [UpdatedNextptIntegerValue]),
+ 
+ msrNav([Self],
+        [rnActor,rnSystem,msmAtPost,nextValueForAlertID],
+        [UpdatedNextptIntegerValue]),
+
+/* PostF02 */
+msrNav([AetHumanKind],
+       [asdtString,[],myStringConcat,[AdtComment]],
+       [TheCommentStoreddtString]),
+
+msrNav([TheCommentStored],[as,[dtString]],[TheCommentStoreddtString]),
+
+/* PostF03 */
+ msrNav([AdtAlertID],[value],[TheNextptIntegerValue]),
+ msrNav([TheAlert],
+        [init,[AdtAlertID,AdtPhoneNumber,TheCommentStored]],
+        [[ptBoolean,true]]),
+ 
+ /* PostF04 */
+ msrNav([Self],[msmAtPre,rnActor],[TheactComCompany]),
+ msrNav([TheAlert],[msmAtPost,rnactComCompany],[TheactComCompany]),
+ 
+ /* PostF05 */
+ msrNav([TheAckSMS],[value],[[ptString,'Your alert is registered.']]),
+ 
+ msrNav([Self],[msmAtPre,rnActor,rnInterfaceIN],[TheComCompanyIN]),
+ msrNav([TheComCompanyIN],[ieSmsSend,[AdtPhoneNumber,TheAckSMS]],[]),
+ */

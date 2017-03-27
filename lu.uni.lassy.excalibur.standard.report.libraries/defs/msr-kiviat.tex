@@ -1,0 +1,66 @@
+\newcommand\kiviat[1]{
+\def\filename{#1}
+
+\pgfplotstablevertcat{\dataA}{\filename} % Load table
+\pgfplotstablegetrowsof{\dataA} % Determine no. of rows
+\pgfmathsetmacro{\rows}{\pgfplotsretval}
+\pgfplotstablegetcolsof{\dataA} % Determine no. of cols
+\pgfmathsetmacro{\cols}{\pgfplotsretval-1} % Correct offset
+\pgfplotstablevertcat{\dataA}{\dataA} % Double the table to close gap after last point
+% Read table again with "header=false" which gives us access to the header names
+\pgfplotstableread[header=false]{\filename}{\headertable}
+
+% Not implemented: "\startingcol" could be used to switch between
+%  row names in file and row names as argument
+\def\startingcol{1}
+
+% Find largest element
+\pgfmathsetmacro\maxval{0}
+\foreach \i in {\startingcol,...,\cols} {%
+  \pgfplotstablesort[sort key={[index] \i},sort cmp={float >}]\sorted{\dataA}
+  \pgfplotstablegetelem{0}{[index] \i}\of{\sorted}
+  \pgfmathsetmacro\newval{ceil(max(\pgfplotsretval,\maxval))}
+  \global\let\maxval=\newval
+}
+
+\pgfplotsset{every axis }
+
+\newdimen\radius
+\pgfmathsetlength\radius{4cm*\scalefactor}
+
+\tikzstyle{grid}=[gray]
+
+% Draw the grid
+\foreach \i in {1,...,\rows} {
+  \draw [grid,thick,->] (0,0) -- (\i/\rows*360:\radius+1em); % Spokes
+  \pgfplotstablegetelem{\i}{[index] 0}\of{\dataA}
+  % Spoke labels: some trigonometry to determine offset, needs tweaking
+  \pgfmathsetmacro\dist{abs(cos(\i/\rows*360)*3} 
+  \node at (\i/\rows*360:\radius+\dist ex+1.5em) [anchor=center] {\pgfplotsretval};
+  % Points and grid lines
+  \foreach \j in {1,...,\maxval} {
+    \draw [fill,grid,black] (\i/\rows*360:\j*\radius/\maxval) circle (1pt); 
+    \pgfmathsetmacro\nexti{\i+1}
+    \draw [grid] (\i/\rows*360:\j*\radius/\maxval) -- (\nexti/\rows*360:\j*\radius/\maxval);
+  }
+}
+
+% Tick labels
+\foreach \j in {0,...,\maxval} {
+  \node [anchor=south west,inner xsep=0pt,inner ysep=2pt] at (0:\j*\radius/\maxval) {\j};
+}
+
+% The actual plot area
+\begin{axis}[anchor=center,
+scale only axis, width=2\radius, height=2\radius, hide axis,
+xmin=-\maxval,xmax=\maxval,ymin=-\maxval,ymax=\maxval,
+legend style={ at={(1.03,1.08)}, anchor=north west}
+]
+\foreach \n in {\startingcol,...,\cols} {
+% pgfplots doesn't know polar coordinate systems, that's why we'll use cos and sin
+\addplot +[no markers,thick] table [x expr=cos(\pgfplotstablerow/\rows*360)*\thisrowno{\n},y expr=sin(\pgfplotstablerow/\rows*360)*\thisrowno{\n}] {\dataA};
+\pgfplotstablegetelem{0}{\n}\of{\headertable}
+\addlegendentryexpanded{\pgfplotsretval}
+}
+\end{axis}
+}

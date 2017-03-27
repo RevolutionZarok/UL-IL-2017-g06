@@ -1,0 +1,51 @@
+\subsection{\msrcode{actCoordinator} Actor}
+
+
+\begin{actortable}
+	\addheading{Actor}
+	
+	\adddoublerow{actCoordinator}{represents actor responsible of handling one or several crisis for the \msricrash system.}
+	
+	\addrowheading{Extends}
+	\addsinglerow{icrash.environment.actAuthenticated}
+	
+	
+	
+	
+
+	\addrowheading{OutputInterfaces}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeInvalidateAlert}
+			{\msrcode{oeInvalidateAlert(AdtAlertID:dtAlertID):ptBoolean}}}
+			{sent to indicate that an alert should be considered as closed.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeCloseCrisis}
+			{\msrcode{oeCloseCrisis(AdtCrisisID:dtCrisisID):ptBoolean}}}
+			{sent to indicate that a crisis should be considered as closed.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeGetAlertsSet}
+			{\msrcode{oeGetAlertsSet(AetAlertStatus:etAlertStatus):ptBoolean}}}
+			{sent to request all the ctAlert instances having a specific status.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeGetCrisisSet}
+			{\msrcode{oeGetCrisisSet(AetCrisisStatus:etCrisisStatus):ptBoolean}}}
+			{sent to request all the ctCrisis instances having a specific status.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeSetCrisisHandler}
+			{\msrcode{oeSetCrisisHandler(AdtCrisisID:dtCrisisID):ptBoolean}}}
+			{sent to declare himself as been the handler of a crisis having the specified id.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeReportOnCrisis}
+			{\msrcode{oeReportOnCrisis(AdtCrisisID:dtCrisisID, AdtComment:dtComment):ptBoolean}}}
+			{sent to update the textual information available for a specific handled crisis.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeSetCrisisStatus}
+			{\msrcode{oeSetCrisisStatus(AdtCrisisID:dtCrisisID, AetCrisisStatus:etCrisisStatus):ptBoolean}}}
+			{sent to define the handling status of a specific crisis.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeSetCrisisType}
+			{\msrcode{oeSetCrisisType(AdtCrisisID:dtCrisisID, AetCrisisType:etCrisisType):ptBoolean}}}
+			{sent to define the gravity type of a specific crisis.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeValidateAlert}
+			{\msrcode{oeValidateAlert(AdtAlertID:dtAlertID):ptBoolean}}}
+			{sent to indicate that a specific alert is not a fake.}
+	
+	\addrowheading{InputInterfaces}
+	\addnumbereddoublerow{IN}{\msrcode{ieSendAnAlert(ActAlert:ctAlert):ptBoolean}}
+							 {allows for receiving a requested ctAlert instance.}
+	\addnumbereddoublerow{IN}{\msrcode{ieSendACrisis(ActCrisis:ctCrisis):ptBoolean}}
+							 {allows for receiving a requested ctCrisis instance.}
+	
+\end{actortable}

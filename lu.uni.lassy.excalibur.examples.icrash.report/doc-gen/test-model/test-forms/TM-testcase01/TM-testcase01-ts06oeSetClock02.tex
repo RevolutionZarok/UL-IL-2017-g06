@@ -1,0 +1,72 @@
+	\subsubsection{testcase01-ts06oeSetClock02-actActivator.outactActivator.oeSetClock}
+	\label{TM-testcase01-ts06oeSetClock02-actActivator.outactActivator.oeSetClock}
+
+	The \msrcode{testcase01-ts06oeSetClock02-actActivator.outactActivator.oeSetClock} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts06oeSetClock02}{test the update of the current time.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actActivator.outactActivator.oeSetClock}{actActivator.outactActivator.oeSetClock} (ACurrentClock)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actActivator}
+		{proactive actors responsible of requesting the update of the system's clock.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any instance existing in the current environment status.}
+		\addnumberedsinglerow{C}{ACurrentClock is a fixed date equal to the 26th November 2017 at 10:15:00 using a 24-hours notation.}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{true for testing only the executability (is available and can be triggered) of the operation.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts06oeSetClock02-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts06oeSetClock02}.},label=TM-testcase01-ts06oeSetClock02-MCL-LST]
+
+	variables{
+		TheActor:actActivator
+		ACurrentClock:dtDateAndTime
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactActivator->any2(true)
+		ACurrentClock.date.year.value = 2017
+		ACurrentClock.date.month.value = 11
+		ACurrentClock.date.day.value = 26
+		ACurrentClock.time.hour.value = 10
+		ACurrentClock.time.minute.value = 15
+		ACurrentClock.time.second.value = 00
+	}
+	
+	oracle{
+		constraints{
+			true
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

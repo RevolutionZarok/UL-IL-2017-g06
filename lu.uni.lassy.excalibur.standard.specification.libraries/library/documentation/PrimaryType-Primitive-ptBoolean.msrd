@@ -1,0 +1,28 @@
+
+@@Primary Type Primitive lu.uni.lassy.messir.libraries.primitives.ptBoolean
+@description ""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.is
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.close
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.msrnot
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.msror
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.msrxor
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.msrand
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.eq
+""
+@operation
+lu.uni.lassy.messir.libraries.primitives.ptBoolean.neq
+""
+@endOperations

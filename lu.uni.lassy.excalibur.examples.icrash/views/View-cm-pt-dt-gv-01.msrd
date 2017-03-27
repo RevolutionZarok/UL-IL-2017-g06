@@ -1,0 +1,13 @@
+@@view cm-pt-dt-gv-01
+@model Concept
+@level Global
+@sublevel Primary Datatype
+@number 01
+@description
+"
+shows a global view on the \msricrash primary types datatype types.
+"
+@caption 
+" global view of primary types datatype types - cm-pt-dt-gv-01
+"
+@scale  MaxWidth

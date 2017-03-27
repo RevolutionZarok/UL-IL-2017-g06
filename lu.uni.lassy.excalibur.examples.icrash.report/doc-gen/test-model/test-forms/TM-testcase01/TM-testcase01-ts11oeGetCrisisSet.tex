@@ -1,0 +1,76 @@
+	\subsubsection{testcase01-ts11oeGetCrisisSet-actCoordinator.outactCoordinator.oeGetCrisisSet}
+	\label{TM-testcase01-ts11oeGetCrisisSet-actCoordinator.outactCoordinator.oeGetCrisisSet}
+
+	The \msrcode{testcase01-ts11oeGetCrisisSet-actCoordinator.outactCoordinator.oeGetCrisisSet} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts11oeGetCrisisSet}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actCoordinator.outactCoordinator.oeGetCrisisSet}{actCoordinator.outactCoordinator.oeGetCrisisSet} (AetCrisisStatus)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actCoordinator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AetCrisisStatus:icrash.concepts.primarytypes.datatypes.etCrisisStatus}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{ActCrisis:icrash.concepts.primarytypes.classes.ctCrisis}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value}
+		\addnumberedsinglerow{C}{AetCrisisStatus value is pending}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{ActCrisis is any ctCrisis instance that has been sent to TheActor.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts11oeGetCrisisSet-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts11oeGetCrisisSet}.},label=TM-testcase01-ts11oeGetCrisisSet-MCL-LST]
+
+	variables{
+		TheActor : actCoordinator
+		AetCrisisStatus : etCrisisStatus
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactCoordinator
+		            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+		            ->any2(true)
+		AetCrisisStatus = pending
+	}
+	
+	oracle{
+		variables{
+			ActCrisis:ctCrisis
+		}
+		constraints{
+			TheActor.inactCoordinator.ieSendACrisis(ActCrisis)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtComment
+
+@description
+"a datatype made of a string value used to receive,store and send textual information about crisis and alerts."
+
+@operation icrash.concepts.primarytypes.datatypes.dtComment.is
+ "used to determine which strings are considered as valid comments."
+
+@endOperations

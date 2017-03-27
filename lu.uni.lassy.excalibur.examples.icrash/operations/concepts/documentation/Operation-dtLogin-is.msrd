@@ -1,0 +1,12 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtLogin.is
+
+@description
+" used to determine which strings are considered as valid dtLogin."
+//postFunctional descriptions
+@postF 
+"is true of the length of the string value is not more than 20 characters."
+@endPostF
+
+//example
+@example ""

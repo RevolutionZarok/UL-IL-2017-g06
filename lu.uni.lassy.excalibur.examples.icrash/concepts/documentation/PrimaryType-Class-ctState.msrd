@@ -1,0 +1,32 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctState
+
+@description
+"used to model the system. Each system specified using \msrmessir must include a ctState class for which there is only one instance at any state of the abstract machine after creation."
+
+@attribute icrash.concepts.primarytypes.classes.ctState.nextValueForAlertID
+"\msrcode{nextValueForAlertID: dtInteger}: used to associate each alert declared with a unique idenitification value. "
+
+@attribute icrash.concepts.primarytypes.classes.ctState.nextValueForCrisisID
+"used to associate each crisis declared with a unique idenitification value. "
+
+@attribute icrash.concepts.primarytypes.classes.ctState.clock
+"used to represent the system local time."
+
+@attribute icrash.concepts.primarytypes.classes.ctState.crisisReminderPeriod
+"used to define the delay between two reminders after which a reminder must be sent to the administrator and to the known coordinators to encourage them to handle the crisis."
+
+@attribute icrash.concepts.primarytypes.classes.ctState.maxCrisisReminderPeriod
+"used to define the maximum delay after which the crisis is ramdomly allocated to a coordinator if any or an alert message is sent to the administrator in order to encourage him to add coordinators."
+
+@attribute icrash.concepts.primarytypes.classes.ctState.vpLastReminder
+"date and time of the last reminder."
+
+@attribute icrash.concepts.primarytypes.classes.ctState.vpStarted
+"used to avoid reacting to an actor message if the system is not started (i.e. oeCreateSystemAndEnvironment not executed)."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.classes.ctState.init
+ "used to initialize the current object as a new instance of the ctState type."
+
+@endOperations

@@ -1,0 +1,9 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctAdministrator 
+
+@description
+"used to caracterize internally the entity that is responsible of administrating the \msricrash system."
+
+@operation icrash.concepts.primarytypes.classes.ctAdministrator.init
+"used to initialize the current object as a new instance of the ctAdministrator type."
+
+@endOperations

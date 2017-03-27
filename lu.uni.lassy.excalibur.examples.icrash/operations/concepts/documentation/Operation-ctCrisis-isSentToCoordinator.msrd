@@ -1,0 +1,14 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctCrisis.isSentToCoordinator 
+//parameters
+@parameter icrash.concepts.primarytypes.classes.ctCrisis.isSentToCoordinator.AactCoordinator
+"the message destination actor"
+@endParameters
+@description
+"used to provide a given coordinator with current crisis information."
+
+//postFunctional descriptions
+@postF 
+" true iff the message ieSendACrisis is sent by the simulator to the input interface of the given coordinator actor with the current crisis as parameter value.
+"
+@endPostF

@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCoordinatorID
+
+@description
+"A string used to identify coordinators."
+
+@operation icrash.concepts.primarytypes.datatypes.dtCoordinatorID.is
+ "used to determine which strings are considered as valid coordinators identifiers."
+
+@endOperations

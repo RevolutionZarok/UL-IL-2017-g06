@@ -1,0 +1,14 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctCoordinator
+
+@description
+"used to model system's representation about the actors that have the responsibility to handle alerts and crisis."
+
+@attribute icrash.concepts.primarytypes.classes.ctCoordinator.id
+"a unique identification information."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.classes.ctCoordinator.init
+"used to initialize the current object as a new instance of the ctCoordinator type."
+
+@endOperations

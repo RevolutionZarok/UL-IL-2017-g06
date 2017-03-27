@@ -1,0 +1,41 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctCrisis
+
+@description
+"Used to model crisis that are infered from the reception of at least one alert message. Crisis aer entities that are handled by the \msricrash system."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.id
+"the crisis unique identification information."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.type
+"an indication of the gravity of the crisis."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.status
+"the crisis handling status."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.location
+"the position of the crisis equal by the one of the first alert received and associated to the crisis."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.instant
+"the date and time at which the first related alert notification has been sent."
+
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.comment
+"a textual description providing unstructured information on the crisis handling."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.classes.ctCrisis.init
+"used to initialize the current object as a new instance of the ctAlert type."
+
+@operation icrash.concepts.primarytypes.classes.ctCrisis.handlingDelayPassed
+"used to determine if the crisis stood too longly in a pending status since last reminder."
+
+@operation icrash.concepts.primarytypes.classes.ctCrisis.maxHandlingDelayPassed
+"used to determine if the crisis stood too longly in a pending status since its creation."
+
+@operation icrash.concepts.primarytypes.classes.ctCrisis.isSentToCoordinator
+"used to provide a given coordinator with current crisis information."
+ 
+@operation icrash.concepts.primarytypes.classes.ctCrisis.isAllocatedIfPossible
+"used to allocate a crisis to a coordinator if any or to alert the administrator of crisis waiting to be handled."
+
+@endOperations

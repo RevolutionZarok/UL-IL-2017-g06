@@ -1,0 +1,23 @@
+
+@@Use Case Subfunction icrash.usecases.subfunctions.oeValidateAlert hidden
+@description
+"used to indicate that a specific alert is not a fake.
+"
+@parameter icrash.usecases.subfunctions.oeValidateAlert.AdtAlertID ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtLongitude
+
+@description
+"used to define a longitude value of a geograpical positions on earth. "
+
+@operation icrash.concepts.primarytypes.datatypes.dtLongitude.is
+ "used to determine which strings are considered as valid dtLongitude."
+
+@endOperations

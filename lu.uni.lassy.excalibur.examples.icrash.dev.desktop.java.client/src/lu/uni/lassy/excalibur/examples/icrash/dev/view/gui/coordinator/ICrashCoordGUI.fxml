@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator.ICrashCoordGUIController">
+  <children>
+    <SplitPane dividerPositions="0.6204819277108434" orientation="VERTICAL" prefHeight="509.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TabPane fx:id="tbpnMain" prefHeight="336.0" prefWidth="1008.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab id="tbCoordAlerts" fx:id="tbCoordAlerts" text="Alerts">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                        <BorderPane prefHeight="321.0" prefWidth="308.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <center>
+                            <TableView fx:id="tblvwAlerts" prefHeight="570.0" prefWidth="827.0" BorderPane.alignment="CENTER" />
+                          </center>
+                          <top>
+                            <GridPane prefHeight="58.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+                              <children>
+                                <Button fx:id="bttnValidateAlert" mnemonicParsing="false" onAction="#bttnValidateAlert_OnClick" prefHeight="50.0" prefWidth="100.0" text="Validate" textAlignment="CENTER">
+                                  <font>
+                                    <Font name="System Bold" size="12.0" fx:id="x1" />
+                                  </font>
+                                </Button>
+                                <Button fx:id="bttnInvalidateAlert" font="$x1" mnemonicParsing="false" onAction="#bttnInvalidateAlert_OnClick" prefHeight="50.0" prefWidth="100.0" text="Invalidate" textAlignment="CENTER" GridPane.columnIndex="1" />
+                                <ComboBox fx:id="cmbbxAlertStatus" prefWidth="150.0" GridPane.columnIndex="2" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                          </top>
+                        </BorderPane>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab id="tbCoordCrisis" fx:id="tbCoordCrisis" text="Crises">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                        <BorderPane prefHeight="321.0" prefWidth="308.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <center>
+                            <TableView fx:id="tblvwCrisis" prefHeight="570.0" prefWidth="777.0" BorderPane.alignment="CENTER" />
+                          </center>
+                          <top>
+                            <GridPane prefHeight="105.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+                              <children>
+                                <Button fx:id="bttnHandleCrisis" alignment="CENTER" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#bttnHandleCrisis_OnClick" prefHeight="50.0" prefWidth="100.0" text="Handle crisis" textAlignment="CENTER" wrapText="true" />
+                                <Button fx:id="bttnCloseCrisis" alignment="CENTER" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#bttnCloseCrisis_OnClose" prefHeight="50.0" prefWidth="100.0" text="Close crisis" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+                                <Button fx:id="bttnReportCrisis" alignment="CENTER" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#bttnReportCrisis_OnClick" prefHeight="50.0" prefWidth="100.0" text="Report on crisis" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
+                                <Button fx:id="bttnChangeStatusCrisis" alignment="CENTER" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#bttnChangeStatusCrisis_OnClick" prefHeight="50.0" prefWidth="100.0" text="Change crisis status" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" />
+                                <ComboBox fx:id="cmbbxCrisisStatus" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                          </top>
+                        </BorderPane>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Pane fx:id="pnLogon" prefHeight="509.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane prefHeight="306.0" prefWidth="350.0">
+                  <children>
+                    <GridPane prefHeight="306.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <TextField fx:id="txtfldCoordLogonUserName" promptText="Username" GridPane.columnSpan="2" />
+                        <PasswordField fx:id="psswrdfldCoordLogonPassword" promptText="Password" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                        <Button fx:id="bttnCoordLogon" defaultButton="true" font="$x1" mnemonicParsing="false" onAction="#bttnCoordLogon_OnClick" onContextMenuRequested="#btnCoordLogon_OnContextMenuRequested" text="Logon" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                </AnchorPane>
+              </children>
+            </Pane>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <BorderPane prefHeight="507.0" prefWidth="203.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <bottom>
+                <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+                  <children>
+                    <Button id="bttnTopLogoff" fx:id="bttnCoordLogoff" disable="true" font="$x1" mnemonicParsing="false" onAction="#bttnCoordLogoff_OnClick" prefHeight="50.0" prefWidth="100.0" text="Logoff" />
+                  </children>
+                </HBox>
+              </bottom>
+              <center>
+                <TableView fx:id="tblvwCoordMessages" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+              </center>
+            </BorderPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>

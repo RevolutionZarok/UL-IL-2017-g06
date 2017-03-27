@@ -1,0 +1,5 @@
+@@view uc-oeSollicitateCrisisHandling 
+@model Use-Case icrash.usecases.subfunctions.oeSollicitateCrisisHandling
+@description "shows the use case diagram for the oeSollicitateCrisisHandling subfunction use case"
+@caption ' oeSollicitateCrisisHandling subfunction use case'
+@scale 0.75

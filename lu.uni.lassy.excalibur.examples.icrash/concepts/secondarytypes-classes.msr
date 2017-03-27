@@ -1,0 +1,9 @@
+package icrash.concepts.secondarytypes.classes {
+	
+	Concept Model {
+		
+		Secondary Types{
+		
+		}
+	}
+}

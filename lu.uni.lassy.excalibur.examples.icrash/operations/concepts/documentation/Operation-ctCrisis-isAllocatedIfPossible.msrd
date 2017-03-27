@@ -1,0 +1,14 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctCrisis.isAllocatedIfPossible
+
+@description
+"used to allocate a crisis to a coordinator if any or to alert the administrator of crisis waiting to be handled."
+//postFunctional descriptions
+@postF 
+" true iff the duration between the crisis creation and the system's clock is greater than the maximum delay defined
+and "
+@postF
+"if there exist at least one coordinator then (a) the post state associates to the crisis any of the existing coordinators and (b) the coordinator is informed that he is now the handlers of the crisis whose ID is communicated"
+@postF
+"else a message is sent to all known administrators to request creation of new coordinators."
+@endPostF

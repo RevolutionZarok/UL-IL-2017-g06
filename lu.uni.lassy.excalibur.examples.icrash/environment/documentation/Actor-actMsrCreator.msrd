@@ -1,0 +1,11 @@
+@@Actor icrash.environment.actMsrCreator
+
+@description
+"Represents the creator stakeholder in charge of state and environment initialization."
+
+//input events
+//output events
+@outputEvent icrash.environment.actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment
+"sent to request the initialization of the system's class instances and the environment actors instances."
+
+@endOutputEvents

@@ -1,0 +1,17 @@
+package icrash.usecases.ugMonitor {
+
+	import icrash.environment
+	import icrash.usecases.subfunctions
+
+	Use Case Model {
+    use case system usergoal ugMonitor() {
+      actor icrash.environment.actCoordinator[primary,active]
+      
+      reuse oeGetCrisisSet[0..*]
+      reuse oeGetAlertsSet[0..*]
+      
+      step a: icrash.environment.actCoordinator executes oeGetAlertsSet
+      step b: icrash.environment.actCoordinator executes oeGetCrisisSet
+    }
+	}
+}

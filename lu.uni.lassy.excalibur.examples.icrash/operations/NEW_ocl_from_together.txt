@@ -1,0 +1,449 @@
+package icrash.operations.environment.operationActorsOcl {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+
+	Operation Model {
+
+	/***************************************
+	AuthenticatedActor
+	***************************************/
+	
+	operation: icrash.environment.actAuthenticated.outactAuthenticated.oeLogin(dtLogin AdtLogin, dtPassword AdtPassword):ptBoolean
+				preF: let theSystem:ctState in
+						/* Pre Functional:*/
+						/* Pre F01 */
+						true
+				preP: 	/* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem = self.rnActor.rnSystem
+						and theSystem.vpmStarted = true
+						and self.rnActor.authenticated.vpmIsLogged = false
+						/*--------------------------------------------*/
+
+				postF: /* Post Functional:*/
+						/* Post F01 */
+						if (self.rnActor.authenticated.login=aLogin
+							and self.rnActor.authenticated.pwd=aPassword)
+						then (self.rnActor.InterfaceIN^message('You are logged in'))
+						else (self.rnActor.InterfaceIN^message('You failed to log in due to incorrect data'))
+						endif
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						and self.rnActor.authenticated.vpmIsLogged = true
+
+
+
+			operation: icrash.environment.AuthenticatedActor.AuthenticatedActorOutputInterface.logout():ptBoolean
+				preF: /* Pre Messir - may be incomplete (cf. see rationals) */
+						/* Pre M01 */
+						true
+						/* Pre Functional:*/
+						/* Pre F01 */
+						and true
+						
+				preP:	/* Pre Protocol:*/
+						/* 	Pre P01 */
+						self.rnActor.authenticated.vpmIsLogged = true
+
+				postF: 	/* Post Functional:*/
+						/* Post F01 */
+						self.rnActor.InterfaceIN^message('You are now logged out !')
+
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						self.rnActor.authenticated.vpmIsLogged = false
+						/* Post Messir */
+						/* Post M01 */
+						and true
+
+	/***************************************
+	AdministratorActor
+	***************************************/
+
+			operation: icrash.environment.Administrator.AdministratorOutputInterface.addCoordinator():ptBoolean
+				preF: //let theSystem:ctState in <--- problem with let-in variable scoping -> FIXED in 1.0.10
+							theSystem = self.rnActor.rnSystem
+							/* Pre Messir - may be incomplete (cf. see rationals) */
+							/* Pre M01*/
+							and aCoordinatorID.isCoordinatorID()
+							and aLogin.isLogin()
+							and aPassword.isPassword()
+							/* Pre Functional:*/
+							/* Pre F01*/
+							and not (theSystem.coordinator->exists(coord | coord.id = aCoordinatorID))
+				preP: /* Pre Protocol:*/
+						self.rnActor.authenticated.vpmIsLogged = true
+				postF: let theCoordinator:Coordinator in
+						let theCoordinatorActor:Coordinator in
+						/*
+						 * Interfaces are not considered Types, so they CANNOT BE USED to define
+	 					 * a variable in a let-in expression
+						*/
+						//let theCoordinatorActorInputInterface:Environment::CoordinatorInputInterface in
+						//let theCoordinatorActorOutputInterface:Environment::CoordinatorOutputInterface in
+						
+						/* Post Functional:*/
+						/* Post F01 */
+						theCoordinator.msrCreateCoordinator(aCoordinatorID,aLogin,aPassword,false)
+						/* Post F02 */
+						and theCoordinatorActor.msrCreateCoordinatorActor()
+						/* Post F03 */
+						and theCoordinator.coordinatorActor = theCoordinatorActor
+						and theCoordinator.authenticatedActor = theCoordinatorActor
+						/* Post F04 */
+						and self.rnActor.InterfaceIN^coordinatorAdded()
+
+				postP:	/* Post Protocol:*/
+						/* Post P01 */
+						theCoordinator.vpmIsLogged = false
+						/* Post Messir */
+						/* Post M01 */
+						and true
+
+
+			operation: icrash.environment.Administrator.AdministratorOutputInterface.deleteCoordinator():ptBoolean
+				preF: //let theSystem:ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Pre Messir - may be incomplete (cf. see rationals) */
+							/* Pre M01 */
+							and aCoordinatorID.isCoordinatorID()
+							/* Pre Functional:*/
+							/* Pre F01 */
+							and (theSystem.coordinator
+							->exists(coord | coord.id = aCoordinatorID))
+				preP:  /* Pre Protocol:*/
+						/* Pre P01 */
+						self.rnActor.authenticated.vpmIsLogged = true
+				postF: //let theSystem:PrimaryTypesClasses::ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Post Functional:*/
+							/* Post F01 */
+							//and let theCoordinator:Coordinator in
+							theCoordinator = theSystem.coordinator->select(coord | coord.id = aCoordinatorID)
+							and theCoordinator.msrDestroy()
+							/* Post F02 */
+							and theCoordinator.coordinatorActor.msrDestroy()
+				postP:	/* Post Protocol:*/
+						/* Post P01 */
+						true
+						/* Post Messir */
+						/* Post M01 */
+						and true
+
+
+
+
+	/***************************************
+	CoordinatorActor
+	***************************************/
+			
+			
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.getAlertsSet():ptBoolean
+				preF: //let theSystem:ctState in
+						theSystem = self.rnActor.rnSystem
+						/* Pre Functional:*/
+						/* PreF01 */
+						and true
+				preP: 	/* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem.vpmStarted=true /* is deducible */
+						and self.rnActor.coordinator.vpmIsLogged = true
+				postF: //let theSystem:ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Post Functional:*/
+							/* Post F01 */
+							and //let theAlerts:AlertsSet in
+							theAlerts.alert = self.rnActor.rnSystem.alert->
+							//select(a:Alert | a.status = anAlertStatus) //->>> RPOBLEM WITH CONSTRUCTOR ':'
+							and self.rnActor.InterfaceIN^alertsSet(theAlerts)
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						true
+			
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.getCrisisSet():ptBoolean
+				preF: //let theSystem:PrimaryTypesClasses::ctState in
+						theSystem = self.rnActor.rnSystem
+						/* Pre Functional:*/
+						/* PreF01 */
+						and true
+				preP:	/* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem.vpmStarted=true /* is deducible */
+						and self.rnActor.coordinator.vpmIsLogged = true
+
+				postF: //let theSystem:PrimaryTypesClasses::ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Post Functional:*/
+							/* Post F01 */
+							//and let theCrisisSet:IntermediateDataTypeModel::CrisisSet in
+							theCrisisSet.crisis = theSystem.crisis
+							//->select(a:PrimaryTypesClasses::Crisis | a.status = aCrisisStatus) //PROPBLEM
+							and self.rnActor.InterfaceIN^crisisSet(theCrisisSet)
+				postP:	/* Post Protocol:*/
+						/* Post P01 */
+						true
+			
+			
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.closeAlert():ptBoolean
+				preF: //let theSystem:ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Pre Functional:*/
+							/* PreF01 */
+							//and let theAlert:Alert in
+							//let theCrisis:Crisis in
+							theAlert->asBag()
+							= theSystem.alert
+							//->select(a:PrimaryTypesClasses::Alert | a.id = anAlertID)
+							and theAlert.status = DataTypes::AlertStatus::pending
+							/* PreF02 */
+							and theCrisis = theAlert.crisis
+							and not theCrisis.oclIsUndefined()
+							and not (theCrisis.status = DataTypes::CrisisStatus::solved)
+				preP: /* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem.vpmStarted=true
+						and self.rnActor.coordinator.vpmIsLogged = true
+
+				postF: //let theSystem:ctState in
+							//let theAlert:Alert in
+							theSystem = self.rnActor.rnSystem
+							/* Post Functional:*/
+							/* Post F01 */
+							and theAlert = theSystem.alert
+							//->select(a:PrimaryTypesClasses::Alert | a.id = anAlertID)
+							and if (self.rnActor.coordinator.crisis.alert->includes(theAlert))
+								then (theAlert.status = DataTypes::AlertStatus::invalid
+									and self.rnActor.InterfaceIN^message('The Alert is now invalid.'))
+								else (self.rnActor.InterfaceIN^message(
+									'You can only close alerts that are related to crisis
+									that you are handling. '))
+								endif
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						true
+
+				
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.validateAlert():ptBoolean
+				preF: //let theSystem:ctState in
+						theSystem = self.rnActor.rnSystem
+						/* Pre Functional:*/
+						/* PreF01 */
+						//and let theAlert:Alert in
+						//let theCrisis:Crisis in
+						theAlert->asBag()
+						= theSystem.alert
+						//->select(a:PrimaryTypesClasses::Alert | a.id = anAlertID) ->>> PROBLEM
+						and theAlert.status = DataTypes::AlertStatus::pending
+						/* PreF02 */
+						and theCrisis = theAlert.crisis
+						and not theCrisis.oclIsUndefined()
+						and not (theCrisis.status = DataTypes::CrisisStatus::solved)
+				preP:	/* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem.vpmStarted=true
+						and self.rnActor.coordinator.vpmIsLogged = true
+
+				postF: //let theSystem:ctState in
+						//let theAlert:Alert in
+						theSystem = self.rnActor.rnSystem
+						/* Post Functional:*/
+						/* Post F01 */
+						and theAlert = theSystem.alert
+						//->select(a:PrimaryTypesClasses::Alert | a.id = anAlertID) ---> problem
+						and if (self.rnActor.coordinator.crisis.alert->includes(theAlert))
+								then (theAlert.status = DataTypes::AlertStatus::valid
+								and self.rnActor.InterfaceIN^message('The Alert is now valid.'))
+								else (self.rnActor.InterfaceIN^message(
+									'You can only validate alerts that are related to crisis
+									that you are handling. '))
+							endif
+				postP: 	/* Post Protocol:*/
+						/* Post P01 */
+						true
+			
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.handleCrisis():ptBoolean
+				preF: //let theSystem:ctState in
+						theSystem = self.rnActor.rnSystem
+						/* Pre Functional:*/
+						/* PreF01 */
+						//and let theCrisis:Crisis in
+						theCrisis
+						= theSystem.crisis
+						//->select(a:PrimaryTypesClasses::Crisis | a.id = aCrisisID )
+						and theCrisis.status = DataTypes::CrisisStatus::pending
+				preP: 	/* Pre Protocol:*/
+						/* Pre P01 */
+						theSystem.vpmStarted=true
+						and self.rnActor.coordinator.vpmIsLogged = true
+
+				postF: //let theSystem:ctState in
+						//let theCrisis:Crisis in  -----> TYPED UNDEFINED
+						theSystem = self.rnActor.rnSystem
+						/* Post Functional:*/
+						/* Post F01 */
+						and theCrisis = theSystem.crisis
+						//->select(a:PrimaryTypesClasses::Crisis | a.id = aCrisisID)
+						and if (not theCrisis.coordinator.oclIsUndefined())
+								then (self.rnActor.InterfaceIN^message(
+								'You can only handle a crisis that is not already handled !'))
+							else (theCrisis.status = DataTypes::CrisisStatus::handled
+								and self.rnActor.InterfaceIN
+								^message('The crisis is now declared as handled by you.')
+								/* Post F02 */
+								and theSystem@pre.crisis
+								->select(c | //-->>>>>>>>PROBLEM WITH select's variable -> TO BE FIXED
+									theSystem.clock.toSecondsQty().value
+									-
+									c.instant.toSecondsQty().value
+									>
+									theSystem.maxCrisisHandlingDelay.value)->size()=1
+								implies theSystem.crisisReminderPeriod
+								=
+								theSystem.initialCrisisReminderPeriod)
+							endif
+				postP: 	/* Post Protocol:*/
+						/* Post P01 */
+						true
+
+
+
+			operation: icrash.environment.Coordinator.CoordinatorOutputInterface.closeCrisis():ptBoolean
+				preF: //let theSystem:ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Pre Functional:*/
+							/* PreF01 */
+							//and let theCrisis:Crisis in  ---> UNDEFINED TYPE
+							//theCrisis = theSystem.crisis->select(a:PrimaryTypesClasses::Crisis |a.id = aCrisisID ) ->>> PROBLEM
+
+				preP:	/* Pre Protocol:*/
+						/* Pre P01 */
+						and ///--->>>>> PROBLEM: TI SHOULDN'T BE ALLOWED TO START WITH A BOOLEAN OPERATOR
+						theSystem.vpmStarted=true
+						and self.rnActor.coordinator.vpmIsLogged = true
+				
+				postF: //let theSystem:ctState in
+							//let theCrisis:Crisis in
+							theSystem = self.rnActor.rnSystem
+							/* Post Functional:*/
+							/* Post F01 */
+							//and theCrisis = theSystem.crisis->select(a:PrimaryTypesClasses::Crisis | a.id = aCrisisID)
+							and if (not theCrisis.coordinator.oclIsUndefined()
+										and theCrisis.coordinator = self.rnActor.coordinator)
+								then (theCrisis.status = DataTypes::CrisisStatus::solved
+										and theCrisis.coordinator->isEmpty()
+										and self.rnActor.InterfaceIN
+										^message('The crisis is now closed.'))
+									else (self.rnActor.InterfaceIN^message(
+											'You can only close a crisis that is handled by you !'))
+									endif
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						and true
+
+
+
+			operation: Coordinator.CoordinatorOutputInterface.msrDestroy():ptBoolean
+				preF: /* Pre Messir - may be incomplete (cf. see rationals) */
+						/* Pre M01 */
+						true
+						/* Pre Functional:*/
+						/* Pre F01 */
+						and true
+				preP: 	/* Pre Protocol:*/
+						/* Pre P01 */
+						true
+
+				postF: let theSystem2:ctState in
+							/* Post Functional:*/
+							/* Post F01 */
+							true
+				postP:	/* Post Protocol:*/
+						/* Post P01 */
+						true
+						/* Post Messir */
+						/* Post M01 */
+						and true
+
+
+
+		/***************************************
+		Activator Actor
+		***************************************/
+
+			operation: icrash.environment.Activator.ActivatorOutputInterface.setClock():ptBoolean
+				preF: let theSystem3:ctState in
+							//let theDelay:Second in
+							theSystem = self.rnActor.rnSystem
+							/* Pre Messir - may be incomplete (cf. see rationals) */
+							/* Pre M01 */
+							and true
+							/* Pre Functional:*/
+							/* Pre F01 */
+							and true
+
+				preP: 	/* Pre Protocol:*/
+						/* Pre P01 */
+						and //->>>>> PROBLEM
+						theDelay.value = 10
+						and theSystem.clock.date.toSecondsQty().value
+							+ theSystem.clock.time.toSecondsQty().value
+							>=
+							self.rnActor.currentClock.date.toSecondsQty().value
+							+self.rnActor.currentClock.time.toSecondsQty().value
+							+ theDelay.value
+							
+				postF: let theSystem4:ctState in
+						theSystem = self.rnActor.rnSystem
+						/* Post Functional:*/
+						/* Post F01 */
+						and theSystem.clock = self.rnActor.currentClock
+				postP: 	/* Post Protocol:*/
+						/* Post P01 */
+						and true
+						/* Post Messir */
+						/* Post M01 */
+						and true
+						
+						
+
+			operation: icrash.environment.Activator.ActivatorOutputInterface.sollicitateCrisisHandling():ptBoolean
+				preF: let theSystem5:ctState in
+							theSystem = self.rnActor.rnSystem
+							/* Pre Messir - may be incomplete (cf. see rationals) */
+							/* Pre M01 */
+							and true
+							/* Pre Functional:*/
+							/* Pre F01 */
+							and true
+							
+				preP: /* Pre Protocol:*/
+							/* Pre P01 */
+							and theSystem.crisis
+							->select(c|
+							theSystem.clock.toSecondsQty().value
+							- c.instant.toSecondsQty().value
+							> theSystem.maxCrisisHandlingDelay.value
+							)->size()>=1
+				
+				postF: theSystem.coordinatorActorPart
+								->forAll( c | c.InterfaceIN
+								^message( 'There are alerts not treated since
+								more than the defined delay.
+								Please REACT !'))
+
+				postP: /* Post Protocol:*/
+						/* Post P01 */
+						//and ->>>> PROBLEM 
+						theSystem.maxCrisisHandlingDelay.value
+								= theSystem.maxCrisisHandlingDelay.value@pre
+								+ theSystem.crisisReminderPeriod.value
+						/* Post Messir */
+						/* Post M01 */
+						and true
+
+	}
+
+
+}

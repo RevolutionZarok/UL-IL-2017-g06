@@ -1,0 +1,54 @@
+@@Operation
+icrash.environment.actComCompany.outactComCompany.oeAlert
+//parameters
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AetHumanKind
+"the kind of human informing of an alert."
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtDate
+"the date of the alert "
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtTime
+"the time of the alert"
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtPhoneNumber
+"the phone number of the human sending the alert SMS message "
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtGPSLocation
+" the GPS position of the phone at the date and time the message was sent."
+@parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtComment
+"a free text message sent by the human providing information on the alert that he wants to declare"
+@endParameters
+@description
+"Any human having a phone able to connect to the communication companies using the \msricrash system can send his company an sms message with structured information in order to declare an alert."
+
+//preProtocol descriptions
+@preP
+" the system is supposed to be created and initialized."
+@endPreP
+
+//preFunctional descriptions
+@preF
+" the date and time the alert is declared is supposed to be in the past with respect to the current time known by the system."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" the ctState attribute for the next value for alert IDs is incremented by one at post."
+@postF 
+" a new alert instance exists in the post state with status pending, instant information (resp. GPS location and comment) based on date and time provided (resp. position and comment); and with alert ID being a string conversion of the dtInteger value available in the pre state in the ctState instance."
+@postF 
+"if there exist no already registered alert near to the alert currently declared
+then a new crisis is added in the post state and initialized with: its ID being the one provided by the ctState instance (which is incremented by one in the post state), its type considered as small, its status being pending, its declared time being the same than the alert and a default comment indicating that a report will come later on.
+else the crisis to which the new alert must be related to is the one related to any alert nearby in the pre-state."
+@postF 
+"the post state relates the new alert to the previously characterized crisis."
+@postF 
+"if there is no ctHuman instance having same phone number and same kind in the pre-state 
+then a new one is added in the post-state with given phone number and kind and is associated to the communication company actor used to declare the alert.
+else the pre-state one is chosen
+"
+@postF 
+"and this specified ctHuman is related to the new alert thus indicating he has signled the alert. "
+
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

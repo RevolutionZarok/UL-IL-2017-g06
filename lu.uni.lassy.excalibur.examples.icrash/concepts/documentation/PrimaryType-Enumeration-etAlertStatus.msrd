@@ -1,0 +1,8 @@
+@@Primary Type Enumeration icrash.concepts.primarytypes.datatypes.etAlertStatus
+@description 
+"
+this type is used to indicate the different validation status of an alert.
+"
+@operation icrash.concepts.primarytypes.datatypes.etAlertStatus.is
+ "used to determine which litteral belongs to the enumeration."
+@endOperations

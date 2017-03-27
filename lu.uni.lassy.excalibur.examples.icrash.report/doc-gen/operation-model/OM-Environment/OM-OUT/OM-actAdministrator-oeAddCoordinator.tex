@@ -1,0 +1,107 @@
+\subsection{Operation Model for oeAddCoordinator}
+
+\label{OM-oeAddCoordinator}
+
+
+The \msrcode{oeAddCoordinator} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeAddCoordinator}{sent to add a new coordinator in the system's post state and environment's post state.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCoordinatorID: dtCoordinatorID}{used to initialize the id field} 
+	\addnumbereddoublerow{}{AdtLogin: dtLogin}{used to initialize the login field} 
+	\addnumbereddoublerow{}{AdtPassword: dtPassword}{used to initialize the password field} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctAdministrator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{ it is supposed that there cannot exist a ctCoordinator instance with the same \msrcode{id} attribute as the one the administrator wants to delete.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ the environment has a new instance of coordinator actor allowing for input/output message communication with the system.}
+	\addnumberedsinglerow{PostF}{the system's state has a new instance of ctCoordinator initialized with the given values.}
+	\addnumberedsinglerow{PostF}{the new actor instance and ctCoordinator instance are related.}
+	\addnumberedsinglerow{PostF}{the new actor instance and ctCoordinator instance are related according to the authenticated association.}
+	\addnumberedsinglerow{PostF}{the administrator actor is informed about the satisfaction of its request.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ none}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAdministrator-oeAddCoordinator-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeAddCoordinator}.},label=OM-actAdministrator-oeAddCoordinator-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	  
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	  
+	/* PreP01 */
+	  and TheSystem.vpStarted = true
+	/* PreP02 */
+	  and TheActor.rnctAuthenticated.vpIsLogged = true}
+	
+	/* Pre Functional:*/
+	preF{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	  let ColctCoordinators:Bag(ctCoordinator) in
+	  
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	/* PreF01 */
+	  and TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+	      = ColctCoordinators
+	  and ColctCoordinators->isEmpty() = true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+	  let TheactCoordinator:actCoordinator in
+	  let ThectCoordinator:ctCoordinator in
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	/* PostF01 */
+	  TheactCoordinator.init()
+	/* PostF02 */
+	  and ThectCoordinator.init(AdtCoordinatorID,AdtLogin,AdtPassword)
+	
+	/* PostF03 */
+	  and TheactCoordinator@post.rnctCoordinator = ThectCoordinator
+	  
+	/* PostF04 */  
+	  and ThectCoordinator@post.rnactAuthenticated = TheactCoordinator
+	   
+	/* PostF05 */  
+	  and TheActor.rnInterfaceIN^ieCoordinatorAdded()}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

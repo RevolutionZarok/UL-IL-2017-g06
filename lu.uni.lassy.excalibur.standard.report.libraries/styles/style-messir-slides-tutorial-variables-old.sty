@@ -1,0 +1,211 @@
+%----------------------------------------------------------
+\def\msrAudienceCountryCode{accUL} 
+%----------------------------------------------------------
+\DeclareRobustCommand{\msrAuthorName}{{Nicolas Guelfi}}
+\DeclareRobustCommand{\msrInstitute}{{University of Luxembourg, LU}}
+%----------------------------------------------------------
+\DeclareRobustCommand{\msrTitle}{
+%-----------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accRU}{\msrfontclb{\msrmessirclb} Tutorial}{}%
+%-----------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accUS}{\msrfontclb{\msrmessirclb} Tutorial}{}%
+%-----------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accUL}{\msrfontclb{\msrmessirclb} Tutorial}{}%
+        % you can add more cases here as desired
+     \IfSubStr{\msrAudienceCountryCode}
+        {accCH}{\msrfontclb{\msrmessir UL$/$CUI Meeting} \textbf{- Part: \insertpart}}{}%
+        % you can add more cases here as desired
+%-----------------------------
+    }%
+
+%----------------------------------------------------------
+
+% \DeclareRobustCommand{\msrTitlePageBubleOne}{%
+%     \IfEqCase{\msrAudienceCountryCode}{%
+%         {accRU}{\scalebox{1}{\parbox{\linewidth}{
+%                 {\includegraphics[width=2cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/new/russia/russian-who-are-you.pdf}}
+%                 }}}%
+%         {accUS}{\scalebox{1}{\parbox{\linewidth}{
+%                 {\small Who are\\you ?}}
+%             }}%
+%         % you can add more cases here as desired
+%     }[\PackageError{tree}{Undefined option}{}]%
+% }
+
+\DeclareRobustCommand{\msrTitlePageBubleOne}{%
+%---------------------------------------------
+    \IfSubStr{accRU}%
+        {\msrAudienceCountryCode}{\scalebox{1}{\parbox{\linewidth}{
+                {\includegraphics[width=2cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/new/russia/russian-who-are-you.pdf}}
+                }}}{}%
+%---------------------------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accUS}{\scalebox{1}{\parbox{\linewidth}{
+                {\small Who are\\you ?}}
+            }}{}%
+        % you can add more cases here as desired
+%---------------------------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accUL}{\scalebox{1}{\parbox{\linewidth}{
+                {\small Who are\\you ?}}
+            }}{}%
+        % you can add more cases here as desired
+%---------------------------------------------
+     \IfSubStr{\msrAudienceCountryCode}
+        {accCH}{\scalebox{1}{\parbox{\linewidth}{
+                {\small Who are\\you ?}}
+            }}{}%
+        % you can add more cases here as desired
+%---------------------------------------------
+    }%
+
+
+\DeclareRobustCommand{\msrTitlePageBubleTwo}
+        {\small
+        My Name is \\
+        \color{Crimson}\textbf{Guelfi !}\\
+        \color{MediumPurple}Nicolas Guelfi
+        }
+        
+\DeclareRobustCommand{\msrTitlePageTitle}{
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accRU}{\scalebox{1}{\parbox{\linewidth}{
+                {\centering 
+                \Large
+                \msrmessirclb\\
+                \msrtxtclb{Black!75}{
+                \textit{
+                A Scientific Method for the\\
+                Software Engineering Master}\\
+                }
+                \textcolor{SeaGreen}{\Huge \textbf{Tutorial}}\\
+                }
+                }}}%
+        {accUS}{\scalebox{1}{\parbox{\linewidth}{
+                {\vspace{.5cm}
+                \centering 
+                \Large
+                \msrtxtclb{Black!75}{
+                    \textit{Software Engineering Education}\\
+                    \vspace{.5cm}
+                    {\Large The \msrmessirclb Approach}\\
+                    \vspace{.5cm}
+                    \textcolor{Crimson!90}{\LARGE \textbf{CMU Silicon Valley}}\\
+                    \vspace{.5cm}
+                    \textcolor{Black!50}{\textit{(Lecture)}}\\
+                }
+                }
+                }
+                }}%
+        {accUL}{\scalebox{1}{\parbox{\linewidth}{
+                {\centering 
+                \Large
+                \msrmessirclb\\
+                \msrtxtclb{Black!75}{
+                \textit{
+                A Scientific Method for the\\
+                Software Engineering Master}\\
+                }
+                \textcolor{SeaGreen}{\Huge \textbf{Tutorial}}\\
+                }
+                }}}%
+        {accCH}{\scalebox{1}{\parbox{\linewidth}{
+                {\centering 
+                \Large
+                \msrmessirclb\\
+                \msrtxtclb{Black!75}{
+                \textit{
+                Software Engineering Project\\
+                Analyse and Design}\\
+                }
+                \textcolor{SeaGreen}{\Large \textbf{UL $/$ CUI Meeting}}\\
+                }
+                }}}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option}{}]%
+
+%\vspace{-0.5cm}
+}
+
+\DeclareRobustCommand{\msrImageHostBackgroung}[1]{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accRU}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=15cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/new/russia/test03.pdf}}}}%
+        {accUS}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=15cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/US-Background-SanFrancisco.pdf}}}}%
+        {accOLDCH}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=20cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/CH-cheese.pdf}}}}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option : #1}{}]%
+}
+
+\DeclareRobustCommand{\msrImageEngineer}[1]{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-graham-bell.pdf}}%
+        {accUL}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-graham-bell.pdf}}%
+        {accRU}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-nikolaï-polikarpov.pdf}}%
+        {accCH}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/jean-marc-vacheron.pdf}}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option : #1}{}]%
+}
+
+\newcommand{\msrImageScientist}[1]{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-rene-descartes.pdf}}%
+        {accUL}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-rene-descartes.pdf}}%
+        {accRU}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-rene-descartes.pdf}}%
+        {accCH}{\includegraphics[scale=#1]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-rene-descartes.pdf}}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option : #1}{}]%
+}%
+
+\newcommand{\msrImageSymbolismSymbol}[1]{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=15cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-apple-with-math.pdf}}}}%
+        {accUL}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=15cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-apple-with-math.pdf}}}}%
+        {accRU}{\scalebox{#1}{\parbox{\linewidth}{
+        \reflectbox{\includegraphics[width=15cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/people-nikolaï-polikarpov-plane.pdf}}}
+        }}%
+        {accCH}{\scalebox{#1}{\parbox{\linewidth}{
+        \includegraphics[width=26cm]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/CH-round-cow-clock.pdf}}}}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option : #1}{}]%
+}%
+
+
+\newcommand{\msrTimelineQuote}{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{\textit{Rivers know this: there is no hurry. We shall get there some day.\\(A.A. Milne)}}%
+        {accUL}{Prove it !}%
+        {accRU}{\includegraphics[angle=0,scale=.15]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/new/russia/tolstoi-russian-citation-warrior.pdf}
+}%
+        {accCH}{Prove it !}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option:msrAudienceCountryCode}{}]%
+}%
+
+\newcommand{\msrImageSymbolismScientificQuote}{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{Prove it !}%
+        {accUL}{Prove it !}%
+        {accRU}{Prove it !}%
+        {accCH}{Prove it !}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option:msrAudienceCountryCode}{}]%
+}%
+
+\newcommand{\msrImageSymbolismEngineerQuote}{%
+    \IfEqCase{\msrAudienceCountryCode}{%
+        {accUS}{This is not a MacBook !}%
+        {accUL}{This is not a MacBook !}%
+        {accRU}{This is not an Antonov !}%
+        {accCH}{This is not a Vacheron !}%
+        % you can add more cases here as desired
+    }[\PackageError{tree}{Undefined option  :msrAudienceCountryCode}{}]%
+}%
+

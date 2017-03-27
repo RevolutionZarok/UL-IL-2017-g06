@@ -1,0 +1,83 @@
+% @author nicolas.guelfi 
+% @date Tue Nov 05 17:26:22 CET 2013
+%-------------------------------------------------------------------------------
+% Copyright (c) 2013 University of Luxembourg.
+% All rights reserved. This program and the accompanying materials
+% are made available under the terms of the Eclipse Public License v1.0
+% which accompanies this distribution, and is available at
+% http://www.eclipse.org/legal/epl-v10.html
+% 
+% Contributors:
+%     Alfredo Capozucca - initial API and implementation
+%     Benoit Ries - minor updates
+%     Nicolas Guelfi - most content from messirbook
+%-------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{usenames,svgnames,table}{xcolor}
+\documentclass[graybox,envcountchap,sectrefs,11pt]{book} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DO NOT CHANGE THE ORDER 
+\usepackage{./../lu.uni.lassy.excalibur.standard.report.libraries/styles/style-messir-common}
+\usepackage{./../lu.uni.lassy.excalibur.standard.report.libraries/styles/style-messir-report-post}
+ 
+%--------------------------------------------
+% DOCUMENT BEGIN
+%---------------------------------------- ---
+\begin{document} 
+
+\newgeometry{textwidth=17cm,textheight=23.7cm} 
+
+\input{doc-gen/styles/style-messir-report-type.tex}
+
+\input{./../lu.uni.lassy.excalibur.standard.report.libraries/defs/msr-def.tex}
+\input{doc/glossary/glossary.tex}
+\input{defs/msr-project-def.tex}
+
+%TITLE
+\input{doc/title-page/title-page.tex}
+\maketitle
+\newpage
+
+%TOC
+\setcounter{tocdepth}{2}
+\addtocounter{secnumdepth}{2}
+\tableofcontents
+\newpage
+
+%TOF 
+\listoffigures
+\newpage
+
+%TOL
+\lstlistoflistings
+\newpage
+
+%DOCUMENT STRUCTURE
+\input{doc/introduction/introduction.tex}
+\newpage
+
+\input{doc/general-description/general-description.tex}
+
+\input{doc-gen/doc-gen.tex}
+\newpage
+
+\input{doc/additional-constraints/additional-constraints.tex}
+\newpage
+
+%APPENDICES
+\appendix
+\input{doc/appendix/appendix.tex}
+\input{doc-gen/appendix/appendix-gen.tex}
+\newpage
+
+%GLOSSARY
+\printglossaries
+\newpage
+
+%BIBLIOGRAPHY
+\cleardoublepage
+\bibliographystyle{./../lu.uni.lassy.excalibur.standard.report.libraries/styles/lncs} 
+\bibliography{./../lu.uni.lassy.excalibur.standard.report.libraries/defs/references/messir,doc/bibliography/report}
+\label{sec:references}
+
+\end{document}

@@ -1,0 +1,23 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeReportOnCrisis hidden
+@description
+"goal is to update the textual information available for a specific handled crisis.
+"
+@parameter icrash.usecases.subfunctions.oeReportOnCrisis.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeReportOnCrisis.AdtComment ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

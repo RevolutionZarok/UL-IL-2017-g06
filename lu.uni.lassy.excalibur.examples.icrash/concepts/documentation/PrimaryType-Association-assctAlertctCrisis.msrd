@@ -1,0 +1,4 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctAlertctCrisis
+
+@description
+"a crisis is related to one or more alerts as the alerts judged to concern all the same crisis due to their location. An alert alerts exactly one crisis."

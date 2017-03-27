@@ -1,0 +1,41 @@
+package icrash.operations.environment.actActivator.oeSetClock {
+
+import icrash.environment
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.calendar
+import lu.uni.lassy.messir.libraries.math
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+	Operation Model {
+
+operation: actActivator.outactActivator.oeSetClock(AcurrentClock:dtDateAndTime):ptBoolean
+{
+preP{
+  let TheSystem: ctState in
+  let AvpStarted: ptBoolean in
+  
+/* PreP01 */
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor.rnSystem.vpStarted = AvpStarted
+  and AvpStarted = true
+  and TheSystem.clock.lt(AcurrentClock)
+}
+preF{true}
+
+postF{
+  let TheSystem: ctState in
+  self.rnActor.rnSystem = TheSystem
+
+/* PostF01 */
+  and TheSystem@post.clock = AcurrentClock
+}
+postP{true}
+
+prolog{"src/Operations/Environment/OUT/outactActivator-oeSetClock.pl"}
+
+}
+}
+}

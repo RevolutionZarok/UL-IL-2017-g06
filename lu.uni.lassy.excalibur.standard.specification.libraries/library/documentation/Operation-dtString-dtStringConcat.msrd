@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.string.dtString.dtStringConcat
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.string.dtString.dtStringConcat.AdtString
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

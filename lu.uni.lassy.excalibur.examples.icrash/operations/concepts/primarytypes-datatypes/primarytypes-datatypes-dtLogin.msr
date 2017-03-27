@@ -1,0 +1,24 @@
+package icrash.operations.concepts.primarytypes.datatypes.dtLogin{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtLogin.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        let MaxLength: ptInteger in
+        ( if
+          ( MaxLength = 20
+            and self.value.length().leq(MaxLength)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+        }
+		prolog{"src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtLogin-is.pl"}
+	}
+}
+}

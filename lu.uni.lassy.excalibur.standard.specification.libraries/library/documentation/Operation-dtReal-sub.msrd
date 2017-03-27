@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.math.dtReal.sub
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.math.dtReal.sub.AdtReal
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

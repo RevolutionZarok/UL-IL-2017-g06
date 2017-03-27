@@ -1,0 +1,9 @@
+
+@@view primitives-local-view-01
+@model Concept
+@level Local
+@sublevel Primary Datatype
+@number 4
+@description "primitives-local-view-01"
+@caption ""
+@scale 0.60

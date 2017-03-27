@@ -1,0 +1,226 @@
+% Last Modification:
+% @author AUTHOR_NAME
+% @date TODAY_DATE
+
+\chapter{General Description}
+\label{chap:general_description}
+
+In the context of the \msrmessir method, the information provided in this section is intended to present the system for which the \msrmessir analysis is provided. The content of this section is made accordingly to the requirements elicitation document that might have been done during the project but also adapted coherently in order to be an abstract introduction to the \msrmessir analysis.
+
+\section{Domain Stakeholders}
+\label{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-stakeholders}
+
+All stakeholders of the system are detailed in this section. After a brief description of a
+stakeholder, its objectives are first stated. Thereafter, the responsibilities of
+the stakeholder are detailed which help to achieve the stakeholder objectives to a certain
+degree. While the objectives characterize the general problems addressed by the \msricrash system,
+the responsibilities describe concrete actions that are expected from a stakeholder. Some of
+these responsibilities can be traced looking at the use case described in Section \ref{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-usecasemodel},and hence must be supported by the \msricrash  system. 
+All stakeholders listed in this section have an interest in the system or are affected
+by the system in some way, but only a subset of the stakeholders are directly involved in the use
+cases described.
+Let us remind that use case diagrams or descriptions are not \msrmessir analysis phase mandatory outputs. They are proposed as informal means to help understanding the semantics of the system specification made of the mandatory analysis models, which provide a complete executable specification.
+
+\subsection{Communication Company}
+A Communication Company is a company that has the capacity to ensure communication of information between its customers and the \msricrash system. 
+The objectives of a Communication Company are:
+\begin{itemize}
+  \item to be able to deliver any SMS sent by any human to the \msricrash's phone number.
+  \item to be able to transmit SMS messages from the ABC company that owns the \msricrash system to any human having an SMS compatible device accessible using a phone number.
+\end{itemize}
+\vspace{0.5cm}
+
+In order to achieve these objectives, the responsibilities of a Communication Company are:
+\begin{itemize}
+  \item ensure confidentiality and integrity of the information sent by a human to the \msricrash system or from the system to a human.
+  \item to be always available and reliable.
+\end{itemize}
+
+\subsection{Humans}
+A human is any person who considers himself related to a car crash either as a witness, a victim or an anonymous person. The objectives of a human are:
+\begin{itemize}
+  \item inform the \msricrash system about the crisis situation he detected.
+  \item be sure that the ABC company has been informed about the situation.
+  \item to be informed about the situation of the crisis he his related to as a victim or witness.
+\end{itemize}
+\vspace{0.5cm}
+
+In order to achieve these objectives, the responsibilities of a human are:
+\begin{itemize}
+  \item to provide has much details as possible concerning the crisis to the ABC company.
+  \item to declare a crisis only if the crisis is real.
+  \item to have access to the SMS compatible communication device he used to communication with the \msricrash system.
+\end{itemize}
+
+\subsection{Coordinators}
+A coordinator is a employee of the ABC company being responsible of handling one or several crisis. The objectives of a coordinator are:
+\begin{itemize}
+  \item to securely monitor the existing alerts and crisis.
+  \item to securely manage alerts and crisis until their termination.
+\end{itemize}
+\vspace{0.5cm}
+
+In order to achieve these objectives, the responsibilities of a coordinator are:
+\begin{itemize}
+  \item to be capable to determine how an alert received should be considered.
+  \item to be available to react to requests to handle alerts and crisis.
+  \item to be autonomous in handling crisis and to report on its handling.
+  \item to be able to decide when a crisis or an alert can be closed.
+  \item to know its system identification information for secure usage of the system.
+\end{itemize}
+
+\subsection{Administrator}
+An administrator is a employee of the ABC company being responsible of administrating the \msricrash system. The objectives of a coordinator are:
+\begin{itemize}
+  \item to add or delete coordinator actors from the system and its environment.
+\end{itemize}
+\vspace{0.5cm}
+
+In order to achieve these objectives, the responsibilities of a coordinator are:
+\begin{itemize}
+  \item know the company employees that can be coordinators and that have access to the system.
+  \item to know its system identification information for secure usage of the system.
+  \item to know the security policy of the ABC company.
+  \item to communicate the coordinators their identification information for secure system usage.
+\end{itemize}
+
+
+\subsection{Creator}
+
+A \msrcode{Creator}\footnote{In \msrmessir each system has a creator stakeholder who is different from a technical system administrator. Although those two roles can be fulfilled by the same person.} is a technician who is installing the \msricrash system on the infrastructure of the ABC company.
+The objectives of a \msrcode{Creator} are:
+\begin{itemize}
+  \item to install the \msricrash system
+  \item to define the values for the initial system's state
+  \item to define the values for the initial system's environment
+  \item to ensure the integration of the \msricrash system with its initial environment
+\end{itemize}
+\vspace{0.5cm}
+In order to achieve these objectives, the responsibilities of a \msrcode{Creator} are:
+\begin{itemize}
+  \item provide the necessary data to the \msricrash system for its initialization.
+\end{itemize}
+
+\subsection{Activator}
+
+An \msrcode{activator} is a logical representation of the active part the \msricrash system. It represents an implicit stakeholder belonging to the system's environment that interacts with the \msricrash system autonomously without the need of a external entity. It is usually used for representing time triggered functionalities.
+
+The objectives of a \msrcode{activator} are:
+\begin{itemize}
+  \item to communicate the current time to the system
+  \item to notify the administrator that some crisis are still pending for a too long time.
+\end{itemize}
+\vspace{0.5cm}
+In order to achieve these objectives, the responsibilities of a \msrcode{activator} are:
+\begin{itemize}
+  \item to know the current universal time
+  \item to send the messages to the system according to the time constraints specifically defined for it.
+\end{itemize}
+
+\newpage
+
+\section{System's Actors}
+\label{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-actors}
+
+The objective of this section is not to provide the full requirement elicitation document in this section but to reuse a part of this document to provide a informal introduction to the \msrmessir specification of the system under development. The use case model is made of a use case diagrams modelling abstractly and informally the actors and their use cases together with a set of use cases descriptions. 
+In addition, those diagrams and description tables are adapted to the \msrmessir specification since actor and messages names together with parameters are partly adapted to be consistent with the specification identifiers (see \cite{messirbook} for more details). 
+
+Among all the stakeholders presented in the previous section, we can determine five types of \glspl{direct actor}\footnote{The naming conventions in \msrmessir propose to start each type name by lowercase letters indicating the meta model type used (i.e. act for actors, ct for class type, \ldots. In addition to ease the reading it makes the translational semantics into Prolog code more straightforward.}: 
+\begin{itemize}
+  \item \msrcode{actComCompany}: for the Communication Company stakeholder.
+  \item \msrcode{actAdministrator}: for the Administrator stakeholder.
+  \item \msrcode{actCoordinator}: for the Coordinators stakeholders.
+  \item \msrcode{actActivator}: for the Activator stakeholder.
+  \item \msrcode{actMsrCreator}: for the Creator stakeholder.
+\end{itemize}
+ 
+In addition to those system actors, we can add five other types of actors related to the system's ones. Those five actors are grouped into two categories:
+\begin{itemize}
+  \item \Glspl{indirect actor}  
+  \begin{itemize}
+    \item \textit{Witness}: for any human that is a witness of a car crash
+    \item \textit{Victim}: for any human that is a victim of a car crash
+    \item \textit{Anonymous}: for any human that want to inform about a car crash while staying anonymous.
+  \end{itemize}
+  
+  \item \Glspl{abstract actor}
+	\begin{itemize}
+    \item \msrcode{actHuman}: represent abstractly any kind of human being actor wanting to communicate with the ABC system in the context of a car crash.
+    \item \msrcode{actAuthenticated}: for the logical Activator stakeholder.
+  \end{itemize}
+
+\end{itemize}
+
+
+\clearpage
+\section{Use Cases Model}
+\label{sec:lu.uni.lassy.excalibur.examples.icrash-gendescr-usecasemodel}
+
+\subsection{Use Case Diagram(s)}
+
+The figures \ref{fig:icrash-UCM-icrash-suDeployAndRun}, \ref{fig:icrash-UCM-icrash-suGlobalCrisisHandling}, \ref{fig:icrash-UCM-icrash-ugManageCrisis}, \ref{fig:icrash-UCM-icrash-ugAdministrateTheSystem} and \ref{fig:icrash-UCM-icrash-ugSecurelyUseSystem} provide \msrmessir use casediagrams for the ABC system use cases.
+
+Even though this general description is not formal, follow the advice given in the \msrmessir book \cite{messirbook} which proposes to have for each actor an input interface to receive messages from the system and an output one to send messages to the system.
+
+\begin{figure}
+\begin{center}
+\scalebox{1.2}{
+\includegraphics[width=150mm]{./images-all-gen/all/uc-suDeployAndRun.eps}
+\normalsize}
+\end{center}
+\caption{\msricrash suDeployAndRun Use Case Diagram}
+\label{fig:icrash-UCM-icrash-suDeployAndRun}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}
+\begin{center}
+\scalebox{1.0}{
+\includegraphics[width=150mm]{./images-all-gen/all/uc-suGlobalCrisisHandling.eps}
+\normalsize}
+\end{center}
+\caption{\msricrash suGlobalCrisisHandling Use Case Diagram}
+\label{fig:icrash-UCM-icrash-suGlobalCrisisHandling}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}
+\begin{center}
+\scalebox{1.0}{
+\includegraphics[width=150mm]{./images-all-gen/all/uc-ugManageCrisis.eps}
+\normalsize}
+\end{center}
+\caption{\msricrash ugManageCrisis Use Case Diagram}
+\label{fig:icrash-UCM-icrash-ugManageCrisis}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}
+\begin{center}
+\scalebox{1.0}{
+\includegraphics[width=150mm]{./images-all-gen/all/uc-ugAdministrateTheSystem.eps}
+\normalsize}
+\end{center}
+\caption{\msricrash ugAdministrateTheSystem Use Case Diagram}
+\label{fig:icrash-UCM-icrash-ugAdministrateTheSystem}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}
+\begin{center}
+\scalebox{1.0}{
+\includegraphics[width=150mm]{./images-all-gen/all/uc-ugSecurelyUseSystem.eps}
+\normalsize}
+\end{center}
+\caption{\msricrash ugSecurelyUseSystem Use Case Diagram}
+\label{fig:icrash-UCM-icrash-ugSecurelyUseSystem}
+\end{figure}  
+\vspace{0.5cm}
+
+\clearpage
+
+\subsection{Use Case Instance(s)}
+
+The use case instance described below represents a summary level use case instance intended to illustrate a small and complete execution scenario of the \msricrash system. Figure \ref{fig:icrash-RE-UC-icrash-Test01-Communication-Diagram} provides informal graphical view (using a sequence diagram) of the messages sent during the scenario. The use case instance is described textually in the following use case description form as suggested by the \msrmessir method and inspired by the standard Cokburn template~\cite{armour01usecase}. We chose to indicate only messages sent by the environment to the system and not reply messages for readability.
+
+\input{./doc/appendix/icrash-RE-use-cases-instance-suDeployAndRun-01-table.tex}

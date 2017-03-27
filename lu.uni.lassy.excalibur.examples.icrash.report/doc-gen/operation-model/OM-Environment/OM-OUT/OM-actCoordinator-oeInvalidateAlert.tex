@@ -1,0 +1,43 @@
+\subsection{Operation Model for oeInvalidateAlert}
+
+\label{OM-oeInvalidateAlert}
+
+
+The \msrcode{oeInvalidateAlert} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeInvalidateAlert}{ sent to indicate that an alert should be considered as closed.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtAlertID: dtAlertID}{the identification information used to determine the alert to close} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{ it is supposed that there exist one ctAlert instance with the same \msrcode{id} attribute value as the one provided by the coordinator actor who wants to close.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the ctAlert class instance having the provided id is considered closed in the post state.}
+	\addnumberedsinglerow{PostF}{the coordinator actor is informed about the satisfaction of its request.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

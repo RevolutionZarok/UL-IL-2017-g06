@@ -1,0 +1,7 @@
+@@view em-lv-03-parta-administrator
+@model Environment
+@level Local
+@number 3
+@description 'shows the local view for the administrator actor and interfaces'
+@caption 'administrator actor environment model view'
+@scale 0.80

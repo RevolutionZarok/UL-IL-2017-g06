@@ -1,0 +1,115 @@
+/*
+* Copyright University of Luxembourg
+* 
+* This file is part of EXCALIBUR.
+* EXCALIBUR is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, version 3 of the License.
+* 
+* EXCALIBUR is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with EXCALIBUR in the COPYING.txt file. 
+* If not, see <http://www.gnu.org/licenses/>.
+* 
+* Last Modification:
+*  
+* @author nicolas.guelfi
+* @date Mon May 06 18:10:54 CEST 2013
+*/
+
+package lu.uni.lassy.messir.libraries.calendar{
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+
+	Concept Model  {
+
+		Primary Types {
+
+			datatype dtHour extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+			datatype dtMinute extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+			datatype dtSecond extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+
+			datatype dtTime {
+				attribute hour:dtHour
+				attribute minute: dtMinute
+				attribute second: dtSecond
+				
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+				
+				// Logical Operations 
+				operation lt(AdtTime:dtTime):ptBoolean
+				operation gt(AdtTime:dtTime):ptBoolean
+				operation eq(AdtTime:dtTime):ptBoolean
+				external operation isNow():ptBoolean
+				
+				// Conversion Operations 
+				operation toSecondsQty():dtInteger
+				operation fromSecondsQty(AdtInteger:dtInteger):ptBoolean
+			}
+
+			datatype dtYear extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+			datatype dtMonth extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+			datatype dtDay extends dtInteger {
+				operation is():ptBoolean			
+				external operation close() : ptBoolean
+			}
+			
+			datatype dtDate {
+				attribute year:dtYear
+				attribute month: dtMonth
+				attribute day: dtDay
+				
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+				
+				// Logical Operations 
+				operation lt(AdtDate:dtDate):ptBoolean
+				operation gt(AdtDate:dtDate):ptBoolean
+				operation eq(AdtDate:dtDate):ptBoolean
+				external operation isNow():ptBoolean
+				
+				// Conversion Operations 
+				operation toSecondsQty():dtInteger
+				operation fromSecondsQty(AdtInteger:dtInteger):ptBoolean
+				
+			}
+			datatype dtDateAndTime {
+				attribute date:dtDate
+				attribute time: dtTime
+				
+				operation is():ptBoolean
+				external operation close() : ptBoolean
+				
+				operation lt(AdtDateAndTime:dtDateAndTime):ptBoolean
+				operation gt(AdtDateAndTime:dtDateAndTime):ptBoolean
+				operation eq(AdtDateAndTime:dtDateAndTime):ptBoolean
+				external operation isNow():ptBoolean
+
+				// Conversion Operations 
+				operation toSecondsQty():dtInteger
+				operation fromSecondsQty(AdtInteger:dtInteger):ptBoolean
+			}
+		}
+	}
+}

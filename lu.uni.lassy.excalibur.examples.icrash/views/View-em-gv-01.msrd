@@ -1,0 +1,7 @@
+@@view em-gv-01
+@model Environment
+@level Global
+@number 1
+@description 'shows a global view for all actors with their relationships with ctState'
+@caption ' em-gv-01 environment model global view'
+@scale 0.80

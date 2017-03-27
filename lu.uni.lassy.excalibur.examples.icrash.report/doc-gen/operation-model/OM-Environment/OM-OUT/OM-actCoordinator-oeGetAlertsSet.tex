@@ -1,0 +1,42 @@
+\subsection{Operation Model for oeGetAlertsSet}
+
+\label{OM-oeGetAlertsSet}
+
+
+The \msrcode{oeGetAlertsSet} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeGetAlertsSet}{sent to request all the ctAlert instances having a specific status.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AetAlertStatus: etAlertStatus}{the criteria used to select the alerts to send back to the actor} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{none}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ the post state is the one obtained by satisfying the \msrcode{isSentToCoordinator} predicate for each alert having the provided status and for the actor sending the message. (cf. specification of \msrcode{isSentToCoordinator} predicate given for the \msrcode{ctAlert} type.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

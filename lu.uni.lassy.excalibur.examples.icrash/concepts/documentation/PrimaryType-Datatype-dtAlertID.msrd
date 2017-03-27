@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtAlertID
+
+@description
+" A string used to identify alerts."
+
+@operation icrash.concepts.primarytypes.datatypes.dtAlertID.is
+ "used to determine which strings are considered as valid alert identifiers."
+
+@endOperations

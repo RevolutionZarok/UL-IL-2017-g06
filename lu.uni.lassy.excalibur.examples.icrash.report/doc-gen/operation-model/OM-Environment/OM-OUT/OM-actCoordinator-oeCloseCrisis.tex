@@ -1,0 +1,45 @@
+\subsection{Operation Model for oeCloseCrisis}
+
+\label{OM-oeCloseCrisis}
+
+
+The \msrcode{oeCloseCrisis} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeCloseCrisis}{sent to indicate that a crisis should be considered as closed.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis to close} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one ctCrisis instance with the same \msrcode{id} attribute value as the one provided by the coordinator actor who wants to close.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the ctCrisis class instance having the provided id is considered closed in the post state.}
+	\addnumberedsinglerow{PostF}{There is no handler declared in the system as associated to the crisis.}
+	\addnumberedsinglerow{PostF}{all the alert instances associated to this crisis do not belong any more to the system's post state.}
+	\addnumberedsinglerow{PostF}{the coordinator actor is informed about the satisfaction of its request.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

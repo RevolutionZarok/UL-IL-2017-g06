@@ -1,0 +1,35 @@
+@@Operation
+icrash.environment.actAuthenticated.outactAuthenticated.oeLogin
+//parameters
+@parameter icrash.environment.actAuthenticated.outactAuthenticated.oeLogin.AdtLogin
+"first information used to determine accessibility rights for the actual actor."
+@parameter icrash.environment.actAuthenticated.outactAuthenticated.oeLogin.AdtPassword
+"second information used to determine accessibility rights for the actual actor."
+@endParameters
+@description
+"sent to request authorization to request access secured system operations."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor is not already logged in ! (i.e. the associated ctAuthenticated instance is not considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+"none "
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" if the login and password provided by the actor correspond to the ones that belong to the ctAuthenticated instance he is related to 
+then a welcome message is sent to the actor (n.b. the logged status is changed as a post-protocol condition);
+else the actor is notified that he gave incorrect data and all the administrator actors existing in the environment are notified of an intrusion attempt."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"if the authentication information is correct then the actor is known to be logged in ! (i.e. the associated ctAuthenticated instance with given login and password is considered logged)"
+
+@endPostP

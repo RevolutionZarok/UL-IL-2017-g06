@@ -1,0 +1,824 @@
+%% vim: ft=tex sw=2 :
+%% vim: ft=tex sw=2 :
+%% This is file `almslides.sty'.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{alms}
+    [2010/10/10 0.1]
+
+\let\oldsqcup=\sqcup
+\let\oldsqcap=\sqcap
+
+%% \RequirePackage{url}
+\RequirePackage{amsmath,amssymb,amsfonts,amsthm}
+\RequirePackage{supertabular}
+\RequirePackage{ifthen}
+%% \RequirePackage[plain]{fancyref}
+\RequirePackage{mathpartir}
+%% \RequirePackage{ucs}
+%% \RequirePackage[utf8x]{inputenc}
+%% \RequirePackage[T1]{fontenc}
+\RequirePackage{nameref}
+\RequirePackage{thmtools}
+%% \RequirePackage{stx}
+\RequirePackage{upgreek}
+\RequirePackage{rotating}
+%% 
+%% lists!
+\toksdef\ta=0 \toksdef\tb=2 % token list registers for temp use
+\long\def\cons#1\to#2{\ta={\list@item{#1}}\tb=\expandafter{#2}%
+  \edef#2{\the\ta\the\tb}}
+\long\def\snoc#1\to#2{\ta={\list@item{#1}}\tb=\expandafter{#2}%
+  \edef#2{\the\tb\the\ta}}
+\def\concatenate#1=#2&#3{\ta=\expandafter{#2}\tb=\expandafter{#3}%
+  \edef#1{\the\ta\the\tb}}
+\def\lop#1\to#2{\expandafter\lopoff#1\lopoff#1#2}
+\long\def\lopoff\list@item#1#2\lopoff#3#4{\def#4{#1}\def#3{#2}}
+%%
+
+%% Long comments
+\newcommand\IGNORE[1]{\relax}
+
+%%%% BEGIN listings
+
+\newenvironment{mtabbing}% math tabbing environment
+{
+    \newcommand\m@tht@b[2]{\def##1{{}$##2${}}}
+    \let\old@kill=\kill
+    \let\old@pushtabs=\pushtabs
+    \let\old@poptabs=\poptabs
+    \m@tht@b\>\@rtab
+    \m@tht@b\<\@ltab
+    \m@tht@b\=\@settab
+    \m@tht@b\+\@tabplus
+    \m@tht@b\-\@tabminus
+    \m@tht@b\`\@tabrj
+    \m@tht@b\'\@tablab
+    \m@tht@b\kill\old@kill
+    \m@tht@b\pushtabs\old@pushtabs
+    \m@tht@b\poptabs\old@poptabs
+    \renewcommand\\[1][0pt]{{}$\@tabcr[##1]${}}%
+    \global\@hightab\@firsttab
+    \global\@nxttabmar\@firsttab
+    \dimen\@firsttab\@totalleftmargin
+    \global\@tabpush\z@
+    \global\@rjfieldfalse
+    \trivlist \item\relax
+    \if@minipage\else\vskip\parskip\fi
+    \setbox\@tabfbox\hbox{\rlap{\indent\hskip\@totalleftmargin
+      \the\everypar}}\def\@itemfudge{\box\@tabfbox}%
+    \@startline\ignorespaces%
+    \hspace*{\leftmargini}\@settab\@tabplus$\kill%
+}
+{
+    $%
+    \@stopline\ifnum\@tabpush >\z@ \@badpoptabs \fi\endtrivlist
+}
+
+\newcommand<>\textkw[1]{%
+    \ensuremath{\mathop{\text{\upshape\KW#2{#1}}}}%
+}
+
+\newcommand\defkw[2]{%
+    \newcommand<>#1{\textkw##1{#2}}%
+}
+
+\newcommand\newkw[2][ ]{%
+    \expandafter\defkw\csname#2\endcsname{%
+        \MakeLowercase{#2}{#1}%
+    }%
+}
+
+\renewcommand\T[1]{%
+    \ensuremath{\mathop{\text{\upshape#1}}}%
+}
+
+% List of type operators
+\def\ty@ps{}
+
+\newcommand\TYPE[1]{\T{#1}\futurelet\after@type\finish@type}
+\newcommand\TYOP[2][\;]{\TYPE{#1#2}}
+\newcommand\deftype[2]{\def#1{\TYPE{#2}}}
+\newcommand\deftyop[2]{%
+    \newcommand{#1}[1][\;]{\TYOP[##1]{#2}}%
+    \cons#1\to\ty@ps%
+}
+\newcommand\iftyop[3]{%
+    \def\iftyop@kont{#3}%
+    \def\list@item##1{\ifx#1##1\def\iftyop@kont{#2}\fi}%
+    \ty@ps\iftyop@kont%
+}
+
+\newcommand\ifinclass[4]{%
+    \def\ifinclass@branch{#4}%
+    \def\ifinclass@loop##1{%
+        \if .##1%
+          \def\ifinclass@loop{}%
+        \else\if #2##1%
+          \def\ifinclass@branch{#3}%
+        \else%
+        \fi\fi%
+        \ifinclass@loop%
+    }%
+    \ifinclass@loop#1.%
+    \ifinclass@branch%
+}
+
+\newcommand\ifdigit{\ifinclass{0123456789}}
+
+\newif\ifshowalmsline
+\showalmslinefalse
+\newcounter{almsline}
+
+\newcommand\clabel[1]{%
+    \showalmslinetrue%
+    \def\@currentlabel{\p@almsline\thealmsline}%
+    \label{line:#1}%
+    \hypertarget{line:#1}{}%
+    \ignorespaces%
+}
+
+%\newtoks\g@therbuf
+
+\newcommand\gathersubscript{%
+    \def\g@therbuf{\relax}%
+    \futurelet\next\g@thersubscript%
+}
+\newcommand\g@thersubscript{%
+    \def\g@thercont{}%
+    \ifdigit\next{%
+        \def\g@thercont{\g@th@rsubscript}%
+    }%
+    {%
+        \if\g@therbuf\relax%
+        \else%
+            \def\g@thercont{%
+                \ensuremath{{}_{\g@therbuf}}%
+            }%
+        \fi%
+    }%
+    \g@thercont%
+}
+\newcommand\g@th@rsubscript[1]{%
+    \edef\g@therbuf{\g@therbuf#1}%
+    \futurelet\next\g@thersubscript%
+}
+
+\edef\emdash{---}
+\let\alms@old@minus=-
+\let\alms@old@plus=+
+\let\alms@old@asterisk=*
+\let\alms@old@lparen=(
+\let\alms@old@rparen=)
+\let\alms@old@colon=:
+\let\alms@old@semi=;
+\let\alms@old@query=?
+\let\alms@old@bang=!
+\let\alms@old@comma=,
+\let\alms@old@equals==
+\let\alms@old@under=_
+\let\alms@old@caret=^
+
+\def\alms@setupcatcodes{%
+    \catcode`\-=\active%
+    \catcode`\'=\active%
+    \catcode`\`=\active%
+    \catcode`\*=\active%
+    \catcode`\(=\active%
+    \catcode`\)=\active%
+    \catcode`\+=\active%
+    \catcode`\:=\active%
+    \catcode`\_=\active%
+    \catcode`\^=\active%
+    \catcode`\;=\active%
+    \catcode`\?=\active%
+    \catcode`\!=\active%
+    \catcode`\,=\active%
+    \catcode`\==\active%
+    \relax%
+}
+
+{
+    \alms@setupcatcodes
+    \gdef\alms@catcodedefs{%
+        \let'\alms@singlequote%
+        \let`\alms@backquote%
+        \let^\alms@circumflex%
+        \let_\alms@underscore%
+        \let-\alms@hyphen%
+        \mdef*{\times}%
+        \mdef@old+{plus}%
+        \mdef@old({lparen}%
+        \mdef@old){rparen}%
+        \mdef@old:{colon}%
+        \mdef@old;{semi}%
+        \mdef@old?{query}%
+        \mdef@old!{bang}%
+        \mdef@old,{comma}%
+        \mdef@old={equals}%
+        \newcommand\finish@type{%%
+          \ifx\after@type)\else%%
+          \ifx\after@type]\else%%
+          \ifx\after@type,\else%%
+          \ifx\after@type;\else%%
+          \ifx\after@type\egroup\else%%
+          \iftyop\after@type{}%%
+          { }\fi\fi\fi\fi\fi%%
+        }%
+    }
+}
+
+\gdef\almsdefs{%
+    \defkw\BANG{\ensuremath{\lightning}}%
+    \def\SESSIONSEND{\ensuremath{\uparrow}}%
+    \def\SESSIONRECV{\ensuremath{\downarrow}}%
+    \mnew\MATHSUB[1]{\ensuremath{_##1}}%
+    \mnew\MATHSUP[1]{\ensuremath{^##1}}%
+    \newkw{If}\newkw{Then}\newkw{Else}\newkw{Match}\newkw{With}%
+    \newkw{As}\newkw{Try}\newkw{Raise}\newkw{Local}\newkw{Open}\newkw{Exception}%
+    \newkw{Let}\newkw{Rec}\newkw{And}\newkw{In}\newkw{Interface}%
+    \newkw{Abstype}\newkw[]{End}\newkw{Module}\newkw{Struct}\newkw{Sig}%
+    \newkw{Val}\newkw{Include}\newkw{Type}\newkw{Of}%
+    \newkw[]{Kindof}%
+    \newkw{Promote}\newkw{For}\newkw{Derelict}\newkw{Be}%
+    \defkw\Fun{$\uplambda$}%
+    \defkw\All{\kern0.7em\raisebox{1.5ex}{\turnbox{180}{A}}}%
+    \defkw\Ex{\kern0.7em\raisebox{1.5ex}{\turnbox{180}{E}}}%
+    \defkw\A{A}\defkw\U{U}%
+    \defkw\|{|}%
+    \deftype\Int{int}%
+    \deftype\String{string}%
+    \deftype\Bool{bool}%
+    \deftype\Socket{socket}%
+    \deftype\Unit{unit}%
+    \deftype\Float{float}%
+    \deftype\Vertex{vertex}%
+    \deftype\Process{process}%
+    \deftype\GLSTY{glSurface}%
+    \deftyop\GLS{glSurface}%
+    \deftype\Accounts{accounts}%
+    \deftype\LLock{Lock.lock}%
+    \deftype\Read{shared}%
+    \deftype\Write{excl}%
+    \deftyop\Aref{aref}%
+    \deftyop\Uref{ref}%
+    \deftyop\LCLock{LockCap.lock}%
+    \deftyop\AArray{A.array}%
+    \deftyop\ArArray{Array.array}%
+    \deftyop\AfArray{AfArray.array}%
+    \deftyop\CapArray{CapArray.array}%
+    \deftyop\ACap{arraycap}%
+    \deftyop\CLArray{CapLockArray.array}%
+    \deftyop\CapCap{CapArray.cap}%
+    \deftyop\Array{array}%
+    \deftyop\List{list}%
+    \deftyop\UnList{listU}%
+    \deftyop\LinList{listL}%
+    \deftyop\AfList{listA}%
+    \deftyop\Option{option}%
+    \deftyop\Arraylock{arraylock}%
+    \deftyop\Capp{cap}%
+    \deftyop\Lock{lock}%
+    \deftyop\MMvar{MVar.mvar}%
+    \deftyop\Mvar{mvar}%
+    \deftyop\Locked{locked}%
+    \deftyop\SSocket{socket}%
+    \deftyop\SRaw{raw}%
+    \deftyop\SBound{bound}%
+    \deftyop\SListening{listening}%
+    \deftyop\SReady{ready}%
+    \deftyop\Chan{channel}%
+    \deftyop\Rgn{rgn}%
+    \deftyop\RgnI{rgn1}%
+    \deftyop\Ptr{ptr}%
+    \newcommand\I[1][\quad]{##1\=\+}%
+    \def\D{\-}%
+    \newcommand<>\COM[1]{\uncover##2{$(*$\,{\color{DarkBlue}\upshape##1}\,$*)$}}%
+    \mnew\K[1]{\langle\text{##1}\rangle}%
+    \def\alms@singlequote##1{%
+        \ensuremath{
+          {\csname alms@greek@style\endcsname{
+            \if a##1\alpha
+            \else\if b##1\beta
+            \else\if c##1\gamma
+            \else\if d##1\delta
+            \else\if k##1\kappa
+            \else\if t##1\tau
+            \else\if q##1\phi
+            \else\if Q##1\mathfrak{q}
+            \fi\fi\fi\fi\fi\fi\fi\fi}}
+        }%
+        \gathersubscript%
+    }%
+    \def\alms@backquote##1{%
+        \ensuremath{\hat{\alms@singlequote##1}}\gathersubscript%
+    }%
+    \def\alms@circumflex##1 {\ensuremath{\csname##1\endcsname}}%
+    \def\alms@underscore{\raisebox{2.5pt}{\kern.7pt\LARGE\underline{\;}\kern0.5pt}}%
+    \newcommand\msub[1]{\ensuremath{\alms@old@under{##1}}}%
+    \newcommand\msup[1]{\ensuremath{\alms@old@caret{##1}}}%
+    \def\gs{\gathersubscript}%
+    \def\finishsuparrow[##1]>{%
+      \ensuremath{{\csname alms@arrow@style\endcsname{\tosup[-.4ex]{%
+        {\csname alms@arrowsup@style\endcsname{##1}}%
+      }}}}%
+    }%
+    \def\finishplainarrow##1##2{%
+      \ensuremath{{\csname alms@arrow@style\endcsname{##1}}}%
+    }%
+    \def\alms@hyphen{%
+        \@ifnextchar[ {\finishsuparrow}{%
+        \@ifnextchar> {\finishplainarrow\to}{%
+        \@ifnextchar o {\finishplainarrow\multimap}{%
+        \alms@old@minus}}}%
+    }%
+    \alms@setupcatcodes%
+    \alms@catcodedefs%
+    \slshape%
+    \ignorespaces%
+}
+
+\newdimen\almsindent
+\newdimen\almsgap
+\almsindent=0.5cm
+\almsgap=0.0cm
+\def\almsskip{%
+  \ifdim \almsgap = 0.0cm %
+  \else\vskip\almsgap\fi%
+}
+
+\gdef\alms
+{
+    \refstepcounter{almsline}
+    \almsdefs
+    % start of tabbing env
+    \lineskip \z@skip\let\>\@rtab\let\<\@ltab\let\=\@settab
+    \let\+\@tabplus\let\-\@tabminus\let\`\@tabrj\let\'\@tablab
+    \def\\{%
+        \ifshowalmsline%
+          \`{\rm\scriptsize(\arabic{almsline})}%
+          \showalmslinefalse%
+        \fi%
+        \refstepcounter{almsline}%
+        \@tabcr%
+    }
+    \@hightab\@firsttab
+    \global\@nxttabmar\@firsttab
+    \dimen\@firsttab\@totalleftmargin
+    \global\@tabpush\z@ \global\@rjfieldfalse
+    \trivlist \item\relax
+    \if@minipage\else\almsskip\fi
+    \setbox\@tabfbox\hbox{%
+      \rlap{\hskip\@totalleftmargin\indent\the\everypar}}%
+    \def\@itemfudge{\box\@tabfbox}%
+    \@startline\ignorespaces%
+    % end of tabbing env
+    \hskip\almsindent\=\+\kill%
+}
+\gdef\endalms{%
+  \@stopline\ifnum\@tabpush >\z@ \@badpoptabs \fi%
+  \if@minipage\else\almsskip\fi%
+  \endtrivlist%
+}
+
+\gdef\textalms{\bgroup\almsdefs\text@lms}
+\gdef\text@lms#1{#1\egroup}
+
+\let\TA=\textalms
+
+%%%% END listings
+
+%% If defined
+\def\alms@ifdefined#1#2#3{%
+  \expandafter\ifx\csname #1\endcsname\relax%
+  #3%
+  \else%
+  #2%
+  \fi%
+}
+
+%% \def\reallynopagebreak{\par\nopagebreak\@nobreaktrue}
+%% 
+%% \newenvironment{byCases}
+%%   {%
+%%     \begingroup%
+%%     \def\real@case##1{\item[\strut~Case {$##1$}.]\mbox{}\reallynopagebreak}%
+%%     \def\bracket@case[##1]{\real@case{##1}}%
+%%     \def\case{\@ifnextchar [{\bracket@case}{\real@case}}%
+%%     \def\otherwise{\item[\strut~Otherwise.]\mbox{}\par}%
+%%     \relax%
+%%     \begin{description}%
+%%   }
+%%   {%
+%%     \end{description}%
+%%     \endgroup%
+%%   }
+%% 
+%% \newcommand\icase[3][\relax]{
+%%   \case{
+%%     \inferrule{#2}{#3}
+%%     \if\relax#1\else\text{ where }#1\fi
+%%   }
+%% }
+%% 
+%% \declaretheorem[name=Theorem]{thm}
+%% \declaretheorem[name=Definition,sibling=thm]{defn}
+%% \declaretheorem[name=Lemma,sibling=thm]{lem}
+%% \declaretheorem[name=Observation,sibling=thm]{obs}
+%% \declaretheorem[name=Corollary,sibling=thm]{cor}
+%% \declaretheorem[name={Main Theorem},sibling=thm]{mainthm}
+%% 
+%% \def\restater{}
+%% \def\proofsketch{Proof}%
+%% 
+%% \newenvironment{restate}[3]
+%% {%
+%%     \iflong%
+%%         \gdef\restater{%
+%%             (The full proof of \fref{#1:#2} may be found
+%%              on page~\pageref{#1:#2}.)
+%%             \def\qed{\hfill $\rhd$}%
+%%         }%
+%%         \gdef\proofsketch{Proof sketch}%
+%%         \begingroup%
+%%         \begin{trivlist}\item%
+%%         \textbf{\Fref{#1:#2}} (#3)\textbf.%
+%%         \itshape{}~\ignorespaces%
+%%     \else%
+%%         \gdef\proofsketch{Proof}%
+%%         \begin{#1}[#3]%
+%%         \label{#1:#2}%
+%%         \def\restate@type{#1}%
+%%     \fi%
+%% }
+%% {%
+%%     \iflong%
+%%         \end{trivlist}%
+%%         \endgroup%
+%%     \else%
+%%         \expandafter\end\expandafter{\restate@type}%
+%%     \fi%
+%% }
+%% 
+%% \renewcommand{\fancyrefdefaultformat}{plain}
+%% \def\frefformatplain#1#2{\frefformat{plain}{#1}{#2}}
+%% \def\Frefformatplain#1#2{\Frefformat{plain}{#1}{#2}}
+%% \newcommand\newfrefformat[3][\relax]{%
+%%   \expandafter\def\csname fancyref#2labelprefix\endcsname{#2}%
+%%   \expandafter\def\csname fref#2name\endcsname{#3}%
+%%   \expandafter\frefformatplain\csname fancyref#2labelprefix\endcsname{%
+%%     #1{\csname fref#2name\endcsname}%
+%%     {\fancyrefdefaultspacing}{##1}%
+%%   }%
+%%   \expandafter\Frefformatplain\csname fancyref#2labelprefix\endcsname{%
+%%     #1{\edef\frefcurname{\csname fref#2name\endcsname}%
+%%       \expandafter\MakeUppercase\frefcurname}%
+%%     {\fancyrefdefaultspacing}{##1}%
+%%   }%
+%% }
+%% 
+%% \frefformat{plain}{\fancyrefseclabelprefix}{\S#1}
+%% 
+%% \newcommand\nref[1]{\fref{#1} (\nameref{#1})}
+%% \newcommand\Nref[1]{\Fref{#1} (\nameref{#1})}
+%% \newfrefformat{thm}{theorem}
+%% \newfrefformat{mainthm}{theorem}
+%% \newfrefformat{defn}{definition}
+%% \newfrefformat{lem}{lemma}
+%% \newfrefformat{obs}{observation}
+%% \newfrefformat{cor}{corollary}
+%% \newfrefformat{appendix}{appendix}
+%% \newfrefformat[\alms@part@ref]{part}{part}
+%% \newcommand\alms@part@ref[3]{#1#2(#3)}
+%% 
+%% \def\fancyreflinelabelprefix{line}
+%% \def\freflinename{line}
+%% \frefformat{plain}{\fancyreflinelabelprefix}{%
+%%     (#1)%
+%% }
+%% \Frefformat{plain}{\fancyreflinelabelprefix}{%
+%%     \expandafter\MakeUppercase\freflinename\fancyrefdefaultspacing(#1)
+%% }
+%% 
+%% \alms@ifdefined{hyperdef}{
+%%   \newcommand\plainrref[1]{\hyperlink{rule:#1}{\rm\textsc{#1}}}
+%%   \newcommand\ranchor[1]{\hypertarget{rule:#1}{\rm\textsc{#1}}}
+%% %
+%%   \alms@ifdefined{textcolor}{
+%%     \definecolor{linkgreen}{rgb}{0,0.4,0}
+%%     \hypersetup{
+%%       colorlinks,
+%%       linkcolor=linkgreen,
+%%       citecolor=linkgreen
+%%     }
+%%   }{}
+%% }{
+%%   \newcommand\plainrref[1]{{\rm\textsc{#1}}}
+%%   \newcommand\ranchor[1]{{\rm\textsc{#1}}}
+%% }
+%% \def\plain@ref*{\plainrref}
+%% \newcommand\rref{\@ifnextchar*{\plain@ref}{rule~\plainrref}}
+%% \newcommand\Rref{\@ifnextchar*{\plain@ref}{Rule~\plainrref}}
+%% \renewcommand\infer[3][\relax]{%
+%%     \ifx#1\relax%
+%%         \inferrule{#2}{#3}%
+%%     \else%
+%%         \inferrule[\ranchor{#1}]{#2}{#3}%
+%%     \fi%
+%% }
+%% %\renewcommand\TirName{\plainrref}
+%% %\renewcommand\RefTirName{\ranchor}
+%% 
+%% \newcommand\inputott[1]{
+%%   \input #1
+%%   \renewottcommands
+%% }
+%% 
+%% \newcommand\grammar[1]{
+%%   \begin{tabular}[t]{llcllllll}
+%%   #1
+%%   \end{tabular}
+%% }
+
+\def\mdef#1#2{\def#1{\ensuremath{#2}}}
+\def\mnew@command#1[#2]#3{\newcommand#1[#2]{\ensuremath{#3}}}
+\def\mnewcommand#1#2{%
+  \ifthenelse{\equal{#2}{[}}
+    {\mnew@command{#1}[}
+    {\mdef{#1}{#2}}
+}
+\let\mnew\mnewcommand
+
+\def\mdef@old#1#2{%
+  \mdef#1{%
+    {\csname alms@#2@style\endcsname{\csname alms@old@#2\endcsname}}%
+  }%
+}
+
+\def\almssetstyle#1#2{%
+  \expandafter\def\csname alms@#1@style\endcsname{#2}%
+}
+
+\almssetstyle{lparen}{\textcolor{LightCharcoal}}
+\almssetstyle{rparen}{\textcolor{LightCharcoal}}
+
+%% \newcommand\renewottcommands{
+%%   \renewcommand\ottdrulename[1]{\ranchor{##1}}
+%%   \renewcommand{\ottprodline}[6]{
+%%     \ifthenelse{\equal{##3}{}}{
+%%       & & $##1$ & $##2$ & & $##5$ & $##6$
+%%     }{\\[-24pt]}
+%%   }
+%%   \renewcommand{\ottdrule}[4][]{
+%%     \inferrule[##4]
+%%       {\global\readyforbreakfalse##2}
+%%       {##3}
+%%   }
+%% 
+%%   \renewcommand{\ottusedrule}[1]{%
+%%     \ifreadyforbreak\and\fi%
+%%     \ensuremath{##1}%
+%%     \global\readyforbreaktrue%
+%%   }
+%% 
+%%   \renewenvironment{ottdefnblock}[3][]
+%%     {\par\noindent\fbox{##2}\hfill(##3)%
+%%      \par\noindent%
+%%      \global\readyforbreakfalse%
+%%      \begin{mathparpagebreakable}}
+%%     {\end{mathparpagebreakable}}
+%% 
+%%   \renewcommand{\ottpremise}[1]{%
+%%     \ifreadyforbreak\and\fi%
+%%     ##1%
+%%     \global\readyforbreaktrue
+%%   }
+%% 
+%%   \newcommand{\ottlbhack}{\relax}
+%% 
+%%   \gdef\ottuserXXsyntax{}
+%%   \gdef\ottjudgement{}
+%% }
+
+\newbox\crusher
+\newcommand\crushr[2][0pt]{%
+  \setbox\crusher\hbox{#2}%
+    \kern-\wd\crusher%
+      \usebox\crusher%
+        \kern#1%
+}
+\newcommand\crushl[2][0pt]{%
+  \setbox\crusher\hbox{#2}%
+    \usebox\crusher%
+      \kern-\wd\crusher%
+        \kern#1%
+}
+\newcommand\mathcrushr{\mathpalette\mathcrushrhelper}
+\def\mathcrushrhelper#1#2{%
+  \crushr{$#1#2$}%
+}
+\newcommand\mathcrushl[1][0pt]{\mathpalette{\mathcrushlhelper{#1}}}
+\def\mathcrushlhelper#1#2#3{%
+  \crushl[#1]{$#2#3$}%
+}
+\def\uncrushr#1{%
+  \setbox\crusher\hbox{#1}%
+    \kern\wd\crusher%
+}
+\def\uncrushl#1{%
+  \setbox\crusher\hbox{#1}%
+    \kern-\wd\crusher%
+}
+\newcommand\crusht[2][0pt]{%
+  \setbox\crusher\vbox{#2}%
+    \usebox\crusher%
+      \vskip-\ht\crusher%
+        \vskip#1%
+}
+\newcommand\crushb[2][0pt]{%
+  \setbox\crusher\vbox{#2}%
+    \vskip-\ht\crusher%
+      \usebox\crusher%
+        \vskip#1%
+}
+
+
+%% %%% comma killing
+%% \def\@killcomma,#1{}
+%% \newcommand\killcomma{\@ifnextchar,{\@killcomma}{} }
+%% \newif\ifreadyforbreak
+%% 
+%% %%% simple displays
+%% \DeclareUnicodeCharacter{171}{\unicode@left@guillemet}
+%% \DeclareUnicodeCharacter{8216}{\unicode@left@single@quotation@mark}
+%% \DeclareUnicodeCharacter{8220}{\unicode@left@double@quotation@mark}
+%% \DeclareUnicodeCharacter{8226}{\unicode@bullet}
+%% 
+%% \def\<#1\>{%
+%%   \begin{itemize}%
+%%     \def\|{$\item$}%
+%%     \def\unicode@bullet{\|}%
+%%     \let\oldqedhere=\qedhere%
+%%     \def\qedhere{\relax$\oldqedhere$\relax}
+%%     \item$#1$%
+%%   \end{itemize}%
+%% }
+%% 
+%% \def\unicode@left@guillemet#1»{\<#1\>}
+%% \newcommand\AND[1][and]{{\text{ #1 }}}
+%% 
+%% %%% some operators
+%% \mnew\SUBST[3]{\{#1/#2\}#3}
+%% \mnew\dom{\mathop{\mathrm{dom}}}
+%% \mnew\cod{\mathop{\mathrm{cod}}}
+%% \mnew\ftv{\mathop{\mathrm{ftv}}}
+%% \mnew\fv{\mathop{\mathrm{fv}}}
+%% \mnew\locs{\mathop{\mathrm{locs}}}
+%% \mnew\concretev[1]{{\mathcal C_{#1}}}
+%% \mnew\concrete[1]{\concretev{\text{\scshape{#1}}}}
+%% \mnew\tconcretev[1]{{\mathcal T_{#1}}}
+%% \mnew\tconcrete[1]{\tconcretev{\text{\scshape{#1}}}}
+%% \def\UNUSED{(Not used.)}
+%% \newcommand\semsect[2]{\fbox{$#1$}\hfill(#2)\par}
+%% \mnew\OFCOURSE{\mathord{!}}
+%% 
+\let\tosupdrop=\relax
+\def\t@s@p#1#2#3{%
+    \ifx#2\relax
+        #3%
+    \else%
+        \smash{\raisebox{#2}{$#1{#3}$}}%
+    \fi%
+}
+\def\t@sup#1#2{\t@s@p{#1}#2}
+\newcommand\tosup[2][\tosupdrop]{\xrightarrow{\mathpalette\t@sup{{#1}{#2}}}}
+
+%% %%% metavariables
+%% \mdef\MVVAR{x}
+%% \mdef\MVVARALT{y}
+%% \mdef\MTVAR{\alpha}
+%% \mdef\MTVARALT{\beta}
+%% \mdef\MLVAR{\ell}
+%% \mdef\MQLIT{\LAT{q}}
+%% \mdef\MVLIT{\LAT{v}}
+%% \mdef\MQEXP{\varphi}
+%% \mdef\MKIND{\kappa}
+%% \mdef\MTYPE{\tau}
+%% \mdef\MTYPEALT{\sigma}
+%% \mdef\MTCON{\chi}
+%% \mdef\MTERM{e}
+%% \mdef\MTCXT{\Delta}
+%% \mdef\MUCXT{\Gamma}
+%% \mdef\MACXT{\Sigma}
+%% \mdef\MSTOR{s}
+%% \mdef\MCONF{C}
+%% \mdef\MVALU{v}
+%% \mdef\MECXT{E}
+%% 
+%% %%% keywords
+%% \mnew\LAT[1]{\mathfrak{#1}}
+%% \mnew\KW[1]{\mathop{\mathsf{#1}}}
+%% \mnew\FIX{\KW{fix}}
+%% \mnew\REF{\KW{aref}}
+%% \mnew\CASE{\KW{case}}
+%% \mnew\UNITTY{1}
+%% \mnew\OF{\KW{of}}
+%% \mnew\INL{\mathop{\iota_1}}
+%% \mnew\INR{\mathop{\iota_2}}
+%% \mnew\INK{\mathop{\iota_k}}
+%% \mnew\NEW{\KW{new}}
+%% \mnew\SWAP{\KW{swap}}
+%% \mnew\DELETE{\KW{delete}}
+%% \mnew\PTR{\KW{ptr}}
+%% \mnew\NIL{\langle\kern0.5pt\rangle}
+%% \mnew\DOT{.\kern1pt}
+%% \mnew\QU{\mathsf{U}}
+%% \mnew\QA{\mathsf{A}}
+%% 
+%% %%% binders
+%% \mnew\ASCPAIR[2]{#1{:}#2}
+%% \mnew\IBINDER[3]{#1#2\DOT#3}
+%% \mnew\BINDER[4]{\IBINDER{#1}{\ASCPAIR{#2}{#3}}{#4}}
+%% \mnew\TLABS[2]{\IBINDER\lambda{#1}{#2}}
+%% \mnew\TABS[3]{\BINDER\Lambda{#1}{#2}{#3}}
+%% \mnew\TAPP[2]{#1[#2]}
+%% \mnew\ABS[3]{\BINDER\lambda{#1}{#2}{#3}}
+%% \mnew\ALL[3]{\BINDER\forall{#1}{#2}{#3}}
+%% 
+%% %%% variances/polarities
+%% \mdef\INVAR{{\pm}}
+%% \mdef\COVAR{{+}}
+%% \mdef\CNVAR{{-}}
+%% %\mdef\OMVAR{/\kern-4.6pt\circ}
+%% \mdef\OMVAR{\baro}
+%% \mdef\MULVAROP{\cdot}
+%% \mnew\MULVAR[2]{#1 \MULVAROP #2}
+%% \mnew\MEETVAROP{\sqcap}
+%% \mnew\MEETVAR[2]{#1 \MEETVAROP #2}
+%% \mnew\JOINVAROP{\sqcup}
+%% \mnew\JOINVAR[2]{#1 \JOINVAROP #2}
+%% \mnew\LEVAROP{\sqsubseteq}
+%% \mnew\GEVAROP{\sqsupseteq}
+%% \mnew\INIMPLE[4]{\text{if $#1 \in \ftv({#2})$ then $#3 \LEVAROP #4$}}
+%% 
+%% %%% qualifiers, kinds, types
+%% \mnew\TVQUAL[1]{{\langle{#1}\rangle}}
+%% \mnew\MEETQUALOP{\sqcap}
+%% \mnew\MEETQUAL[2]{#1 \MEETQUALOP #2}
+%% \mnew\JOINQUALOP{\sqcup}
+%% \mnew\JOINQUAL[2]{#1 \JOINQUALOP #2}
+%% \mnew\LEQUALOP{\sqsubseteq}
+%% \mnew\ARRKIND[3]{\Pi#1\raisebox{0.7ex}{\hbox{\scriptsize$#2$}}\DOT#3}
+%% \mnew\ARRTYPE[3]{#1 \tosup{#2} #3}
+%% \mnew\PRODTYPE[2]{#1 \times #2}
+%% \mnew\FORMKIND[1]{\text{\rm\textsc{#1}}}
+%% 
+%% %%% contexts
+%% \mnew\MTENV{\cdot}
+%% \mnew\LOOKUP[3]{\ASCPAIR{#1}{#2} \in #3}
+%% \mnew\MTSTORE{\{\}}
+%% \mnew\SGSTORE[2]{\{#1 \mapsto #2\}}
+%% \mnew\HOLE{[\kern1pt]}
+%% 
+%% %%% judgments
+%% \mnew\QLat[2]{#1 \LEQUALOP #2}
+%% \mnew\VLat[2]{#1 \LEVAROP #2}
+%% \mnew\EJudg[2]{#1 \equiv #2}
+%% \mnew\EJudgK[4]{#1 \vdash #2 \equiv #3 : #4}
+%% \mnew\BJudg[3]{#1 \vdash #2 \preceq #3}
+%% \mnew\VJudg[4]{#1 \vdash #2 \in #3 \updownarrow #4}
+%% \mnew\VQCond[5]{#3 = \text{if $#4 \in \ftv(#5)$ then $#1$ else $#2$}}
+%% \mdef\VQJudg{\VQCond{\COVAR}{\OMVAR}}
+%% %% \mnew\VJudg[4]{#1 \vdash \mathcal{V}(#2, #3) = #4}
+%% \mnew\TSubOp[1]{\mathrel{{<:}^{#1}}}
+%% \mnew\TSub[4]{#1 \vdash #2 \TSubOp{#3} #4}
+%% \mdef\StepOp{\longmapsto}
+%% 
+%% \newbox\equivbox
+%% \setbox\equivbox\hbox{$\equiv$}
+%% \mdef\ParRedOp{\mathrel{{\equiv}\kern-\wd\equivbox{\to}}}
+%% \mdef\ParRedInvOp{\mathrel{{\leftarrow}\kern-\wd\equivbox{\equiv}}}
+%% \mdef\ParRedSymOp{\mathrel{{\leftarrow}\kern-\wd\equivbox{\ParRedOp}}}
+%% \mdef\ParRedTransOp{\stackrel*\ParRedOp}
+%% \mdef\ParRedSymTransOp{\stackrel*\ParRedSymOp}
+%% \mdef\ParRedTransSymOp{\ParRedSymTransOp}
+%% 
+%% \newenvironment{withParRed}
+%%   {\newcommand\pr[1]{\stackrel{##1}\ParRedOp}
+%%    \newcommand\pri[1]{\stackrel{##1}\ParRedInvOp}
+%%    \newcommand\prs[1]{\stackrel{##1}\ParRedSymOp}
+%%    \def\prt{\ParRedTransOp}
+%%    \def\prst{\ParRedSymTransOp}}
+%%   {}
+
+%%% our calculus
+\mdef\CALC{\ensuremath{{}^{\mathit{a}}\kern-0.18em\lambda_{\mathit{ms}}}}
+\mdef\FOMSUB{\text{F}^{\kern0.5pt\omega}_{\kern-1pt<\kern-0.9pt:}}
+\mdef\FPOP{\text{F}{}^{\circ}}
+
+%% %%%
+%% \mnew\PKIND[2]{{|#2|}_{#1}}
+%% \mnew\PVAR[3]{\mathcal{V}(#2,#3)_{#1}}
+
+\endinput
+%%
+%% End of file `almslides.sty'.

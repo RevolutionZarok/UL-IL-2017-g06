@@ -1,0 +1,68 @@
+\subsubsection{subfunction-oeSollicitateCrisisHandling}
+
+\label{RE-use-case-oeSollicitateCrisisHandling}
+
+
+
+the actActivator's goal is to decrease the number of unhandled crisis. 
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{oeSollicitateCrisisHandling}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{subfunction}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actActivator[proactive]}}
+
+
+\addrowheading{Secondary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[passive, multiple]}}
+\addnumberedsinglerow{}{\msrcode{actAdministrator[passive]}}
+
+\addrowheading{Goal(s) description}
+\addsinglerow{
+the actActivator's goal is to decrease the number of unhandled crisis. 
+}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{
+the iCrash system has been deployed.
+}
+\addnumberedsinglerow{}{
+there exist some crisis still pending and for which no solicitation has been sent to the administrator and the coordinators for more than a predefined maximum delay.
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+none
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{
+a simple text message ieMessage('There are alerts not treated since more than the defined delay. Please REACT !\') is sent to the system administrator and to all the coordinators of the environment for each crisis that is known to be not handled and for which no solicitation has been sent to the administrator and the coordinators for more than a predefined maximum delay.')
+}
+\addnumberedsinglerow{}{
+the reminder period for the concerned crisis is initialized.
+}
+
+
+\end{usecase} 
+
+Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-oeSollicitateCrisisHandling}
+shows the use case diagram for the oeSollicitateCrisisHandling subfunction use case
+
+\begin{figure}[htbp]
+\begin{center}
+
+\includegraphics[
+angle=0
+,scale=0.75
+]{./images-report-gen/usecase-model/subfunction/uc-oeSollicitateCrisisHandling.eps}
+\end{center}
+\caption[lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-oeSollicitateCrisisHandling]{ oeSollicitateCrisisHandling subfunction use case}
+\label{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-oeSollicitateCrisisHandling}
+\end{figure}
+\vspace{0.5cm}

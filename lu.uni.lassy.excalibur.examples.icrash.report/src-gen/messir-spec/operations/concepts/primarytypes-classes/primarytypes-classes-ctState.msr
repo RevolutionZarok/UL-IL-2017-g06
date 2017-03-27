@@ -1,0 +1,42 @@
+package icrash.operations.concepts.primarytypes.classes.ctState{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.calendar
+import lu.uni.lassy.messir.libraries.math
+
+import icrash.concepts.primarytypes.classes
+
+Operation Model {
+	
+	operation: icrash.concepts.primarytypes.classes.ctState.init(
+		AnextValueForAlertID: dtInteger, 
+		AnextValueForCrisisID: dtInteger , 
+		dtAclock:dtDateAndTime,
+		AcrisisReminderPeriod: dtSecond, 
+		AmaxCrisisReminderPeriod: dtSecond ,
+    AvpLastReminder: dtDateAndTime ,
+    AvpStarted:ptBoolean	):ptBoolean{
+postF{
+if
+(
+/* Post F01 */
+let Self:ctState in
+
+Self.nextValueForAlertID = AnextValueForAlertID
+and Self.nextValueForCrisisID = AnextValueForCrisisID
+and Self.clock = Aclock
+and Self.crisisReminderPeriod = AcrisisReminderPeriod
+and Self.maxCrisisReminderPeriod = AmaxCrisisReminderPeriod
+and Self.vpLastReminder = AvpLastReminder
+and Self.vpStarted = AvpStarted
+
+and (Self.oclIsNew and self = Self)
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctState-init.pl"	}
+	}
+	}
+}

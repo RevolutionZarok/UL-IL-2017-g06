@@ -1,0 +1,33 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeInvalidateAlert
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeInvalidateAlert.AdtAlertID
+"the identification information used to determine the alert to close"
+@endParameters
+@description
+" sent to indicate that an alert should be considered as closed."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+" it is supposed that there exist one ctAlert instance with the same \msrcode{id} attribute value as the one provided by the coordinator actor who wants to close."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"the ctAlert class instance having the provided id is considered closed in the post state."
+@postF
+"the coordinator actor is informed about the satisfaction of its request."
+
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

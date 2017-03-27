@@ -1,0 +1,1 @@
+:- multifile mandata/1.

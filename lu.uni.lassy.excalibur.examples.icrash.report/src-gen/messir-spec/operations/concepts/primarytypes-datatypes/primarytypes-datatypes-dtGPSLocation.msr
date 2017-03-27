@@ -1,0 +1,92 @@
+package icrash.operations.concepts.primarytypes.datatypes.dtGPSLocation{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.concepts.secondarytypes.classes
+
+
+Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtGPSLocation.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( self.latitude.is()
+            and self.longitude.is
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+    }
+		prolog{"src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtGPSLocation-is.pl"}
+		}
+		operation: icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo(aGPSLocation:dtGPSLocation):ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in true
+        let EarthRadius: dtReal in
+        let MaxDistance: dtReal in
+        let ComparedLatitude: dtLatitude in
+        let ComparedLongitude: dtLongitude in
+        let R1: dtReal in let R1a: dtReal in
+        let R2: dtReal in let R2a: dtReal in
+        
+        ( if
+          ( EarthRadius.value = 6371
+            and MaxDistance.value = 100
+            
+            and self.latitude = ComparedLatitude
+            and self.longitude = ComparedLongitude
+            and self.latitude.sin() = R1a
+            and self.latitude.sin().mul(R1a) = R1
+            and self.latitude.cos() = R2a
+            and self.latitude.cos().mul(R2a) = R2
+            
+            and self.longitude = ComparedLongitude
+            and self.longitude.sub(ComparedLongitude).cos().mul(R2)
+                    .add(R1).acos().mul(EarthRadius).sub(MaxDistance)
+                    .value.leq(0)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+		}
+		prolog{"src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtGPSLocation-isNearTo.pl"}
+		}
+		operation: icrash.concepts.primarytypes.datatypes.dtLatitude.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( AdtValue.value.geq(-90.0)
+            and AdtValue.value.leq(+90.0)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )}
+		prolog{ "src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtLatitude-is.pl"}
+		}
+		operation: icrash.concepts.primarytypes.datatypes.dtLongitude.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( AdtValue.value.geq(-180.0)
+            and AdtValue.value.leq(+180.0)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )}
+    prolog{ "src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtLongitude-is.pl"}
+	}
+}
+}

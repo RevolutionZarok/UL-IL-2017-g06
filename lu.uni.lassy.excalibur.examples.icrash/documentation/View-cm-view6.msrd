@@ -1,0 +1,8 @@
+
+@@view cm-pt-dt-lv-02-dtGPSLocation
+@model Concept
+@level Local
+@sublevel Primary Datatype
+@number 6
+@description ""
+@caption ""

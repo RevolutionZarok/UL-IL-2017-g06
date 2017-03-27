@@ -1,0 +1,100 @@
+\subsection{Operation Model for oeDeleteCoordinator}
+
+\label{OM-oeDeleteCoordinator}
+
+
+The \msrcode{oeDeleteCoordinator} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeDeleteCoordinator}{sent to delete an existing coordinator in the system's post state and environment's post state.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCoordinatorID: dtCoordinatorID}{used for ctCoordinator instance retrieval} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctAdministrator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{ it is supposed that there exist one ctCoordinator instance with the same \msrcode{id} attribute than the one the administrator wants to create.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ the ctCoordinator class instance having the required id do not belong anymore to the post state as well as is related actCoordinator actor instance.}
+	\addnumberedsinglerow{PostF}{the administrator actor is informed about the satisfaction of its request.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ none }
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAdministrator-oeDeleteCoordinator-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeDeleteCoordinator}.},label=OM-actAdministrator-oeDeleteCoordinator-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	  
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	  
+	/* PreP01 */
+	  and TheSystem.vpStarted = true
+	/* PreP02 */
+	  and TheActor.rnctAuthenticated.vpIsLogged = true}
+	
+	/* Pre Functional:*/
+	preF{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	   
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	/* PreF01 */
+	  TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+	  = ColctCoordinators
+	  and ColctCoordinators->size().eq(1)}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	  let ThectCoordinator:ctCoordinator in
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	/* PostF01 */
+	  TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+	  = ThectCoordinator
+	  and ThectCoordinator.rnactCoordinator->forAll(msrIsKilled)
+	  and ThectCoordinator.msrIsKilled
+	 
+	  /* PostF02 */
+	  and TheActor.rnInterfaceIN^ieCoordinatorDeleted()
+	
+	 /* Post Protocol:*/
+	/* PostP01 */
+	 and true}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

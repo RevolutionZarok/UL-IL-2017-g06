@@ -1,0 +1,12 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtPhoneNumber.is
+
+@description
+"used to determine which strings are considered as valid dtPhoneNumber."
+//postFunctional descriptions
+@postF 
+"is true of the length of the string value is from 4 to 30 characters. No standard is applied !"
+@endPostF
+
+//example
+@example""

@@ -1,0 +1,13 @@
+/* Messim for Excalibur v0.2 beta */
+----------------------------------------------
+- do not change the file names 
+- do a Prolog consult of the '/src/Make/make.pl' file
+
+- do not ask for support on beta versions !
+- try man(systemPredicate,PredicateAtomExpression) 
+or man(messimPredicate,PredicateAtomExpression) for manual support (e.g. "man(messim,newEvents).")
+- try '' as PredicateAtomExpression for a list of all existing predicate comments.
+----------------------------------------------
+Nicolas Guelfi
+2012
+----------------------------------------------

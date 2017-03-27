@@ -1,0 +1,92 @@
+	\subsubsection{testcase01-ts07oeAlert1-actComCompany.outactComCompany.oeAlert}
+	\label{TM-testcase01-ts07oeAlert1-actComCompany.outactComCompany.oeAlert}
+
+	The \msrcode{testcase01-ts07oeAlert1-actComCompany.outactComCompany.oeAlert} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts07oeAlert1}{tests the declaration of a new alert functionality.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actComCompany.outactComCompany.oeAlert}{actComCompany.outactComCompany.oeAlert} (AetHumanKind, AdtDate, AdtTime, AdtPhoneNumber, AdtGPSLocation, AdtComment)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:actComCompany}
+		{actComCompany actors transfer alert declaration messages.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any instance existing in the current environment status. It is expected to exist at least one.}
+		\addnumberedsinglerow{C}{AetHumanKind is equal to witness}
+		\addnumberedsinglerow{C}{AdtDate is equal to the 26th of November 2017}
+		\addnumberedsinglerow{C}{AdtTime is equal to 10:10:16 using a 24-hours.}
+		\addnumberedsinglerow{C}{AdtPhoneNumber is equal to the ptString value '+3524666445252'.}
+		\addnumberedsinglerow{C}{AdtGPSLocation is equal to (49.627675 , 6.159590).}
+		\addnumberedsinglerow{C}{AdtComment is equal to '3 cars involved in an accident.'}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{AdtSMS is equal to the ptString 'Your alert has been registered. We will handle it and keep you informed'.}
+		\addnumberedsinglerow{OC}{AdtSMS is sent to the phone number AdtPhoneNumber using the communication company having sent the alert using its ieSmsSend input message.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts07oeAlert1-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts07oeAlert1}.},label=TM-testcase01-ts07oeAlert1-MCL-LST]
+
+	variables{
+		TheActor : actComCompany
+		AetHumanKind:etHumanKind
+		AdtDate:dtDate
+		AdtTime:dtTime
+		AdtPhoneNumber:dtPhoneNumber
+		AdtGPSLocation:dtGPSLocation
+		AdtComment:dtComment
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactComCompany->any2(true)
+		AetHumanKind = witness
+		AdtDate.year.value = 2017
+		AdtDate.month.value = 11
+		AdtDate.day.value = 26
+		AdtTime.hour.value = 10
+		AdtTime.minute.value = 10
+		AdtTime.second.value = 16
+		AdtPhoneNumber.value = '+3524666445252'
+		AdtGPSLocation.latitude.value = 49.627675
+		AdtGPSLocation.longitude.value = 6.159590
+		AdtComment.value = '3 cars involved in an accident.'
+	}
+	
+	oracle{
+		variables{
+			AdtSMS:dtSMS
+		}
+		constraints{
+			AdtSMS.value = 'Your alert has been registered. We will handle it and keep you informed'
+			TheActor.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

@@ -1,0 +1,30 @@
+package icrash.operations.concepts.secondarytypes.datatypes.dtSMS{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.calendar
+import lu.uni.lassy.messir.libraries.math
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.concepts.secondarytypes.classes
+
+
+Operation Model {
+operation: icrash.concepts.secondarytypes.datatypes.dtSMS.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        let MaxLength: ptInteger in
+        ( if
+          ( MaxLength = 160
+            and self.value.length().leq(MaxLength)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )}
+prolog{ "src/Operations/Concepts/SecondaryTypesDatatypes/SecondaryTypesDatatypes-dtSMS-is.pl"}
+}
+}
+}

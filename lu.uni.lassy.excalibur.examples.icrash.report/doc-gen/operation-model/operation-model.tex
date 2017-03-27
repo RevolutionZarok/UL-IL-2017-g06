@@ -1,0 +1,175 @@
+\chapter{Operation Model}
+\label{chap:lu.uni.lassy.excalibur.examples.icrash-OM}
+
+This section contains the operation schemes of each operation defined in either an actor, its output interface, in a primary or secondary type (class, datatype or enumeration types). 
+The \msrmessir OCL code listing is joined to the comment table.
+
+\lstset{
+float,
+basicstyle=\scriptsize,
+language=Messir,
+breakatwhitespace=false,
+tabsize=2,
+breaklines=true,
+numbers=left,
+emptylines=1,
+numbersep=5pt,
+showspaces=false,
+showstringspaces=false,
+showtabs=false
+} 
+
+
+%% ***************************************************************
+%% operations for: Environment-Out Interface Operation Schemes
+
+		
+\section{Environment - Out Interface Operation Scheme for actActivator}
+\label{OM-EM-OutInterface-OS-actActivator}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actActivator-oeSetClock.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actActivator-oeSollicitateCrisisHandling.tex}
+\section{Environment - Out Interface Operation Scheme for actAdministrator}
+\label{OM-EM-OutInterface-OS-actAdministrator}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actAdministrator-oeAddCoordinator.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actAdministrator-oeDeleteCoordinator.tex}
+\section{Environment - Out Interface Operation Scheme for actAuthenticated}
+\label{OM-EM-OutInterface-OS-actAuthenticated}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actAuthenticated-oeLogin.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actAuthenticated-oeLogout.tex}
+\section{Environment - Out Interface Operation Scheme for actComCompany}
+\label{OM-EM-OutInterface-OS-actComCompany}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actComCompany-oeAlert.tex}
+\section{Environment - Out Interface Operation Scheme for actCoordinator}
+\label{OM-EM-OutInterface-OS-actCoordinator}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeCloseCrisis.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeGetAlertsSet.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeGetCrisisSet.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeInvalidateAlert.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeReportOnCrisis.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeSetCrisisHandler.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeSetCrisisStatus.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeSetCrisisType.tex}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actCoordinator-oeValidateAlert.tex}
+\section{Environment - Out Interface Operation Scheme for actMsrCreator}
+\label{OM-EM-OutInterface-OS-actMsrCreator}
+\input{./doc-gen/operation-model/OM-Environment/OM-OUT/OM-actMsrCreator-oeCreateSystemAndEnvironment.tex}
+
+%% ***************************************************************
+%% operations for: Environment-Actor Operation Schemes
+
+		
+\section{Environment - Actor Operation Scheme for actMsrCreator}
+\label{OM-EM-actMsrCreator}
+\input{./doc-gen/operation-model/OM-Environment/OM-Actors/OM-actMsrCreator-init.tex} 
+
+%% ***************************************************************
+%% operations for primary type classes
+
+
+\section{Primary Types - Operation Schemes for Class ctAdministrator} 
+\label{OM-CM-PTClass-ctAdministrator}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctAdministrator-init.tex}
+\section{Primary Types - Operation Schemes for Class ctAlert} 
+\label{OM-CM-PTClass-ctAlert}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctAlert-init.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctAlert-isSentToCoordinator.tex}
+\section{Primary Types - Operation Schemes for Class ctAuthenticated} 
+\label{OM-CM-PTClass-ctAuthenticated}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctAuthenticated-init.tex}
+\section{Primary Types - Operation Schemes for Class ctCoordinator} 
+\label{OM-CM-PTClass-ctCoordinator}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCoordinator-init.tex}
+\section{Primary Types - Operation Schemes for Class ctCrisis} 
+\label{OM-CM-PTClass-ctCrisis}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCrisis-init.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCrisis-handlingDelayPassed.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCrisis-maxHandlingDelayPassed.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCrisis-isSentToCoordinator.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctCrisis-isAllocatedIfPossible.tex}
+\section{Primary Types - Operation Schemes for Class ctHuman} 
+\label{OM-CM-PTClass-ctHuman}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctHuman-init.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctHuman-isAcknowledged.tex}
+\section{Primary Types - Operation Schemes for Class ctState} 
+\label{OM-CM-PTClass-ctState}
+\input{./doc-gen/operation-model/OM-PrimaryTypesClasses/OM-PrimaryTypeClass-ctState-init.tex}
+
+
+%% ***************************************************************
+%% operations for primary type datatypes and enumerations
+
+
+
+\section{Primary Types - Operation Schemes for Datatype dtAlertID} 
+\label{OM-CM-PTDataType-dtAlertID}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtAlertID-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtComment} 
+\label{OM-CM-PTDataType-dtComment}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtComment-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtCoordinatorID} 
+\label{OM-CM-PTDataType-dtCoordinatorID}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtCoordinatorID-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtCrisisID} 
+\label{OM-CM-PTDataType-dtCrisisID}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtCrisisID-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtGPSLocation} 
+\label{OM-CM-PTDataType-dtGPSLocation}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtGPSLocation-is.tex}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtGPSLocation-isNearTo.tex}
+\section{Primary Types - Operation Schemes for Datatype dtLatitude} 
+\label{OM-CM-PTDataType-dtLatitude}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtLatitude-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtLogin} 
+\label{OM-CM-PTDataType-dtLogin}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtLogin-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtLongitude} 
+\label{OM-CM-PTDataType-dtLongitude}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtLongitude-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtPassword} 
+\label{OM-CM-PTDataType-dtPassword}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtPassword-is.tex}
+\section{Primary Types - Operation Schemes for Datatype dtPhoneNumber} 
+\label{OM-CM-PTDataType-dtPhoneNumber}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeDatatype-dtPhoneNumber-is.tex}
+
+
+
+
+\section{Primary Types - Operation Schemes for Enumeration etAlertStatus} 
+\label{OM-CM-PTEnumType-etAlertStatus}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeEnumeration-etAlertStatus-is.tex}
+\section{Primary Types - Operation Schemes for Enumeration etCrisisStatus} 
+\label{OM-CM-PTEnumType-etCrisisStatus}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeEnumeration-etCrisisStatus-is.tex}
+\section{Primary Types - Operation Schemes for Enumeration etCrisisType} 
+\label{OM-CM-PTEnumType-etCrisisType}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeEnumeration-etCrisisType-is.tex}
+\section{Primary Types - Operation Schemes for Enumeration etHumanKind} 
+\label{OM-CM-PTEnumType-etHumanKind}
+\input{./doc-gen/operation-model/OM-PrimaryTypesDatatypes/OM-PrimaryTypeEnumeration-etHumanKind-is.tex}
+
+
+
+%% ***************************************************************
+%% operations for secondary type classes
+
+
+\section{Secondary Types - Operation Schemes for Classes}
+There are no elements in this category in the system analysed.
+
+
+
+
+%% ***************************************************************
+%% operations for secondary type datatypes and enumerations
+
+
+\section{Secondary Types - Operation Schemes for Datatype dtSMS} 
+\label{OM-CM-STDataType-dtSMS}
+\input{./doc-gen/operation-model/OM-SecondaryTypesDatatypes/OM-SecondaryTypeDatatype-dtSMS-is.tex}
+
+
+\section{Secondary Types - Operation Schemes for Enumerations}
+There are no elements in this category in the system analysed.
+
+

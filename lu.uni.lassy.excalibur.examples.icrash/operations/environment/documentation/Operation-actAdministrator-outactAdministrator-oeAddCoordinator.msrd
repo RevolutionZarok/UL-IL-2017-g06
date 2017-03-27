@@ -1,0 +1,42 @@
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator
+//parameters
+@parameter icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator.AdtCoordinatorID
+"used to initialize the id field"
+@parameter icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator.AdtLogin
+"used to initialize the login field"
+@parameter icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator.AdtPassword
+"used to initialize the password field"
+@endParameters
+@description
+"sent to add a new coordinator in the system's post state and environment's post state."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctAdministrator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+" it is supposed that there cannot exist a ctCoordinator instance with the same \msrcode{id} attribute as the one the administrator wants to delete."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" the environment has a new instance of coordinator actor allowing for input/output message communication with the system."
+@postF
+"the system's state has a new instance of ctCoordinator initialized with the given values."
+@postF
+"the new actor instance and ctCoordinator instance are related."
+@postF
+"the new actor instance and ctCoordinator instance are related according to the authenticated association."
+@postF
+"the administrator actor is informed about the satisfaction of its request."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

@@ -1,0 +1,5 @@
+@@view uc-ugAdministrateTheSystem
+@model Use-Case icrash.usecases.ugAdministrateTheSystem.ugAdministrateTheSystem
+@description "shows the use case diagram for the ugAdministrateTheSystem user goal use case"
+@caption ' ugAdministrateTheSystem user goal use case'
+@scale 0.75

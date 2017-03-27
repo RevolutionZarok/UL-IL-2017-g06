@@ -1,0 +1,7 @@
+@@view em-lv-05-partc-authenticated
+@model Environment
+@level Local
+@number 5
+@description 'shows the local view for the authenticated actor and interfaces'
+@caption 'authenticated actor environment model local view'
+@scale 0.80

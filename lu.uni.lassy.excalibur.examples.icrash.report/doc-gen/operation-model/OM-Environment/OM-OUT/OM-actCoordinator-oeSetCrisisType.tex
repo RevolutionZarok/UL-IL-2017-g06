@@ -1,0 +1,43 @@
+\subsection{Operation Model for oeSetCrisisType}
+
+\label{OM-oeSetCrisisType}
+
+
+The \msrcode{oeSetCrisisType} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeSetCrisisType}{sent to define the gravity type of a specific crisis.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis} 
+	\addnumbereddoublerow{}{AetCrisisType: etCrisisType}{the new type value} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one crisis in the pre state having the given id.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the crisis type attribute of the crisis instance having the given id is replaced by the given one and the requesting actor is notified of this update.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

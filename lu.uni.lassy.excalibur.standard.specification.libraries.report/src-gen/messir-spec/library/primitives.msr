@@ -1,0 +1,148 @@
+/*
+* Copyright University of Luxembourg
+* 
+* This file is part of EXCALIBUR.
+* EXCALIBUR is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, version 3 of the License.
+* 
+* EXCALIBUR is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with EXCALIBUR in the COPYING.txt file. 
+* If not, see <http://www.gnu.org/licenses/>.
+* 
+* Last Modification:
+*  
+* @author nicolas.guelfi
+* @date Mon May 06 18:10:54 CEST 2013
+*/
+
+package  lu.uni.lassy.messir.libraries.primitives{
+	Concept Model {
+		Primary Types {
+			
+	primitive ptBoolean {
+			external operation is() : ptBoolean
+			external operation close() : ptBoolean
+			
+			external operation msrnot() : ptBoolean
+			external operation msror(AptBoolean:ptBoolean) : ptBoolean
+			external operation msrxor(AptBoolean:ptBoolean) : ptBoolean
+			external operation msrand(AptBoolean:ptBoolean) : ptBoolean
+			external operation eq(AptBoolean:ptBoolean) : ptBoolean
+			external operation neq(AptBoolean:ptBoolean) : ptBoolean
+			} 
+
+	primitive ptInteger {
+
+			operation is() : ptBoolean
+			external operation close() : ptBoolean
+
+				// Arithmetic Operations
+			external operation add(AptInteger:ptInteger) : ptInteger
+			external operation sub(AptInteger:ptInteger) : ptInteger
+			external operation mul(AptInteger:ptInteger) : ptInteger
+			external operation frac(AptInteger:ptInteger) : ptReal
+			external operation msrdiv(AptInteger:ptInteger) : ptInteger
+			external operation power(AptInteger:ptInteger) : ptInteger
+			external operation mod(AptInteger:ptInteger) : ptInteger
+			
+			external operation sqrt() : ptReal
+      external operation msrabs() : ptInteger
+      external operation opp() : ptInteger
+			external operation sqr() : ptInteger
+			
+				// Logical Operations
+			external operation eq(AptInteger:ptInteger) : ptBoolean
+			external operation neq(AptInteger:ptInteger) : ptBoolean
+			external operation geq(AptInteger:ptInteger) : ptBoolean
+			external operation leq(AptInteger:ptInteger) : ptBoolean
+			external operation lt(AptInteger:ptInteger) : ptBoolean
+			external operation gt(AptInteger:ptInteger) : ptBoolean
+
+			// Trigonometric Operations 
+			// default is radian
+			external operation cos(): ptReal
+			external operation acos(): ptReal
+			external operation tan(): ptReal
+			external operation atan(): ptReal
+			external operation sin(): ptReal
+			external operation asin(): ptReal			
+			external operation toDeg(): ptReal
+			external operation toRad(): ptReal
+				
+				// Conversion Operations 
+			external operation asptReal() : ptReal
+			external operation toptString() : ptString
+}
+
+	primitive ptReal {
+
+			operation is() : ptBoolean
+			external operation close() : ptBoolean
+
+			// Arithmetic Operations 
+			external operation add(AptReal:ptReal) : ptReal
+			external operation sub(AptReal:ptReal) : ptReal
+			external operation mul(AptReal:ptReal) : ptReal
+			external operation frac(AptReal:ptReal) : ptReal
+			external operation msrdiv(AptReal:ptReal) : ptInteger
+			external operation power(AptReal:ptReal) : ptReal
+
+			external operation msrround() : ptInteger
+			external operation sqrt() : ptReal
+      external operation msrabs() : ptReal
+      external operation opp() : ptReal
+      external operation sqr() : ptReal
+			
+				// Logical Operations
+			external operation eq(AptReal:ptReal) : ptBoolean
+			external operation neq(AptReal:ptReal) : ptBoolean
+			external operation geq(AptReal:ptReal) : ptBoolean
+			external operation leq(AptReal:ptReal) : ptBoolean
+			external operation lt(AptReal:ptReal) : ptBoolean
+			external operation gt(AptReal:ptReal) : ptBoolean
+
+				// Trigonometric Operations 
+				// default is radian
+			external operation cos(): ptReal
+			external operation acos(): ptReal
+			external operation tan(): ptReal
+			external operation atan(): ptReal
+			external operation sin(): ptReal
+			external operation asin(): ptReal
+			external operation toDeg(): ptReal
+			external operation toRad(): ptReal
+
+				// Conversion Operations 
+			external operation asptInteger() : ptInteger
+			external operation toptString() : ptString
+}
+
+primitive ptString {
+	
+			external operation is() : ptBoolean
+			external operation close() : ptBoolean
+
+			external operation length() : ptInteger
+			external operation ptStringConcat(AptString:ptString) : ptString
+			external operation subptString(
+													StartIndex:ptInteger,
+													EndIndex:ptInteger
+													) : ptString
+			external operation toLower():ptString
+			external operation toUpper():ptString
+			external operation eq(AptString:ptString):ptBoolean
+			external operation neq(AptString:ptString):ptBoolean
+			external operation geq(AptString:ptString) : ptBoolean
+			external operation leq(AptString:ptString) : ptBoolean
+			external operation lt(AptString:ptString) : ptBoolean
+			external operation gt(AptString:ptString) : ptBoolean
+			}
+	}
+}
+}

@@ -1,0 +1,118 @@
+package icrash.operations.environment.actAuthenticated{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.concepts.secondarytypes.classes
+import icrash.environment
+
+Operation Model {
+
+operation: actAuthenticated.outactAuthenticated.oeLogin(AdtLogin:dtLogin, AdtPassword:dtPassword):ptBoolean
+{
+preP{
+  let TheSystem: ctState in
+  let TheActor:actAuthenticated in
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+  
+/* PreP01 */
+  and TheSystem.vpStarted = true
+/* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = false
+}
+preF{
+/* PreF01 */
+true
+}
+postF{
+  let TheSystem: ctState in
+  let TheactAuthenticated:actAuthenticated in
+
+  let AptStringMessageForTheactAuthenticated: ptString in
+  let AptStringMessageForTheactAdministrator:ptString in
+  
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheactAuthenticated
+  
+  and /* PostF01 */
+      if (TheactAuthenticated.rnctAuthenticated.pwd
+          = AdtPassword
+          and TheactAuthenticated.rnctAuthenticated.login
+              = AdtLogin
+         )
+      then (AptStringMessageForTheactAuthenticated.eq('You are logged ! Welcome ...')
+            and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)
+           )
+      else (AptStringMessageForTheactAuthenticated
+            .eq('Wrong identification information ! Please try again ...')
+            and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)
+            and AptStringMessageForTheactAdministrator.eq('Intrusion tentative !')
+            and TheSystem.rnactAdministrator
+                .rnInterfaceIN^ieMessage(AptStringMessageForTheactAdministrator)
+           )
+      endif
+}
+postP{
+  let TheSystem: ctState in
+  let TheactAuthenticated:actAuthenticated in
+
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheactAuthenticated
+/* PostP01 */
+  if (TheactAuthenticated.rnctAuthenticated.pwd = AdtPassword
+      and TheactAuthenticated.rnctAuthenticated.login = AdtLogin
+     )
+  then (TheactAuthenticated.rnctAuthenticated@post.vpIsLogged = true)
+  else true
+  endif
+}
+prolog{"src/Operations/Environment/OUT/outactAuthenticated-oeLogin.pl"}
+}
+/*-------------------------------------------------------------------------------*/
+
+operation: actAuthenticated.outactAuthenticated.oeLogout():ptBoolean{
+
+
+preP{
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+  
+/* PreP01 */
+  and TheSystem.vpStarted = true
+/* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{
+/* PreF01 */
+true
+}
+postF{
+  let TheSystem: ctState in
+  let TheactAuthenticated:actAuthenticated in
+  let AptStringMessageForTheactAuthenticated: ptString in
+  
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheactAuthenticated
+  
+  /* PostF01 */
+  AptStringMessageForTheactAuthenticated.eq('You are logged out ! Good Bye ...')
+  and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)
+}
+postP{
+  let TheSystem: ctState in
+  let TheactAuthenticated:actAuthenticated in
+
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheactAuthenticated.asSet
+/* PostP01 */
+  TheactAuthenticated.rnctAuthenticated@post.vpIsLogged = false
+}
+prolog{"src/Operations/Environment/OUT/outactAuthenticated-oeLogout.pl"}
+}
+}
+}

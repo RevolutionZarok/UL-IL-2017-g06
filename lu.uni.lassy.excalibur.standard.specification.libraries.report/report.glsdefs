@@ -1,0 +1,240 @@
+\ifglsentryexists{real number}{}%
+{%
+\gls@defglossaryentry{real number}%
+{%
+name={real},%
+sort={real},%
+type={main},%
+first={real},%
+firstplural={reals},%
+text={real},%
+plural={reals},%
+description={name of the set of real numbers},%
+descriptionplural={name of the set of real numbers},%
+symbol={\ensuremath {\mathbb {R}}},%
+symbolplural={\ensuremath {\mathbb {R}}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{systop}{}%
+{%
+\gls@defglossaryentry{systop}%
+{%
+name={\msrglsstyle {system operation}},%
+sort={\msrglsstyle {system operation}},%
+type={main},%
+first={\protect \emph {system operation}},%
+firstplural={\protect \emph {system Operations}},%
+text={\protect \emph {system operation}},%
+plural={\protect \emph {system Operations}},%
+description={},%
+descriptionplural={},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{protmod}{}%
+{%
+\gls@defglossaryentry{protmod}%
+{%
+name={\msrglsstyle {Protocol Model}},%
+sort={\msrglsstyle {Protocol Model}},%
+type={main},%
+first={\protect \emph {Protocol Model}},%
+firstplural={\protect \emph {Protocol Models}},%
+text={\protect \emph {Protocol Model}},%
+plural={\protect \emph {Protocol Models}},%
+description={},%
+descriptionplural={},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{societics}{}%
+{%
+\gls@defglossaryentry{societics}%
+{%
+name={\msrglsstyle {Societics}},%
+sort={\msrglsstyle {Societics}},%
+type={main},%
+first={\protect \emph {Societics}},%
+firstplural={\protect \emph {Societics}s},%
+text={\protect \emph {Societics}},%
+plural={\protect \emph {Societics}s},%
+description={Represents the fields of hardware/software systems used for the society extension.},%
+descriptionplural={Represents the fields of hardware/software systems used for the society extension.},%
+symbol={\msrglsstyle {societics}},%
+symbolplural={\msrglsstyle {societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{socext}{}%
+{%
+\gls@defglossaryentry{socext}%
+{%
+name={\msrglsstyle {Society extension}},%
+sort={\msrglsstyle {Society extension}},%
+type={main},%
+first={\protect \emph {Society extension}},%
+firstplural={\protect \emph {Society extension}s},%
+text={\protect \emph {Society extension}},%
+plural={\protect \emph {Society extension}s},%
+description={The society obtained by grouping people using natural means extended with artificial means.},%
+descriptionplural={The society obtained by grouping people using natural means extended with artificial means.},%
+symbol={\msrglsstyle {societics}},%
+symbolplural={\msrglsstyle {societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{usecase}{}%
+{%
+\gls@defglossaryentry{usecase}%
+{%
+name={\msrglsstyle {Use case}},%
+sort={\msrglsstyle {Use case}},%
+type={main},%
+first={\protect \emph {Use case}},%
+firstplural={\protect \emph {Use case}s},%
+text={\protect \emph {Use case}},%
+plural={\protect \emph {Use case}s},%
+description={A use case describes a sequence of actions that provide something of measurable value to an actor. and is drawn as a horizontal ellipse.},%
+descriptionplural={A use case describes a sequence of actions that provide something of measurable value to an actor. and is drawn as a horizontal ellipse.},%
+symbol={{\msrglsstyle {Use case}} plural},%
+symbolplural={{\msrglsstyle {Use case}} plural},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{actor}{}%
+{%
+\gls@defglossaryentry{actor}%
+{%
+name={\msrglsstyle {actor}},%
+sort={\msrglsstyle {actor}},%
+type={main},%
+first={\protect \emph {actor}},%
+firstplural={\protect \emph {actor}s},%
+text={\protect \emph {actor}},%
+plural={\protect \emph {actor}s},%
+description={An actor is a person, organization, or external system that plays a role in one or more interactions with the system},%
+descriptionplural={An actor is a person, organization, or external system that plays a role in one or more interactions with the system},%
+symbol={\msrglsstyle {actor}},%
+symbolplural={\msrglsstyle {actor}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{socialware}{}%
+{%
+\gls@defglossaryentry{socialware}%
+{%
+name={\msrglsstyle {Societics}},%
+sort={\msrglsstyle {Societics}},%
+type={main},%
+first={\protect \emph {Societics}},%
+firstplural={\protect \emph {Societics}s},%
+text={\protect \emph {Societics}},%
+plural={\protect \emph {Societics}s},%
+description={Represents the fields of hardware/software systems used for the society extension.},%
+descriptionplural={Represents the fields of hardware/software systems used for the society extension.},%
+symbol={\msrglsstyle {Societics}},%
+symbolplural={\msrglsstyle {Societics}},%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

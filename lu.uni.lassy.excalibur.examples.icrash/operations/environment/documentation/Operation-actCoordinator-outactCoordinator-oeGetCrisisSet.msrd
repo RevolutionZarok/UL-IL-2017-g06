@@ -1,0 +1,30 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeGetCrisisSet
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeGetCrisisSet.AetCrisisStatus
+"the status information used to determine the crisis to send back to the actor"
+@endParameters
+@description
+"sent to request all the ctCrisis instances having a specific status."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" the post state is the one obtained by satisfying the \msrcode{isSentToCoordinator} predicate for each crisis having the provided status and for the actor sending the message \msrcode{ieSendACrisis}. (cf. specification of \msrcode{isSentToCoordinator} predicate given for the \msrcode{ctCrisis} type."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

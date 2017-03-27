@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.math.dtInteger.mul
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.math.dtInteger.mul.AdtInteger
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

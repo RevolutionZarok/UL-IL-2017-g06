@@ -1,0 +1,9 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.etCrisisType.is
+
+@description
+"used to determine which litteral belongs to the enumeration. "
+//postFunctional descriptions
+@postF 
+" true iff the value is equal to one of the following values: \msrcode{small, medium, huge}"
+@endPostF

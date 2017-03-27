@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtPhoneNumber
+
+@description
+"a string used to store the phone number from the human declaring the crisis or the alert."
+
+@operation icrash.concepts.primarytypes.datatypes.dtPhoneNumber.is
+ "used to determine which strings are considered as valid dtPhoneNumber."
+
+@endOperations

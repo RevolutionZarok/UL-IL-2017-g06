@@ -1,0 +1,743 @@
+% BPMN Events Tikz LaTeX package.
+%
+% (c) 2013 Jan Kubovy <jan@kubovy.eu>
+% Institute for Applied Knowledge Processing (FAW)
+% Johannes Kepler University in Linz
+% http://www.faw.jku.at
+%
+
+%
+%
+\ProvidesPackage{packages/bpmn-events}
+  [2013/12/20 v1.1 BPMN Events Tikz LaTeX package]
+
+\usepackage{ifthen}
+
+\makeatletter
+
+\newcommand{\bpmn@InheritFromCircle}{%
+  \inheritsavedanchors[from=circle]%
+  \inheritanchorborder[from=circle]%
+  \inheritanchor[from=circle]{center}%
+  \inheritanchor[from=circle]{south}%
+  \inheritanchor[from=circle]{west}%
+  \inheritanchor[from=circle]{north}%
+  \inheritanchor[from=circle]{east}%
+  % etc.
+  \inheritbackgroundpath[from=circle]%
+}
+
+\newcommand{\bpmn@NonInterrupting}{
+  \pgfsetdash{{4}{3}}{0}%
+}
+
+\newcommand{\bpmn@BasicCircle}[1][reset]{
+  \pgfutil@tempdima=\radius%
+  \pgfsetlinewidth{1pt}%
+  %
+  \centerpoint%
+  \pgfpathcircle{0}{\pgfutil@tempdima}%
+  \pgfusepath{draw}%
+  \ifthenelse{\equal{#1}{reset}}{%
+    \pgfsetdash{}{0}%
+  }{}%
+}
+
+\newcommand{\bpmn@IntermediateCircle}{
+    \bpmn@BasicCircle[keep]%
+  %
+    \centerpoint%
+    \pgfpathcircle{0}{0.85\pgfutil@tempdima}%
+    \pgfusepath{draw}%
+    \pgfsetdash{}{0}%
+}
+
+\newcommand{\bpmn@EndCircle}{
+    \pgfutil@tempdima=\radius%
+  %
+    \centerpoint%
+    \pgfpathcircle{0}{\pgfutil@tempdima}%
+    \pgfusepath{fill}%
+  %
+    \centerpoint%
+    \pgfpathcircle{0}{0.85\pgfutil@tempdima}%
+    \color{white}%
+    \pgfusepath{fill}%
+    \color{black}%
+}
+
+\newcommand{\ContentBounds}{
+    \centerpoint%
+    \pgfpathcircle{0}{0.85\pgfutil@tempdima}%
+    \pgfusepath{}%
+}
+
+%%%%%%%%%%%
+% N O N E %
+%%%%%%%%%%%
+\pgfdeclareshape{StartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle%
+  }%
+}
+
+\pgfdeclareshape{IntermediateEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle%
+  }%
+}
+
+\pgfdeclareshape{EndEvent}{
+  \inheritsavedanchors[from=circle]%
+  \inheritanchorborder[from=circle]%
+  \inheritanchor[from=circle]{center}%
+  \inheritanchor[from=circle]{south}%
+  \inheritanchor[from=circle]{west}%
+  \inheritanchor[from=circle]{north}%
+  \inheritanchor[from=circle]{east}%
+  % etc.
+  \inheritbackgroundpath[from=circle]%
+  %
+  \beforebackgroundpath{%
+    \bpmn@EndCircle%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%
+% M E S S A G E %
+%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@MessagePicture}[1][default]{
+  \ContentBounds%
+  \centerpoint%
+  \pgf@xb=0.55\pgfutil@tempdima%
+  \pgf@yb=0.4\pgfutil@tempdima%
+  \pgfsetlinewidth{1pt}%
+  \pgfpathmoveto{\pgfpoint{\pgf@xb}{\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xb}{-\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xb}{-\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xb}{\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xb}{-\pgf@yb}}%
+  %
+  \ifthenelse{\equal{#1}{default}}{}{%
+    \pgfusepath{fill,stroke}%
+    \color{white}%
+  }%
+  %
+  \pgfpathmoveto{\pgfpoint{\pgf@xb}{\pgf@yb}}%
+  \pgfpathlineto{\pgfpoint{0}{0}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xb}{\pgf@yb}}%
+  \pgfusepath{stroke}%
+}
+
+\pgfdeclareshape{MessageStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@MessagePicture%
+  }%
+}
+
+\pgfdeclareshape{MessageNonInterruptingStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@MessagePicture%
+  }%
+}
+
+\pgfdeclareshape{MessageIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@MessagePicture%
+  }%
+}
+
+\pgfdeclareshape{MessageNonInterruptingIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@MessagePicture%
+  }%
+}
+
+\pgfdeclareshape{MessageIntermediateThrowingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@MessagePicture[end]%
+  }%
+}
+
+\pgfdeclareshape{MessageEndEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@MessagePicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%
+% T I M E R %
+%%%%%%%%%%%%%
+\newcommand{\bpmn@TimerPicture}{
+  \ContentBounds%
+  %
+  % Timer
+  \centerpoint%
+  \pgfpathcircle{0}{0.6\pgfutil@tempdima}%
+  \pgfusepath{draw}%
+  %
+  \pgf@xc=0.6\pgfutil@tempdima%
+  \pgf@yc=0.6\pgfutil@tempdima%
+  \advance\pgf@xc by-0.4\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{0}{\pgf@yc}}% 0/12
+  \pgfpathlineto{\pgfpoint{0}{\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{0.5\pgf@yc}{0.866025404\pgf@yc}}% 1
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{0.866025404\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{0.866025404\pgf@yc}{0.5\pgf@yc}}% 2
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@xc}{0.5\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{\pgf@yc}{0}}% 3
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{0}}%
+  \pgfpathmoveto{\pgfpoint{0.866025404\pgf@yc}{-0.5\pgf@yc}}% 4
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@xc}{-0.5\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{0.5\pgf@yc}{-0.866025404\pgf@yc}}% 5
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{-0.866025404\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{0}{-\pgf@yc}}% 6
+  \pgfpathlineto{\pgfpoint{0}{-\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{-0.866025404\pgf@yc}}% 7
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@xc}{-0.866025404\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{-0.866025404\pgf@yc}{-0.5\pgf@yc}}% 8
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@xc}{-0.5\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{-\pgf@yc}{0}}% 9
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{0}}%
+  \pgfpathmoveto{\pgfpoint{-0.866025404\pgf@yc}{0.5\pgf@yc}}% 10
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@xc}{0.5\pgf@xc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{0.866025404\pgf@yc}}% 11
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@xc}{0.866025404\pgf@xc}}%
+  %
+  \pgfpathmoveto{\pgfpoint{0.258819045\pgf@yc}{0.965925826\pgf@yc}}% min
+  \pgfpathlineto{\pgfpoint{0}{0}}%
+  \pgfpathmoveto{\pgfpoint{0.965925826\pgf@xc}{-0.258819045\pgf@xc}}% hour
+  \pgfpathlineto{\pgfpoint{0}{0}}%
+  \pgfusepath{stroke}%
+}
+
+\pgfdeclareshape{TimerStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@TimerPicture%
+  }%
+}
+
+\pgfdeclareshape{TimerNonInterruptingStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@TimerPicture%
+  }%
+}
+
+\pgfdeclareshape{TimerIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@TimerPicture%
+  }%
+}
+
+\pgfdeclareshape{TimerNonInterruptingIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@TimerPicture%
+  }%
+}
+
+%%%%%%%%%%%%%
+% E R R O R %
+%%%%%%%%%%%%%
+\newcommand{\bpmn@ErrorPicture}[1][default]{
+  \ContentBounds%
+  %
+  \pgf@xc=0.6\pgfutil@tempdima%
+  \pgf@yc=0.6\pgfutil@tempdima%
+  \advance\pgf@xc by-0.9\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{0.866025404\pgf@yc}{0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.258819045\pgf@yc}{-0.965925826\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-0.258819045\pgf@yc}{0.965925826\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.258819045\pgf@yc}{0.965925826\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{0.258819045\pgf@yc}{-0.965925826\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@yc}{0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.258819045\pgf@yc}{-0.965925826\pgf@xc}}%
+  %
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{draw}%
+  }{%
+    \pgfusepath{draw,fill}%
+  }%
+}
+
+\pgfdeclareshape{ErrorStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@ErrorPicture%
+  }%
+}
+
+\pgfdeclareshape{ErrorIntermediateEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@ErrorPicture%
+  }%
+}
+
+
+\pgfdeclareshape{ErrorEndEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle%
+    \ContentBounds \bpmn@ErrorPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% E S C A L A T I O N %
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@EscalationPicture}[1][default]{
+  \ContentBounds%
+  %
+  \color{black}%
+  \pgf@xc=0.6\pgfutil@tempdima%
+  \pgf@yc=0.6\pgfutil@tempdima%
+  \advance\pgf@xc by-0.8\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{0}{\pgf@yc}}% 0/12
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@yc}{-0.866025404\pgf@yc}}% 5
+  \pgfpathlineto{\pgfpoint{0}{-\pgf@xc}} % 6x
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{-0.866025404\pgf@yc}}% 7
+  \pgfpathlineto{\pgfpoint{0}{\pgf@yc}}% 0/12
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@yc}{-0.866025404\pgf@yc}}% 5
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{draw}%
+  }{%
+    \pgfusepath{draw,fill}%
+  }%
+}
+
+\pgfdeclareshape{EscalationStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@EscalationPicture%
+  }%
+}
+
+\pgfdeclareshape{EscalationNonInterruptingStartEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@EscalationPicture%
+  }%
+}
+
+\pgfdeclareshape{EscalationIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@EscalationPicture%
+  }%
+}
+
+\pgfdeclareshape{EscalationNonInterruptingIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@EscalationPicture%
+  }%
+}
+
+\pgfdeclareshape{EscalationIntermediateThrowingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@EscalationPicture[end]%
+  }%
+}
+
+\pgfdeclareshape{EscalationEndEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@EscalationPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%
+% C A N C E L %
+%%%%%%%%%%%%%%%
+\newcommand{\bpmn@CancelPicture}[1][default]{
+  \ContentBounds%
+  \pgf@xc=0.7\pgfutil@tempdima%
+  \pgf@yc=0.7\pgfutil@tempdima%
+  \advance\pgf@xc by-0.65\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{-0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0}{-\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{-0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{0}}%
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@yc}{0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0}{\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@yc}{0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@yc}{0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{0}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.5\pgf@yc}{-0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0}{-\pgf@xc}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{stroke}%
+  }{%
+    \pgfusepath{fill}%
+  }%
+}
+
+\pgfdeclareshape{CancelIntermediateCatchingEvent}{
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@CancelPicture%
+  }%
+}
+
+\pgfdeclareshape{CancelEndEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@CancelPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C O M P E N S A T I O N %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@CompensationPicture}[1][default]{%
+  \ContentBounds%
+  \pgf@yc=0.6\pgfutil@tempdima%
+  \pgfpathmoveto{\pgfpoint{0.732050808\pgf@yc}{0.866025404\pgf@yc}}% 1
+  \pgfpathlineto{\pgfpoint{0.732050808\pgf@yc}{-0.866025404\pgf@yc}}% 5
+  \pgfpathlineto{\pgfpoint{-0.133974596\pgf@yc}{0}}%
+  \pgfpathlineto{\pgfpoint{0.732050808\pgf@yc}{0.866025404\pgf@yc}}% 1
+  \pgfpathlineto{\pgfpoint{0.732050808\pgf@yc}{-0.866025404\pgf@yc}}% 5
+  \pgfpathmoveto{\pgfpoint{-0.133974596\pgf@yc}{0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.133974596\pgf@yc}{-0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@yc}{0}}% 9
+  \pgfpathlineto{\pgfpoint{-0.133974596\pgf@yc}{0.866025404\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.133974596\pgf@yc}{-0.866025404\pgf@yc}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{draw}%
+  }{%
+    \pgfusepath{draw,fill}%
+  }%
+}
+
+\pgfdeclareshape{CompensationStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@CompensationPicture%
+  }%
+}
+
+\pgfdeclareshape{CompensationIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@CompensationPicture%
+  }%
+}
+
+\pgfdeclareshape{CompensationIntermediateThrowingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@CompensationPicture[end]%
+  }%
+}
+
+\pgfdeclareshape{CompensationEndEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@CompensationPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% C O N D I T I O N A L %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@ConditionalPicture}{%
+  \ContentBounds%
+  \pgf@yc=0.7\pgfutil@tempdima%
+  \pgfpathmoveto{\pgfpoint{-0.707106781\pgf@yc}{-0.707106781\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.707106781\pgf@yc}{0.707106781\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.707106781\pgf@yc}{0.707106781\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.707106781\pgf@yc}{-0.707106781\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.707106781\pgf@yc}{-0.707106781\pgf@yc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{-0.42\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{-0.42\pgf@yc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{-0.14\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{-0.14\pgf@yc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{0.14\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{0.14\pgf@yc}}%
+  \pgfpathmoveto{\pgfpoint{-0.5\pgf@yc}{0.42\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@yc}{0.42\pgf@yc}}%
+  \pgfusepath{stroke}%
+}
+
+\pgfdeclareshape{ConditionalStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@ConditionalPicture%
+  }%
+}
+
+\pgfdeclareshape{ConditionalNonInterruptingStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@ConditionalPicture%
+  }%
+}
+
+\pgfdeclareshape{ConditionalIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@ConditionalPicture%
+  }%
+}
+
+\pgfdeclareshape{ConditionalNonInterruptingIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@ConditionalPicture%
+  }%
+}
+
+%%%%%%%%%%%
+% L I N K %
+%%%%%%%%%%%
+\newcommand{\bpmn@LinkPicture}[1][default]{%
+  \ContentBounds%
+  \pgf@xc=0.7\pgfutil@tempdima%
+  \pgf@yc=0.7\pgfutil@tempdima%
+  \advance\pgf@xc by-0.1\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{0.5\pgf@xc}{-0.866025404\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{0}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{0.866025404\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{0.5\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@xc}{0.5\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@xc}{-0.5\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{-0.5\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{0.5\pgf@xc}{-0.866025404\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{0}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{stroke}%
+  }{%
+    \pgfusepath{stroke,fill}%
+  }%
+}
+
+\pgfdeclareshape{LinkIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@LinkPicture%
+  }%
+}
+
+\pgfdeclareshape{LinkIntermediateThrowingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@LinkPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%
+% S I G N A L %
+%%%%%%%%%%%%%%%
+\newcommand{\bpmn@SignalPicture}[1][default]{%
+  \ContentBounds%
+  \pgfsetlinewidth{1pt}%
+  \pgf@yc=0.6\pgfutil@tempdima%
+  \pgfpathmoveto{\pgfpoint{0}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.866025404\pgf@yc}{-0.5\pgf@yc}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{stroke}%
+  }{%
+    \pgfusepath{stroke,fill}%
+  }%
+}
+
+\pgfdeclareshape{SignalStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@SignalPicture%
+  }%
+}
+
+\pgfdeclareshape{SignalNonInterruptingStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@SignalPicture%
+  }%
+}
+
+\pgfdeclareshape{SignalIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@SignalPicture%
+  }%
+}
+
+\pgfdeclareshape{SignalNonInterruptingIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@SignalPicture%
+  }%
+}
+
+\pgfdeclareshape{SignalIntermediateThrowingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@SignalPicture[end]  }%
+}
+
+\pgfdeclareshape{SignalEndEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@SignalPicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+% T E R M I N A T E %
+%%%%%%%%%%%%%%%%%%%%%
+\pgfdeclareshape{TerminateEndEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle%
+    \ContentBounds%
+    \pgfsetlinewidth{1pt}%
+    \centerpoint%
+    \pgfpathcircle{0}{0.6\pgfutil@tempdima}%
+    \pgfusepath{fill}%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%
+% M U L T I P L E %
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@MultiplePicture}[1][default]{%
+  \ContentBounds%
+  \pgf@xc=0.7\pgfutil@tempdima%
+  \pgf@yc=0.7\pgfutil@tempdima%
+  \advance\pgf@xc by-0.8\pgf@xc%
+  \pgfpathmoveto{\pgfpoint{0}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.951056516\pgf@yc}{0.309016994\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.587785252\pgf@yc}{-0.809016994\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.587785252\pgf@yc}{-0.809016994\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0.951056516\pgf@yc}{0.309016994\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{0}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-0.951056516\pgf@yc}{0.309016994\pgf@yc}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{draw}%
+  }{%
+    \pgfusepath{draw,fill}%
+  }%
+}
+
+\pgfdeclareshape{MultipleStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@MultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{MultipleNonInterruptingStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@MultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{MultipleIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@MultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{MultipleNonInterruptingIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@MultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{MultipleIntermediateThrowingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@MultiplePicture[end]%
+  }%
+}
+
+\pgfdeclareshape{MultipleEndEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@EndCircle \bpmn@MultiplePicture[end]%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P A R A L E L   M U L T I P L E %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bpmn@ParallelMultiplePicture}[1][default]{%
+  \ContentBounds%
+  \pgf@xc=0.15\pgfutil@tempdima%
+  \pgf@yc=0.7\pgfutil@tempdima%
+  \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@yc}{\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@yc}{-\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{-\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{-\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{-\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{-\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@yc}{-\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@yc}{\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{\pgf@xc}}%
+  \pgfpathlineto{\pgfpoint{-\pgf@xc}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}%
+  \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@xc}}%
+  \ifthenelse{\equal{#1}{default}}{%
+    \pgfusepath{draw}%
+  }{%
+    \pgfusepath{draw,fill}%
+  }%
+}
+
+\pgfdeclareshape{ParallelMultipleStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@BasicCircle \bpmn@ParallelMultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{ParallelMultipleNonInterruptingStartEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@BasicCircle \bpmn@ParallelMultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{ParallelMultipleIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@IntermediateCircle \bpmn@ParallelMultiplePicture%
+  }%
+}
+
+\pgfdeclareshape{ParallelMultipleNonInterruptingIntermediateCatchingEvent}{%
+  \bpmn@InheritFromCircle%
+  \beforebackgroundpath{%
+    \bpmn@NonInterrupting \bpmn@IntermediateCircle \bpmn@ParallelMultiplePicture%
+  }%
+}
+
+\endinput
+%%
+%% End of file `bpmn-events.sty'.

@@ -1,0 +1,9 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtGPSLocation.is
+
+@description
+"used to determine which couples are considered as valid dtGPSLocation values."
+//postFunctional descriptions
+@postF 
+" true if both latitude and longitude are valid values according to their is operation."
+@endPostF

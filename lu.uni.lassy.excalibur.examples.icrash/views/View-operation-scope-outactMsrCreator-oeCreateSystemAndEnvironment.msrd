@@ -1,0 +1,15 @@
+@@view operation-scope-outactMsrCreator-oeCreateSystemAndEnvironment
+@model Operation icrash.environment.actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment 
+@description 
+"shows all the concept model elements in the scope of the oeCreateSystemAndEnvironment operation
+"
+@caption 
+"oeCreateSystemAndEnvironment operation scope
+"
+@scale MaxWidth
+/*
+@scale = MaxWidth -> scales the view with respect to the page's width
+| MaxHeight -> scales the view with respect to the page's height
+| nn.dd (e.g. 0.50, 0.75, 1,25, etc.) -> scales the actual view's size to the given number
+*/
+//@orientation Landscape | Portrait

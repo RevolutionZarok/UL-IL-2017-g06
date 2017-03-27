@@ -1,0 +1,5 @@
+ReportProjectName=lu.uni.lassy.excalibur.standard.specification.libraries.report
+SimulationProjectName=lu.uni.lassy.excalibur.standard.specification.libraries.simulation
+StandardLibrariesProjectName=lu.uni.lassy.excalibur.standard.specification.libraries
+eclipse.preferences.version=1
+enableProjectSpecificMsrLicenseFolding=false

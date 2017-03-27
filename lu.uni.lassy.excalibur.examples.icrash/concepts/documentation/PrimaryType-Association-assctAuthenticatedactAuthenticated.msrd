@@ -1,0 +1,4 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctAuthenticatedactAuthenticated
+
+@description
+"mainly used to determine if the login request of an authenticated actor can be granted based on the given credentials and the registered ones."

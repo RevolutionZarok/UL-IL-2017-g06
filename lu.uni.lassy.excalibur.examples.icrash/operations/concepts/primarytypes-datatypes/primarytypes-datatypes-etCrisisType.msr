@@ -1,0 +1,24 @@
+package icrash.operations.concepts.primarytypes.datatypes.etCrisisType{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+			
+		operation: icrash.concepts.primarytypes.datatypes.etCrisisType.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( self = small
+            or self = medium
+            or self = huge
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+        }
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesDatatypes-etCrisisType-is.pl"}
+}
+}
+}

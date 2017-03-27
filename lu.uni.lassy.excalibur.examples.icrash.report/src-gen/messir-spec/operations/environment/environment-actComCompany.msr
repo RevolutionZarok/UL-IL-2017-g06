@@ -1,0 +1,135 @@
+// Do not add/remove lines because code is inserted in slides
+
+package icrash.operations.environment.actComCompany{ 
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.calendar
+import lu.uni.lassy.messir.libraries.math
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+
+import icrash.environment
+
+Operation Model {
+
+operation: actComCompany.outactComCompany.oeAlert(
+ AetKind:etHumanKind,
+ AdtMyDate:dtDate,
+ AdtTime:dtTime,
+ AdtPhoneNumber:dtPhoneNumber,
+ AdtGPSLocation:dtGPSLocation,
+ AdtComment:dtComment
+):ptBoolean{
+
+preP{
+  let TheSystem: ctState in
+  self.rnActor.rnSystem = TheSystem
+  
+/* PreP01 */
+  and TheSystem.vpStarted = true
+}
+preF{ 
+  let TheSystem: ctState in
+  self.rnActor.rnSystem = TheSystem
+
+/* PreF01 */
+  and (TheSystem.clock.date.gt(AdtDate)
+       or (TheSystem.clock.date.eq(AdtDate)
+           and TheSystem.clock.time.gt(AdtTime)
+          )
+      )
+}
+postF{
+ let TheSystem: ctState in
+  
+ let  ActHuman:ctHuman in
+ let  TheactComCompany:actComCompany in
+ let  ActAlert:ctAlert in
+ let  AAlertInstant:dtDateAndTime in
+ let  AetAlertStatus:etAlertStatus in
+ let  ActAlertNearBy:ctAlert in
+ let  ActCrisis:ctCrisis in
+ let  AdtCrisisID:dtCrisisID in
+ let  AetCrisisType:etCrisisType in
+ let  AetCrisisStatus:etCrisisStatus in
+ let  ACrisisInstant:dtDateAndTime in
+ let  ACrisisdtComment:dtComment in
+ let  AptStringMessage:ptString in
+ let  AdtSMS:dtSMS in
+ let  AdtAlertID:dtAlertID in
+ 
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheactComCompany
+/* PostF01 */
+ TheSystem.nextValueForAlertID=PrenextValueForAlertID
+ and PrenextValueForAlertID.add(1) = PostnextValueForAlertID
+ and TheSystem@post.nextValueForAlertID = PostnextValueForAlertID
+
+
+  /* PostF02 */
+and AAlertInstant.date=AdtDate
+and AAlertInstant.time=AdtTime
+
+and AetAlertStatus=pending
+        
+and TheSystem.nextValueForAlertID.todtString().eq(AdtAlertID)
+
+and ActAlert.init(AdtAlertID,
+                  AetAlertStatus,
+                  AdtGPSLocation,
+                  AAlertInstant,
+                  AdtComment)
+      
+  /* PostF03 */
+and TheSystem.rnctAlert.select(location.isNearTo(AdtGPSLocation)) = ColctAlertsNearBy
+and if  (ColctAlertsNearBy->size()=0)
+    then (TheSystem.nextValueForCrisisID = PrenextValueForCrisisID
+          and PrenextValueForCrisisID.add(1) = PostnextValueForCrisisID
+          and TheSystem@post.nextValueForCrisisID = PostnextValueForCrisisID
+          and TheSystem.nextValueForCrisisID.todtString().eq(AdtCrisisID)
+          and AdtCrisisType = small
+          and AetCrisisStatus = pending
+          and ACrisisInstant= AAlertInstant
+          and ACrisisdtComment = 'no reporting yet defined'
+          and ActCrisis.init( AdtCrisisID,
+                              AdtCrisisType,
+                              AetCrisisStatus,
+                              AdtGPSLocation,
+                              ACrisisInstant,
+                              ACrisisdtComment)
+         )
+  else (ColctAlertsNearBy.rnTheCrisis->msrAny(true) = ActCrisis)
+  endif
+
+  /* PostF04 */
+and ActAlert@post.rnTheCrisis = ActCrisis
+      
+/* PostF05 */
+and  TheSystem.rnctHuman->select(id.eq(AdtPhoneNumber)) = HumanCol1
+
+and HumanCol1->select(kind.etEq(AetHumanKind)) = HumanCol2
+and if (HumanCol2->msrIsEmpty)
+    then (ActHuman.init(AdtPhoneNumber,AetHumanKind)
+          and ActHuman@post.rnactComCompany = TheactComCompany
+         )
+    else (HumanCol2->any(true) = ActHuman)
+    endif
+    
+ and ActHuman.rnSignaled->msrIncluding(ActAlert) = ColAlerts
+ 
+ and ActHuman@post.rnSignaled = ColAlerts
+
+/* PostF06 */
+AdtSMS.value = 'Your alert has been registered. We will handle it and keep you informed'
+and TheactComCompany.rnInterfaceIN^ieSmsSend(AdtPhoneNumber,AdtSMS)
+}
+ /* Post Protocol:*/
+/* PostP01 */
+postP{true}
+
+prolog{"src/Operations/Environment/OUT/outactComCompany-oeAlert.pl"}
+}
+}
+}

@@ -1,0 +1,35 @@
+
+@@Primary Type Datatype lu.uni.lassy.messir.libraries.calendar.dtDateAndTime
+@description ""
+@attribute
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.date
+""
+@attribute
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.time
+""
+@endAttributes
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.is
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.close
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.lt
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.gt
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.eq
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.isNow
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.toSecondsQty
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDateAndTime.fromSecondsQty
+""
+@endOperations

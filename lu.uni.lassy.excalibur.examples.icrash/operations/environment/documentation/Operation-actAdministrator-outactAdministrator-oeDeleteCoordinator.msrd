@@ -1,0 +1,36 @@
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oeDeleteCoordinator
+//parameters
+@parameter icrash.environment.actAdministrator.outactAdministrator.oeDeleteCoordinator.AdtCoordinatorID
+"used for ctCoordinator instance retrieval"
+@endParameters
+@description
+"sent to delete an existing coordinator in the system's post state and environment's post state."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctAdministrator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+" it is supposed that there exist one ctCoordinator instance with the same \msrcode{id} attribute than the one the administrator wants to create."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" the ctCoordinator class instance having the required id do not belong anymore to the post state as well as is related actCoordinator actor instance."
+@postF
+"the administrator actor is informed about the satisfaction of its request."
+
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none "
+@endPostP
+
+//example
+@example" "

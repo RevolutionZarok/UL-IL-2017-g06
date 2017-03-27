@@ -1,0 +1,5 @@
+@@view uc-ugSecurelyUseSystem
+@model Use-Case icrash.usecases.ugSecurelyUseSystem.ugSecurelyUseSystem
+@description "shows the use case diagram for the ugSecurelyUseSystem user goal use case"
+@caption ' ugSecurelyUseSystem user goal use case'
+@scale 0.75

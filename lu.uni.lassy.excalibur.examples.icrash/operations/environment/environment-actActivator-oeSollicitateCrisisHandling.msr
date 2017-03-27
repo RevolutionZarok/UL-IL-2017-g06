@@ -1,0 +1,75 @@
+package icrash.operations.environment.actActivator.oeSollicitateCrisisHandling {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+
+Operation Model {
+
+operation: actActivator.outactActivator.oeSollicitateCrisisHandling():ptBoolean
+{
+preP{
+  let TheSystem: ctState in
+  let AvpStarted: ptBoolean in
+  let ColctCrisisToHandle:
+        Bag(ctCrisis) in
+  
+  self.rnActor.rnSystem = TheSystem
+    
+/* PreP01 */
+  and TheSystem.vpStarted
+  
+/* PreP02 */
+  and TheSystem.rnctCrisis->select(handlingDelayPassed()) 
+      = ColctCrisisToHandle
+  and ColctCrisisToHandle->size().geq(1)
+}
+preF{true}
+
+postF{
+  let TheSystem: ctState in
+  let AMessageForCrisisHandlers: dtComment in
+  let ColctCrisisToAllocateIfPossible:Bag(ctCrisis) in
+  
+  self.rnActor.rnSystem = TheSystem
+/* PostF01 */
+  and TheSystem.rnctCrisis->select(maxHandlingDelayPassed())
+      = ColctCrisisToAllocateIfPossible
+  and  ColctCrisisToAllocateIfPossible->forAll(isAllocatedIfPossible())
+
+ /* PostF02 */
+  and TheSystem.rnctCrisis->select(handlingDelayPassed())
+  = ColctCrisisToHandle
+  
+  and ColctCrisisToHandle->msrColSubtract(ColctCrisisToAllocateIfPossible)
+      = ColctCrisisToRemind
+      
+  and if (ColctCrisisToRemind->size().geq(1))
+      then (AMessageForCrisisHandlers.value
+            ='There are alerts pending since more than the defined delay. Please REACT !'
+            and TheSystem.rnactAdministrator.
+                rnInterfaceIN^ieMessage(AMessageForCrisisHandlers)
+                and TheSystem.rnactCoordinator
+                    ->forAll(rnInterfaceIN^ieMessage(AMessageForCrisisHandlers))
+            )
+      else true
+      endif
+}
+postP{
+  let TheSystem: ctState in
+  let TheClock: dtDateAndTime in
+  
+  self.rnActor.rnSystem = TheSystem
+  and TheSystem.clock = TheClock
+  and TheSystem@post.vpLastReminder = TheClock
+}
+
+prolog{"src/Operations/Environment/OUT/outactActivator-oeSollicitateCrisisHandling.pl"}
+}
+}
+}

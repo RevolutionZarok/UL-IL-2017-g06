@@ -1,0 +1,13 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator
+//parameters
+@parameter icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator.AactCoordinator
+"the message destination"
+@endParameters
+@description
+" used to provide a given coordinator with current alert information."
+
+//postFunctional descriptions
+@postF 
+" true iff the message ieSendAnAlert is sent to the input interface of the given coordinator actor with the current alert as parameter value."
+@endPostF

@@ -1,0 +1,12 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtComment.is
+
+@description
+"used to determine which strings are considered as valid comments."
+//postFunctional descriptions
+@postF 
+"true iff the length of the string value is not more than 160 characters."
+@endPostF
+
+//example
+@example""

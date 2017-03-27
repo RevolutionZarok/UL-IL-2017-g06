@@ -1,0 +1,33 @@
+\usepackage[ps2pdf,
+bookmarks=true,  
+bookmarksnumbered=true, 
+% true means bookmarks in
+% left window are numbered
+bookmarksopen=false,        
+% true means only level 1
+% are displayed.
+colorlinks=true,
+linkcolor=webblue]{hyperref}
+
+\usepackage[integrals]{wasysym} 
+
+\usepackage[subfigure]{tocloft}
+\setlength{\cftpartnumwidth}{1em} 
+\setlength{\cftchapnumwidth}{2.5em}
+\setlength{\cftsecnumwidth}{3.5em}
+\setlength{\cftsubsecnumwidth}{4.5em}
+
+\usepackage[xindy,toc]{glossaries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftsecdotsep}}
+\makeglossaries
+\renewcommand*\glspostdescription{\cftdotfill{\cftsecdotsep}}
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{cite} 
+
+\usepackage{minitoc}  
+
+\usepackage[dvipdfm]{geometry}
+
+

@@ -1,0 +1,36 @@
+\subsection{Operation Model for init}
+
+\label{OM-init}
+
+
+The \msrcode{init} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{init}{used to initialize the current object as a new instance of the ctAuthenticated type.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{Alogin: dtLogin}{used to initialize the login field} 
+	\addnumbereddoublerow{}{Apwd: dtPassword}{used to initialize the password field} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{true iff the system poststate includes the current object as a new ctAuthenticated instance having its attributes equal to the ones provided as parameters.}
+
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

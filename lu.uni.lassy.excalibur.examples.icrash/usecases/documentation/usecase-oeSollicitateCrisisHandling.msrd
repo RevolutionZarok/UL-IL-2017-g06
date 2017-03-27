@@ -1,0 +1,28 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeSollicitateCrisisHandling
+@description
+"
+the actActivator's goal is to decrease the number of unhandled crisis. 
+"
+@protocolCondition
+"
+the iCrash system has been deployed.
+"
+@protocolCondition
+"
+there exist some crisis still pending and for which no solicitation has been sent to the administrator and the coordinators for more than a predefined maximum delay.
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+a simple text message ieMessage('There are alerts not treated since more than the defined delay. Please REACT !\') is sent to the system administrator and to all the coordinators of the environment for each crisis that is known to be not handled and for which no solicitation has been sent to the administrator and the coordinators for more than a predefined maximum delay.')
+"
+@postCondition
+"
+the reminder period for the concerned crisis is initialized.
+"
+@endPostConditions

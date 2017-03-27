@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="anchrpnActivator" fx:id="anchrpnActivator" prefHeight="175.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.activator.ActivatorGUIController" />

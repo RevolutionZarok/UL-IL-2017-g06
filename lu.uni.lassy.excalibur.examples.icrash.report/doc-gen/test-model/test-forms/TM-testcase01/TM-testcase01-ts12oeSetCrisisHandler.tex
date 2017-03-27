@@ -1,0 +1,100 @@
+	\subsubsection{testcase01-ts12oeSetCrisisHandler-actCoordinator.outactCoordinator.oeSetCrisisHandler}
+	\label{TM-testcase01-ts12oeSetCrisisHandler-actCoordinator.outactCoordinator.oeSetCrisisHandler}
+
+	The \msrcode{testcase01-ts12oeSetCrisisHandler-actCoordinator.outactCoordinator.oeSetCrisisHandler} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts12oeSetCrisisHandler}{cf. actor documentation}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actCoordinator.outactCoordinator.oeSetCrisisHandler}{actCoordinator.outactCoordinator.oeSetCrisisHandler} (AdtCrisisID)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actCoordinator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{TheComCompany:icrash.environment.actComCompany}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{TheCoordinator:icrash.environment.actCoordinator}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtCrisisID:icrash.concepts.primarytypes.datatypes.dtCrisisID}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AMessage:lu.uni.lassy.messir.libraries.primitives.ptString}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtPhoneNumber:icrash.concepts.primarytypes.datatypes.dtPhoneNumber}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{AdtSMS:icrash.concepts.secondarytypes.datatypes.dtSMS}
+		{cf. actor documentation}
+		\addnumbereddoublerow{V}{ActAlert:icrash.concepts.primarytypes.classes.ctAlert}
+		{cf. actor documentation}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is the coordinator actor related to a coordinator in the system's state having steve as login value}
+		\addnumberedsinglerow{C}{AdtCrisisID as a value of 1}
+		\addnumberedsinglerow{C}{AMessage is the string 'You are now considered as handling the crisis !'
+		}
+		\addnumberedsinglerow{C}{AdtPhoneNumber}
+		\addnumberedsinglerow{C}{AdtSMS has for value the string 'The handling of your alert by our services is in progress !'
+		}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{there is a communication company actor that received the message ieSmsSend(AdtPhoneNumber,AdtSMS)}
+		\addnumberedsinglerow{OC}{there is a coordinator actor that received an alert using the message ieSendAnAlert(ActAlert)}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts12oeSetCrisisHandler-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts12oeSetCrisisHandler}.},label=TM-testcase01-ts12oeSetCrisisHandler-MCL-LST]
+
+	variables{
+		TheActor : actCoordinator
+		AdtCrisisID : dtCrisisID
+	}
+	
+	constraints{
+		TheActor=TheSystem.rnactCoordinator
+		            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+		            ->any2(true)
+	}
+	
+	oracle{
+		variables{
+			AMessage:ptString
+			AdtPhoneNumber:dtPhoneNumber
+			AdtSMS:dtSMS
+			ActAlert:ctAlert
+			TheComCompany: actComCompany
+			TheCoordinator:actCoordinator
+		}
+		constraints{
+			AMessage = 'You are now considered as handling the crisis !'
+			AdtSMS.value = 'The handling of your alert by our services is in progress !'
+			TheComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+			TheCoordinator.inactCoordinator.ieSendAnAlert(ActAlert)
+			TheActor.inactAuthenticated.ieMessage(AMessage)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

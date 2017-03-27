@@ -1,0 +1,10 @@
+
+@@Primary Type Datatype lu.uni.lassy.messir.libraries.calendar.dtDay
+@description ""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDay.is
+""
+@operation
+lu.uni.lassy.messir.libraries.calendar.dtDay.close
+""
+@endOperations

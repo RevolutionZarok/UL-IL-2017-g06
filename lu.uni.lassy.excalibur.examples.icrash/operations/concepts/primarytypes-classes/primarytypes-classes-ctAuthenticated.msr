@@ -1,0 +1,15 @@
+package icrash.operations.concepts.primarytypes.classes.ctAuthenticated {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+Operation Model {
+
+operation: icrash.concepts.primarytypes.classes.ctAuthenticated.init(Alogin:dtLogin, Apwd:dtPassword):ptBoolean{
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctAuthenticated-init.pl"}
+}
+}
+
+
+}

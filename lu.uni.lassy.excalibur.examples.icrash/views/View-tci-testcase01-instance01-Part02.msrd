@@ -1,0 +1,10 @@
+
+@@view tci-testcase01-instance01-Part02
+@instance Test Case lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.instance01.instance01Part02
+@description 
+"Sequence diagram representing the second part of a simple and complete testcase instance for \msricrash.
+"
+@caption 
+"tci-testcase01-instance01-Part02 testcase instance sequence diagram
+"
+@scale MaxHeight

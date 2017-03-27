@@ -1,0 +1,83 @@
+	\subsubsection{testcase01-ts09oeSollicitateCrisisHandling-actActivator.outactActivator.oeSollicitateCrisisHandling}
+	\label{TM-testcase01-ts09oeSollicitateCrisisHandling-actActivator.outactActivator.oeSollicitateCrisisHandling}
+
+	The \msrcode{testcase01-ts09oeSollicitateCrisisHandling-actActivator.outactActivator.oeSollicitateCrisisHandling} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts09oeSollicitateCrisisHandling}{test the proactive sollication to handle an alert.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actActivator.outactActivator.oeSollicitateCrisisHandling}{actActivator.outactActivator.oeSollicitateCrisisHandling} ()}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:icrash.environment.actActivator}
+		{proactive actor responsible of triggering sollicitation functionality.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any instance existing in the current environment status. It is expected to exist at least one.}
+
+		\addrowheading{Oracle Variables}
+		\addnumbereddoublerow{OV}{TheAdministrator:actAdministrator}
+			{actAdministrator actors can be sollicitated to handle alerts.}
+		\addnumbereddoublerow{OV}{TheCoordinator:actCoordinator}
+			{actCoordinator actors can be sollicitated to handle alerts.}
+		\addnumbereddoublerow{OV}{AMessageForCrisisHandlers:ptString}
+			{messages sent to sollicitated actors are of type ptString.}
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{TheAdministrator is any instance existing in the current environment status. It is expected to exist at least one.}
+		\addnumberedsinglerow{OC}{TheCoordinator is any instance existing in the current environment status. It is expected to exist at least one.}
+		\addnumberedsinglerow{OC}{AMessageForCrisisHandlers is equal to the ptString 'There are alerts pending since more than the defined delay. Please REACT !'}
+		\addnumberedsinglerow{OC}{TheCoordinator and TheAdministrator have received the message AMessageForCrisisHandlers.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts09oeSollicitateCrisisHandling-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts09oeSollicitateCrisisHandling}.},label=TM-testcase01-ts09oeSollicitateCrisisHandling-MCL-LST]
+
+	variables{
+		TheActor : actActivator
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactActivator->any2(true)
+	}
+	
+	oracle{
+		variables{
+			TheAdministrator:actAdministrator
+			TheCoordinator:actCoordinator
+			AMessageForCrisisHandlers:ptString
+		}
+		constraints{
+			TheAdministrator = TheSystem.rnactAdministrator->any2(true)
+			TheCoordinator = TheSystem.rnactCoordinator->any2(true)
+			AMessageForCrisisHandlers = 'There are alerts pending since more than the defined delay. Please REACT !'
+			TheAdministrator.inactAdministrator.ieMessage(AMessageForCrisisHandlers)
+			TheCoordinator.inactAdministrator.ieMessage(AMessageForCrisisHandlers)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

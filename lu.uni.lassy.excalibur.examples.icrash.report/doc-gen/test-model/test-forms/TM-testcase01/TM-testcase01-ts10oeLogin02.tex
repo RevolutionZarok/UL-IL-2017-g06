@@ -1,0 +1,74 @@
+	\subsubsection{testcase01-ts10oeLogin02-actAuthenticated.outactAuthenticated.oeLogin}
+	\label{TM-testcase01-ts10oeLogin02-actAuthenticated.outactAuthenticated.oeLogin}
+
+	The \msrcode{testcase01-ts10oeLogin02-actAuthenticated.outactAuthenticated.oeLogin} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts10oeLogin02}{test the authentified access of the coordinator}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actAuthenticated.outactAuthenticated.oeLogin}{actAuthenticated.outactAuthenticated.oeLogin} (AdtLogin, AdtPassword)}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:actCoordinator}
+		{an actCoordinator actor as subtype of actAuthenticated can send oeLogin messages to the system.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is thus expected that there exist at least one.}
+		\addnumberedsinglerow{C}{AdtLogin has its value attribute equal to the primitive string 'icrashadmin' (which is the correct administrator login known by the system after the step one.)}
+		\addnumberedsinglerow{C}{AdtPassword has its value attribute equal to the primitive string '7WXC1359' (which is the correct administrator password known by the system after the step one.)}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{the \msrcode{AMessage} value is expected to be equal to the primitive string 'You are logged ! Welcome ...'}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts10oeLogin02-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts10oeLogin02}.},label=TM-testcase01-ts10oeLogin02-MCL-LST]
+
+	variables{
+		TheActor : actCoordinator
+		AdtLogin:dtLogin
+		AdtPassword:dtPassword
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactCoordinator->select(a | a.rnctCoordinator.login.value.eq('steve'))->any2(true)
+		AdtLogin.value.eq('steve')
+		AdtPassword.value.eq('pwdMessirExcalibur2017')
+	}
+	
+	oracle{
+		variables{
+			AMessage:ptString
+		}
+		constraints{
+			AMessage = 'You are logged ! Welcome ...'
+			TheActor.inactAuthenticated.ieMessage(AMessage)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

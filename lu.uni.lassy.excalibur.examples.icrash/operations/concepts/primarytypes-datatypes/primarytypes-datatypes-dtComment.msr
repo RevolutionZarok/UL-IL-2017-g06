@@ -1,0 +1,24 @@
+package icrash.operations.concepts.primarytypes.datatypes.dtComment{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtComment.is():ptBoolean{
+		
+		    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( MaxLength = 160
+            and self.value.length().leq(MaxLength)
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+    }
+		prolog{"src/Operations/Concepts/PrimaryTypesDatatypes/PrimaryTypesDatatypes-dtComment-is.pl"}
+	}
+}
+}

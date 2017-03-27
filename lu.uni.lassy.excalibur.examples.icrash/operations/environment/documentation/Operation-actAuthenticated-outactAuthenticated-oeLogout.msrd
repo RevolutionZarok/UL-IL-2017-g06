@@ -1,0 +1,27 @@
+@@Operation
+icrash.environment.actAuthenticated.outactAuthenticated.oeLogout
+
+@description
+"sent to end the secured access to specific system operations."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor is currently logged in ! (i.e. the associated ctAuthenticated instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"a logout confirmation message is sent to the actor (n.b. the logged status is changed as a post-protocol condition)"
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"the actor is known to be logged out ! (i.e. the associated ctAuthenticated instance with given login and password is considered logged out)"
+@endPostP

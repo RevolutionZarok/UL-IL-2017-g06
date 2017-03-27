@@ -1,0 +1,32 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus.AdtCrisisID
+"the identification information used to determine the crisis"
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus.AetCrisisStatus
+"the new status value"
+@endParameters
+@description
+"sent to define the handling status of a specific crisis."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+"it is supposed that there exist one crisis in the pre state having the given id."
+@endPreF
+
+//postFunctional descriptions
+@postF 
+"the crisis status attribute of the crisis instance having the given id is replaced by the given one and the requesting actor is notified of this update."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP

@@ -1,0 +1,42 @@
+package icrash.concepts.primarytypes.associations {
+	
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+import lu.uni.lassy.messir.libraries.primitives
+
+	Concept Model {
+		
+		Primary Types{
+
+// Internal
+
+association assctAlertctCrisis
+	ctAlert(rnAlerts)[1..*]
+	ctCrisis (rnTheCrisis)[1..1]
+
+association assctAlertctHuman
+	ctAlert(rnSignaled)[1..*]
+	ctHuman (rnSignaler)[1..1]
+
+association assctCrisisctCoordinator
+	ctCrisis(rnHandled)[0..*]
+	ctCoordinator(rnHandler)[0..1]
+	
+// With Actors
+
+ 		association assctHumanactComCompany 
+ 					ctHuman(rnctHuman)[0..*]
+ 					actComCompany(rnactComCompany)[1..1]
+ 					
+ 		association assctCoordinatoractCoordinator 
+ 					ctCoordinator(rnctCoordinator)[1..1]
+ 					actCoordinator(rnactCoordinator)[1..1]
+ 					
+ 		association assctAuthenticatedactAuthenticated 
+ 					ctAuthenticated(rnctAuthenticated)[1..1]
+ 					actAuthenticated(rnactAuthenticated)[1..1]
+			
+		}
+	}
+}

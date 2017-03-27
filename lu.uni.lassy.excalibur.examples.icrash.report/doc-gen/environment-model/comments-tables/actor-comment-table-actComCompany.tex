@@ -1,0 +1,22 @@
+\subsection{\msrcode{actComCompany} Actor}
+
+
+\begin{actortable}
+	\addheading{Actor}
+	
+	\adddoublerow{actComCompany}{represents the communication company stakeholder ensuring the input/ouput of textual messages with humans having communicaiton devices.}
+	
+	
+	
+	
+
+	\addrowheading{OutputInterfaces}
+	\addnumbereddoublerow{OUT}{\hypertarget{actComCompany.outactComCompany.oeAlert}
+			{\msrcode{oeAlert(AetHumanKind:etHumanKind, AdtDate:dtDate, AdtTime:dtTime, AdtPhoneNumber:dtPhoneNumber, AdtGPSLocation:dtGPSLocation, AdtComment:dtComment):ptBoolean}}}
+			{sent to alert of a potential crisis situation.}
+	
+	\addrowheading{InputInterfaces}
+	\addnumbereddoublerow{IN}{\msrcode{ieSmsSend(AdtPhoneNumber:dtPhoneNumber, AdtSMS:dtSMS):ptBoolean}}
+							 {allows for receiving textual messages to be dispatched to the communication company customers having the provided phone number.}
+	
+\end{actortable}

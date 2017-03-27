@@ -1,0 +1,66 @@
+\subsection{Operation Model for handlingDelayPassed}
+
+\label{OM-handlingDelayPassed}
+
+
+The \msrcode{handlingDelayPassed} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{handlingDelayPassed}{used to determine if the crisis stood too longly in a pending status since last reminder.}
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{true iff the crisis is in pending status and if the duration between the current ctState clock information and the last reminder is greater than the crisis reminder period duration.}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-ctCrisis-handlingDelayPassed-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{handlingDelayPassed}.},label=OM-ctCrisis-handlingDelayPassed-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem:ctState in
+	let CurrentClockSecondsQty:dtInteger in
+	let vpLastReminderSecondsQty:dtInteger in
+	let CrisisReminderPeriod:dtSecond in
+	if 
+	( /* Post F01 */
+	  self.rnSystem = TheSystem
+	  and self.status = pending
+	  and TheSystem.clock.toSecondsQty() = CurrentClockSecondsQty
+	  and TheSystem.vpLastReminder.toSecondsQty() = vpLastReminderSecondsQty
+	  and TheSystem.crisisReminderPeriod = CrisisReminderPeriod
+	  and CurrentClockSecondsQty.sub(vpLastReminderSecondsQty).gt(CrisisReminderPeriod) = true
+	)
+	then (result = true)
+	else (result = false)
+	endif}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

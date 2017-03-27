@@ -1,0 +1,708 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% allDynamicPredicates %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actorTypes,1]
+[classTypes,1]
+[commentData,2]
+[commentHeader,2]
+[currentMessamVersion,1]
+[currentMessamVersion,1]
+[currentMessamVersion,1]
+[currentMessamVersion,1]
+[currentMessamVersion,1]
+[dataTypes,1]
+[enumerationTypes,1]
+[evolution,1]
+[evolution,1]
+[evolution,1]
+[evolution,1]
+[evolution,1]
+[inputEvents,1]
+[interfaceTypes,1]
+[lastMessamVersion,1]
+[lastMessamVersion,1]
+[lastMessamVersion,1]
+[lastMessamVersion,1]
+[lastMessamVersion,1]
+[messam,4]
+[messam,4]
+[messam,4]
+[messam,4]
+[messam,4]
+[metaOperations,1]
+[nextObjectID,1]
+[nextObjectID,1]
+[nextObjectID,1]
+[nextObjectID,1]
+[nextObjectID,1]
+[operations,1]
+[outputEvents,1]
+[primitiveTypes,1]
+[protectedOperations,1]
+[relationTypes,1]
+[subTypes,1]
+[testCases,1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Primitive Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[ptBoolean,[]]
+[ptInteger,[]]
+[ptReal,[]]
+[ptString,[]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Enumeration Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[etAlertStatus,[pending,valid,invalid]]
+[etCrisisStatus,[pending,handled,solved,closed]]
+[etCrisisType,[small,medium,huge]]
+[etHumanKind,[witness,victim,anonymous]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% DataTypes Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[dtAlertID,[]]
+[dtComment,[]]
+[dtCoordinatorID,[]]
+[dtCrisisID,[]]
+[dtDate,[[year,dtYear],[month,dtMonth],[day,dtDay]]]
+[dtDateAndTime,[[date,dtDate],[time,dtTime]]]
+[dtDay,[]]
+[dtGPSLocation,[[latitude,dtLatitude],[longitude,dtLongitude]]]
+[dtHour,[]]
+[dtInteger,[[value,ptInteger]]]
+[dtLatitude,[]]
+[dtLogin,[]]
+[dtLongitude,[]]
+[dtMinute,[]]
+[dtMonth,[]]
+[dtOID,[]]
+[dtPassword,[]]
+[dtPhoneNumber,[]]
+[dtReal,[[value,ptReal]]]
+[dtSMS,[[value,ptString]]]
+[dtSecond,[]]
+[dtString,[[value,ptString]]]
+[dtTime,[[hour,dtHour],[minute,dtMinute],[second,dtSecond]]]
+[dtYear,[]]
+[rtRelDefPart,[[partEnd,ptString],[roleName,ptString],[roleType,ptString],[cardMin,ptString],[cardMax,ptString]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Class Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actActivator,[[oid,dtOID]]]
+[actAdministrator,[[oid,dtOID]]]
+[actAuthenticated,[[oid,dtOID]]]
+[actComCompany,[[oid,dtOID]]]
+[actCoordinator,[[oid,dtOID]]]
+[actMsrCreator,[[oid,dtOID]]]
+[ctAdministrator,[[oid,dtOID]]]
+[ctAlert,[[oid,dtOID],[id,dtAlertID],[status,etAlertStatus],[location,dtGPSLocation],[instant,dtDateAndTime],[comment,dtComment]]]
+[ctAuthenticated,[[oid,dtOID],[login,dtLogin],[pwd,dtPassword],[vpIsLogged,ptBoolean]]]
+[ctCoordinator,[[oid,dtOID],[id,dtCoordinatorID]]]
+[ctCrisis,[[oid,dtOID],[id,dtCrisisID],[type,etCrisisType],[status,etCrisisStatus],[location,dtGPSLocation],[instant,dtDateAndTime],[comment,dtComment]]]
+[ctHuman,[[oid,dtOID],[id,dtPhoneNumber],[kind,etHumanKind]]]
+[ctInputInterface,[[oid,dtOID]]]
+[ctMsrActor,[[oid,dtOID]]]
+[ctOutputInterface,[[oid,dtOID]]]
+[ctState,[[oid,dtOID],[nextValueForAlertID,dtInteger],[nextValueForCrisisID,dtInteger],[clock,dtDateAndTime],[crisisReminderPeriod,dtSecond],[maxCrisisReminderPeriod,dtSecond],[vpLastReminder,dtDateAndTime],[vpStarted,ptBoolean]]]
+[inactActivator,[[oid,dtOID]]]
+[inactAdministrator,[[oid,dtOID]]]
+[inactAuthenticated,[[oid,dtOID]]]
+[inactComCompany,[[oid,dtOID]]]
+[inactCoordinator,[[oid,dtOID]]]
+[inactMsrCreator,[[oid,dtOID]]]
+[outactActivator,[[oid,dtOID]]]
+[outactAdministrator,[[oid,dtOID]]]
+[outactAuthenticated,[[oid,dtOID]]]
+[outactComCompany,[[oid,dtOID]]]
+[outactCoordinator,[[oid,dtOID]]]
+[outactMsrCreator,[[oid,dtOID]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Inheritance Relations  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actActivator,[ctMsrActor]]
+[actAdministrator,[actAuthenticated]]
+[actAuthenticated,[ctMsrActor]]
+[actComCompany,[ctMsrActor]]
+[actCoordinator,[actAuthenticated]]
+[actMsrCreator,[ctMsrActor]]
+[ctAdministrator,[ctAuthenticated]]
+[ctCoordinator,[ctAuthenticated]]
+[dtAlertID,[dtString]]
+[dtComment,[dtString]]
+[dtCoordinatorID,[dtString]]
+[dtCrisisID,[dtString]]
+[dtDay,[dtInteger]]
+[dtHour,[dtInteger]]
+[dtLatitude,[dtReal]]
+[dtLogin,[dtString]]
+[dtLongitude,[dtReal]]
+[dtMinute,[dtInteger]]
+[dtMonth,[dtInteger]]
+[dtOID,[dtInteger]]
+[dtPassword,[dtString]]
+[dtPhoneNumber,[dtString]]
+[dtSecond,[dtInteger]]
+[dtYear,[dtInteger]]
+[inactActivator,[ctInputInterface]]
+[inactAdministrator,[ctInputInterface]]
+[inactAuthenticated,[ctInputInterface]]
+[inactComCompany,[ctInputInterface]]
+[inactCoordinator,[ctInputInterface]]
+[inactMsrCreator,[ctInputInterface]]
+[outactActivator,[ctOutputInterface]]
+[outactAdministrator,[ctOutputInterface]]
+[outactAuthenticated,[ctOutputInterface]]
+[outactComCompany,[ctOutputInterface]]
+[outactCoordinator,[ctOutputInterface]]
+[outactMsrCreator,[ctOutputInterface]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Relation Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+association - rtactMsrCreatorinactMsrCreator - [[actMsrCreator,rnActor],[inactMsrCreator,rnInterfaceIN]]
+inactMsrCreator  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actMsrCreator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactMsrCreatoroutactMsrCreator - [[actMsrCreator,rnActor],[outactMsrCreator,rnInterfaceOUT]]
+outactMsrCreator  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actMsrCreator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactMsrCreator - [[ctState,rnSystem],[actMsrCreator,rnactMsrCreator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actMsrCreator  -  rnactMsrCreator  -  part  -  1  -  *  -  
+------------------------------------------------------
+association - rtactCoordinatorinactCoordinator - [[actCoordinator,rnActor],[inactCoordinator,rnInterfaceIN]]
+inactCoordinator  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actCoordinator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactCoordinatoroutactCoordinator - [[actCoordinator,rnActor],[outactCoordinator,rnInterfaceOUT]]
+outactCoordinator  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actCoordinator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactCoordinator - [[ctState,rnSystem],[actCoordinator,rnactCoordinator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actCoordinator  -  rnactCoordinator  -  part  -  1  -  *  -  
+------------------------------------------------------
+association - rtactComCompanyinactComCompany - [[actComCompany,rnActor],[inactComCompany,rnInterfaceIN]]
+inactComCompany  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actComCompany  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactComCompanyoutactComCompany - [[actComCompany,rnActor],[outactComCompany,rnInterfaceOUT]]
+outactComCompany  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actComCompany  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactComCompany - [[ctState,rnSystem],[actComCompany,rnactComCompany]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actComCompany  -  rnactComCompany  -  part  -  1  -  *  -  
+------------------------------------------------------
+association - rtactAuthenticatedinactAuthenticated - [[actAuthenticated,rnActor],[inactAuthenticated,rnInterfaceIN]]
+inactAuthenticated  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actAuthenticated  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactAuthenticatedoutactAuthenticated - [[actAuthenticated,rnActor],[outactAuthenticated,rnInterfaceOUT]]
+outactAuthenticated  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actAuthenticated  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactAuthenticated - [[ctState,rnSystem],[actAuthenticated,rnactAuthenticated]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actAuthenticated  -  rnactAuthenticated  -  part  -  1  -  *  -  
+------------------------------------------------------
+association - rtactAdministratorinactAdministrator - [[actAdministrator,rnActor],[inactAdministrator,rnInterfaceIN]]
+inactAdministrator  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actAdministrator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactAdministratoroutactAdministrator - [[actAdministrator,rnActor],[outactAdministrator,rnInterfaceOUT]]
+outactAdministrator  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actAdministrator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactAdministrator - [[ctState,rnSystem],[actAdministrator,rnactAdministrator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actAdministrator  -  rnactAdministrator  -  part  -  1  -  *  -  
+------------------------------------------------------
+association - rtactActivatorinactActivator - [[actActivator,rnActor],[inactActivator,rnInterfaceIN]]
+inactActivator  -  rnInterfaceIN  -  associate  -  1  -  1  -  
+actActivator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - rtactActivatoroutactActivator - [[actActivator,rnActor],[outactActivator,rnInterfaceOUT]]
+outactActivator  -  rnInterfaceOUT  -  associate  -  1  -  1  -  
+actActivator  -  rnActor  -  associate  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStateactActivator - [[ctState,rnSystem],[actActivator,rnactActivator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+actActivator  -  rnactActivator  -  part  -  1  -  *  -  
+------------------------------------------------------
+composition - rtctStatectAdministrator - [[ctState,rnSystem],[ctAdministrator,rnctAdministrator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctAdministrator  -  rnctAdministrator  -  part  -  1  -  1  -  
+------------------------------------------------------
+composition - rtctStatectCoordinator - [[ctState,rnSystem],[ctCoordinator,rnctCoordinator]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctCoordinator  -  rnctCoordinator  -  part  -  0  -  *  -  
+------------------------------------------------------
+composition - rtctStatectAuthenticated - [[ctState,rnSystem],[ctAuthenticated,rnctAuthenticated]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctAuthenticated  -  rnctAuthenticated  -  part  -  0  -  *  -  
+------------------------------------------------------
+composition - rtctStatectHuman - [[ctState,rnSystem],[ctHuman,rnctHuman]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctHuman  -  rnctHuman  -  part  -  0  -  *  -  
+------------------------------------------------------
+composition - rtctStatectCrisis - [[ctState,rnSystem],[ctCrisis,rnctCrisis]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctCrisis  -  rnctCrisis  -  part  -  0  -  *  -  
+------------------------------------------------------
+composition - rtctStatectAlert - [[ctState,rnSystem],[ctAlert,rnctAlert]]
+ctState  -  rnSystem  -  composite  -  1  -  1  -  
+ctAlert  -  rnctAlert  -  part  -  0  -  *  -  
+------------------------------------------------------
+association - assctHumanactComCompany - [[ctHuman,rnctHuman],[actComCompany,rnactComCompany]]
+ctHuman  -  rnctHuman  -  associate  -  0  -  *  -  
+actComCompany  -  rnactComCompany  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - assctCrisisctCoordinator - [[ctCrisis,rnHandled],[ctCoordinator,rnHandler]]
+ctCrisis  -  rnHandled  -  associate  -  0  -  *  -  
+ctCoordinator  -  rnHandler  -  associate  -  0  -  1  -  
+------------------------------------------------------
+association - assctCoordinatoractCoordinator - [[ctCoordinator,rnctCoordinator],[actCoordinator,rnactCoordinator]]
+ctCoordinator  -  rnctCoordinator  -  associate  -  1  -  1  -  
+actCoordinator  -  rnactCoordinator  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - assctAuthenticatedactAuthenticated - [[ctAuthenticated,rnctAuthenticated],[actAuthenticated,rnactAuthenticated]]
+ctAuthenticated  -  rnctAuthenticated  -  associate  -  1  -  1  -  
+actAuthenticated  -  rnactAuthenticated  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - assctAlertctHuman - [[ctAlert,rnSignaled],[ctHuman,rnSignaler]]
+ctAlert  -  rnSignaled  -  associate  -  1  -  *  -  
+ctHuman  -  rnSignaler  -  associate  -  1  -  1  -  
+------------------------------------------------------
+association - assctAlertctCrisis - [[ctAlert,rnAlerts],[ctCrisis,rnTheCrisis]]
+ctAlert  -  rnAlerts  -  associate  -  1  -  *  -  
+ctCrisis  -  rnTheCrisis  -  associate  -  1  -  1  -  
+------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Actor Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actActivator,[[oid,dtOID]]]
+[actAdministrator,[[oid,dtOID]]]
+[actAuthenticated,[[oid,dtOID]]]
+[actComCompany,[[oid,dtOID]]]
+[actCoordinator,[[oid,dtOID]]]
+[actMsrCreator,[[oid,dtOID]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Interface Types  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actActivator,ctInputInterface,inactActivator]
+[actActivator,ctOutputInterface,outactActivator]
+[actAdministrator,ctInputInterface,inactAdministrator]
+[actAdministrator,ctOutputInterface,outactAdministrator]
+[actAuthenticated,ctInputInterface,inactAuthenticated]
+[actAuthenticated,ctOutputInterface,outactAuthenticated]
+[actComCompany,ctInputInterface,inactComCompany]
+[actComCompany,ctOutputInterface,outactComCompany]
+[actCoordinator,ctInputInterface,inactCoordinator]
+[actCoordinator,ctOutputInterface,outactCoordinator]
+[actMsrCreator,ctInputInterface,inactMsrCreator]
+[actMsrCreator,ctOutputInterface,outactMsrCreator]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Actor's Input Events %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[inactAdministrator,ieCoordinatorAdded,[[],[ptBoolean]]]
+[inactAdministrator,ieCoordinatorDeleted,[[],[ptBoolean]]]
+[inactAuthenticated,ieMessage,[[ptString],[ptBoolean]]]
+[inactComCompany,ieSmsSend,[[dtPhoneNumber,dtSMS],[ptBoolean]]]
+[inactCoordinator,ieSendACrisis,[[ctCrisis],[ptBoolean]]]
+[inactCoordinator,ieSendAnAlert,[[ctAlert],[ptBoolean]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Actor's Output Events %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[outactActivator,oeSetClock,[[dtDateAndTime],[ptBoolean]]]
+[outactActivator,oeSollicitateCrisisHandling,[[],[ptBoolean]]]
+[outactAdministrator,oeAddCoordinator,[[dtCoordinatorID,dtLogin,dtPassword],[ptBoolean]]]
+[outactAdministrator,oeDeleteCoordinator,[[dtCoordinatorID],[ptBoolean]]]
+[outactAuthenticated,oeLogin,[[dtLogin,dtPassword],[ptBoolean]]]
+[outactAuthenticated,oeLogout,[[],[ptBoolean]]]
+[outactComCompany,oeAlert,[[etHumanKind,dtDate,dtTime,dtPhoneNumber,dtGPSLocation,dtComment],[ptBoolean]]]
+[outactCoordinator,oeCloseCrisis,[[dtCrisisID],[ptBoolean]]]
+[outactCoordinator,oeGetAlertsSet,[[etAlertStatus],[ptBoolean]]]
+[outactCoordinator,oeGetCrisisSet,[[etCrisisStatus],[ptBoolean]]]
+[outactCoordinator,oeInvalidateAlert,[[dtAlertID],[ptBoolean]]]
+[outactCoordinator,oeReportOnCrisis,[[dtCrisisID,dtComment],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisHandler,[[dtCrisisID],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisStatus,[[dtCrisisID,etCrisisStatus],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisType,[[dtCrisisID,etCrisisType],[ptBoolean]]]
+[outactCoordinator,oeValidateAlert,[[dtAlertID],[ptBoolean]]]
+[outactMsrCreator,oeCreateSystemAndEnvironment,[[ptInteger],[ptBoolean]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Operations %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[actActivator,init,[[actActivator],[ptBoolean]]]
+[actAdministrator,init,[[actAdministrator],[ptBoolean]]]
+[actAuthenticated,init,[[actAuthenticated],[ptBoolean]]]
+[actComCompany,init,[[actComCompany],[ptBoolean]]]
+[actCoordinator,init,[[actCoordinator],[ptBoolean]]]
+[actMsrCreator,init,[[actMsrCreator],[ptBoolean]]]
+[ctAdministrator,init,[[ctAdministrator,dtLogin,dtPassword],[ptBoolean]]]
+[ctAlert,init,[[ctAlert,dtAlertID,etAlertStatus,dtGPSLocation,dtDateAndTime,dtComment],[ptBoolean]]]
+[ctAlert,isSentToCoordinator,[[ctAlert,actCoordinator],[ptBoolean]]]
+[ctAuthenticated,init,[[ctAuthenticated,dtLogin,dtPassword],[ptBoolean]]]
+[ctCoordinator,init,[[ctCoordinator,dtCoordinatorID,dtLogin,dtPassword],[ptBoolean]]]
+[ctCrisis,handlingDelayPassed,[[ctCrisis],[ptBoolean]]]
+[ctCrisis,init,[[ctCrisis,dtCrisisID,etCrisisType,etCrisisStatus,dtGPSLocation,dtDateAndTime,dtComment],[ptBoolean]]]
+[ctCrisis,isAllocatedIfPossible,[[ctCrisis],[ptBoolean]]]
+[ctCrisis,isSentToCoordinator,[[ctCrisis,actCoordinator],[ptBoolean]]]
+[ctCrisis,maxHandlingDelayPassed,[[ctCrisis],[ptBoolean]]]
+[ctHuman,init,[[ctHuman,dtPhoneNumber,etHumanKind],[ptBoolean]]]
+[ctHuman,isAcknowledged,[[ctHuman],[ptBoolean]]]
+[ctState,init,[[ctState,dtInteger,dtInteger,dtDateAndTime,dtSecond,dtSecond,dtDateAndTime,ptBoolean],[ptBoolean]]]
+[dtAlertID,is,[[dtAlertID],[ptBoolean]]]
+[dtComment,is,[[dtComment],[ptBoolean]]]
+[dtCoordinatorID,is,[[dtCoordinatorID],[ptBoolean]]]
+[dtCrisisID,is,[[dtCrisisID],[ptBoolean]]]
+[dtDate,close,[[dtDate],[ptBoolean]]]
+[dtDate,eq,[[dtDate,dtDate],[ptBoolean]]]
+[dtDate,fromSecondsQty,[[dtDate,dtInteger],[ptBoolean]]]
+[dtDate,gt,[[dtDate,dtDate],[ptBoolean]]]
+[dtDate,is,[[dtDate],[ptBoolean]]]
+[dtDate,isNow,[[dtDate],[ptBoolean]]]
+[dtDate,lt,[[dtDate,dtDate],[ptBoolean]]]
+[dtDate,toSecondsQty,[[dtDate],[dtInteger]]]
+[dtDateAndTime,close,[[dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,eq,[[dtDateAndTime,dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,fromSecondsQty,[[dtDateAndTime,dtInteger],[ptBoolean]]]
+[dtDateAndTime,gt,[[dtDateAndTime,dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,is,[[dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,isNow,[[dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,lt,[[dtDateAndTime,dtDateAndTime],[ptBoolean]]]
+[dtDateAndTime,toSecondsQty,[[dtDateAndTime],[dtInteger]]]
+[dtDay,close,[[dtDay],[ptBoolean]]]
+[dtDay,is,[[dtDay],[ptBoolean]]]
+[dtGPSLocation,is,[[dtGPSLocation],[ptBoolean]]]
+[dtGPSLocation,isNearTo,[[dtGPSLocation,dtGPSLocation],[ptBoolean]]]
+[dtHour,close,[[dtHour],[ptBoolean]]]
+[dtHour,is,[[dtHour],[ptBoolean]]]
+[dtInteger,acos,[[dtInteger],[dtReal]]]
+[dtInteger,add,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,asdtReal,[[dtInteger],[dtReal]]]
+[dtInteger,asin,[[dtInteger],[dtReal]]]
+[dtInteger,asptInteger,[[dtInteger],[ptInteger]]]
+[dtInteger,atan,[[dtInteger],[dtReal]]]
+[dtInteger,close,[[dtInteger],[ptBoolean]]]
+[dtInteger,cos,[[dtInteger],[dtReal]]]
+[dtInteger,eq,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,frac,[[dtInteger,dtInteger],[dtReal]]]
+[dtInteger,geq,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,gt,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,is,[[dtInteger],[ptBoolean]]]
+[dtInteger,leq,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,lt,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,mod,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,msrabs,[[dtInteger],[dtInteger]]]
+[dtInteger,msrdiv,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,mul,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,neq,[[dtInteger,dtInteger],[ptBoolean]]]
+[dtInteger,opp,[[dtInteger],[dtInteger]]]
+[dtInteger,power,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,sin,[[dtInteger],[dtReal]]]
+[dtInteger,sqr,[[dtInteger],[dtInteger]]]
+[dtInteger,sqrt,[[dtInteger],[dtReal]]]
+[dtInteger,sub,[[dtInteger,dtInteger],[dtInteger]]]
+[dtInteger,tan,[[dtInteger],[dtReal]]]
+[dtInteger,toDeg,[[dtInteger],[dtReal]]]
+[dtInteger,toRad,[[dtInteger],[dtReal]]]
+[dtInteger,todtString,[[dtInteger],[dtString]]]
+[dtLatitude,is,[[dtLatitude],[ptBoolean]]]
+[dtLogin,is,[[dtLogin],[ptBoolean]]]
+[dtLongitude,is,[[dtLongitude],[ptBoolean]]]
+[dtMinute,close,[[dtMinute],[ptBoolean]]]
+[dtMinute,is,[[dtMinute],[ptBoolean]]]
+[dtMonth,close,[[dtMonth],[ptBoolean]]]
+[dtMonth,is,[[dtMonth],[ptBoolean]]]
+[dtOID,is,[[dtOID],[ptBoolean]]]
+[dtPassword,is,[[dtPassword],[ptBoolean]]]
+[dtPhoneNumber,is,[[dtPhoneNumber],[ptBoolean]]]
+[dtReal,acos,[[dtReal],[dtReal]]]
+[dtReal,add,[[dtReal,dtReal],[dtReal]]]
+[dtReal,asdtInteger,[[dtReal],[dtInteger]]]
+[dtReal,asin,[[dtReal],[dtReal]]]
+[dtReal,asptReal,[[dtReal],[ptReal]]]
+[dtReal,atan,[[dtReal],[dtReal]]]
+[dtReal,close,[[dtReal],[ptBoolean]]]
+[dtReal,cos,[[dtReal],[dtReal]]]
+[dtReal,eq,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,frac,[[dtReal,dtReal],[dtReal]]]
+[dtReal,geq,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,gt,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,is,[[dtReal],[ptBoolean]]]
+[dtReal,leq,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,lt,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,msrabs,[[dtReal],[dtReal]]]
+[dtReal,msrdiv,[[dtReal,dtReal],[dtInteger]]]
+[dtReal,msrround,[[dtReal],[dtInteger]]]
+[dtReal,mul,[[dtReal,dtReal],[dtReal]]]
+[dtReal,neq,[[dtReal,dtReal],[ptBoolean]]]
+[dtReal,opp,[[dtReal],[dtReal]]]
+[dtReal,power,[[dtReal,dtReal],[dtReal]]]
+[dtReal,sin,[[dtReal],[dtReal]]]
+[dtReal,sqr,[[dtReal],[dtReal]]]
+[dtReal,sqrt,[[dtReal],[dtReal]]]
+[dtReal,sub,[[dtReal,dtReal],[dtReal]]]
+[dtReal,tan,[[dtReal],[dtReal]]]
+[dtReal,toDeg,[[dtReal],[dtReal]]]
+[dtReal,toRad,[[dtReal],[dtReal]]]
+[dtReal,todtString,[[dtReal],[dtString]]]
+[dtSMS,is,[[dtSMS],[ptBoolean]]]
+[dtSecond,close,[[dtSecond],[ptBoolean]]]
+[dtSecond,is,[[dtSecond],[ptBoolean]]]
+[dtString,close,[[dtString],[ptBoolean]]]
+[dtString,dtStringConcat,[[dtString,dtString],[dtString]]]
+[dtString,eq,[[dtString,dtString],[ptBoolean]]]
+[dtString,geq,[[dtString,dtString],[ptBoolean]]]
+[dtString,gt,[[dtString,dtString],[ptBoolean]]]
+[dtString,is,[[dtString],[ptBoolean]]]
+[dtString,length,[[dtString],[dtInteger]]]
+[dtString,leq,[[dtString,dtString],[ptBoolean]]]
+[dtString,lt,[[dtString,dtString],[ptBoolean]]]
+[dtString,neq,[[dtString,dtString],[ptBoolean]]]
+[dtString,subdtString,[[dtString,dtInteger,dtInteger],[dtString]]]
+[dtString,toLower,[[dtString],[dtString]]]
+[dtString,toUpper,[[dtString],[dtString]]]
+[dtString,toptString,[[dtString],[ptString]]]
+[dtTime,close,[[dtTime],[ptBoolean]]]
+[dtTime,eq,[[dtTime,dtTime],[ptBoolean]]]
+[dtTime,fromSecondsQty,[[dtTime,dtInteger],[ptBoolean]]]
+[dtTime,gt,[[dtTime,dtTime],[ptBoolean]]]
+[dtTime,is,[[dtTime],[ptBoolean]]]
+[dtTime,isNow,[[dtTime],[ptBoolean]]]
+[dtTime,lt,[[dtTime,dtTime],[ptBoolean]]]
+[dtTime,toSecondsQty,[[dtTime],[dtInteger]]]
+[dtYear,close,[[dtYear],[ptBoolean]]]
+[dtYear,is,[[dtYear],[ptBoolean]]]
+[etAlertStatus,is,[[etAlertStatus],[ptBoolean]]]
+[etCrisisStatus,is,[[etCrisisStatus],[ptBoolean]]]
+[etCrisisType,is,[[etCrisisType],[ptBoolean]]]
+[etHumanKind,is,[[etHumanKind],[ptBoolean]]]
+[inactActivator,init,[[inactActivator],[ptBoolean]]]
+[inactAdministrator,ieCoordinatorAdded,[[],[ptBoolean]]]
+[inactAdministrator,ieCoordinatorDeleted,[[],[ptBoolean]]]
+[inactAdministrator,init,[[inactAdministrator],[ptBoolean]]]
+[inactAuthenticated,ieMessage,[[ptString],[ptBoolean]]]
+[inactAuthenticated,init,[[inactAuthenticated],[ptBoolean]]]
+[inactComCompany,ieSmsSend,[[dtPhoneNumber,dtSMS],[ptBoolean]]]
+[inactComCompany,init,[[inactComCompany],[ptBoolean]]]
+[inactCoordinator,ieSendACrisis,[[ctCrisis],[ptBoolean]]]
+[inactCoordinator,ieSendAnAlert,[[ctAlert],[ptBoolean]]]
+[inactCoordinator,init,[[inactCoordinator],[ptBoolean]]]
+[inactMsrCreator,init,[[inactMsrCreator],[ptBoolean]]]
+[outactActivator,init,[[outactActivator],[ptBoolean]]]
+[outactActivator,oeSetClock,[[dtDateAndTime],[ptBoolean]]]
+[outactActivator,oeSollicitateCrisisHandling,[[],[ptBoolean]]]
+[outactAdministrator,init,[[outactAdministrator],[ptBoolean]]]
+[outactAdministrator,oeAddCoordinator,[[dtCoordinatorID,dtLogin,dtPassword],[ptBoolean]]]
+[outactAdministrator,oeDeleteCoordinator,[[dtCoordinatorID],[ptBoolean]]]
+[outactAuthenticated,init,[[outactAuthenticated],[ptBoolean]]]
+[outactAuthenticated,oeLogin,[[dtLogin,dtPassword],[ptBoolean]]]
+[outactAuthenticated,oeLogout,[[],[ptBoolean]]]
+[outactComCompany,init,[[outactComCompany],[ptBoolean]]]
+[outactComCompany,oeAlert,[[etHumanKind,dtDate,dtTime,dtPhoneNumber,dtGPSLocation,dtComment],[ptBoolean]]]
+[outactCoordinator,init,[[outactCoordinator],[ptBoolean]]]
+[outactCoordinator,oeCloseCrisis,[[dtCrisisID],[ptBoolean]]]
+[outactCoordinator,oeGetAlertsSet,[[etAlertStatus],[ptBoolean]]]
+[outactCoordinator,oeGetCrisisSet,[[etCrisisStatus],[ptBoolean]]]
+[outactCoordinator,oeInvalidateAlert,[[dtAlertID],[ptBoolean]]]
+[outactCoordinator,oeReportOnCrisis,[[dtCrisisID,dtComment],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisHandler,[[dtCrisisID],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisStatus,[[dtCrisisID,etCrisisStatus],[ptBoolean]]]
+[outactCoordinator,oeSetCrisisType,[[dtCrisisID,etCrisisType],[ptBoolean]]]
+[outactCoordinator,oeValidateAlert,[[dtAlertID],[ptBoolean]]]
+[outactMsrCreator,init,[[outactMsrCreator],[ptBoolean]]]
+[outactMsrCreator,oeCreateSystemAndEnvironment,[[ptInteger],[ptBoolean]]]
+[ptBoolean,close,[[ptBoolean],[ptBoolean]]]
+[ptBoolean,eq,[[ptBoolean,ptBoolean],[ptBoolean]]]
+[ptBoolean,is,[[ptBoolean],[ptBoolean]]]
+[ptBoolean,msrand,[[ptBoolean,ptBoolean],[ptBoolean]]]
+[ptBoolean,msrnot,[[ptBoolean],[ptBoolean]]]
+[ptBoolean,msror,[[ptBoolean,ptBoolean],[ptBoolean]]]
+[ptBoolean,msrxor,[[ptBoolean,ptBoolean],[ptBoolean]]]
+[ptBoolean,neq,[[ptBoolean,ptBoolean],[ptBoolean]]]
+[ptInteger,acos,[[ptInteger],[ptReal]]]
+[ptInteger,add,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,asin,[[ptInteger],[ptReal]]]
+[ptInteger,asptReal,[[ptInteger],[ptReal]]]
+[ptInteger,atan,[[ptInteger],[ptReal]]]
+[ptInteger,close,[[ptInteger],[ptBoolean]]]
+[ptInteger,cos,[[ptInteger],[ptReal]]]
+[ptInteger,eq,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,frac,[[ptInteger,ptInteger],[ptReal]]]
+[ptInteger,geq,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,gt,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,is,[[ptInteger],[ptBoolean]]]
+[ptInteger,leq,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,lt,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,mod,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,msrabs,[[ptInteger],[ptInteger]]]
+[ptInteger,msrdiv,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,mul,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,neq,[[ptInteger,ptInteger],[ptBoolean]]]
+[ptInteger,opp,[[ptInteger],[ptInteger]]]
+[ptInteger,power,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,sin,[[ptInteger],[ptReal]]]
+[ptInteger,sqr,[[ptInteger],[ptInteger]]]
+[ptInteger,sqrt,[[ptInteger],[ptReal]]]
+[ptInteger,sub,[[ptInteger,ptInteger],[ptInteger]]]
+[ptInteger,tan,[[ptInteger],[ptReal]]]
+[ptInteger,toDeg,[[ptInteger],[ptReal]]]
+[ptInteger,toRad,[[ptInteger],[ptReal]]]
+[ptInteger,toptString,[[ptInteger],[ptString]]]
+[ptReal,acos,[[ptReal],[ptReal]]]
+[ptReal,add,[[ptReal,ptReal],[ptReal]]]
+[ptReal,asin,[[ptReal],[ptReal]]]
+[ptReal,asptInteger,[[ptReal],[ptInteger]]]
+[ptReal,atan,[[ptReal],[ptReal]]]
+[ptReal,close,[[ptReal],[ptBoolean]]]
+[ptReal,cos,[[ptReal],[ptReal]]]
+[ptReal,eq,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,frac,[[ptReal,ptReal],[ptReal]]]
+[ptReal,geq,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,gt,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,is,[[ptReal],[ptBoolean]]]
+[ptReal,leq,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,lt,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,msrabs,[[ptReal],[ptReal]]]
+[ptReal,msrdiv,[[ptReal,ptReal],[ptInteger]]]
+[ptReal,msrround,[[ptReal],[ptInteger]]]
+[ptReal,mul,[[ptReal,ptReal],[ptReal]]]
+[ptReal,neq,[[ptReal,ptReal],[ptBoolean]]]
+[ptReal,opp,[[ptReal],[ptReal]]]
+[ptReal,power,[[ptReal,ptReal],[ptReal]]]
+[ptReal,sin,[[ptReal],[ptReal]]]
+[ptReal,sqr,[[ptReal],[ptReal]]]
+[ptReal,sqrt,[[ptReal],[ptReal]]]
+[ptReal,sub,[[ptReal,ptReal],[ptReal]]]
+[ptReal,tan,[[ptReal],[ptReal]]]
+[ptReal,toDeg,[[ptReal],[ptReal]]]
+[ptReal,toRad,[[ptReal],[ptReal]]]
+[ptReal,toptString,[[ptReal],[ptString]]]
+[ptString,close,[[ptString],[ptBoolean]]]
+[ptString,eq,[[ptString,ptString],[ptBoolean]]]
+[ptString,geq,[[ptString,ptString],[ptBoolean]]]
+[ptString,gt,[[ptString,ptString],[ptBoolean]]]
+[ptString,is,[[ptString],[ptBoolean]]]
+[ptString,length,[[ptString],[ptInteger]]]
+[ptString,leq,[[ptString,ptString],[ptBoolean]]]
+[ptString,lt,[[ptString,ptString],[ptBoolean]]]
+[ptString,neq,[[ptString,ptString],[ptBoolean]]]
+[ptString,ptStringConcat,[[ptString,ptString],[ptString]]]
+[ptString,subptString,[[ptString,ptInteger,ptInteger],[ptString]]]
+[ptString,toLower,[[ptString],[ptString]]]
+[ptString,toUpper,[[ptString],[ptString]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% all operations accessible using navigation by type with inheritance %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[outactActivator,init,outactActivator]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% All Types by Category %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[classTypes,[actActivator,[[oid,dtOID]]]]
+[classTypes,[actAdministrator,[[oid,dtOID]]]]
+[classTypes,[actAuthenticated,[[oid,dtOID]]]]
+[classTypes,[actComCompany,[[oid,dtOID]]]]
+[classTypes,[actCoordinator,[[oid,dtOID]]]]
+[classTypes,[actMsrCreator,[[oid,dtOID]]]]
+[classTypes,[ctAdministrator,[[oid,dtOID]]]]
+[classTypes,[ctAlert,[[oid,dtOID],[id,dtAlertID],[status,etAlertStatus],[location,dtGPSLocation],[instant,dtDateAndTime],[comment,dtComment]]]]
+[classTypes,[ctAuthenticated,[[oid,dtOID],[login,dtLogin],[pwd,dtPassword],[vpIsLogged,ptBoolean]]]]
+[classTypes,[ctCoordinator,[[oid,dtOID],[id,dtCoordinatorID]]]]
+[classTypes,[ctCrisis,[[oid,dtOID],[id,dtCrisisID],[type,etCrisisType],[status,etCrisisStatus],[location,dtGPSLocation],[instant,dtDateAndTime],[comment,dtComment]]]]
+[classTypes,[ctHuman,[[oid,dtOID],[id,dtPhoneNumber],[kind,etHumanKind]]]]
+[classTypes,[ctInputInterface,[[oid,dtOID]]]]
+[classTypes,[ctMsrActor,[[oid,dtOID]]]]
+[classTypes,[ctOutputInterface,[[oid,dtOID]]]]
+[classTypes,[ctState,[[oid,dtOID],[nextValueForAlertID,dtInteger],[nextValueForCrisisID,dtInteger],[clock,dtDateAndTime],[crisisReminderPeriod,dtSecond],[maxCrisisReminderPeriod,dtSecond],[vpLastReminder,dtDateAndTime],[vpStarted,ptBoolean]]]]
+[classTypes,[inactActivator,[[oid,dtOID]]]]
+[classTypes,[inactAdministrator,[[oid,dtOID]]]]
+[classTypes,[inactAuthenticated,[[oid,dtOID]]]]
+[classTypes,[inactComCompany,[[oid,dtOID]]]]
+[classTypes,[inactCoordinator,[[oid,dtOID]]]]
+[classTypes,[inactMsrCreator,[[oid,dtOID]]]]
+[classTypes,[outactActivator,[[oid,dtOID]]]]
+[classTypes,[outactAdministrator,[[oid,dtOID]]]]
+[classTypes,[outactAuthenticated,[[oid,dtOID]]]]
+[classTypes,[outactComCompany,[[oid,dtOID]]]]
+[classTypes,[outactCoordinator,[[oid,dtOID]]]]
+[classTypes,[outactMsrCreator,[[oid,dtOID]]]]
+[dataTypes,[dtAlertID,[]]]
+[dataTypes,[dtComment,[]]]
+[dataTypes,[dtCoordinatorID,[]]]
+[dataTypes,[dtCrisisID,[]]]
+[dataTypes,[dtDate,[[year,dtYear],[month,dtMonth],[day,dtDay]]]]
+[dataTypes,[dtDateAndTime,[[date,dtDate],[time,dtTime]]]]
+[dataTypes,[dtDay,[]]]
+[dataTypes,[dtGPSLocation,[[latitude,dtLatitude],[longitude,dtLongitude]]]]
+[dataTypes,[dtHour,[]]]
+[dataTypes,[dtInteger,[[value,ptInteger]]]]
+[dataTypes,[dtLatitude,[]]]
+[dataTypes,[dtLogin,[]]]
+[dataTypes,[dtLongitude,[]]]
+[dataTypes,[dtMinute,[]]]
+[dataTypes,[dtMonth,[]]]
+[dataTypes,[dtOID,[]]]
+[dataTypes,[dtPassword,[]]]
+[dataTypes,[dtPhoneNumber,[]]]
+[dataTypes,[dtReal,[[value,ptReal]]]]
+[dataTypes,[dtSMS,[[value,ptString]]]]
+[dataTypes,[dtSecond,[]]]
+[dataTypes,[dtString,[[value,ptString]]]]
+[dataTypes,[dtTime,[[hour,dtHour],[minute,dtMinute],[second,dtSecond]]]]
+[dataTypes,[dtYear,[]]]
+[dataTypes,[rtRelDefPart,[[partEnd,ptString],[roleName,ptString],[roleType,ptString],[cardMin,ptString],[cardMax,ptString]]]]
+[enumerationTypes,[etAlertStatus,[pending,valid,invalid]]]
+[enumerationTypes,[etCrisisStatus,[pending,handled,solved,closed]]]
+[enumerationTypes,[etCrisisType,[small,medium,huge]]]
+[enumerationTypes,[etHumanKind,[witness,victim,anonymous]]]
+[primitiveTypes,[ptBoolean,[]]]
+[primitiveTypes,[ptInteger,[]]]
+[primitiveTypes,[ptReal,[]]]
+[primitiveTypes,[ptString,[]]]
+[relationTypes,[association,assctAlertctCrisis,[[ctAlert,rnAlerts],[ctCrisis,rnTheCrisis]],[[rtRelDefPart,[[partEnd,[ptString,ctAlert]],[roleName,[ptString,rnAlerts]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctCrisis]],[roleName,[ptString,rnTheCrisis]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,assctAlertctHuman,[[ctAlert,rnSignaled],[ctHuman,rnSignaler]],[[rtRelDefPart,[[partEnd,[ptString,ctAlert]],[roleName,[ptString,rnSignaled]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctHuman]],[roleName,[ptString,rnSignaler]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,assctAuthenticatedactAuthenticated,[[ctAuthenticated,rnctAuthenticated],[actAuthenticated,rnactAuthenticated]],[[rtRelDefPart,[[partEnd,[ptString,ctAuthenticated]],[roleName,[ptString,rnctAuthenticated]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAuthenticated]],[roleName,[ptString,rnactAuthenticated]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,assctCoordinatoractCoordinator,[[ctCoordinator,rnctCoordinator],[actCoordinator,rnactCoordinator]],[[rtRelDefPart,[[partEnd,[ptString,ctCoordinator]],[roleName,[ptString,rnctCoordinator]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actCoordinator]],[roleName,[ptString,rnactCoordinator]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,assctCrisisctCoordinator,[[ctCrisis,rnHandled],[ctCoordinator,rnHandler]],[[rtRelDefPart,[[partEnd,[ptString,ctCrisis]],[roleName,[ptString,rnHandled]],[roleType,[ptString,associate]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctCoordinator]],[roleName,[ptString,rnHandler]],[roleType,[ptString,associate]],[cardMin,[ptString,0]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,assctHumanactComCompany,[[ctHuman,rnctHuman],[actComCompany,rnactComCompany]],[[rtRelDefPart,[[partEnd,[ptString,ctHuman]],[roleName,[ptString,rnctHuman]],[roleType,[ptString,associate]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]],[rtRelDefPart,[[partEnd,[ptString,actComCompany]],[roleName,[ptString,rnactComCompany]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactActivatorinactActivator,[[actActivator,rnActor],[inactActivator,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactActivator]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actActivator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactActivatoroutactActivator,[[actActivator,rnActor],[outactActivator,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactActivator]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actActivator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactAdministratorinactAdministrator,[[actAdministrator,rnActor],[inactAdministrator,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactAdministrator]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAdministrator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactAdministratoroutactAdministrator,[[actAdministrator,rnActor],[outactAdministrator,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactAdministrator]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAdministrator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactAuthenticatedinactAuthenticated,[[actAuthenticated,rnActor],[inactAuthenticated,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactAuthenticated]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAuthenticated]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactAuthenticatedoutactAuthenticated,[[actAuthenticated,rnActor],[outactAuthenticated,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactAuthenticated]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAuthenticated]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactComCompanyinactComCompany,[[actComCompany,rnActor],[inactComCompany,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactComCompany]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actComCompany]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactComCompanyoutactComCompany,[[actComCompany,rnActor],[outactComCompany,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactComCompany]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actComCompany]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactCoordinatorinactCoordinator,[[actCoordinator,rnActor],[inactCoordinator,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactCoordinator]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actCoordinator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactCoordinatoroutactCoordinator,[[actCoordinator,rnActor],[outactCoordinator,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactCoordinator]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actCoordinator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactMsrCreatorinactMsrCreator,[[actMsrCreator,rnActor],[inactMsrCreator,rnInterfaceIN]],[[rtRelDefPart,[[partEnd,[ptString,inactMsrCreator]],[roleName,[ptString,rnInterfaceIN]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actMsrCreator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[association,rtactMsrCreatoroutactMsrCreator,[[actMsrCreator,rnActor],[outactMsrCreator,rnInterfaceOUT]],[[rtRelDefPart,[[partEnd,[ptString,outactMsrCreator]],[roleName,[ptString,rnInterfaceOUT]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actMsrCreator]],[roleName,[ptString,rnActor]],[roleType,[ptString,associate]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[composition,rtctStateactActivator,[[ctState,rnSystem],[actActivator,rnactActivator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actActivator]],[roleName,[ptString,rnactActivator]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStateactAdministrator,[[ctState,rnSystem],[actAdministrator,rnactAdministrator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAdministrator]],[roleName,[ptString,rnactAdministrator]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStateactAuthenticated,[[ctState,rnSystem],[actAuthenticated,rnactAuthenticated]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actAuthenticated]],[roleName,[ptString,rnactAuthenticated]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStateactComCompany,[[ctState,rnSystem],[actComCompany,rnactComCompany]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actComCompany]],[roleName,[ptString,rnactComCompany]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStateactCoordinator,[[ctState,rnSystem],[actCoordinator,rnactCoordinator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actCoordinator]],[roleName,[ptString,rnactCoordinator]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStateactMsrCreator,[[ctState,rnSystem],[actMsrCreator,rnactMsrCreator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,actMsrCreator]],[roleName,[ptString,rnactMsrCreator]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStatectAdministrator,[[ctState,rnSystem],[ctAdministrator,rnctAdministrator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctAdministrator]],[roleName,[ptString,rnctAdministrator]],[roleType,[ptString,part]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]]]]]
+[relationTypes,[composition,rtctStatectAlert,[[ctState,rnSystem],[ctAlert,rnctAlert]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctAlert]],[roleName,[ptString,rnctAlert]],[roleType,[ptString,part]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStatectAuthenticated,[[ctState,rnSystem],[ctAuthenticated,rnctAuthenticated]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctAuthenticated]],[roleName,[ptString,rnctAuthenticated]],[roleType,[ptString,part]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStatectCoordinator,[[ctState,rnSystem],[ctCoordinator,rnctCoordinator]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctCoordinator]],[roleName,[ptString,rnctCoordinator]],[roleType,[ptString,part]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStatectCrisis,[[ctState,rnSystem],[ctCrisis,rnctCrisis]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctCrisis]],[roleName,[ptString,rnctCrisis]],[roleType,[ptString,part]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]]]]]
+[relationTypes,[composition,rtctStatectHuman,[[ctState,rnSystem],[ctHuman,rnctHuman]],[[rtRelDefPart,[[partEnd,[ptString,ctState]],[roleName,[ptString,rnSystem]],[roleType,[ptString,composite]],[cardMin,[ptString,1]],[cardMax,[ptString,1]]],[]],[rtRelDefPart,[[partEnd,[ptString,ctHuman]],[roleName,[ptString,rnctHuman]],[roleType,[ptString,part]],[cardMin,[ptString,0]],[cardMax,[ptString,*]]],[]]]]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

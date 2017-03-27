@@ -1,0 +1,25 @@
+package icrash.operations.concepts.primarytypes.datatypes.etCrisisStatus{ 
+	
+import lu.uni.lassy.messir.libraries.primitives
+
+Operation Model {
+			
+		operation: icrash.concepts.primarytypes.datatypes.etCrisisStatus.is():ptBoolean{
+    postF{ 
+        let TheResult: ptBoolean in
+        ( if
+          ( self = pending
+            or self = handled
+            or self = solved
+            or self = closed
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+    }
+    prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesDatatypes-etCrisisStatus-is.pl"}
+}
+}
+}

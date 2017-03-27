@@ -1,0 +1,18 @@
+@@Actor icrash.environment.actAuthenticated
+
+@description
+"abstract actor providing reusable input and output interfaces for actors that need to authenticate themselves."
+
+//input events
+@inputEvent icrash.environment.actAuthenticated.inactAuthenticated.ieMessage
+"allows for receiving general textual messages."
+
+@endInputEvents
+
+//output events
+@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeLogin
+"sent to request authorization to request access secured system operations."
+@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeLogout
+"sent to end the secured access to specific system operations."
+
+@endOutputEvents

@@ -1,0 +1,162 @@
+\makeatother\usepackage{etex} 
+%reserveinserts seems no more compatblie with texlive 2015 and later
+%\reserveinserts{28} % MUST BE HERE to avoid ``Package morefloats Error: Too many floats requested.''
+%--------------------------------------------
+\newcounter{def} 
+%--------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%--------------------------------------------
+% for track changes
+%\let\note\relax
+%\usepackage[inline]{trackchanges}
+% %\usepackage[finalnew]{trackchanges}  
+% %\usepackage[finalold]{trackchanges}
+% %\usepackage[footnotes]trackchanges}
+% %\usepackage[margins]{trackchanges}
+% %\usepackage[margins, movemargins]{trackchanges}
+% \addeditor{NG}
+% \addeditor{AC}
+% \addeditor{BR}    
+%--------------------------------------------
+\usepackage[absolute,overlay]{textpos} % For floating text boxes
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage[english]{babel} % for  quotes and smileys
+\usepackage[final]{pdfpages} %for inserting pdf documents 
+\usepackage[T1]{fontenc} 
+\usepackage[table]{xcolor}
+\usepackage[tikz]{bclogo} %for warning logo
+\usepackage[utf8]{inputenc}
+\usepackage{adjustbox} 
+\usepackage{animate}
+\usepackage{array}
+\usepackage{bchart}
+\usepackage{bibentry}
+\usepackage{bm}
+\usepackage{booktabs,colortbl}
+\usepackage{calc}
+\usepackage{calrsfs}
+\usepackage{color}
+\usepackage{csquotes}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{epsf}%\usepackage{epsf, epsfig, pifont,tikz,subfigure}
+\usepackage{epsfig}
+\usepackage{eso-pic}%\usepackage{eso-pic,everyshi,ifthen,calc}
+\usepackage{everypage}
+\usepackage{everyshi}
+\usepackage{fancybox}
+\usepackage{fancyvrb} 
+\usepackage{filecontents}
+\usepackage{forloop}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{here}
+\usepackage{ifthen}
+\usepackage{import}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{media9}
+\usepackage{microtype}
+\usepackage{morefloats}
+\usepackage{multicol}\columnseprule 0.2pt\raggedcolumns
+\usepackage{multirow}
+\usepackage{pdflscape}    
+\usepackage{pdfrender}
+\usepackage{setspace}
+\usepackage{sidecap}
+\usepackage{soul}%to hightlight text
+\usepackage{spverbatim}
+\usepackage{./../lu.uni.lassy.excalibur.standard.report.libraries/styles/asm}
+\usepackage{subfigure} % use for side-by-side figures
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{transparent}
+\usepackage{upquote}
+\usepackage{xkeyval} 
+\usepackage{xparse} 
+\usepackage{xstring}
+%--------------------------------------------
+\usepackage{uncial}
+\usepackage{ascii}
+\usepackage{alltt}
+\usepackage{courier}
+\usepackage{humanist}
+\usepackage{pifont}
+\usepackage{verbatim}
+%--------------------------------------------
+\usepackage{pgf}
+\usepackage{pgfarrows}
+\usepackage{pgfnodes}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable} 
+\pgfplotsset{compat=1.8}
+
+%--------------------------------------------
+\usepackage{tikz}
+\usepackage{tkz-kiviat}   
+\usepackage{./../lu.uni.lassy.excalibur.standard.report.libraries/styles/tikz-uml} 
+\usetikzlibrary{arrows,chains,shapes,arrows,matrix,positioning,scopes}
+\usetikzlibrary{calc,matrix,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing,decorations.markings}
+\usetikzlibrary{spy}
+%--------------------------------------------
+\lstdefinelanguage{tikzuml}{language=[LaTeX]TeX, classoffset=0, morekeywords={umlbasiccomponent, umlprovidedinterface, umlrequiredinterface, umldelegateconnector, umlassemblyconnector, umlVHVassemblyconnector, umlHVHassemblyconnector, umlnote, umlusecase, umlactor, umlinherit, umlassoc, umlVHextend, umlinclude, umlstateinitial, umlbasicstate, umltrans, umlstatefinal, umlVHtrans, umlHVtrans, umldatabase, umlmulti, umlobject, umlfpart, umlcreatecall, umlclass, umlvirt, umlunicompo, umlimport, umlaggreg}, keywordstyle=\color{DarkBlue}, classoffset=1, morekeywords={umlcomponent, umlsystem, umlstate, umlseqdiag, umlcall, umlcallself, umlfragment, umlpackage}, keywordstyle=\color{DarkRed}, classoffset=0,  sensitive=true, morecomment=[l]{\%}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyphenat} % For long words split
+\hyphenation{abc-def-ghij-klm-nop-qrs-tuv-wxyz}
+\sloppy
+\hyphenpenalty 10000000
+
+\newsavebox\MyBreakChar%
+\sbox\MyBreakChar{}% char to display the break after non char
+\newsavebox\MySpaceBreakChar%
+\sbox\MySpaceBreakChar{\hyp}% char to display the break after space
+\makeatletter%
+\newcommand*{\BreakableChar}[1][\MyBreakChar]{%
+  \leavevmode%
+  \prw@zbreak%
+  \discretionary{\usebox#1}{}{}%
+  \prw@zbreak%
+}%
+\makeatother
+
+\newcounter{index}%
+\newcommand{\AddBreakableChars}[1]{%
+  \StrLen{#1 }[\stringLength]%
+  \forloop[1]{index}{1}{\value{index}<\stringLength}{%
+    \StrChar{#1}{\value{index}}[\currentLetter]%
+    \IfStrEqCase{\currentLetter}{%
+        % All the characters where you don't want hypen
+        {,}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {]}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {)}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {-}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {/}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        { }{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {[}{\currentLetter\BreakableChar[\MyBreakChar]}
+        {(}{\currentLetter\BreakableChar[\MyBreakChar]}%        
+        {a}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        {e}{\currentLetter\BreakableChar[\MyBreakChar]}%
+        % All the charactes where a break should have a hypen
+%        { }{\currentLetter\BreakableChar[\MySpaceBreakChar]}
+%        {b}{\currentLetter\BreakableChar[\MySpaceBreakChar]}%
+    }[\currentLetter]%
+  }%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lightgray}{RGB}{201,201,201}
+\definecolor{lightred}{RGB}{250,112,97}
+\definecolor{lightgreen}{RGB}{179,250,140}
+
+\definecolor{msrtextcl}{RGB}{0,0,0}
+\definecolor{msrkeycl}{RGB}{127,0,85}
+\definecolor{msrcmtcl}{RGB}{201,201,201}
+
+\definecolor{webgreen}{rgb}{0, 0.5, 0} % less intense green
+\definecolor{webblue}{rgb}{0, 0, 0.5} % less intense blue
+\definecolor{webred}{rgb}{0.5, 0, 0} % less intense red
+

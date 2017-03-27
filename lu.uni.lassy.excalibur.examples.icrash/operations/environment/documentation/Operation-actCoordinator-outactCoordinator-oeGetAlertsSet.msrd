@@ -1,0 +1,30 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeGetAlertsSet
+//parameters
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeGetAlertsSet.AetAlertStatus
+"the criteria used to select the alerts to send back to the actor"
+@endParameters
+@description
+"sent to request all the ctAlert instances having a specific status."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+
+//postFunctional descriptions
+@postF 
+" the post state is the one obtained by satisfying the \msrcode{isSentToCoordinator} predicate for each alert having the provided status and for the actor sending the message. (cf. specification of \msrcode{isSentToCoordinator} predicate given for the \msrcode{ctAlert} type."
+@endPostF
+
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP

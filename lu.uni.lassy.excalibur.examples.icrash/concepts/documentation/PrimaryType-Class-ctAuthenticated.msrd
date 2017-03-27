@@ -1,0 +1,20 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctAuthenticated
+
+@description
+"used to model system's representation about actors that need to authenticate to access some specific functionalities."
+
+@attribute icrash.concepts.primarytypes.classes.ctAuthenticated.login
+"an identifier for authentication."
+
+@attribute icrash.concepts.primarytypes.classes.ctAuthenticated.pwd
+"a key for authentication."
+
+@attribute icrash.concepts.primarytypes.classes.ctAuthenticated.vpIsLogged
+"used to determine the access status."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.classes.ctAuthenticated.init
+"used to initialize the current object as a new instance of the ctAuthenticated type."
+
+@endOperations

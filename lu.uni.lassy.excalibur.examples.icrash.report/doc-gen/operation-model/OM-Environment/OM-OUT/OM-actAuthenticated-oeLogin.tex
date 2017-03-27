@@ -1,0 +1,114 @@
+\subsection{Operation Model for oeLogin}
+
+\label{OM-oeLogin}
+
+
+The \msrcode{oeLogin} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeLogin}{sent to request authorization to request access secured system operations.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtLogin: dtLogin}{first information used to determine accessibility rights for the actual actor.} 
+	\addnumbereddoublerow{}{AdtPassword: dtPassword}{second information used to determine accessibility rights for the actual actor.} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor is not already logged in ! (i.e. the associated ctAuthenticated instance is not considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{none }
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ if the login and password provided by the actor correspond to the ones that belong to the ctAuthenticated instance he is related to 
+	then a welcome message is sent to the actor (n.b. the logged status is changed as a post-protocol condition);
+	else the actor is notified that he gave incorrect data and all the administrator actors existing in the environment are notified of an intrusion attempt.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{if the authentication information is correct then the actor is known to be logged in ! (i.e. the associated ctAuthenticated instance with given login and password is considered logged)}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAuthenticated-oeLogin-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeLogin}.},label=OM-actAuthenticated-oeLogin-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+	  let TheActor:actAuthenticated in
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	  
+	/* PreP01 */
+	  and TheSystem.vpStarted = true
+	/* PreP02 */
+	  and TheActor.rnctAuthenticated.vpIsLogged = false}
+	
+	/* Pre Functional:*/
+	preF{/* PreF01 */
+	true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+	  let TheactAuthenticated:actAuthenticated in
+	
+	  let AptStringMessageForTheactAuthenticated: ptString in
+	  let AptStringMessageForTheactAdministrator:ptString in
+	  
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheactAuthenticated
+	  
+	  and /* PostF01 */
+	      if (TheactAuthenticated.rnctAuthenticated.pwd
+	          = AdtPassword
+	          and TheactAuthenticated.rnctAuthenticated.login
+	              = AdtLogin
+	         )
+	      then (AptStringMessageForTheactAuthenticated.eq('You are logged ! Welcome ...')
+	            and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)
+	           )
+	      else (AptStringMessageForTheactAuthenticated
+	            .eq('Wrong identification information ! Please try again ...')
+	            and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)
+	            and AptStringMessageForTheactAdministrator.eq('Intrusion tentative !')
+	            and TheSystem.rnactAdministrator
+	                .rnInterfaceIN^ieMessage(AptStringMessageForTheactAdministrator)
+	           )
+	      endif}
+	
+	/* Post Protocol:*/ 
+	postP{ let TheSystem: ctState in
+	  let TheactAuthenticated:actAuthenticated in
+	
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheactAuthenticated
+	/* PostP01 */
+	  if (TheactAuthenticated.rnctAuthenticated.pwd = AdtPassword
+	      and TheactAuthenticated.rnctAuthenticated.login = AdtLogin
+	     )
+	  then (TheactAuthenticated.rnctAuthenticated@post.vpIsLogged = true)
+	  else true
+	  endif}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

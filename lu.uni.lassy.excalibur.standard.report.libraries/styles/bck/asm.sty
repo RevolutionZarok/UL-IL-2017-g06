@@ -1,0 +1,62 @@
+\def\filedate{2004/05/11}
+\def\fileversion{1.1}
+\ProvidesPackage{asm}
+             [\filedate\space\fileversion\space(Alfonso Pierantonio)]
+
+\typeout{}
+\typeout{----------------------}
+\typeout{ASM Formatting Package}
+\typeout{----------------------}
+\typeout{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \def\achoose{{\bf choose}\xspace\+ }
+  \def\aendchoose{\<{\bf endchoose}\xspace\-}
+
+  \def\aasm{{\bf asm}\xspace\+ }
+  \def\aendasm{\<{\bf endasm}\xspace\-}
+  \def\arule{{\bf rule}\xspace\+ }
+  \def\auniverse{{\bf universe}\xspace}
+  \def\auniverses{{\bf universes}\xspace}
+  \def\afunction{{\bf function} }
+  \def\aif{{\bf if}\ }
+  \def\athen{{\bf then}\xspace\+}
+  \def\athenE{{ }\xspace\+}
+  \def\aelse{\<{\bf else\+}\xspace\-}
+  \def\aendif{\<{\bf endif}\xspace\-}
+  \def\ado{{\bf do}\xspace\+}
+  \def\aenddo{\<{\bf enddo}\xspace\-}
+  \def\aforall{{\bf forall}\xspace}
+  \def\ain{{\bf in}\xspace}
+  \def\ais{{\bf is}\xspace}
+  \def\anot{{\bf not}\xspace}
+  \def\aextend{{\bf extend}\xspace\+}
+  \def\aendextend{\<{\bf endextend}\xspace\-}
+  \def\aset{{\bf set}\xspace}
+  \def\awith{{\bf with}\xspace}
+  \def\aand{{\bf and}\xspace}
+  \def\aexists{{\bf exists}\xspace}
+  \def\areturn{{\bf return}\xspace}
+  \def\asubasm{{\bf subasm}\xspace}
+  \def\aonce{{\bf once}\xspace}
+  \def\aused{{\bf used}\xspace}
+  \def\aas{{\bf as}\xspace}
+
+  
+
+  \newenvironment{asm}{
+    \small
+    \begin{tabbing}
+      m\=m\=m\=m\=m\=m\=m\=m\=m\=m\=m\=m\=m\=\+\kill}
+    {\end{tabbing}}
+
+\newcommand{\objects}{\mbox{$\mathcal O$}\xspace}
+\newcommand{\universe}{\mbox{$\mathcal U$}\xspace}
+\newcommand{\model}[1]{\mbox{$\mathcal #1$}\xspace}
+\newcommand{\states}{\mbox{$\mathcal S$}\xspace}
+\newcommand{\Den}{{\mbox{\emph{Upd}}}\xspace}
+
+\newcommand{\temph}[1]{\mbox{$\text{\emph{#1}}$}\xspace}
+
+
+\endinput

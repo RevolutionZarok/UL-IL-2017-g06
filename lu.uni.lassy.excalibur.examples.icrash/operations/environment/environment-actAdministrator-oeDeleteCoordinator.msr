@@ -1,0 +1,63 @@
+package icrash.operations.environment.actAdministrator.oeDeleteCoordinator {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+Operation Model {
+
+operation: actAdministrator.outactAdministrator.oeDeleteCoordinator(AdtCoordinatorID:dtCoordinatorID):ptBoolean
+{
+preP{
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+  
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+  
+/* PreP01 */
+  and TheSystem.vpStarted = true
+/* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+   
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+/* PreF01 */
+  TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+  = ColctCoordinators
+  and ColctCoordinators->size().eq(1)
+}
+postF{
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+  let ThectCoordinator:ctCoordinator in
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+/* PostF01 */
+  TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+  = ThectCoordinator
+  and ThectCoordinator.rnactCoordinator->forAll(msrIsKilled)
+  and ThectCoordinator.msrIsKilled
+ 
+  /* PostF02 */
+  and TheActor.rnInterfaceIN^ieCoordinatorDeleted()
+
+ /* Post Protocol:*/
+/* PostP01 */
+ and true
+ }
+ postP{true}
+ 
+ prolog{"src/Operations/Environment/OUT/outactAdministrator-oeDeleteCoordinator.pl"}
+ }
+          }
+        }

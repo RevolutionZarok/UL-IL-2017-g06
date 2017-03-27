@@ -1,0 +1,61 @@
+\subsection{Operation Model for is}
+
+\label{OM-is}
+
+
+The \msrcode{is} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{is}{used to determine which litteral belongs to the enumeration. }
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ true iff the value is equal to one of the following values: \msrcode{small, medium, huge}}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-etCrisisType-is-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{is}.},label=OM-etCrisisType-is-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{let TheResult: ptBoolean in
+	        ( if
+	          ( self = small
+	            or self = medium
+	            or self = huge
+	          )
+	          then (TheResult = true)
+	          else (TheResult = false)
+	          endif
+	          result = TheResult
+	        )}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>lu.uni.lassy.excalibur.examples.icrash</name>
+	<comment></comment>
+	<projects>
+		<project>lu.uni.lassy.excalibur.standard.specification.libraries</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.sirius.nature.modelingproject</nature>
+		<nature>lu.uni.lassy.excalibur.ui.projectnature</nature>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+	</natures>
+</projectDescription>

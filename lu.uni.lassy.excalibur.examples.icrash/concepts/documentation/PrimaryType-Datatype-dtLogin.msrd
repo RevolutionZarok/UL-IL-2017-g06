@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtLogin
+
+@description
+" a login string used to authentify an \msricrash user"
+
+@operation icrash.concepts.primarytypes.datatypes.dtLogin.is
+ "used to determine which strings are considered as valid dtLogin."
+
+@endOperations

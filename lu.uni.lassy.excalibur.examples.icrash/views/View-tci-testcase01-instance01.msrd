@@ -1,0 +1,7 @@
+@@view tci-testcase01-instance01 hidden
+@instance Test Case lu.uni.lassy.excalibur.examples.icrash.tests.testcase01.instance01.instance01
+@description
+"shows a simple and illustrative test case instance for which the main actors and system operations of the \msricrash system are executed." 
+@caption
+"A simple and illustrative positive test case instance sequence diagram"
+@scale MaxHeight

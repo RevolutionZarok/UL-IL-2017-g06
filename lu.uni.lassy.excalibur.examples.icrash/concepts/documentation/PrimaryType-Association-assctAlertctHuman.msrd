@@ -1,0 +1,4 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctAlertctHuman
+
+@description
+" alerts are notified by human through the communication company. We need to keep an internal representation of those human to allow for communication of alert handling."

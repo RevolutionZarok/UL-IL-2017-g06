@@ -1,0 +1,13 @@
+@@view cm-pt-ct-lv-01
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 01
+@description 
+"
+shows the local view on all the primary types class types.
+"
+@caption 
+"Local view of all the primary types class types
+"
+@scale MaxWidth

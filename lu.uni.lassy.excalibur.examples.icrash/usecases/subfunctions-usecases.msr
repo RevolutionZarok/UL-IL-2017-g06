@@ -1,0 +1,140 @@
+package icrash.usecases.subfunctions {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+
+  Use Case Model {
+    
+//----------------------------------------------------
+  use case system subfunction oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword){
+    actor actAdministrator[primary,active]
+    returned messages {
+      ieCoordinatorAdded() returned to actAdministrator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeAlert(
+                                   AetKind:etHumanKind,
+                                   AdtMyDate:dtDate,
+                                   AdtTime:dtTime,
+                                   AdtPhoneNumber:dtPhoneNumber,
+                                   AdtGPSLocation:dtGPSLocation,
+                                   AdtComment:dtComment) {
+    actor actComCompany[primary,active]
+    returned messages {
+      ieSmsSend(AdtPhoneNumber,AdtSMS) returned to actComCompany
+ 		}
+  }
+//----------------------------------------------------
+  use case system subfunction oeInvalidateAlert(AdtAlertID:dtAlertID) {
+    actor actCoordinator[primary,active]
+    actor actComCompany[secondary,passive]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+		}
+  }
+//----------------------------------------------------
+  use case system subfunction oeCloseCrisis(AdtCrisisID:dtCrisisID) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }    }
+//----------------------------------------------------
+  use case system subfunction oeCreateSystemAndEnvironment(AqtyComCompanies:ptInteger) {
+    actor actMsrCreator[primary,active]
+  }
+//----------------------------------------------------
+  use case system subfunction oeDeleteCoordinator(AdtCoordinatorID:dtCoordinatorID) {
+    actor actAdministrator[primary,active]
+    returned messages {
+      ieCoordinatorDeleted() returned to actAdministrator
+    }
+  }   
+//----------------------------------------------------
+  use case system subfunction oeGetAlertsSet(AetAlertStatus:etAlertStatus) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieSendAnAlert(ActAlert) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeGetCrisisSet(AetCrisisStatus:etCrisisStatus){
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieSendACrisis(ActCrisis) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSetCrisisHandler(AdtCrisisID:dtCrisisID) {
+    actor actCoordinator[primary,active]
+    actor actCoordinator[secondary,passive]
+    actor actComCompany[secondary,passive,multiple]
+    returned messages {
+      ieMessage(AMessage) 
+        returned to actCoordinator
+      ieSendAnAlert(ActAlert)
+        returned to actCoordinator
+      ieSmsSend(AdtPhoneNumber,AdtSMS)
+        returned to actComCompany
+    }
+  }    
+//----------------------------------------------------
+  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {
+    actor actAuthenticated[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actAuthenticated
+	  }
+  }   
+//----------------------------------------------------
+  use case system subfunction oeLogout() {
+    actor actAuthenticated[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actAuthenticated
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeReportOnCrisis(AdtCrisisID:dtCrisisID,AdtComment:dtComment) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSetClock(AcurrentClock:dtDateAndTime) {
+    actor actActivator[primary,proactive]
+  }    
+//----------------------------------------------------
+  use case system subfunction oeSetCrisisStatus(AdtCrisisID:dtCrisisID ,AetCrisisStatus:etCrisisStatus) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSollicitateCrisisHandling() {
+    actor actActivator[primary,proactive]
+    actor actCoordinator[secondary,passive,multiple]
+    actor actAdministrator[secondary,passive]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+      //ieMessage(AMessage) returned to actAdministrator
+    }
+  }            
+//----------------------------------------------------
+  use case system subfunction oeValidateAlert(AdtAlertID:dtAlertID) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+  }
+
+}

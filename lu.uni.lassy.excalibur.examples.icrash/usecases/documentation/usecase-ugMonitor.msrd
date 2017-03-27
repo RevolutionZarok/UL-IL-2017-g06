@@ -1,0 +1,20 @@
+@@Use Case icrash.usecases.ugMonitor.ugMonitor
+@description
+"
+the actCoordinator's goal is to get the detailed list of existing crisis or alerts to decide on next actions to undertake. 
+"
+@protocolCondition
+"
+the iCrash system has been deployed
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+none
+"
+@endPostConditions

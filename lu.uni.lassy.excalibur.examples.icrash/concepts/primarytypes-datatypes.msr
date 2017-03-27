@@ -1,0 +1,64 @@
+package icrash.concepts.primarytypes.datatypes {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+	Concept Model {
+		
+		Primary Types {
+   
+			 datatype dtAlertID extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtCrisisID extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtLogin extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtPassword extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtCoordinatorID extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtPhoneNumber extends dtString {
+				operation is():ptBoolean
+			}
+			datatype dtComment extends dtString {
+				operation is():ptBoolean			
+			}
+			datatype dtLatitude extends dtReal {
+				operation is():ptBoolean			
+			}
+			datatype dtLongitude extends dtReal {
+				operation is():ptBoolean			
+			}
+			datatype dtGPSLocation {
+				attribute latitude: dtLatitude 
+				attribute longitude: dtLongitude
+				operation is():ptBoolean			
+				operation isNearTo(AGPSLocation:dtGPSLocation ):ptBoolean
+			}
+			
+			enum etCrisisStatus {
+				constants["pending", "handled", "solved","closed"]
+				operation is():ptBoolean
+			}
+			enum etAlertStatus {
+				constants["pending", "valid", "invalid"]
+				operation is():ptBoolean
+			}
+			enum etCrisisType {
+				constants["small", "medium", "huge"]
+				operation is():ptBoolean
+			}
+			enum etHumanKind {
+				constants["witness", "victim", "anonymous"]
+				operation is():ptBoolean
+			}
+		}
+	}
+}

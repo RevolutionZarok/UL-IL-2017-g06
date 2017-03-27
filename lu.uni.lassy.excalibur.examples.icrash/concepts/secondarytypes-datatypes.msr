@@ -1,0 +1,18 @@
+package icrash.concepts.secondarytypes.datatypes {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.string
+
+import icrash.concepts.primarytypes.datatypes
+
+	Concept Model {
+
+		Secondary Types {
+				
+			datatype dtSMS {
+				attribute value: ptString
+				operation is():ptBoolean
+			}
+		}
+	}
+}

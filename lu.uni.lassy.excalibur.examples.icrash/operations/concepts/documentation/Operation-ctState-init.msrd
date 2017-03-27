@@ -1,0 +1,26 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctState.init
+//parameters
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AnextValueForAlertID
+"used to initialize the nextValueForAlertID field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AnextValueForCrisisID
+"used to initialize the nextValueForCrisisID field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.Aclock
+"used to initialize the clock field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AcrisisReminderPeriod
+"used to initialize the crisisReminderPeriod field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AmaxCrisisReminderPeriod
+"used to initialize the maxCrisisReminderPeriod field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AvpLastReminder
+"used to initialize the vpLastReminder field"
+@parameter icrash.concepts.primarytypes.classes.ctState.init.AvpStarted
+"used to initialize the vpStarted field"
+@endParameters
+@description
+" used to initialize the current object as a new instance of the ctState type."
+//postFunctional descriptions
+@postF 
+" 
+true iff the system poststate includes the current object as a new ctState instance having its attributes equal to the ones provided as parameters. 
+"
+@endPostF

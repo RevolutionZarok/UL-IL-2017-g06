@@ -1,0 +1,484 @@
+% Messir General
+      
+\newcommand{\msrTalkRD}[6]{
+\freeblock{5}{#1}{#2}{
+\begin{figure}
+  \centering
+  \includegraphics[width=#5]{images/various/descartes.pdf} 
+\end{figure}
+}
+\freeblock{5}{#3}{#4}{
+\scriptsize
+\textit{#6}
+}
+}
+\newcommand{\msrTalkGB}[6]{
+\freeblock{5}{#1}{#2}{
+\begin{figure}
+  \centering
+  \includegraphics[width=#5]{images/various/graham-bell.pdf} 
+\end{figure}
+}
+\freeblock{5}{#3}{#4}{
+\scriptsize
+\textit{#6}
+}
+}
+
+\newcommand{\msrQuestionSlide}[1]{
+\begin{frame}[fragile]
+\freeblock{5}{1}{4}{
+\begin{figure}
+  \centering
+  \includegraphics[width=3cm]{images/various/3d-man-question-sit.pdf}
+\end{figure}
+}
+\freeblock{10}{5}{3}{
+\Large
+\msrtxtclb{red}{\textit{#1}}
+}
+\end{frame}
+}
+
+% \newcommand{\msrfigure}[4]{
+% \begin{figure}
+% \centering
+% \scalebox{#1}{
+% \parbox{\linewidth}{
+% #2
+% }}
+% \label{#3}
+% \caption{#4}
+% \end{figure}
+% }
+
+\newcommand{\msrfigure}[4]{
+\begin{figure}
+\centering
+\scalebox{#1}{
+{\begin{minipage}[c]{\linewidth}
+\centering
+#2
+\end{minipage}
+}}
+\label{#3}
+\caption{#4}
+\end{figure}
+}
+
+
+\newcommand{\semitransp}[2][30]{\color{fg!#1}#2}
+\newcommand*{\msrtechfont}{\fontfamily{ptm}\selectfont}
+
+\DeclareRobustCommand{\msruml}{{\msrtechfont UML}~}
+\DeclareRobustCommand{\msrocl}{{\msrtechfont OCL}~}
+\DeclareRobustCommand{\msromg}{{\msrtechfont OMG}~}
+\DeclareRobustCommand{\msrxtext}{{\msrtechfont Xtext}~}
+\DeclareRobustCommand{\msremf}{{\msrtechfont EMF}~}
+\DeclareRobustCommand{\msrcm}{\msrcode{{Concept Model}}~}
+
+\DeclareRobustCommand{\msrapache}{{\msrtechfont Apache}~}
+\DeclareRobustCommand{\msratlassian}{{\msrtechfont Atlassian}~}
+\DeclareRobustCommand{\msrbamboo}{{\msrtechfont Bamboo}~}
+\DeclareRobustCommand{\msrconfluence}{{\msrtechfont Confluence}~}
+\DeclareRobustCommand{\msreclemma}{{\msrtechfont EclEmma}~}
+\DeclareRobustCommand{\msreclipse}{{\msrtechfont Eclipse}~}
+\DeclareRobustCommand{\msrsql}{{\msrtechfont SQL}~}
+\DeclareRobustCommand{\msrjava}{{\msrtechfont Java}~}
+\DeclareRobustCommand{\msrjavafx}{{\msrtechfont JavaFx}~}
+\DeclareRobustCommand{\msrjira}{{\msrtechfont JIRA}~}
+\DeclareRobustCommand{\msrjunit}{{\msrtechfont JUnit}~}
+\DeclareRobustCommand{\msrlatex}{{\msrtechfont Latex}~}
+\DeclareRobustCommand{\msrmaven}{{\msrtechfont Maven}~}
+\DeclareRobustCommand{\msrmysql}{{\msrtechfont MySQL}~}
+\DeclareRobustCommand{\msrocl}{{\msrtechfont OCL}~}
+\DeclareRobustCommand{\msrpdf}{{\msrtechfont PDF}~} 
+\DeclareRobustCommand{\msrsirius}{{\msrtechfont Sirius}~} 
+\DeclareRobustCommand{\msrsvn}{{\msrtechfont SubVersioN}~}
+\DeclareRobustCommand{\msrswtbot}{{\msrtechfont SWTbot}~}
+\DeclareRobustCommand{\msrxtext}{{\msrtechfont Xtext}~} 
+
+ 
+\DeclareRobustCommand{\msrmessirmeth}{{\msrmessir}~methodology~}
+\newcommand{\msrglsstyle}[1]{\emph{#1}}
+\DeclareRobustCommand{\msrucname}[1]{\msrcode{\underline{#1}}}
+% Verify macro since creates .toc errors
+\DeclareRobustCommand{\msrcode}[1]{{\protect\ \ttfamily \hyphenchar\font=`\- #1}}
+
+% Messir Lexique
+\DeclareRobustCommand{\msrbool}{\msrcode{{\emph Boolean}}~}
+\DeclareRobustCommand{\msrint}{\msrcode{{\emph Integer}}~}
+\DeclareRobustCommand{\msrreal}{\msrcode{{\emph Real}}~}
+\DeclareRobustCommand{\msrstring}{\msrcode{{\emph String}}~}
+\DeclareRobustCommand{\msrenum}{\msrcode{{\emph enumeration}}~}
+\DeclareRobustCommand{\msrenums}{\msrcode{{\emph enumerations}}~}
+
+% Messir Analysis
+\DeclareRobustCommand{\msrsysop}{\emph{system operation}}
+\DeclareRobustCommand{\msrsysops}{\emph{system operations}}
+\DeclareRobustCommand{\msrsysintpro}{\emph{system interaction protocol}}
+\DeclareRobustCommand{\msrbhvmd}{\emph{system operation}}
+
+\newcommand{\msrt}[1]{\textuncl{#1}~}
+
+\DeclareRobustCommand{\msrfont}[1]{\textuncl{#1}~}
+\DeclareRobustCommand{\msrfontb}[1]{\msrfont{\textbf{#1}}}
+\DeclareRobustCommand{\msrfontcl}[1]{\msrfont{{\color{MediumPurple}#1}}}
+\DeclareRobustCommand{\msrfontclb}[1]{{\msrfontcl{\textbf{#1}}}}
+
+\DeclareRobustCommand{\msrcl}[1]{\msrtxtcl{MediumPurple}{#1}}
+\DeclareRobustCommand{\msrclb}[1]{\msrtxtclb{MediumPurple}{#1}}
+
+\DeclareRobustCommand{\msrmessir}{\msrfont{Messir}}
+\DeclareRobustCommand{\msrmessirb}{\msrfont{\textbf{Messir}}}
+\DeclareRobustCommand{\msrmessircl}{{\color{MediumPurple}\msrmessir}}
+\DeclareRobustCommand{\msrmessirclb}{{\color{MediumPurple}\msrmessirb}}
+
+\DeclareRobustCommand{\msrexcalibur}{{\unclfamily Excalibur}~}
+\DeclareRobustCommand{\msrexcaliburb}{\msrfont{\textbf{Messir}}}
+\DeclareRobustCommand{\msrexcaliburcl}{\msrfontcl{\msrexcalibur}}
+\DeclareRobustCommand{\msrexcaliburclb}{\msrfontclb{\msrexcalibur}}
+
+\DeclareRobustCommand{\msrmessim}{\msrfont{MesSim}~}
+\DeclareRobustCommand{\msrmessimb}{\msrfontb{MesSim}}
+\DeclareRobustCommand{\msrmessimcl}{\msrfontcl{MesSim}}
+\DeclareRobustCommand{\msrmessimclb}{\msrfontclb{MesSim}}
+
+\DeclareRobustCommand{\msrmessam}{\msrfont{MesSam}~}
+\DeclareRobustCommand{\msrmessamb}{\msrfontb{MesSam}}
+\DeclareRobustCommand{\msrmessamcl}{\msrfontcl{MesSam}}
+\DeclareRobustCommand{\msrmessamclb}{\msrfontclb{MesSam}}
+
+\DeclareRobustCommand{\msrmevop}{\msrfont{MevoP}~}
+\DeclareRobustCommand{\msrmevopb}{\msrfontb{MevoP}}
+\DeclareRobustCommand{\msrmevopcl}{\msrfontcl{MevoP}}
+\DeclareRobustCommand{\msrmevopclb}{\msrfontclb{MevoP}}
+
+\DeclareRobustCommand{\msrmessep}{\msrfont{Messep}~}
+\DeclareRobustCommand{\msrmessepb}{\msrfontb{Messep}}
+\DeclareRobustCommand{\msrmessepcl}{\msrfontcl{Messep}}
+\DeclareRobustCommand{\msrmessepclb}{\msrfontclb{Messep}}
+
+\DeclareRobustCommand{\msrmessee}{\msrfont{MesSEE}~}
+\DeclareRobustCommand{\msrmesseeb}{\msrfontb{MesSEE}}
+\DeclareRobustCommand{\msrmesseecl}{\msrfontcl{MesSEE}}
+\DeclareRobustCommand{\msrmesseeclb}{\msrfontclb{MesSEE}}
+
+\DeclareRobustCommand{\msrprolog}{{\msrtechfont Prolog}~}
+\DeclareRobustCommand{\msrmessimb}{\textbf{\msrmessim}}
+\DeclareRobustCommand{\msrprologcl}{\textcolor{red}{\msrprolog}}
+\DeclareRobustCommand{\msrprologclb}{\textbf{\msrprologcl}}
+
+\DeclareRobustCommand{\msrmcl}{\msrfont{MCL}}
+\DeclareRobustCommand{\msrmclb}{\msrfontb{\msrmcl}}
+\DeclareRobustCommand{\msrmclclb}{\msrfontcl{\msrmclb}}
+\DeclareRobustCommand{\msrmclcl}{\msrfontcl{\msrmcl}}
+
+\DeclareRobustCommand{\msrmcltt}{\protect\ \msrmessir Constraint Language~}
+\DeclareRobustCommand{\msrmessimtt}{\protect\ \msrmessir Simulator~}
+\DeclareRobustCommand{\msrmessamtt}{\protect\ \msrmessir Abstract Machine~}
+
+\DeclareRobustCommand{\msrgeneric}{\textbf{\textit{{\color{MediumPurple}generic}}}~} 
+\DeclareRobustCommand{\msrhelloworld}{\textbf{\textit{{\color{MediumPurple}HelloWorld}}}~}
+\DeclareRobustCommand{\msricrash}{\textbf{\textit{{\color{MediumPurple}iCrash}}}~} 
+\DeclareRobustCommand{\msricrashmini}{\textbf{\textit{{\color{MediumPurple}iCrashMini}}}~}  
+
+\DeclareRobustCommand{\msrtxtcl}[2]{{\color{#1}#2}}
+\DeclareRobustCommand{\msrtxtclb}[2]{\msrtxtcl{#1}{\textbf{#2}}}
+
+
+%---------TABLES TEMPLATE--------------
+
+%\rowcolors{2}{gray!20}{}
+
+\newcounter{itemtable}
+
+
+\newenvironment{usecase}{\begin{longtable}{|p{0.10\textwidth}
+p{0.90\textwidth}|} \hline} {\hline \end{longtable}}
+
+
+\newenvironment{usecaseinstance}{\begin{longtable}{|p{0.05\textwidth}
+p{0.95\textwidth}|} \hline}
+{\hline \end{longtable}}
+
+
+\newenvironment{actortable}{
+\begin{longtable}{|p{0.10\textwidth} p{0.90\textwidth}|}
+\hline \hline}
+{\hline \end{longtable}}
+
+
+\newenvironment{datadictionary}{
+\begin{longtable}{|p{0.15\textwidth} p{0.85\textwidth}|}
+\hline \hline}
+{\hline \end{longtable}}
+
+
+\newenvironment{associationtypes}{
+\begin{longtable}{|p{0.15\textwidth} p{0.85\textwidth}|}
+\hline \hline}
+{\hline \end{longtable}}
+
+
+\newenvironment{operationmodel}{
+\setcounter{itemtable}{0}
+\begin{longtable}{|p{0.10\textwidth} p{0.90\textwidth}|}
+\hline \hline}
+{\hline \end{longtable}}
+
+
+\newenvironment{teststepmodel}{
+\setcounter{itemtable}{0}
+\begin{longtable}{|p{0.10\textwidth}|p{0.90\textwidth}|}
+\hline}
+{\hline \end{longtable}}
+
+
+\newcommand*{\myfont}{\fontfamily{phv}\selectfont}
+
+
+\newcommand\addheading[1]{
+\hline
+%\multicolumn{2}{|l|}{\cellcolor[gray]{0.9} \textbf{#1}} \\
+\multicolumn{2}{|l|}{\textbf{\scshape #1}} \\
+\hline \hline
+\endfirsthead
+
+\multicolumn{2}{@{}l}{\myfont{\bfseries\itshape{\ldots #1 table
+continuation}}}\\
+%\hline \hline
+%\multicolumn{2}{|l|}{\cellcolor[gray]{0.9} \textbf{#1}}\\
+%\hline \hline
+\endhead % all the lines above this will be repeated on every page
+
+%\hline \hline
+\multicolumn{2}{r@{}}{\myfont{\bfseries\itshape{continues in next page
+\ldots}}}\\
+\endfoot
+
+\hline
+\endlastfoot}
+
+%\multicolumn{2}{|l|}{\cellcolor[gray]{0.8}
+\newcommand\addrowheading[1]{
+\hline \hline
+\multicolumn{2}{|l|}{
+  \setcounter{itemtable}{0}
+  \textbf{\itshape #1}}\\
+\hline \hline
+}
+
+
+\newcommand\addsinglerow[1]{
+\multicolumn{2}{|l|}{\begin{minipage}[t][][t]{1.0\textwidth}
+#1 \end{minipage}} \\
+%\hline
+}
+
+
+\newcommand\addsingletwocolumnrow[2]{
+{\itshape #1} & #2 \\
+%\hline
+}
+
+
+\newcommand\adddoublerow[2]{
+\hline \hline
+\multicolumn{2}{|l|}{\begin{minipage}[t][][t]{1.0\textwidth}
+\textbf{\itshape #1} \end{minipage}} \\
+\multicolumn{2}{|l|}{\begin{minipage}[t][][t]{1.0\textwidth}
+#2 \end{minipage}} \\
+\hline
+}
+
+
+\newcommand\adddoubletwocolumnrow[3]{
+#1 & \textbf{#2} \\
+& #3 \\
+%\hline
+}
+
+
+\newcommand\addnumberedsinglerow[2]{
+\stepcounter{itemtable}
+\text{#1 \theitemtable} & #2 \\
+%\hline
+}
+
+
+\newcommand\addnumbereddoublerow[3]{
+\stepcounter{itemtable}
+\text{#1 \theitemtable} & \textbf{#2} \\
+       & #3 \\
+%\hline
+}
+
+
+
+\newcommand\addalphanumberedsinglerow[2]{
+\stepcounter{itemtable}
+\text{#1 \alph{itemtable}} & #2 \\
+%\hline
+}
+
+
+\newcommand\addalphanumbereddoublerow[3]{
+\stepcounter{itemtable}
+\text{#1 \alph{itemtable}} & \textbf{#2} \\
+       & #3 \\
+%\hline
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstdefinelanguage{MessirProlog}{
+morekeywords=[1]{msrNav,msrop,:-},
+morekeywords=[2]{msrVar},
+morekeywords=[3]{msrTrue,msrFalse,true,false,msrIsNew,msrIsKilled,msrForAll,msrExists,msrSelect,msrReject,msrClose,msrAny,msrIsEmpty,msrSize,msmAtPre,msmAtPost,msrColEq,msrColSubtract,msrCount,msrExcludes,msrExcludesAll,msrIncludes,msrIncludesAll,msrSum,msrProd,msrIncluding,msrExcluding,msrIntersection,msrUnion,msrAsSet,msrOne},
+morekeywords=[3]{rnSystem,rnActor,rnSystem,rnInterfaceIN,rnInterfaceOUT,ptBoolean,ptReal,ptString,ptInteger,preProtocol,preFunctional,postProtocol,postFunctional,init},
+morekeywords=[4]{Self},
+sensitive=true,
+morestring=[b]{"},
+comment=[s]{/*}{*/},
+morecomment=[l]//
+}[keywords,comments,strings]%
+ 
+\lstdefinestyle{MessirPrologStyle} { 
+language=MessirProlog,
+extendedchars=true,
+basicstyle=\ttfamily,
+%keywordstyle=\color{blue}\bfseries,
+keywordstyle=[1]\color{blue}\bfseries,
+keywordstyle=[2]\color{red},
+keywordstyle=[3]\color{msrcolor12}\bfseries,
+keywordstyle=[4]\color{msrcolor09}\bfseries,
+stringstyle=\color{msrtextcl},
+commentstyle=\color{msrcmtcl},
+breakatwhitespace=false,
+tabsize=1,
+literate={\ \ }{{\ }}1,
+breaklines=true,
+emptylines=1,
+numbers=left,
+numberstyle=\tiny\color{blue}, 
+firstnumber=auto,
+stepnumber=1,
+numbersep=0pt, 
+showspaces=false,
+showlines=false,
+numberfirstline=true,
+showstringspaces=false
+showtabs=false,
+includerangemarker=true
+}
+
+
+
+\lstdefinestyle{MessirStyle} { 
+language=Messir,
+extendedchars=true,
+basicstyle=\ttfamily,
+keywordstyle=\color{msrkeycl}\bfseries,
+stringstyle=\color{msrtextcl},
+commentstyle=\color{msrcmtcl},
+breakatwhitespace=false,
+tabsize=1,
+literate={\ \ }{{\ }}1,
+breaklines=true,
+emptylines=1,
+numbers=left,
+numberstyle=\tiny\color{blue}, 
+firstnumber=auto,
+stepnumber=1,
+numbersep=0pt, 
+showspaces=false,
+showlines=false,
+numberfirstline=true,
+showstringspaces=false
+showtabs=false,
+includerangemarker=true
+}
+
+\lstdefinelanguage{Messir}{
+keywords={package,import,Concept,Model,Primary,Types,Secondary,state,class,
+role,cardinality,extends,attribute,external,operation,primitive,
+datatype,enum,constants,association,aggregation,composition,Environment,
+actor,role,input,interface,output,Operation,external,link,preF,preP,postF,
+postP,ocl,Test,test,case,order,step,prolog},
+morekeywords=[1]{self,let,in,true,false,result},
+morekeywords=[2]{name,attributes,associatoinEnds,operations,%
+      supertypes,allSupertypes,allInstances,oclIsKindOf,oclIsTypeOf,%
+      oclAsType,oclInState,oclIsNew,evaluationType,abs,floor,round,max,%
+      min,div,mod,size,concat,toUpper,toLower,substring,includes,%
+      excludes,count,includesAll,exludesAll,isEmpty,notEmpty,sum,%
+      exists,forAll,isUnique,sortedBy,iterate,union,intersection,%
+      including,excluding,symmetricDifference,select,reject,collect,%
+      asSequence,asBag,asSequence,asSet,append,prepend,subSequence,at,%
+      first,last,true,false,isQuery,context,pre,inv,post},
+    morekeywords=[3]{and,equiv,exit,impl,not,or},%
+    morekeywords=[4]{Boolean,Integer,Real,String,Set,Sequence,Bag,%
+       OclType,OclAny,OclExpression,Enumeration,Collection},%
+    morekeywords=[5]{Use,use,system,Case,Model,related,instance,primary,secondary,oracle,value,constraint,message,parameter,value,truth,protocol,functional,variables,values,results,subfunction,usergoal,summary,executes,sends,to,reuse,received,from,ordering,if,then,else,endif,self,^},
+    morekeywords=[6]{executed,instanceof,returned,steps,active,passive,proactive,constraints},
+    morekeywords=[7]{@Actor,@actorDeclaration,@actorSpecification,@additionalInformation,@attribute,@caption,@colOperation,@constraint,@description,@endActorsDeclaration,@endActorsSpecification,@endAttributes,@endColOperations,@endConstraints,@endInputEvents,@endInputParametersDeclaration,@endInputParametersSpecification,@endInstanceOracleOutputParameters,@endInstanceTestReceivedMessages,@endOperations,@endOracleConstraints,@endOracleOutputParametersSpecification,@endOracleReceivedMessagesSpecification,@endOracleValues,@endOracleVariables,@endOutputEvents,@endOutputParametersDeclaration,@endOutputParametersSpecification,@endParameters,@endPostConditions,@endPostF,@endPostP,@endPreConditions,@endPreF,@endPreP,@endProtocolConditions,@endRemarks,@endStepOrderingConstraints,@endVariables,@endVariableValues,@example,@inputEvent,@inputParameterDeclaration,@inputParameterSpecification,@Instance,@instanceOracleOutputParameter,@instanceTestReceivedMessage,@level,@model,@number,@Operation,@oracleConstraint,@oracleOutputParameterSpecification,@oracleReceivedMessageSpecification,@oracleSpecification,@oracleTruthValue,@oracleValue,@oracleVariable,@orientation,@outputEvent,@parameter,@postCondition,@postF,@postP,@preCondition,@preF,@preP,@Primary,@protocolCondition,@remark,@return,@scale,@Secondary,@stepOrderingConstraint,@sublevel,@Test,@testResultPostFunctional,@testResultPreFunctional,@testResultPreProcotol,@testSentMessage,@testSentMessageValue,@Use,@variable,@variableValue,@view,@pre,@post},
+    morekeywords=[8]{@@Use,@@Instance,@@Primary,@@Secondary,@@Actor,@@Operation,@@Test,@@Instance,@@view},
+sensitive=true,
+morestring=[b]{"},
+comment=[s]{/*}{*/},
+morecomment=[l]//
+%alsodigit={.}
+}[keywords,comments,strings]%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%      150506    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareRobustCommand{\msrsee}{software engineering environment~}
+
+
+
+\newcommand\freeblock[4]{%
+\begin{textblock}{#1}(#2,#3)
+\begin{minipage}{\textwidth}
+\setlength{\parindent}{0pt}%
+\setlength{\parskip}{0.1cm}%
+#4
+\end{minipage}
+\end{textblock}
+}
+ 
+\newcommand\addheadingPS[4]{
+\hline
+\multicolumn{2}{|l|}{\textbf{\scshape Process Step}} \\
+\hline
+\multicolumn{2}{|l|}{Phase: \msrclb{#1} - Iteration: \msrclb{#2} - Step: \msrclb{#3}}\\
+\hline
+\multicolumn{2}{|l|}{Name: \msrclb{#4}}\\
+\hline \hline
+\endfirsthead 
+
+\multicolumn{2}{@{}l}{\myfont{\bfseries\itshape{\ldots #1 table
+continuation}}}\\
+\endhead % all the lines above this will be repeated on every page
+
+\multicolumn{2}{r@{}}{\myfont{\bfseries\itshape{continues in next page
+\ldots}}}\\
+\endfoot
+
+\hline
+\endlastfoot}
+
+\newenvironment{processsteptable}{
+\setcounter{itemtable}{0}
+\begin{longtable}{|p{0.10\textwidth}|p{0.90\textwidth}|}
+\hline}
+{\hline \end{longtable}
+}
+
+
+
+

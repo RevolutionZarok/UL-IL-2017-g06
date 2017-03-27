@@ -1,0 +1,313 @@
+package icrash.usecases.suDeployAndRun {
+	import icrash.concepts.primarytypes.datatypes
+	import icrash.environment
+	import icrash.usecases.suGlobalCrisisHandling
+	import icrash.usecases.ugAdministrateTheSystem
+	import icrash.usecases.subfunctions
+
+	Use Case Model {
+		use case system summary suDeployAndRun() {
+			actor actAdministrator[primary,active]
+			actor actMsrCreator[secondary,active]
+			actor actCoordinator[secondary,active,multiple]
+			actor actActivator[secondary,proactive]
+			actor actComCompany[secondary,active]
+
+			reuse oeCreateSystemAndEnvironment[1..1]
+			reuse ugAdministrateTheSystem[1..*]
+			reuse suGlobalCrisisHandling[1..*]
+			reuse oeSetClock[1..*]
+			reuse oeSollicitateCrisisHandling[0..*]
+			reuse oeAlert[1..*]
+ 
+			step a: actMsrCreator executes oeCreateSystemAndEnvironment
+			step b: actAdministrator executes ugAdministrateTheSystem
+			step c: actComCompany executes oeAlert
+			step d: actActivator executes oeSetClock
+			step ^e: actActivator executes oeSollicitateCrisisHandling
+			step f: actCoordinator executes suGlobalCrisisHandling
+			
+      ordering constraint 
+        "step (a) must be always the first step."
+      ordering constraint 
+        "step (f) can be executed by different actCoordinator actors."
+      ordering constraint 
+        "if (e) then previously (d)."
+		}
+//----------------------------------------------------
+//----------------------------------------------------
+//----------------------------------------------------
+    use case instance uciSimpleAndComplete : suDeployAndRun {
+      actors {
+        theCreator : actMsrCreator
+        theClock : actActivator
+        bill : actAdministrator
+        tango : actComCompany
+        steve : actCoordinator
+      }
+      use case steps {
+//----------------------------------------------------
+        theCreator 
+        executed instanceof subfunction
+              oeCreateSystemAndEnvironment("4"){}
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:24 - 03:20:00"){}
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeLogin("icrashadmin","7WXC1359"){
+                ieMessage('You are logged ! Welcome ...') returned to bill
+              }
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeAddCoordinator("1","steve","pwdMessirExcalibur2017"){
+                ieCoordinatorAddedreturned returned to bill
+              }
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeLogout{
+                ieMessage('You are logged out ! Good Bye ...') returned to bill
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:15:00"){}
+//----------------------------------------------------
+        tango
+        executed instanceof subfunction 
+              oeAlert("witness","2017:11:26","10:10:16","+3524666445252",
+                      "49.627675:6.159590","3 cars involved in an accident."){
+                 ieSmsSend("+3524666445252","Your alert has been registered. We will handle it and keep you informed") returned to tango
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:30:00"){}
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSollicitateCrisisHandling{
+                ieMessage("There are alerts pending since more than the defined delay. Please REACT !") 
+                returned to bill
+                ieMessage("There are alerts pending since more than the defined delay. Please REACT !") 
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeLogin("steve","pwdMessirExcalibur2017"){
+                ieMessage('You are logged ! Welcome ...') returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeGetCrisisSet("pending"){
+                ieSendACrisis("crisis with ID 1 details") returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeSetCrisisHandler("1"){
+                ieSmsSend("+3524666445252","The handling of your alert by our services is in progress !") 
+                returned to tango
+                ieMessage("You are now considered as handling the crisis !") 
+                returned to steve
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:45:00"){}
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeValidateAlert("1"){
+                ieMessage('The Alert is now declared as valid !')
+                returned to steve
+              }
+//----------------------------------------------------
+        tango
+        executed instanceof subfunction 
+              oeAlert("witness","2017:11:26","10:20:00","+3524666445000",
+                      "49.627095:6.160251","A car crash just happened."){
+                 ieSmsSend("+3524666445000","Your alert has been registered. We will handle it and keep you informed") returned to tango
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 12:45:00"){}
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeSetCrisisStatus("1","solved"){
+                ieMessage('The crisis status has been updated !')
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeReportOnCrisis("1","3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized"){
+                ieMessage('The crisis comment has been updated !')
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeCloseCrisis("1"){
+                ieMessage('The crisis is now closed !')
+                returned to steve
+              }
+
+      }
+    }
+//---------------------------------------------------- 
+//---------------------------------------------------- 
+//----------------------------------------------------
+    use case instance uciSimpleAndCompletePart01 : suDeployAndRun{
+
+      actors {
+        theCreator : actMsrCreator
+        theClock : actActivator
+        bill : actAdministrator
+        tango : actComCompany
+        steve : actCoordinator
+      }
+      use case steps {
+//----------------------------------------------------
+        theCreator 
+        executed instanceof subfunction
+              oeCreateSystemAndEnvironment("4"){}
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:24 - 03:20:00"){}
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeLogin("icrashadmin","7WXC1359"){
+                ieMessage('You are logged ! Welcome ...') returned to bill
+              }
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeAddCoordinator("1","steve","pwdMessirExcalibur2017"){
+                ieCoordinatorAddedreturned returned to bill
+              }
+//----------------------------------------------------
+        bill
+        executed instanceof subfunction
+              oeLogout{
+                ieMessage('You are logged out ! Good Bye ...') returned to bill
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:15:00"){}
+//----------------------------------------------------
+        tango
+        executed instanceof subfunction 
+              oeAlert("witness","2017:11:26","10:10:16","+3524666445252",
+                      "49.627675:6.159590","3 cars involved in an accident."){
+                 ieSmsSend("+3524666445252","Your alert has been registered. We will handle it and keep you informed") returned to tango
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:30:00"){}
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSollicitateCrisisHandling{
+                ieMessage("There are alerts pending since more than the defined delay. Please REACT !") 
+                returned to bill
+                ieMessage("There are alerts pending since more than the defined delay. Please REACT !") 
+                returned to steve
+              }
+      }
+    }
+//---------------------------------------------------- 
+//---------------------------------------------------- 
+//----------------------------------------------------
+    use case instance uciSimpleAndCompletePart02 : suDeployAndRun{
+      actors {
+        theCreator : actMsrCreator
+        theClock : actActivator
+        bill : actAdministrator
+        tango : actComCompany
+        steve : actCoordinator
+      }
+      use case steps {
+
+
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeLogin("steve","pwdMessirExcalibur2017"){
+                ieMessage('You are logged ! Welcome ...') returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeGetCrisisSet("pending"){
+                ieSendACrisis("crisis with ID 1 details") returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeSetCrisisHandler("1"){
+                ieSmsSend("+3524666445252","The handling of your alert by our services is in progress !") 
+                returned to tango
+                ieMessage("You are now considered as handling the crisis !") 
+                returned to steve
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 10:45:00"){}
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeValidateAlert("1"){
+                ieMessage('The Alert is now declared as valid !')
+                returned to steve
+              }
+//----------------------------------------------------
+        tango
+        executed instanceof subfunction 
+              oeAlert("witness","2017:11:26","10:20:00","+3524666445000",
+                      "49.627095:6.160251","A car crash just happened."){
+                 ieSmsSend("+3524666445000","Your alert has been registered. We will handle it and keep you informed") returned to tango
+              }
+//----------------------------------------------------
+        theClock
+        executed instanceof subfunction 
+              oeSetClock("2017:11:26 - 12:45:00"){}
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeSetCrisisStatus("1","solved"){
+                ieMessage('The crisis status has been updated !')
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeReportOnCrisis("1","3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized"){
+                ieMessage('The crisis comment has been updated !')
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeCloseCrisis("1"){
+                ieMessage('The crisis is now closed !')
+                returned to steve
+              }
+
+      }
+    }
+  }
+}

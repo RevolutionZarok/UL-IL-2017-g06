@@ -1,0 +1,9 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCrisisID
+
+@description
+" A string used to identify crisis."
+
+@operation icrash.concepts.primarytypes.datatypes.dtCrisisID.is
+"used to determine which strings are considered as valid crisis identifiers."
+
+@endOperations

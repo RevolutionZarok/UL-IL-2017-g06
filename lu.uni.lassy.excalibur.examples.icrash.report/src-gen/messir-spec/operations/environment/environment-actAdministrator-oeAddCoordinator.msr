@@ -1,0 +1,62 @@
+package icrash.operations.environment.actAdministrator.oeAddCoordinator {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+
+Operation Model {
+
+operation: actAdministrator.outactAdministrator.oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword):ptBoolean
+{
+preP{
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+  
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+  
+/* PreP01 */
+  and TheSystem.vpStarted = true
+/* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+  }
+preF{ 
+  let TheSystem: ctState in
+  let TheActor:actAdministrator in
+  let ColctCoordinators:Bag(ctCoordinator) in
+  
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+/* PreF01 */
+  and TheSystem.rnctCoordinator->select(id.eq(AdtCoordinatorID))
+      = ColctCoordinators
+  and ColctCoordinators->isEmpty() = true
+   }
+postF{
+  let TheSystem: ctState in
+  let TheactCoordinator:actCoordinator in
+  let ThectCoordinator:ctCoordinator in
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+/* PostF01 */
+  TheactCoordinator.init()
+/* PostF02 */
+  and ThectCoordinator.init(AdtCoordinatorID,AdtLogin,AdtPassword)
+
+/* PostF03 */
+  and TheactCoordinator@post.rnctCoordinator = ThectCoordinator
+  
+/* PostF04 */  
+  and ThectCoordinator@post.rnactAuthenticated = TheactCoordinator
+   
+/* PostF05 */  
+  and TheActor.rnInterfaceIN^ieCoordinatorAdded()
+}
+postP{true}
+
+prolog{"src/Operations/Environment/OUT/outactAdministrator-oeAddCoordinator.pl"}
+}
+}
+}

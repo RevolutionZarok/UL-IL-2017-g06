@@ -1,0 +1,15 @@
+@@Actor icrash.environment.actComCompany
+
+@description
+"represents the communication company stakeholder ensuring the input/ouput of textual messages with humans having communicaiton devices."
+
+//input events
+@inputEvent icrash.environment.actComCompany.inactComCompany.ieSmsSend
+"allows for receiving textual messages to be dispatched to the communication company customers having the provided phone number."
+
+@endInputEvents
+
+//output events
+@outputEvent icrash.environment.actComCompany.outactComCompany.oeAlert
+"sent to alert of a potential crisis situation."
+@endOutputEvents

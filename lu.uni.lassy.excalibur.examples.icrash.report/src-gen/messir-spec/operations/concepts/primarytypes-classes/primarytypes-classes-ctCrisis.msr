@@ -1,0 +1,134 @@
+package icrash.operations.concepts.primarytypes.classes.ctCrisis {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.concepts.secondarytypes.classes
+import lu.uni.lassy.messir.libraries.primitives
+
+import icrash.environment
+
+Operation Model {
+//------------------------------------------------------------
+operation: icrash.concepts.primarytypes.classes.ctCrisis.init(
+                Aid:dtCrisisID, 
+                Atype:etCrisisType,
+                Astatus:etCrisisStatus,
+                Alocation:dtGPSLocation,
+                Ainstant:dtDateAndTime,
+                Acomment:dtComment
+              ):ptBoolean{
+postF{
+if
+(
+/* Post F01 */
+let Self:ctCrisis in
+Self.id = Aid
+and Self.type = Atype
+and Self.status = Astatus
+and Self.location = Alocation
+and Self.instant = Ainstant
+and Self.comment = Acomment
+/* Post F02 */
+and (Self.oclIsNew and self = Self)
+)
+then (result = true)
+else (result = false)
+endif}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctCrisis-init.pl"}}
+//------------------------------------------------------------
+operation: icrash.concepts.primarytypes.classes.ctCrisis.handlingDelayPassed():ptBoolean
+{
+postF{ 
+let TheSystem:ctState in
+let CurrentClockSecondsQty:dtInteger in
+let vpLastReminderSecondsQty:dtInteger in
+let CrisisReminderPeriod:dtSecond in
+if 
+( /* Post F01 */
+  self.rnSystem = TheSystem
+  and self.status = pending
+  and TheSystem.clock.toSecondsQty() = CurrentClockSecondsQty
+  and TheSystem.vpLastReminder.toSecondsQty() = vpLastReminderSecondsQty
+  and TheSystem.crisisReminderPeriod = CrisisReminderPeriod
+  and CurrentClockSecondsQty.sub(vpLastReminderSecondsQty).gt(CrisisReminderPeriod) = true
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctCrisis-handlingDelayPassed.pl"}}
+//------------------------------------------------------------
+operation: icrash.concepts.primarytypes.classes.ctCrisis.maxHandlingDelayPassed():ptBoolean
+{
+postF{ 
+let TheSystem:ctState in
+let CurrentClockSecondsQty:dtInteger in
+let CrisisInstantSecondsQty:dtInteger in
+let MaxCrisisReminderPeriod:dtSecond in
+if 
+( /* Post F01 */
+  self.rnSystem = TheSystem
+  and self.status = pending
+  and TheSystem.clock.toSecondsQty() = CurrentClockSecondsQty
+  and Self.instant.toSecondsQty() = CrisisInstantSecondsQty
+  and TheSystem.maxCrisisReminderPeriod = MaxCrisisReminderPeriod
+  and CurrentClockSecondsQty.sub(CrisisInstantSecondsQty)
+                            .gt(MaxCrisisReminderPeriod)
+)
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctCrisis-maxHandlingDelayPassed.pl"}}
+//------------------------------------------------------------
+operation: icrash.concepts.primarytypes.classes.ctCrisis.isSentToCoordinator(AactCoordinator:actCoordinator):ptBoolean
+{
+postF{ 
+if 
+(
+/* Post F01 */
+  AactCoordinator.rnInterfaceIN.ieSendACrisis(self)
+)
+then (result = true)
+else (result = false)
+endif}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctCrisis-isSentToCoordinator.pl" }}
+//------------------------------------------------------------
+operation: icrash.concepts.primarytypes.classes.ctCrisis.isAllocatedIfPossible():ptBoolean
+{
+postF{ 
+if (   
+/* Post F01 */
+self.maxHandlingDelayPassed()
+and 
+  if  (TheSystem.rnactCoordinator->msrIsEmpty = false)
+  then (
+      /* Post F02 */
+      TheSystem.rnactCoordinator->msrAny(true) = TheCoordinatorActor
+      and TheCoordinatorActor.rnctCoordinator = TheCoordinator
+      and self@post.rnHandler = TheCoordinator
+      and self@post.status = handled
+      and self.id.value = TheCrisisIDptString
+      and 'You are now considered as handling the crisis having ID: '
+          .ptStringConcat(TheCrisisIDptString) = TheMessage
+        and TheCoordinatorActor.rnInterfaceIN^ieMessage(TheMessage)
+   )
+  else (  /* Post F03 */
+        TheSystem.rnactAdministrator
+        ->forAll(rnInterfaceIN.ieMessage('Please add new coordinators to handle pending crisis !'))
+    )
+  endif
+  )
+then (result = true)
+else (result = false)
+endif
+}
+prolog{"src/Operations/Concepts/PrimaryTypesClasses/PrimaryTypesClasses-ctCrisis-isAllocatedIfPossible.pl"}
+}
+}
+}

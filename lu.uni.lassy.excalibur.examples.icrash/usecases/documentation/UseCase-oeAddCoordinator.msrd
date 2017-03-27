@@ -1,0 +1,24 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeAddCoordinator  hidden
+@description
+"goal is to add a new coordinator in the system's post state and environment's post state.
+"
+@parameter icrash.usecases.subfunctions.oeAddCoordinator.AdtCoordinatorID ""
+@parameter icrash.usecases.subfunctions.oeAddCoordinator.AdtLogin ""
+@parameter icrash.usecases.subfunctions.oeAddCoordinator.AdtPassword ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

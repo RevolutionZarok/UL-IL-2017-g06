@@ -1,0 +1,69 @@
+	\subsubsection{testcase01-ts05oeLogout-actAdministrator.outactAdministrator.oeLogout}
+	\label{TM-testcase01-ts05oeLogout-actAdministrator.outactAdministrator.oeLogout}
+
+	The \msrcode{testcase01-ts05oeLogout-actAdministrator.outactAdministrator.oeLogout} has the following properties:
+
+	\begin{teststepmodel}
+		\addheading{Test Step}
+		\adddoublerow{ts05oeLogout}{to test the loggout of a connected administrator.}
+		
+		
+		\addrowheading{Test Sent Message}
+		\addnumberedsinglerow{TSM}{
+		\vspace{-0.5cm}
+		\begin{description}
+			\item[] \textbf{out:TheActor}
+			\item[] \textbf{sends to system}
+			\item[] \textbf{\hyperlink{actAdministrator.outactAdministrator.oeLogout}{actAdministrator.outactAdministrator.oeLogout} ()}
+		\end{description}}
+		
+		
+		
+		\addrowheading{Variables}
+		\addnumbereddoublerow{V}{TheActor:actAdministrator}
+		{an actAdministor actor as subtype of actAuthenticated can send oeLogout messages to the system.}
+
+		\addrowheading{Constraints}
+		\addnumberedsinglerow{C}{TheActor is any \msrcode{actAdministrator} instance existing in the environment. It is expected that there exists at least one which is the same during all the test case.}
+
+
+		\addrowheading{Oracle Constraints}
+		\addnumberedsinglerow{OC}{the \msrcode{AMessage} value is expected to be equal to the primitive string 'You are logged out ! Good Bye ...'}
+		\addnumberedsinglerow{OC}{the administrator should have received the messahe AMessage.}
+	\end{teststepmodel}
+	
+	
+	
+		
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{TM-testcase01-ts05oeLogout-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the test step.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the test step \emph{testcase01-ts05oeLogout}.},label=TM-testcase01-ts05oeLogout-MCL-LST]
+
+	variables{
+		TheActor : actAdministrator
+	}
+	
+	constraints{
+		TheActor = TheSystem.rnactAdministrator->any2(true)
+	}
+	
+	oracle{
+		variables{
+			AMessage:ptString
+		}
+		constraints{
+			AMessage = 'You are logged out ! Good Bye ...'
+			TheActor.inactAdministrator.ieMessage(AMessage)
+		}
+	}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	

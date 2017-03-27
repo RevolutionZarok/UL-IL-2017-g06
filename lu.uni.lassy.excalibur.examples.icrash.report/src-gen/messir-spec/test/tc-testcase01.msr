@@ -1,0 +1,551 @@
+package lu.uni.lassy.excalibur.examples.icrash.tests.testcase01 {
+
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.associations
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.environment
+
+
+  Test Model{
+    test case testcase01 order 01 {
+//---------------------------------------------------------------------
+      test step ts01oeCreateSystemAndEnvironment order 01 {
+        variables{
+          Creator:actMsrCreator
+          AqtyComCompanies: ptInteger
+          }
+        constraints{
+            AqtyComCompanies = 4 
+          }
+        test message{
+          out:Creator sends to system actMsrCreator.outactMsrCreator.oeCreateSystemAndEnvironment(AqtyComCompanies)
+          }
+        oracle{
+          constraints{
+            true
+          }
+        }
+        prolog{"src/Tests/system/01/system-sim-01-01-oeCreateSystemAndEnvironment.pl"}
+      }
+//---------------------------------------------------------------------
+ test step ts02oeSetClock order 02{
+         variables{
+            TheActor:actActivator
+            ACurrentClock:dtDateAndTime
+            }
+         constraints{
+            TheActor=TheSystem.rnactActivator->any2(true) 
+
+            ACurrentClock.date.year.value = 2017 
+            ACurrentClock.date.month.value = 11
+            ACurrentClock.date.day.value = 24
+            ACurrentClock.time.hour.value = 15
+            ACurrentClock.time.minute.value = 20
+            ACurrentClock.time.second.value = 00
+          }
+ test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSetClock(ACurrentClock)
+        }
+    oracle{
+        constraints{
+          true
+        }
+      }
+     }
+//---------------------------------------------------------------------
+
+test step ts03oeLogin order 03{
+        variables{
+            TheActor : actAdministrator
+            AdtLogin:dtLogin
+            AdtPassword:dtPassword
+          }
+        constraints{
+            TheActor=TheSystem.rnactAdministrator->any2(true)
+            AdtLogin.value.eq('icrashadmin')
+            AdtPassword.value.eq('7WXC1359')
+          }
+        test message{
+          out:TheActor sends to system actAdministrator.outactAdministrator.oeLogin(AdtLogin,AdtPassword)
+        }
+      oracle{
+        variables{
+          AMessage:ptString
+        }
+        constraints{
+          AMessage = 'You are logged ! Welcome ...'
+          TheActor.inactAdministrator.ieMessage(AMessage)
+        }
+      }
+      }
+//---------------------------------------------------------------------
+ test step ts04oeAddCoordinator order 04{
+        variables{
+            TheActor : actAdministrator
+            AdtCoordinatorID : dtCoordinatorID
+            AdtLogin:dtLogin
+            AdtPassword:dtPassword
+          }
+        constraints{
+            TheActor = TheSystem.rnactAdministrator->any2(true) 
+            AdtCoordinatorID.value.eq('1')
+            AdtLogin.value.eq('steve')
+            AdtPassword.value.eq('pwdMessirExcalibur2017')
+          }
+        test message{
+          out:TheActor 
+          sends to system actAdministrator.outactAdministrator.oeAddCoordinator
+                                                                (AdtCoordinatorID,
+                                                                 AdtLogin,
+                                                                 AdtPassword)
+        }
+        oracle{
+          constraints{
+             TheActor.inactAdministrator.ieCoordinatorAdded()
+          }
+      }
+      }
+//---------------------------------------------------------------------
+ test step ts05oeLogout order 05{
+        variables{
+            TheActor : actAdministrator
+          }
+        constraints{
+            TheActor = TheSystem.rnactAdministrator->any2(true)
+          }
+        test message{
+          out:TheActor sends to system actAdministrator.outactAdministrator.oeLogout()
+        }
+        oracle{
+          variables{
+           AMessage:ptString
+          }
+          constraints{
+          AMessage = 'You are logged out ! Good Bye ...'
+          TheActor.inactAdministrator.ieMessage(AMessage)
+        }
+      }
+    }
+//---------------------------------------------------------------------
+ test step ts06oeSetClock02 order 06{
+        variables{
+            TheActor:actActivator
+            ACurrentClock:dtDateAndTime
+          }
+        constraints{
+            TheActor=TheSystem.rnactActivator->any2(true)
+            ACurrentClock.date.year.value = 2017
+            ACurrentClock.date.month.value = 11
+            ACurrentClock.date.day.value = 26
+            ACurrentClock.time.hour.value = 10
+            ACurrentClock.time.minute.value = 15
+            ACurrentClock.time.second.value = 00
+          }
+        test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSetClock(ACurrentClock)
+        }
+        oracle{
+          constraints{
+          true
+        }
+      }
+      }
+//---------------------------------------------------------------------
+ test step ts07oeAlert1 order 07{
+        variables{
+            TheActor : actComCompany
+            AetHumanKind:etHumanKind
+            AdtDate:dtDate
+            AdtTime:dtTime
+            AdtPhoneNumber:dtPhoneNumber
+            AdtGPSLocation:dtGPSLocation
+            AdtComment:dtComment
+          }
+        constraints{
+            TheActor = TheSystem.rnactComCompany->any2(true)
+            AetHumanKind = witness
+            AdtDate.year.value = 2017
+            AdtDate.month.value = 11
+            AdtDate.day.value = 26
+            AdtTime.hour.value = 10
+            AdtTime.minute.value = 10
+            AdtTime.second.value = 16
+            AdtPhoneNumber.value = '+3524666445252' 
+            AdtGPSLocation.latitude.value = 49.627675
+            AdtGPSLocation.longitude.value = 6.159590
+            AdtComment.value = '3 cars involved in an accident.'
+          }
+        test message{
+          out:TheActor 
+          sends to system actComCompany.outactComCompany.oeAlert( AetHumanKind, 
+                                                                  AdtDate, 
+                                                                  AdtTime, 
+                                                                  AdtPhoneNumber, 
+                                                                  AdtGPSLocation, 
+                                                                  AdtComment)
+        }
+        oracle{
+          variables{
+             AdtSMS:dtSMS
+          }
+          constraints{
+          AdtSMS.value = 'Your alert has been registered. We will handle it and keep you informed'
+          TheActor.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts08oeSetClock03 order 08{
+        variables{
+            TheActor:actActivator
+            ACurrentClock:dtDateAndTime
+          }
+      constraints{
+            TheActor=TheSystem.rnactActivator->any2(true)
+            ACurrentClock.date.year.value = 2017
+            ACurrentClock.date.month.value = 11
+            ACurrentClock.date.day.value = 26
+            ACurrentClock.time.hour.value = 10
+            ACurrentClock.time.minute.value = 30
+            ACurrentClock.time.second.value = 00
+          }
+        test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSetClock(ACurrentClock)
+        }
+        oracle{
+          constraints{
+            true
+          }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts09oeSollicitateCrisisHandling order 09{
+        variables{
+            TheActor : actActivator
+          }
+        constraints{
+            TheActor = TheSystem.rnactActivator->any2(true)
+          }
+        test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSollicitateCrisisHandling()
+        }
+        oracle{
+        variables{
+            TheAdministrator:actAdministrator
+            TheCoordinator:actCoordinator
+            AMessageForCrisisHandlers:ptString
+          }
+          constraints{
+          TheAdministrator = TheSystem.rnactAdministrator->any2(true)
+          TheCoordinator = TheSystem.rnactCoordinator->any2(true)
+          AMessageForCrisisHandlers = 'There are alerts pending since more than the defined delay. Please REACT !'
+
+          TheAdministrator.inactAdministrator.ieMessage(AMessageForCrisisHandlers)
+          TheCoordinator.inactAdministrator.ieMessage(AMessageForCrisisHandlers)
+
+/* this oracle should be written like this (not currently possible due to grammar limitations:
+
+        oracle{
+        variables{
+            TheAdministrator:actAdministrator
+            AMessageForCrisisHandlers:ptString
+          }
+          constraints{
+          AMessageForCrisisHandlers = 'There are alerts pending since more than the defined delay. Please REACT !'
+          TheAdministrator = TheSystem.rnactAdministrator->any2(true)
+          
+          TheSystem.rnactCoordinator->forAll(TheCoordinator:actCoordinator | TheCoordinator.actAuthenticated.inactAuthenticated.ieMessage(AMessage))
+          
+ */
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts10oeLogin02 order 10{
+        variables{
+            TheActor : actCoordinator
+            AdtLogin:dtLogin
+            AdtPassword:dtPassword
+          }
+        constraints{
+            TheActor = TheSystem.rnactCoordinator->select(a | a.rnctCoordinator.login.value.eq('steve'))->any2(true)
+            AdtLogin.value.eq('steve')
+            AdtPassword.value.eq('pwdMessirExcalibur2017')
+          }
+        test message{
+          out:TheActor sends to system actAuthenticated.outactAuthenticated.oeLogin(AdtLogin,AdtPassword)
+        }
+        oracle{
+          variables{
+              AMessage:ptString
+          }
+          constraints{
+          AMessage = 'You are logged ! Welcome ...'
+          TheActor.inactAuthenticated.ieMessage(AMessage)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts11oeGetCrisisSet order 11{
+        variables{
+            TheActor : actCoordinator
+            AetCrisisStatus : etCrisisStatus
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true)
+            AetCrisisStatus = pending
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeGetCrisisSet(AetCrisisStatus)
+        }
+        oracle{
+//TODO  - make consistent with test step implementation by adding Prolog code for input messages
+        variables{
+            ActCrisis:ctCrisis
+        }
+       constraints{
+          TheActor.inactCoordinator.ieSendACrisis(ActCrisis)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts12oeSetCrisisHandler order 12{
+        variables{
+            TheActor : actCoordinator
+            AdtCrisisID : dtCrisisID
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true) 
+            //and AdtCrisisID.value= '1' 
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeSetCrisisHandler(AdtCrisisID)
+        }
+        oracle{
+          variables{
+            AMessage:ptString
+            AdtPhoneNumber:dtPhoneNumber
+            AdtSMS:dtSMS
+            ActAlert:ctAlert
+            
+            TheComCompany: actComCompany
+            TheCoordinator:actCoordinator
+          }
+          constraints{
+           AMessage = 'You are now considered as handling the crisis !'
+           AdtSMS.value = 'The handling of your alert by our services is in progress !'
+           TheComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+           TheCoordinator.inactCoordinator.ieSendAnAlert(ActAlert)
+           TheActor.inactAuthenticated.ieMessage(AMessage)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts13oeSetClock04 order 13{
+        variables{
+            TheActor:actActivator
+            ACurrentClock:dtDateAndTime
+          }
+        constraints{
+            TheActor=TheSystem.rnactActivator->any2(true)
+            ACurrentClock.date.year.value = 2017
+            ACurrentClock.date.month.value = 11
+            ACurrentClock.date.day.value = 26
+            ACurrentClock.time.hour.value = 10
+            ACurrentClock.time.minute.value = 45
+            ACurrentClock.time.second.value = 00
+          }
+        test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSetClock(ACurrentClock)
+        }
+        oracle{
+          constraints{
+          true
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts14oeValidateAlert order 14{
+        variables{
+            TheActor : actCoordinator
+            AdtAlertID : dtAlertID
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true)
+            //and AdtAlertID.value= '1'
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeValidateAlert(AdtAlertID)
+        }
+        oracle{
+          variables{
+              AMessage:ptString
+          }
+          constraints{
+          AMessage = 'The Alert is now declared as valid !'
+          TheActor.actAuthenticated.inactAuthenticated.ieMessage(AMessage)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts15oeAlert2 order 15{
+        variables{
+            TheActor : actComCompany
+            AetHumanKind:etHumanKind
+            AdtDate:dtDate
+            AdtTime:dtTime
+            AdtPhoneNumber:dtPhoneNumber
+            AdtGPSLocation:dtGPSLocation
+            AdtComment:dtComment
+          }
+        constraints{
+            TheActor = TheSystem.rnactComCompany->any2(true)
+            AetHumanKind = witness
+            AdtDate.year.value = 2017
+            AdtDate.month.value = 11
+            AdtDate.day.value = 26
+            AdtTime.hour.value = 10
+            AdtTime.minute.value = 20
+            AdtTime.second.value = 00
+            AdtPhoneNumber.value = '+3524666445000' 
+            AdtGPSLocation.latitude.value = 49.627095
+            AdtGPSLocation.longitude.value = 6.160251
+            AdtComment.value = 'A car crash just happened.'
+          }
+        test message{
+          out:TheActor 
+          sends to system actComCompany.outactComCompany.oeAlert( AetHumanKind,
+                                                                  AdtDate, 
+                                                                  AdtTime, 
+                                                                  AdtPhoneNumber, 
+                                                                  AdtGPSLocation, 
+                                                                  AdtComment)
+        }
+        oracle{
+          variables{
+            AdtSMS:dtSMS
+          }
+          constraints{
+          AdtSMS.value = 'Your alert has been registered. We will handle it and keep you informed'
+          TheActor.actComCompany.inactComCompany.ieSmsSend(AdtPhoneNumber,AdtSMS)
+        }
+       }
+      }
+//---------------------------------------------------------------------
+ test step ts16oeSetClock05 order 16{
+        variables{
+            TheActor:actActivator
+            ACurrentClock:dtDateAndTime
+          }
+        constraints{
+            TheActor=TheSystem.rnactActivator->any2(true)
+            ACurrentClock.date.year.value = 2017
+            ACurrentClock.date.month.value = 11
+            ACurrentClock.date.day.value = 26
+            ACurrentClock.time.hour.value = 12
+            ACurrentClock.time.minute.value = 45
+            ACurrentClock.time.second.value = 00
+          }
+        test message{
+          out:TheActor sends to system actActivator.outactActivator.oeSetClock(ACurrentClock)
+        }
+        oracle{
+          constraints{
+          true
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts17oeSetCrisisStatus order 17{
+        variables{
+            TheActor : actCoordinator
+            AdtCrisisID : dtCrisisID
+            AetCrisisStatus : etCrisisStatus
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true)
+            //and AdtCrisisID.value= '1'
+            //and AetCrisisStatus = solved
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeSetCrisisStatus(AdtCrisisID, AetCrisisStatus)
+        }
+        oracle{
+          variables{
+            AMessage:ptString
+          }
+          constraints{
+          AMessage = 'The crisis status has been updated !'
+          TheActor.inactAuthenticated.ieMessage(AMessage)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts18oeReportOnCrisis order 18{
+        variables{
+            TheActor : actCoordinator
+            AdtCrisisID : dtCrisisID
+            AdtComment : dtComment
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true) 
+            //and AdtCrisisID.value= '1'
+            //and AdtComment.value = '3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized'
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID,AdtComment)
+        }
+        oracle{
+          variables{
+            AMessage:ptString
+          }
+          constraints{
+          AMessage = 'The crisis comment has been updated !'
+          TheActor.inactAuthenticated.ieMessage(AMessage)
+        }
+      }
+     }
+//---------------------------------------------------------------------
+ test step ts19oeCloseCrisis order 19{
+        variables{
+            TheActor : actCoordinator
+            AdtCrisisID : dtCrisisID
+          }
+        constraints{
+            TheActor=TheSystem.rnactCoordinator
+            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
+            ->any2(true)
+            //and AdtCrisisID.value= '1'
+          }
+        test message{
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeCloseCrisis(AdtCrisisID)
+        }
+        oracle{
+          variables {
+            AMessage:ptString
+          }
+          constraints{
+          AMessage = 'The crisis is now closed !'
+          TheActor.inactAuthenticated.ieMessage(AMessage)
+        }
+       }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+package usecases.uciugSecurelyUseSystem {
+	import icrash.usecases.ugSecurelyUseSystem
+    import icrash.usecases.ugSecurelyUseSystem
+    import icrash.concepts.primarytypes.datatypes
+    import icrash.environment
+    import icrash.usecases.suGlobalCrisisHandling
+    import icrash.usecases.ugAdministrateTheSystem
+    import icrash.usecases.subfunctions
+
+	Use Case Model {
+
+//-----------------------------
+    use case instance uciugSecurelyUseSystem : ugSecurelyUseSystem {
+      actors {
+        bill:actAuthenticated
+      }
+      use case steps {
+//-----------------------------
+        bill
+        executed instanceof subfunction
+              oeLogin("icrashadmin","7WXC1359"){
+                ieMessage('You are logged ! Welcome ...') returned to bill
+              }
+//-----------------------------
+        bill
+        executed instanceof subfunction
+              oeLogout{
+                ieMessage('You are logged out ! Good Bye ...') returned to bill
+              }
+      }
+    }
+  }
+}

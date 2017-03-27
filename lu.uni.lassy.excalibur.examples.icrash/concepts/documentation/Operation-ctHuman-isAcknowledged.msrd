@@ -1,0 +1,11 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctHuman.isAcknowledged
+
+@description
+" used to specify the property of having sent an alert acknowledge message to the human having declared the alert through its own communication company."
+//postFunctional descriptions
+@postF 
+"
+true iff the message ieSmsSend is sent to the related input interface of the related communication company actor with the human phone number and the generic message 'The handling of your alert by our services is in progress !'
+" 
+@endPostF

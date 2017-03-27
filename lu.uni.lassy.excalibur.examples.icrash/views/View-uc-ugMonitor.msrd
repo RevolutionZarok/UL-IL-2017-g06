@@ -1,0 +1,5 @@
+@@view uc-ugMonitor
+@model Use-Case icrash.usecases.ugMonitor.ugMonitor
+@description "shows the use case diagram for the ugMonitor user goal use case"
+@caption ' ugMonitor user goal use case'
+@scale 0.75

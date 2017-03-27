@@ -1,0 +1,30 @@
+\subsection{\msrcode{actAdministrator} Actor}
+
+
+\begin{actortable}
+	\addheading{Actor}
+	
+	\adddoublerow{actAdministrator}{represents an actor responsible of administration tasks for the \msricrash system.}
+	
+	\addrowheading{Extends}
+	\addsinglerow{icrash.environment.actAuthenticated}
+	
+	
+	
+	
+
+	\addrowheading{OutputInterfaces}
+	\addnumbereddoublerow{OUT}{\hypertarget{actAdministrator.outactAdministrator.oeAddCoordinator}
+			{\msrcode{oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword):ptBoolean}}}
+			{sent to add a new coordinator in the system's post state and environment's post state.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actAdministrator.outactAdministrator.oeDeleteCoordinator}
+			{\msrcode{oeDeleteCoordinator(AdtCoordinatorID:dtCoordinatorID):ptBoolean}}}
+			{sent to delete an existing coordinator in the system's post state and environment's post state.}
+	
+	\addrowheading{InputInterfaces}
+	\addnumbereddoublerow{IN}{\msrcode{ieCoordinatorAdded():ptBoolean}}
+							 {its reception confirms the creation of the requested coodinator. }
+	\addnumbereddoublerow{IN}{\msrcode{ieCoordinatorDeleted():ptBoolean}}
+							 {its reception confirms the deletion of the requested coodinator. }
+	
+\end{actortable}

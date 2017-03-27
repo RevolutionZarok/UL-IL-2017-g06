@@ -1,0 +1,298 @@
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeCreateSystemAndEnvironment - 1 - 1 - 
+%*** Description: System launch ! 
+%*** Context: 
+
+%*** Input Parameters: 
+%****** AqtyComCompanies
+%****** [ptInteger,4]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetClock - 1 - 2 - 
+%*** Description: The first clock update ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AcurrentClock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,24]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeLogin - 1 - 3 - 
+%*** Description: The Administrator login. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actAdministrator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,34]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,33]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,32]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtLogin,[dtLogin,[],[[dtString,[[value,[ptString,icrashadmin]]],[]]]]]
+%****** [AdtPassword,[dtPassword,[],[[dtString,[[value,[ptString,7WXC1359]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeAddCoordinator - 1 - 4 - 
+%*** Description: The Administrator login. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,24]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actAdministrator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,34]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,33]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,32]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtCoordinatorID,[dtCoordinatorID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+%****** [AdtLogin,[dtLogin,[],[[dtString,[[value,[ptString,steve]]],[]]]]]
+%****** [AdtPassword,[dtPassword,[],[[dtString,[[value,[ptString,pwdMessirExcalibur2017]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeLogout - 1 - 5 - 
+%*** Description: The Administrator logout. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,24]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actAdministrator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,34]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,33]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,32]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetClock - 1 - 6 - 
+%*** Description: The second clock update ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,24]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AcurrentClock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeAlert - 1 - 7 - 
+%*** Description: The witness first Alert ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,24]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actComCompany,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,21]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AetHumanKind,[etHumanKind,witness]]
+%****** [AdtDate,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]]
+%****** [AdtTime,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,16]]],[]]]]]],[]]]
+%****** [AdtPhoneNumber,[dtPhoneNumber,[],[[dtString,[[value,[ptString,+3524666445252]]],[]]]]]
+%****** [AdtGPSLocation,[dtGPSLocation,[[latitude,[dtLatitude,[],[[dtReal,[[value,[ptReal,49.627675]]],[]]]]],[longitude,[dtLongitude,[],[[dtReal,[[value,[ptReal,6.15959]]],[]]]]]],[]]]
+%****** [AdtComment,[dtComment,[],[[dtString,[[value,[ptString,3 cars involved in an accident.]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetClock - 1 - 8 - 
+%*** Description: The third clock update ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,1]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,1]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AcurrentClock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSollicitateCrisisHandling - 1 - 9 - 
+%*** Description: The sollicitation for handling current crisis or alerts ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,15]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeLogin - 1 - 10 - 
+%*** Description: The coordinator steve logs in. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2014]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,8]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,14]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtLogin,[dtLogin,[],[[dtString,[[value,[ptString,steve]]],[]]]]]
+%****** [AdtPassword,[dtPassword,[],[[dtString,[[value,[ptString,pwdMessirExcalibur2017]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeGetCrisisSet - 1 - 11 - 
+%*** Description: The coordinator requests for pending crisis listing. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AetCrisisStatus,[etCrisisStatus,pending]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetCrisisHandler - 1 - 12 - 
+%*** Description: The coordinator declares himself a the crisis handler. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtCrisisID,[dtCrisisID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetClock - 1 - 13 - 
+%*** Description: The fourth clock update ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AcurrentClock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeValidateAlert - 1 - 14 - 
+%*** Description: The coordinator validates the first alert. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtAlertID,[dtAlertID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeAlert - 1 - 15 - 
+%*** Description: The witness second Alert ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actComCompany,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,27]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AetHumanKind,[etHumanKind,witness]]
+%****** [AdtDate,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]]
+%****** [AdtTime,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,20]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]
+%****** [AdtPhoneNumber,[dtPhoneNumber,[],[[dtString,[[value,[ptString,+3524666445000]]],[]]]]]
+%****** [AdtGPSLocation,[dtGPSLocation,[[latitude,[dtLatitude,[],[[dtReal,[[value,[ptReal,49.627675]]],[]]]]],[longitude,[dtLongitude,[],[[dtReal,[[value,[ptReal,6.15959]]],[]]]]]],[]]]
+%****** [AdtComment,[dtComment,[],[[dtString,[[value,[ptString,A car crash just happened.]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetClock - 1 - 16 - 
+%*** Description: The fifth clock update ! 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,2]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actActivator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,44]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,43]]],[]]]]]],[]]]]]
+
+%*** Input Parameters: 
+%****** [AcurrentClock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,12]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeSetCrisisStatus - 1 - 17 - 
+%*** Description: The coordinator declares crisis one as solved. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,3]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtCrisisID,[dtCrisisID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+%****** [AetCrisisStatus,[etCrisisStatus,solved]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeReportOnCrisis - 1 - 18 - 
+%*** Description: The coordinator reports on crisis one. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,3]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,12]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtCrisisID,[dtCrisisID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+%****** [AdtComment,[dtComment,[],[[dtString,[[value,[ptString,3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************
+%******* Test *******
+%******* Time Stamp - 2014-8-11-14-43-47
+%*** Target//Case//Step: oeCloseCrisis - 1 - 19 - 
+%*** Description: The coordinator closes crisis. 
+%*** Context: 
+%****** [TheSystem,[ctState,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,1]]],[]]]]],[nextValueForAlertID,[dtInteger,[[value,[ptInteger,3]]],[]]],[nextValueForCrisisID,[dtInteger,[[value,[ptInteger,2]]],[]]],[clock,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,12]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,45]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[crisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,300]]],[]]]]],[maxCrisisReminderPeriod,[dtSecond,[],[[dtInteger,[[value,[ptInteger,1200]]],[]]]]],[vpLastReminder,[dtDateAndTime,[[date,[dtDate,[[year,[dtYear,[],[[dtInteger,[[value,[ptInteger,2017]]],[]]]]],[month,[dtMonth,[],[[dtInteger,[[value,[ptInteger,11]]],[]]]]],[day,[dtDay,[],[[dtInteger,[[value,[ptInteger,26]]],[]]]]]],[]]],[time,[dtTime,[[hour,[dtHour,[],[[dtInteger,[[value,[ptInteger,10]]],[]]]]],[minute,[dtMinute,[],[[dtInteger,[[value,[ptInteger,30]]],[]]]]],[second,[dtSecond,[],[[dtInteger,[[value,[ptInteger,0]]],[]]]]]],[]]]],[]]],[vpStarted,[ptBoolean,true]]],[]]]
+%****** [TheActor,[actCoordinator,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,53]]],[]]]]]],[[actAuthenticated,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,52]]],[]]]]]],[[ctMsrActor,[[oid,[dtOID,[],[[dtInteger,[[value,[ptInteger,51]]],[]]]]]],[]]]]]]]
+
+%*** Input Parameters: 
+%****** [AdtCrisisID,[dtCrisisID,[],[[dtString,[[value,[ptString,1]]],[]]]]]
+
+%*** Output Parameters: 
+
+%*** Result: [success]
+%************************

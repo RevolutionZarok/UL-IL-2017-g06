@@ -1,0 +1,17 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctHuman
+
+@description
+"used to model system's representation about the indirect actors that has alerted of potential crisis."
+
+@attribute icrash.concepts.primarytypes.classes.ctHuman.id
+"the number of the communication device used to send an alert to \msricrash system."
+
+@attribute icrash.concepts.primarytypes.classes.ctHuman.kind
+"role with respect to the alert notified."
+
+@endAttributes
+
+@operation icrash.concepts.primarytypes.classes.ctHuman.init
+ "\msrcode{init}: used to initialize the current object as a new instance of the ctHuman type."
+
+@endOperations

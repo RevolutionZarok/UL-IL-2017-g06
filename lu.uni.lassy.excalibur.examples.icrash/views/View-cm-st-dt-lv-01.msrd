@@ -1,0 +1,7 @@
+@@view cm-st-dt-lv-01
+@model Concept
+@level Local
+@sublevel Secondary Datatype
+@number 1
+@description 'shows the local view of the secondary types datatype types.'
+@caption 'Local view of the secondary types datatype types'

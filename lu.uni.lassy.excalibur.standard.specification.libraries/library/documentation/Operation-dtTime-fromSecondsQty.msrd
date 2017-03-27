@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.calendar.dtTime.fromSecondsQty
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.calendar.dtTime.fromSecondsQty.AdtInteger
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

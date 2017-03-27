@@ -1,0 +1,11 @@
+@@Actor icrash.environment.actActivator
+
+@description
+"represents a logical actor for time automatic message sending based on system's or environment status."
+
+//output events
+@outputEvent icrash.environment.actActivator.outactActivator.oeSollicitateCrisisHandling
+"used to avoid crisis to stay too long in an not handled status."
+@outputEvent icrash.environment.actActivator.outactActivator.oeSetClock
+"used to update the system's time"
+@endOutputEvents

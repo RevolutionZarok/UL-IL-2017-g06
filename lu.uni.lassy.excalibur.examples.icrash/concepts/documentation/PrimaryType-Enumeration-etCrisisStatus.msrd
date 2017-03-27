@@ -1,0 +1,8 @@
+@@Primary Type Enumeration icrash.concepts.primarytypes.datatypes.etCrisisStatus
+@description 
+"
+this type is used to indicate the different handling status of a crisis.
+"
+@operation icrash.concepts.primarytypes.datatypes.etCrisisStatus.is
+ "used to determine which litteral belongs to the enumeration."
+@endOperations

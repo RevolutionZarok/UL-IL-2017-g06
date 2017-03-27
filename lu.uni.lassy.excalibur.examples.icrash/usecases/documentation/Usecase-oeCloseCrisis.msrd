@@ -1,0 +1,25 @@
+/* oeCloseCrisis Use Case Documentation */
+@@Use Case Subfunction icrash.usecases.subfunctions.oeCloseCrisis inappendix
+@description
+"
+the \msrcode{actCoordinator}'s goal is to declare a crisis as closed. 
+"
+@protocolCondition
+"
+the iCrash system has been deployed.
+"
+@endProtocolConditions
+@preCondition
+"
+none
+"
+@endPreConditions
+@postCondition
+"
+the crisis is know by the system to be closed.
+"
+@postCondition
+"
+a message \msrcode{ieMessage(AMessage)} is sent to the \msrcode{actCoordinator} to inform him that his crisis is now considered as closed.
+"
+@endPostConditions

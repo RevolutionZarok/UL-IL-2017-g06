@@ -1,0 +1,5 @@
+@@view uc-suDeployAndRun
+@model Use-Case icrash.usecases.suDeployAndRun.suDeployAndRun
+@description "shows the use case diagram for the suDeployAndRun summary use case"
+@caption ' suDeployAndRun summary use case'
+@scale MaxWidth

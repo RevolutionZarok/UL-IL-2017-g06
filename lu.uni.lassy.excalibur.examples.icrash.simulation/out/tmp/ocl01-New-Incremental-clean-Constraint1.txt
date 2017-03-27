@@ -1,0 +1,202 @@
+/****************************************/
+/* Operations Specification */
+/****************************************/
+
+/***************************************
+MSRCreatorActor
+***************************************/
+
+/*** createSystemAndEnvironment ***/
+
+context Environment::outactMsrCreator::oeCreateSystemAndEnvironment(
+AqtyComCompanies: libraries::ptInteger)
+/*--------------------------------------------*/
+pre:
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Pre Functional:*/
+/* PreF01 */
+and true
+
+/* Pre Protocol:*/
+/* PreP01 */
+and TheSystem.vpStarted = false
+/*--------------------------------------------*/
+post:
+let AoutactMsrCreator:Environment::outactMsrCreator in 
+let AinactMsrCreator:Environment::inactMsrCreator in 
+let ActAdministrator:PrimaryTypesClasses::ctAdministrator in
+let AinactAdministrator:Environment::inactAdministrator in
+let AoutactAdministrator:Environment::outactAdministrator in
+let AdtLogin: PrimaryTypesDataTypes::dtLogin in
+let AdtPassword: PrimaryTypesDataTypes::dtPassword in
+let AdtTime: PrimaryTypesDataTypes::dtTime in
+let AdtDate: PrimaryTypesDataTypes::dtDate in
+let ACrisisReminderPeriod: libraries::ptInteger in
+
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* PostF01 */ 
+and TheSystem.rnactComCompany->size() = AqtyComCompanies
+and TheSystem.rnactComCompany
+	->forAll(p | p.msrCreateactComCompany())
+
+/* PostF02 */
+and TheSystem.rnactAdministrator->size() = 1
+and TheSystem.rnactAdministrator
+	->forAll(p | p.msrCreateAdministratorActor())	
+
+/* PostF03 */	
+and AdtLogin = 'icrashadmin'
+and AdtPassword = '7WXC1359'
+and ActAdministrator.msrCreateAdministrator(AdtLogin,AdtPassword,false)
+and ActAdministrator.rnactAdministrator
+	= TheSystem.rnactAdministrator
+and ActAdministrator.rnactAuthenticated
+	= TheSystem.rnactAdministrator	
+					
+/* PostF04 */
+and TheSystem.rnactActivator.msrCreateActivatorActor()
+			
+/* PostF05 */
+and TheSystem.clock.date.isInitialDate()
+and TheSystem.clock.time.isMidnight()
+and TheSystem.crisisReminderPeriod = 300
+and TheSystem.initialCrisisReminderPeriod = 300
+and TheSystem.maxCrisisHandlingDelay = 900
+and TheSystem.nextValueForAlertID = 1
+and TheSystem.nextValueForAlertID = 1
+
+/* Post Protocol:*/
+/* PostP01 */
+and TheSystem.vpStarted = true
+
+/* Post Messir */
+/* Post M01 */
+/* each newly class instance of Adt concept model or of Adt actor classes 
+ust be added  to Adt associated composition relationships */
+/*--------------------------------------------*/
+
+
+/***************************************
+actComCompany
+***************************************/
+
+/*** alert ***/
+context Environment::outactComCompany::oeAlert(
+Aetkind: PrimaryTypesDataTypes::etHumanKind, 
+AdtDate: PrimaryTypesDataTypes::dtDate, 
+AdtTime: PrimaryTypesDataTypes::dtTime, 
+AdtPhoneNumber: PrimaryTypesDataTypes::dtPhoneNumber, 
+AdtGPSLocation: PrimaryTypesDataTypes::dtGPSLocation, 
+AdtComment: PrimaryTypesDataTypes::dtComment)
+/*--------------------------------------------*/
+pre: 
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Pre Functional:*/
+/* PreF01 */
+and (	AdtDate.lt(TheSystem.clock.date) 
+		or (	AdtDate.eq(TheSystem.clock.date) 
+				and AdtTime.gt(TheSystem.clock.time)))
+/*--------------------------------------------*/
+post: 
+let ActHuman:PrimaryTypesClasses::ctHuman in
+let ActAlert:PrimaryTypesClasses::ctAlert in
+let AAlertInstant:PrimaryTypesDataTypes::dtDateAndTime in
+let AetAlertStatus:PrimaryTypesDataTypes::etAlertStatus in
+let ActAlertNearBy:PrimaryTypesClasses::ctAlert in
+let ActCrisis:PrimaryTypesClasses::ctCrisis  in
+let AdtCrisisID:PrimaryTypesDataTypes::dtCrisisID in
+let AdtCrisisType:PrimaryTypesDataTypes::etCrisisType in
+let AetCrisisStatus:PrimaryTypesDataTypes::etCrisisStatus in
+let ACrisisInstant:PrimaryTypesDataTypes::dtDateAndTime in
+let ACrisisdtComment:PrimaryTypesDataTypes::dtComment in	
+let AdtMessage:PrimaryTypesDataTypes::ptString in	
+let AdtSMS:SecondaryTypesDataTypes::dtSMS in
+let AdtAlertID:PrimaryTypesDataTypes::dtAlertID in
+let TheSystem:PrimaryTypesClasses::ctState in
+TheSystem = self.rnActor.rnSystem
+
+/* Post Functional:*/
+/* Post F01 */
+and 
+if TheSystem.human->select(p | p.id=AdtPhoneNumber and p.kind = Aetkind)->size()=1
+then (ActHuman = TheSystem.human->any(p | p.id=AdtPhoneNumber and p.kind = Aetkind))
+else ActHuman.msrCreateHuman(AdtPhoneNumber,kind)
+endif
+
+/* PostF02 */
+and TheSystem.nextValueForAlertID@pre.toString(AdtAlertID)
+and TheSystem.nextValueForAlertID
+	= TheSystem.nextValueForAlertID@pre + 1
+	
+/* PostF03 */
+and AAlertInstant.date = AdtDate
+and AAlertInstant.time = AdtTime
+and ActAlert.msrCreateAlert(
+		AdtAlertID,
+		AetAlertStatus,
+		AdtGPSLocation,
+		AAlertInstant,
+		AdtComment)
+
+/* PostF04 */
+and ActHuman.alert->includes(ActAlert)
+
+/* PostF05 */
+and AdtSMS='Your alert is registered.'
+and ActHuman.actComCompany.InterfaceIN^smsSend(AdtPhoneNumber,AdtSMS)
+
+/* PostF06 */
+and if TheSystem.alert->exists(a | a.location.isNearTo(ActAlert.location))
+	then 	AetAlertStatus = DataTypes::etAlertStatus::valid
+			and ActAlertNearBy 
+				= TheSystem.alert->any(a | a.location.isNearTo(ActAlert.location))
+			and ActAlert.crisis = ActAlertNearBy.crisis
+			
+/* PostF07 */
+and AdtMessage
+	=	'Adt alert with ID'
+		.concat(AdtAlertID)
+		.concat(' has been created and attached to Adt crisis with ID ')
+		.concat(ActAlert.crisis.id)
+		.concat('.')
+and ActAlert.crisis.coordinator.coordinatorActor.InterfaceIN
+				^message(AdtMessage)
+			
+/* PostF08 */
+	else  	AetAlertStatus = DataTypes::etAlertStatus::pending
+			and AdtCrisisID = TheSystem.nextValueForCrisisID@pre
+			and TheSystem.nextValueForCrisisID 
+				= TheSystem.nextValueForCrisisID@pre + 1
+			and AdtCrisisType = DataTypes::CrisisType::small
+			and AetCrisisStatus = DataTypes::CrisisStatus::pending
+			and ActCrisis.instant = ActAlert.instant
+			and ACrisisdtComment = 'no reporting yet defined'
+			and ActCrisis.msrCreateCrisis(	AdtCrisisID,
+											AdtCrisisType,
+											AetCrisisStatus,
+											ACrisisInstant,
+											ACrisisdtComment)
+	endif
+		
+/* Post Protocol:*/
+/* Post P01 */
+and true
+
+/* Post Messir */
+/* Post M01 */
+and ActHuman.id.is()
+and ActAlert.location.is()
+and ActAlert.instant.date.isMyDate()
+and ActAlert.instant.time.is()
+and ActAlert.comment.is()
+and ActAlert.id.isAlertID()
+ 
+/*--------------------------------------------*/
+

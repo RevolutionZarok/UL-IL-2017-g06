@@ -1,0 +1,17 @@
+
+@@Operation
+lu.uni.lassy.messir.libraries.string.dtString.gt
+//parameters
+@parameter
+lu.uni.lassy.messir.libraries.string.dtString.gt.AdtString
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

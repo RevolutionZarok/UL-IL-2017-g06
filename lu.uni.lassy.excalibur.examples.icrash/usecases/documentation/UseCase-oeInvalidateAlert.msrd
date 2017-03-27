@@ -1,0 +1,22 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeInvalidateAlert hidden
+@description
+"goal is to indicate that an alert should be considered as closed.
+"
+@parameter icrash.usecases.subfunctions.oeInvalidateAlert.AdtAlertID ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

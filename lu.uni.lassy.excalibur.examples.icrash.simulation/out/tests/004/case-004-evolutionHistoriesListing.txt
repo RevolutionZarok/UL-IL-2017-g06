@@ -1,0 +1,128 @@
+[[sim,1]] ---> [[sim,2]]
+outactMsrCreator : oeCreateSystemAndEnvironment
+InterfaceOUT instance: 7  -  6  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+4  -  
+Sent Events:
+
+-------------------------------------------
+[[sim,2]] ---> [[sim,3]]
+outactMsrCreator : silent
+InterfaceOUT instance: 7  -  6  -  
+Parameters:
+Result: [satisfied]
+Sent Events:
+
+-------------------------------------------
+[[sim,3]] ---> [[sim,4]]
+outactActivator : oeSetClock
+InterfaceOUT instance: 48  -  47  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+2017  -  11  -  24  -  15  -  20  -  0  -  
+Sent Events:
+
+-------------------------------------------
+[[sim,4]] ---> [[sim,5]]
+outactAuthenticated : oeLogin
+InterfaceOUT instance: 42  -  41  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+icrashadmin  -  
+7WXC1359  -  
+Sent Events:
+InterfaceIN instance: inactAuthenticated - 40  -  39  -  
+Input Event: ieMessage
+Parameters:
+You are logged ! Welcome ...  -  
+
+
+-------------------------------------------
+[[sim,5]] ---> [[sim,6]]
+outactAdministrator : oeAddCoordinator
+InterfaceOUT instance: 38  -  37  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+1  -  
+steve  -  
+pwdMessirExcalibur2017  -  
+Sent Events:
+InterfaceIN instance: inactAdministrator - 36  -  35  -  
+Input Event: ieCoordinatorAdded
+Parameters:
+
+
+-------------------------------------------
+[[sim,6]] ---> [[sim,7]]
+outactAuthenticated : oeLogout
+InterfaceOUT instance: 42  -  41  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+Sent Events:
+InterfaceIN instance: inactAuthenticated - 40  -  39  -  
+Input Event: ieMessage
+Parameters:
+You are logged out ! Good Bye ...  -  
+
+
+-------------------------------------------
+[[sim,7]] ---> [[sim,8]]
+outactActivator : oeSetClock
+InterfaceOUT instance: 48  -  47  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+2017  -  11  -  26  -  10  -  15  -  0  -  
+Sent Events:
+
+-------------------------------------------
+[[sim,8]] ---> [[sim,9]]
+outactComCompany : oeAlert
+InterfaceOUT instance: 13  -  12  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+anonymous  -  
+2017  -  11  -  26  -  
+10  -  10  -  16  -  
++3524666445000  -  
+49.010833  -  6.199944  -  
+I am just trying this iPhone app from my tennis club !  -  
+Sent Events:
+InterfaceIN instance: inactComCompany - 11  -  10  -  
+Input Event: ieSmsSend
+Parameters:
++3524666445000  -  
+Your alert has been registered. We will handle it and keep you informed  -  
+
+
+-------------------------------------------
+[[sim,9]] ---> [[sim,10]]
+outactActivator : oeSetClock
+InterfaceOUT instance: 48  -  47  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+2017  -  11  -  26  -  10  -  45  -  0  -  
+Sent Events:
+
+-------------------------------------------
+[[sim,10]] ---> [[sim,11]]
+outactActivator : oeSollicitateCrisisHandling
+InterfaceOUT instance: 48  -  47  -  
+Parameters:
+Result: [satisfiedAtPreProtocol,satisfiedAtPreFunctional,satisfiedAtPostFunctional]
+Sent Events:
+InterfaceIN instance: inactAuthenticated - 59  -  58  -  
+Input Event: ieMessage
+Parameters:
+You are now considered as handling the crisis having ID: 1  -  
+
+
+-------------------------------------------
+[[sim,11]] ---> [[sim,12]]
+outactActivator : oeSollicitateCrisisHandling
+InterfaceOUT instance: 48  -  47  -  
+Parameters:
+Result: [rejectedAtPreProtocol]
+Sent Events:
+
+-------------------------------------------

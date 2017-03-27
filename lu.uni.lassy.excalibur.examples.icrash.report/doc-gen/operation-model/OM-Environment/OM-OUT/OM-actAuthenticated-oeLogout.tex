@@ -1,0 +1,88 @@
+\subsection{Operation Model for oeLogout}
+
+\label{OM-oeLogout}
+
+
+The \msrcode{oeLogout} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeLogout}{sent to end the secured access to specific system operations.}
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor is currently logged in ! (i.e. the associated ctAuthenticated instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{ }
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{a logout confirmation message is sent to the actor (n.b. the logged status is changed as a post-protocol condition)}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{the actor is known to be logged out ! (i.e. the associated ctAuthenticated instance with given login and password is considered logged out)}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAuthenticated-oeLogout-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeLogout}.},label=OM-actAuthenticated-oeLogout-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+	  let TheActor:actAdministrator in
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheActor
+	  
+	/* PreP01 */
+	  and TheSystem.vpStarted = true
+	/* PreP02 */
+	  and TheActor.rnctAuthenticated.vpIsLogged = true}
+	
+	/* Pre Functional:*/
+	preF{/* PreF01 */
+	true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+	  let TheactAuthenticated:actAuthenticated in
+	  let AptStringMessageForTheactAuthenticated: ptString in
+	  
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheactAuthenticated
+	  
+	  /* PostF01 */
+	  AptStringMessageForTheactAuthenticated.eq('You are logged out ! Good Bye ...')
+	  and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactAuthenticated)}
+	
+	/* Post Protocol:*/ 
+	postP{ let TheSystem: ctState in
+	  let TheactAuthenticated:actAuthenticated in
+	
+	  self.rnActor.rnSystem = TheSystem
+	  and self.rnActor = TheactAuthenticated.asSet
+	/* PostP01 */
+	  TheactAuthenticated.rnctAuthenticated@post.vpIsLogged = false}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

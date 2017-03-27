@@ -1,0 +1,78 @@
+\subsection{Operation Model for isAllocatedIfPossible}
+
+\label{OM-isAllocatedIfPossible}
+
+
+The \msrcode{isAllocatedIfPossible} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{isAllocatedIfPossible}{used to allocate a crisis to a coordinator if any or to alert the administrator of crisis waiting to be handled.}
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ true iff the duration between the crisis creation and the system's clock is greater than the maximum delay defined
+	and }
+	\addnumberedsinglerow{PostF}{if there exist at least one coordinator then (a) the post state associates to the crisis any of the existing coordinators and (b) the coordinator is informed that he is now the handlers of the crisis whose ID is communicated}
+	\addnumberedsinglerow{PostF}{else a message is sent to all known administrators to request creation of new coordinators.}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-ctCrisis-isAllocatedIfPossible-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{isAllocatedIfPossible}.},label=OM-ctCrisis-isAllocatedIfPossible-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{if (   
+	/* Post F01 */
+	self.maxHandlingDelayPassed()
+	and 
+	  if  (TheSystem.rnactCoordinator->msrIsEmpty = false)
+	  then (
+	      /* Post F02 */
+	      TheSystem.rnactCoordinator->msrAny(true) = TheCoordinatorActor
+	      and TheCoordinatorActor.rnctCoordinator = TheCoordinator
+	      and self@post.rnHandler = TheCoordinator
+	      and self@post.status = handled
+	      and self.id.value = TheCrisisIDptString
+	      and 'You are now considered as handling the crisis having ID: '
+	          .ptStringConcat(TheCrisisIDptString) = TheMessage
+	        and TheCoordinatorActor.rnInterfaceIN^ieMessage(TheMessage)
+	   )
+	  else (  /* Post F03 */
+	        TheSystem.rnactAdministrator
+	        ->forAll(rnInterfaceIN.ieMessage('Please add new coordinators to handle pending crisis !'))
+	    )
+	  endif
+	  )
+	then (result = true)
+	else (result = false)
+	endif}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

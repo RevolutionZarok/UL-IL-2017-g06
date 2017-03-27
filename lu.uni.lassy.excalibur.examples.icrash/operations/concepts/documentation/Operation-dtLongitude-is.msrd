@@ -1,0 +1,9 @@
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtLongitude.is
+
+@description
+"used to determine which strings are considered as valid dtLongitude."
+//postFunctional descriptions
+@postF 
+" is true if the value is a real in the interval [-180.0 , +180.0]."
+@endPostF

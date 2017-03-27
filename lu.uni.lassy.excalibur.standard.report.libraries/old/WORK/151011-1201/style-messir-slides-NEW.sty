@@ -1,0 +1,68 @@
+\setbeamertemplate{frametitle continuation}{\frametitle{\color{white}Title}}
+\usepackage[orientation=landscape,size=custom,width=29.7,height=19]{beamerposter}
+\setbeamercovered{transparent} 
+
+\usetheme{Montpellier} 
+\setbeamertemplate{footline}[frame number]
+\usefonttheme[]{serif}  
+
+\usepackage{styles/handoutWithNotes}
+
+\usepackage{hyperref}
+\hypersetup{
+} % for hyperrefs slides
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[xindy,toc]{glossaries}
+\immediate\write18{makeglossaries \jobname}
+\makeglossaries
+\usepackage{makeidx}
+\makeindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamerfont{author}{size=\Huge}
+\setbeamerfont{institute}{size=\normalsize\itshape}
+\setbeamerfont{title}{size=\fontsize{30}{36}\bfseries}
+\setbeamerfont{subtitle}{size=\Large\normalfont\slshape}
+
+\setbeamertemplate{itemize item}{$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{$\bullet$}
+\setbeamertemplate{itemize subsubitem}{$\circ$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Global Background must be put in preamble
+\usebackgroundtemplate
+{%
+  \parbox[c][\paperheight][c]{\paperwidth}
+    {\centering\includegraphics[width=\paperwidth]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/slides/UL_slide_footerv4.pdf}
+     \freeblock{20}{2}{15.35}{\textit{\tiny \msrAuthorName - \today~(\currenttime) - \msrInstitute }}
+     \freeblock{2}{1.7}{15.33}{\includegraphics[scale=0.025]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/logos/messir/final/Messir/Vector/Messir-centred-all-no-OS-no-TXv3.pdf}}
+     \freeblock{2}{0.03}{14.7}{\includegraphics[scale=0.050]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/copyrights-stample-02-blue.pdf}}
+%     \freeblock{2}{15}{0.3}{\includegraphics[scale=0.08]{./../lu.uni.lassy.excalibur.standard.report.libraries/images/various/copyrights-stample-02-blue.pdf}}
+                
+    }
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For including a TOC for parts
+\makeatletter
+\AtBeginPart{%
+  \addtocontents{toc}{\protect\beamer@partintoc{\the\c@part}{\beamer@partnameshort}{\the\c@page}}%
+}
+%% number, shortname, page.
+\providecommand\beamer@partintoc[3]{%
+  \ifnum\c@tocdepth=-1\relax
+    \msrfontclb{(#1):} \msrtxtclb{CadetBlue}{#2} \textit{\scriptsize (slide #3)} 
+    \vspace{-0.1cm}
+    \par
+  \fi
+}
+\define@key{beamertoc}{onlyparts}[]{%
+  \c@tocdepth=-1\relax
+}
+\makeatother%
+
+% For reducing TOC line spacing
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\patchcmd{\beamer@subsectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
