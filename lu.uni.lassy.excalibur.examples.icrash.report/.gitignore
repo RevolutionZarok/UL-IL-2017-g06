@@ -5,3 +5,12 @@
 *.mtc0
 *.mtc1
 report.pdf
+/report.aux
+/report.dvi
+/report.ilg
+/report.ind
+/report.lof
+/report.log
+/report.out
+/report.ps
+/report.toc
