@@ -87,11 +87,11 @@ import icrash.environment
     }
   }    
 //----------------------------------------------------
-  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {//Modified by Michel
+  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {
 		actor actAuthenticated[primary,active]
 		returned messages {
 			ieConfirmCaptcha(ACaptcha) returned to actAuthenticated
-			ieGenerateCaptcha returned to actCaptchaGenerator
+			ieGenerateCaptcha returned to actCaptchaGenerator//Modified by Michel
 			ieMessage(AMessage) returned to actAuthenticated
 		}
 	}   

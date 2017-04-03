@@ -541,6 +541,17 @@
     <semanticResources>documentation/View-uci-uciugUserActivity.msrd</semanticResources>
     <semanticResources>documentation/View-uci-uciugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-uci-uciugWitnessSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actAuthenticated-oeSubmitCaptcha.msr</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtCaptcha-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtCaptchaResponse-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtCaptchaImage-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Class-ctCaptchaGenerator.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptchaGenerator-init.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Class-ctCaptchaValidator.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptchaValidator-init.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Class-ctMailingService.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctMailingService-init.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actCaptchaGenerator-init.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p2U5oBLhEeeZAOo5Nrpa5w" name="em-view8" representation="_p2U5oRLhEeeZAOo5Nrpa5w">

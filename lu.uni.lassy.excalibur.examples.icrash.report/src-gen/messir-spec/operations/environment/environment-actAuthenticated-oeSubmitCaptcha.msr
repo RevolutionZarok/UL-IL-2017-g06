@@ -1,0 +1,58 @@
+package icrash.environment.operations.actAuthenticated.outactAuthenticated.oeSubmitCaptcha {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.environment
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+	Operation Model {
+
+		operation: icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean{
+			preP{
+				let TheSystem: ctState in
+				let TheActor:actAuthenticated in
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheActor
+  
+				/* PreP01 */
+				and TheSystem.vpStarted = true
+				/* PreP02 */
+				and TheActor.rnctAuthenticated.vpIsLogged = false
+				/* PreP03 */
+				and TheActor.rnctAuthenticated.awaitedCaptchaId.is() = true
+			}
+			preF{
+				true
+			}
+			postF{
+				let TheSystem: ctState in
+				let TheactAuthenticated:actAuthenticated in
+				let TheactValidator:actCaptchaValidator in
+  
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactAuthenticated
+				
+				/* PostF01 */
+				and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)
+           		
+			}
+			postP{
+				let TheSystem: ctState in
+				let TheactAuthenticated:actAuthenticated in
+  
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactAuthenticated
+				
+				/* PostF01 */
+				and TheactAuthenticated.rnctAuthenticated.awaitedCaptchaId.is() = false
+			}
+			prolog{
+				"src/Operations/Environment/OUT/outactAuthenticated-oeSubmitCaptcha.pl"
+			}
+		}
+	}
+}

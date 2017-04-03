@@ -87,6 +87,8 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute pwd: dtPassword
 				attribute vpIsLogged:ptBoolean
 				
+				attribute awaitedCaptchaId:ptInteger //Michel
+				
 				operation init(
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
@@ -113,6 +115,17 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation init(
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
+			}
+			
+			//Michel:
+			class ctCaptchaGenerator role rnctCaptchaGenerator cardinality [1..1]{//TODO: View
+				operation init():ptBoolean//TODO: Improve
+			}
+			class ctCaptchaValidator role rnctCaptchaValidator cardinality [1..1]{//TODO: View
+				operation init():ptBoolean//TODO: Improve
+			}
+			class ctMailingService role rnctMailingService cardinality [1..1]{//TODO: View
+				operation init():ptBoolean//TODO: Improve
 			}
 		}
 	}

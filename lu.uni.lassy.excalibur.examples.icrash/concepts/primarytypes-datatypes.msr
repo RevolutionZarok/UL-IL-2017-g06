@@ -64,14 +64,17 @@ import lu.uni.lassy.messir.libraries.calendar
 			datatype dtCaptcha {//TODO: link to images
 				attribute id: ptInteger
 				attribute question: ptString
+				operation is():ptBoolean
 			}
 			datatype dtCaptchaResponse {
 				attribute id: ptInteger
 				attribute response: ptString//TODO: Type?
+				operation is():ptBoolean
 			}
 			datatype dtCaptchaImage extends dtString{
 				attribute width : ptInteger
 				attribute height : ptInteger
+				operation is():ptBoolean
 			}
 			
 			//Sam

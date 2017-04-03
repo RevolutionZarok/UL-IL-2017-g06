@@ -1,0 +1,12 @@
+/*
+@author michm
+@date Mon Apr 03 10:51:33 CEST 2017
+*/
+
+
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctCaptchaValidator
+@description ""
+@operation
+icrash.concepts.primarytypes.classes.ctCaptchaValidator.init
+""
+@endOperations
