@@ -76,6 +76,13 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute height : ptInteger
 				operation is():ptBoolean
 			}
+			datatype dtCaptchaResponseMap{//TODO: Is this sufficient?
+				operation is():ptBoolean//TODO: View
+				
+				operation register(AdtResponse:dtCaptchaResponse):ptBoolean
+				operation get(AId:ptInteger):dtCaptchaResponse
+				operation remove(AId:ptInteger):ptBoolean
+			}
 			
 			//Sam
 			datatype dtStatisticUserActivity{

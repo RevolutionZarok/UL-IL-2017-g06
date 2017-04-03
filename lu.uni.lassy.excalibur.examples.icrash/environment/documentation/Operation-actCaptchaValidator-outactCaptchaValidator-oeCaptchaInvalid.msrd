@@ -15,9 +15,9 @@ icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid.A
 @description "Returns an answer to the system to notify that the supplied captcha was invalid"
 //preProtocol descriptions
 @preP
-"The actor must have first generated a captcha test and stored it locally"
+"The system must be started"
 @preP
-"The actor must have been supplied with a captcha response"
+"The actor for generating captcha tests must have first generated a captcha test and must have send it to the validating actor to store it locally"
 @endPreP
 //preFunctional descriptions
 @preF
@@ -25,11 +25,11 @@ icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid.A
 @endPreF
 //postFunctional descriptions
 @postF 
-"The actor notifies the system about the invalid captcha via oeCaptchaInvalid"
+"The user is notified by the system about the invalid answer to the given captcha test by a message"
 @endPostF
 //postProtocol descriptions
 @postP 
-"The system is informed about the invalid captcha response and notifies the user about this fact"
+"The actor does no longer hold reference to the correct answer to the given captcha test"
 @endPostP
 //example
 @example" "
