@@ -541,6 +541,7 @@
     <semanticResources>documentation/View-uci-uciugUserActivity.msrd</semanticResources>
     <semanticResources>documentation/View-uci-uciugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-uci-uciugWitnessSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>operations/environment-actAdministrator-oegetStatistic.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p2U5oBLhEeeZAOo5Nrpa5w" name="em-view8" representation="_p2U5oRLhEeeZAOo5Nrpa5w">

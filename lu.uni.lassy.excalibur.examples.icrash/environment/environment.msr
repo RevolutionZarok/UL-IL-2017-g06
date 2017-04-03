@@ -38,11 +38,16 @@ import lu.uni.lassy.messir.libraries.calendar
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
 											
 				//Sam:
-				operation oeUserActivityStatistic() : ptBoolean
+				operation oegetStatistic(
+					statisticUser: dtStatisticUserActivity,
+					statisticCrises: dtStatisticCrisisinTime,
+					statisticTypes: dtStatisticTypeCrisis
+				): ptBoolean
+				/*operation oeUserActivityStatistic() : ptBoolean
 				operation oeNumberOfCrisis() : ptBoolean
 				operation oeTimeOfTypeOfCrisis() : ptBoolean
 				operation ugAdministrateTheSystem() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				operation oeStatistic() : ptBoolean*/
 			}
 			
 			input interface inactAdministrator{

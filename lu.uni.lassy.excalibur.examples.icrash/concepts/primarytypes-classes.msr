@@ -114,6 +114,17 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
 			}
+			// Sam class for statistic 
+		class ctgetStatistic role rnctSystem cardinality[1..1]{
+			operation init(
+				Alogin:dtLogin ,
+				Apwd:dtPassword,
+				statisticUser: dtStatisticUserActivity,
+				statisticCrises: dtStatisticCrisisinTime,
+				statisticTypes: dtStatisticTypeCrisis
+			) : ptBoolean //Too do
+		}
+		
 		}
 	}
 }

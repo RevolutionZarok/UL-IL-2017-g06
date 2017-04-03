@@ -6,7 +6,7 @@
 
 @@Operation
 icrash.environment.actAdministrator.outactAdministrator.oeUserActivityStatistic
-@description "This function will send the user activity. This mean that it will shoa the user number with the time"
+@description "This function will send the user activity. This mean that it will show the user number with the time"
 //preProtocol descriptions
 @preP 
 "The function ugAdministarteTheSystem must be executed first"
