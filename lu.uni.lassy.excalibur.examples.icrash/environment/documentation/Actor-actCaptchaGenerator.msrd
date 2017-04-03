@@ -10,9 +10,6 @@
 @inputEvent
 icrash.environment.actCaptchaGenerator.inactCaptchaGenerator.ieGenerateCaptcha
 "The request to the actor to generate and provide a captcha test"
-@inputEvent
-icrash.environment.actCaptchaGenerator.inactCaptchaGenerator.ieValidateCaptcha
-"The request to the actor to validate a response to a captcha test"
 
 @endInputEvents
 //output events

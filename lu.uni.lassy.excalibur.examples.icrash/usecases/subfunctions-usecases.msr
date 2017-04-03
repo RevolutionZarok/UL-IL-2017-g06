@@ -141,8 +141,10 @@ import icrash.environment
   //Michel:
   use case system subfunction oeSendCaptcha() {
 			actor actCaptchaGenerator[primary, active]
+			actor actCaptchaValidator[secondary]
 			actor actAuthenticated[secondary]
 			returned messages{
+				ieRegisterAnswer() returned to actCaptchaValidator
 				ieConfirmCaptcha() returned to actAuthenticated
 			}
 	}

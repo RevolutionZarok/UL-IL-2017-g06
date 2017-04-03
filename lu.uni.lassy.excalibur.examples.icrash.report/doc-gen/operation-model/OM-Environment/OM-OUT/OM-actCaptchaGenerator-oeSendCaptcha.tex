@@ -1,0 +1,82 @@
+\subsection{Operation Model for oeSendCaptcha}
+
+\label{OM-oeSendCaptcha}
+
+
+The \msrcode{oeSendCaptcha} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeSendCaptcha}{Sends a generated captcha test to the system}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCaptcha: dtCaptcha}{The generated captcha test} 
+	\addnumbereddoublerow{}{AdtResponse: dtCaptchaResponse}{The correct answer to the generated captcha test} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system must be started}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{none}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the correct answer to the generated captcha test will be sent to the actor responsible for the validation of the users response}
+	\addnumberedsinglerow{PostF}{the received captcha test will be forwarded to an actor}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{the system has received the requested randomly generated captcha test to be able to forward the captcha test to an actor}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actCaptchaGenerator-oeSendCaptcha-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeSendCaptcha}.},label=OM-actCaptchaGenerator-oeSendCaptcha-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+					self.rnActor.rnSystem = TheSystem
+	  
+					/* PreP01 */
+					and TheSystem.vpStarted = true}
+	
+	/* Pre Functional:*/
+	preF{true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+					let TheactGenerator:actCaptchaGenerator in
+					let TheactValidator:actCaptchaValidator in
+					let TheactAuthenticated:actAuthenticated in
+					
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheactGenerator
+					
+					/* PostF01 */
+					and TheactValidator.rnInterfaceIN^ieRegisterAnswer(AdtResponse)
+					/* PostF02 */
+					and TheactAuthenticated.rnInterfaceIN^ieConfirmCaptcha(AdtCaptcha)}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

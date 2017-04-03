@@ -159,10 +159,9 @@ import lu.uni.lassy.messir.libraries.calendar
 			operation init():ptBoolean
 			input interface inactCaptchaGenerator {
 				operation ieGenerateCaptcha():ptBoolean//Documented
-				operation ieValidateCaptcha(AResponse:dtCaptchaResponse):ptBoolean//Documented
 			}
 			output interface outactCaptchaGenerator {
-				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean//Partly Documented
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean//Partly Documented
 			}
 		}
 		
@@ -177,6 +176,7 @@ import lu.uni.lassy.messir.libraries.calendar
 		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
 			input interface inactCaptchaValidator {
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
+				operation ieRegisterAnswer(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
 			}
 			output interface outactCaptchaValidator {
 				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
