@@ -5,45 +5,60 @@
 */
 package icrash.operations.environment.actAdministrator.oegetStatistic.msr {
 	import lu.uni.lassy.messir.libraries.primitives
-	import lu.uni.lassy.messir.libraries.primitives
+	import lu.uni.lassy.messir.libraries.math
+	import lu.uni.lassy.messir.libraries.string
+	import lu.uni.lassy.messir.libraries.calendar
+	
+	import icrash.environment
+	
 	import icrash.concepts.primarytypes.classes
 	import icrash.environment
-
+	import icrash.concepts.primarytypes.datatypes
+	import icrash.concepts.secondarytypes.datatypes
+/* This is the Operation Model for the statistic */
 	Operation Model {
 
-		operation: actAdministrator.outactAdministrator.oegetStatistic(statisticUser:dtStatisticUserActivity, statisticCrises:dtStatisticCrisisinTime, statisticTypes:dtStatisticTypeCrisisAdtLogin:dtLogin , AdtPassword : dtPassword ) : ptBoolean
-		 { preP {
+		operation: actAdministrator.outactAdministrator.oegetStatistic(statisticUser:dtgetStatisticUserActivity, statisticCrises:dtgetStatisticCrisisinTime, statisticTypes:dtgetStatisticTypeCrisis, AdtLogin:dtLogin , AdtPassword : dtPassword ) : ptBoolean
+		 { 
+		/* Pre Protocol*/
+		preP {
 		 	 let TheSystem : ctState in 
 		 	 let TheActor : actAdministrator in 
 		 	 self. rnActor . rnSystem = TheSystem 
 		 	 and self. rnActor = TheActor
 		/* PreP01 */
-		and TheSystem . vpStarted = true
+		and TheSystem.vpStarted = true
 		/* PreP02 */
-		and TheActor . rnctAuthenticated . vpIsLogged = true
+		and TheActor.rnctAuthenticated . vpIsLogged = true
 
-} preF { 
+} 
+/*Pre Functional*/
+preF { 
 	let TheSystem : ctState in 
 	let TheActor : actAdministrator in 
 	self. rnActor . rnSystem = TheSystem and 
 	self. rnActor = TheActor
 	/* PreF01 */
-	//and TheSystem.TheActor->select( 
+	//and TheSystem.TheActor->select( )
 	//TODO
 	
 /*Post Protocol*/
-} postF {
+} 
+postF {
 	let TheSystem: ctState in
     let TheActor:actAdministrator in
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor
     /*PostF01*/
     and 
-    
+    TheSystem.ctgetStatistic.statisticUser()
+    /*PostF02*/
+    and  TheSystem.ctgetStatistic.statisticCrises()			
+    /*PostF03*/
+    and  TheSystem.ctgetStatistic.statisticTypeCrisis()
 } 
 /*Post Protocol*/
 postP { true } 
 } 
 }
  }
- /normalsize

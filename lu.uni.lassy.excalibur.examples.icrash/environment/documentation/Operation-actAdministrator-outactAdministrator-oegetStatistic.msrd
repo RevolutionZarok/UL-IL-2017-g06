@@ -1,0 +1,40 @@
+/*
+@author samri
+@date Mon Apr 03 16:27:00 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oegetStatistic
+//parameters
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetStatistic.statisticUser
+""
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetStatistic.statisticCrises
+""
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetStatistic.statisticTypes
+""
+@endParameters
+
+@description "This is the method to call the statistic for the administrator, if he was login as an administrator.
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

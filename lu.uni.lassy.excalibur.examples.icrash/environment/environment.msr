@@ -39,9 +39,11 @@ import lu.uni.lassy.messir.libraries.calendar
 											
 				//Sam:
 				operation oegetStatistic(
-					statisticUser: dtStatisticUserActivity,
-					statisticCrises: dtStatisticCrisisinTime,
-					statisticTypes: dtStatisticTypeCrisis
+					AdtLogin:dtLogin , 
+					AdtPassword:dtPassword,
+					statisticUser: dtgetStatisticUserActivity,
+					statisticCrises: dtgetStatisticCrisisinTime,
+					statisticTypes: dtgetStatisticTypeCrisis
 				): ptBoolean
 				/*operation oeUserActivityStatistic() : ptBoolean
 				operation oeNumberOfCrisis() : ptBoolean
@@ -54,11 +56,8 @@ import lu.uni.lassy.messir.libraries.calendar
 				
 				operation ieCoordinatorAdded():ptBoolean
 				operation ieCoordinatorDeleted():ptBoolean
-				
 				//Sam:
-				operation ieClickStatistic() : ptBoolean
-				operation ieStatistic() : ptBoolean
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation iegetStatistic() : ptBoolean
 	 		}
 		}
 		
@@ -211,7 +210,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ieCallUserActivity() : ptBoolean
 				operation ieCallTypeWithTimeAverage() : ptBoolean
 				operation oeSendStatistic() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 			output interface outactDatabase {
 			}

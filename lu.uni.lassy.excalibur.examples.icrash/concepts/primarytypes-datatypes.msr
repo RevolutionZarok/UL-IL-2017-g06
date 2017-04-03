@@ -75,15 +75,15 @@ import lu.uni.lassy.messir.libraries.calendar
 			}
 			
 			//Sam
-			datatype dtStatisticUserActivity{
+			datatype dtgetStatisticUserActivity{
 				attribute number: ptInteger
 				attribute time : dtTime
 			}
-			datatype dtStatisticCrisisinTime{
+			datatype dtgetStatisticCrisisinTime{
 				attribute number : ptInteger
 				attribute time : dtTime
 			}
-			datatype dtStatisticTypeCrisis{
+			datatype dtgetStatisticTypeCrisis{
 				attribute typeC : ptString
 				attribute time : dtTime
 			}

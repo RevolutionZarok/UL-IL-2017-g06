@@ -25,7 +25,10 @@ import lu.uni.lassy.messir.libraries.calendar
 												AcrisisReminderPeriod:dtSecond ,
 												AmaxCrisisReminderPeriod:dtSecond ,
 												AvpLastReminder:dtDateAndTime ,
-												AvpStarted:ptBoolean ): ptBoolean
+												AvpStarted:ptBoolean,
+												statisticUser: dtgetStatisticUserActivity,
+												statisticCrises: dtgetStatisticCrisisinTime,
+												statisticTypes: dtgetStatisticTypeCrisis ): ptBoolean
 			}
 	
 			class ctAlert role rnctAlert cardinality [0..*]{
@@ -114,15 +117,15 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
 			}
-			// Sam class for statistic 
+			// Sam class for the time/statistic 
 		class ctgetStatistic role rnctSystem cardinality[1..1]{
 			operation init(
-				Alogin:dtLogin ,
+				Alogin:dtLogin,
 				Apwd:dtPassword,
-				statisticUser: dtStatisticUserActivity,
-				statisticCrises: dtStatisticCrisisinTime,
-				statisticTypes: dtStatisticTypeCrisis
-			) : ptBoolean //Too do
+				statisticUser: dtgetStatisticUserActivity,
+				statisticCrises: dtgetStatisticCrisisinTime,
+				statisticTypes: dtgetStatisticTypeCrisis
+			) : ptBoolean //To do
 		}
 		
 		}
