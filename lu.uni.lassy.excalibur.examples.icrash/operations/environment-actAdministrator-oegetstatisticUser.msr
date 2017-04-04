@@ -1,0 +1,67 @@
+/*
+* @author samri
+* @date Tue Apr 04 10:38:02 CEST 2017
+*/
+
+package icrash.operations.environment.actAdministrator.oegetstatisticUser.msr {
+
+import lu.uni.lassy.messir.libraries.primitives
+	import lu.uni.lassy.messir.libraries.math
+	import lu.uni.lassy.messir.libraries.string
+	import lu.uni.lassy.messir.libraries.calendar
+	
+	import icrash.environment
+	
+	import icrash.concepts.primarytypes.classes
+	import icrash.environment
+	import icrash.concepts.primarytypes.datatypes
+	import icrash.concepts.secondarytypes.datatypes
+
+	Operation Model {
+		operation: actAdministrator.outactAdministrator.oegetstatisticUser(mstatisticUser: dtgetStatisticUserActivity) : ptBoolean
+{
+	/* Pre Protocol*/
+preP {
+	let TheSystem : ctState in 
+	let TheActor : actAdministrator in 
+	self. rnActor . rnSystem = TheSystem 
+	and self. rnActor = TheActor
+		/* PreP01 */
+		and TheSystem.vpStarted = true
+		/* PreP02 */
+		and TheActor.rnctAuthenticated . vpIsLogged = true
+
+}
+ /*Pre Functional*/
+preF { 
+	let TheSystem : ctState in 
+	let TheActor : actAdministrator in 
+	self. rnActor.rnSystem = TheSystem and 
+	self. rnActor = TheActor
+	/* PreF01 */
+	and TheSystem.rnctAdministrator.vpIsLogged = true
+	//TODO
+	
+/*Post Protocol*/
+} 
+postF {
+	let TheSystem: ctState in
+    let TheActor:actAdministrator in
+    let TheSystemToGetTheStatistic : actSystem in
+	self.rnActor.rnSystem = TheSystem
+    and self.rnActor = TheActor
+    /*PostF01*/
+    and TheSystemToGetTheStatistic.getstatisticUser()
+    /*PostF02*/
+   	and  TheSystem.ctgetStatistic.statisticUser()
+    
+} 
+/*Post Protocol*/
+postP { true } 
+	}
+
+
+}
+
+}
+

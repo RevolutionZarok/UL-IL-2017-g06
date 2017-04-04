@@ -18,7 +18,7 @@ package icrash.operations.environment.actAdministrator.oegetStatistic.msr {
 /* This is the Operation Model for the statistic */
 	Operation Model {
 
-		operation: actAdministrator.outactAdministrator.oegetStatistic(statisticUser:dtgetStatisticUserActivity, statisticCrises:dtgetStatisticCrisisinTime, statisticTypes:dtgetStatisticTypeCrisis, AdtLogin:dtLogin , AdtPassword : dtPassword ) : ptBoolean
+		operation: actAdministrator.outactAdministrator.oegetStatistic(statisticUser:dtgetStatisticUserActivity, statisticCrises:dtgetStatisticCrisisinTime, statisticTypes:dtgetStatisticTypeCrisis) : ptBoolean
 		 { 
 		/* Pre Protocol*/
 		preP {
@@ -39,7 +39,7 @@ preF {
 	self. rnActor . rnSystem = TheSystem and 
 	self. rnActor = TheActor
 	/* PreF01 */
-	//and TheSystem.TheActor->select( )
+	and TheSystem.rnctAdministrator.vpIsLogged = true
 	//TODO
 	
 /*Post Protocol*/
@@ -47,14 +47,17 @@ preF {
 postF {
 	let TheSystem: ctState in
     let TheActor:actAdministrator in
+    let TheSystemToGetTheStatistic : actSystem in
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor
     /*PostF01*/
     and 
-    TheSystem.ctgetStatistic.statisticUser()
+    TheSystemToGetTheStatistic.init()
     /*PostF02*/
-    and  TheSystem.ctgetStatistic.statisticCrises()			
+    and  TheSystem.ctgetStatistic.statisticUser()
     /*PostF03*/
+    and  TheSystem.ctgetStatistic.statisticCrises()			
+    /*PostF04*/
     and  TheSystem.ctgetStatistic.statisticTypeCrisis()
 } 
 /*Post Protocol*/

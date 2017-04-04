@@ -562,6 +562,7 @@
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtgetStatisticUserActivity.msrd</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtgetStatisticCrisisinTime.msrd</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtgetStatisticTypeCrisis.msrd</semanticResources>
+    <semanticResources>operations/environment-actAdministrator-oegetstatisticUser.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_z6iwkBLhEeeZAOo5Nrpa5w" name="em-view10" representation="_z6iwkRLhEeeZAOo5Nrpa5w">

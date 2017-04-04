@@ -121,9 +121,16 @@ import lu.uni.lassy.messir.libraries.calendar
 		class ctgetStatistic role rnctSystem cardinality[1..1]{
 			operation init(
 				Alogin:dtLogin,
-				Apwd:dtPassword,
-				statisticUser: dtgetStatisticUserActivity,
-				statisticCrises: dtgetStatisticCrisisinTime,
+				Apwd:dtPassword
+	
+			) : ptBoolean 
+			operation getstatisticUser(
+				statisticUser: dtgetStatisticUserActivity
+			) : ptBoolean  
+			operation getstatisticCrises(
+				statisticCrises: dtgetStatisticCrisisinTime
+			) : ptBoolean 
+			operation getstatisticTypes(
 				statisticTypes: dtgetStatisticTypeCrisis
 			) : ptBoolean //To do
 		}

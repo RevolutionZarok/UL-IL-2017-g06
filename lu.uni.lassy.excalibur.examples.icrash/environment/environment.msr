@@ -39,12 +39,19 @@ import lu.uni.lassy.messir.libraries.calendar
 											
 				//Sam:
 				operation oegetStatistic(
-					AdtLogin:dtLogin , 
-					AdtPassword:dtPassword,
 					statisticUser: dtgetStatisticUserActivity,
 					statisticCrises: dtgetStatisticCrisisinTime,
 					statisticTypes: dtgetStatisticTypeCrisis
 				): ptBoolean
+				operation oegetstatisticUser(
+					statisticUser: dtgetStatisticUserActivity
+				) : ptBoolean
+				operation oegetstatisticCrises(
+					statisticCrises: dtgetStatisticCrisisinTime
+				) : ptBoolean
+				operation oegetstatisticTypes(
+					statisticTypes: dtgetStatisticTypeCrisis
+				) : ptBoolean
 				/*operation oeUserActivityStatistic() : ptBoolean
 				operation oeNumberOfCrisis() : ptBoolean
 				operation oeTimeOfTypeOfCrisis() : ptBoolean
