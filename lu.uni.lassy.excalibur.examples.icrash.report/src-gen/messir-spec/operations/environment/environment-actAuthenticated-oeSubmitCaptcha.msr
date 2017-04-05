@@ -33,7 +33,7 @@ import icrash.environment.authentication
 			postF{
 				let TheSystem: ctState in
 				let TheactAuthenticated:actAuthenticated in
-				let TheactValidator:actCaptchaValidator in
+				let TheactValidator:actCaptchaService in
   
 				self.rnActor.rnSystem = TheSystem
 				and self.rnActor = TheactAuthenticated

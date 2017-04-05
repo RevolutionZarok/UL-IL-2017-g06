@@ -8,15 +8,6 @@ import icrash.concepts.primarytypes.authentication.datatypes
 	if you want to add new actors.
 */
 Environment Model {
-		actor actCaptchaGenerator role rnactCaptchaGenerator cardinality[1 .. 1] {
-			operation init():ptBoolean
-			input interface inactCaptchaGenerator {
-				operation ieGenerateCaptcha():ptBoolean//Documented
-			}
-			output interface outactCaptchaGenerator {
-				operation oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean//Partly Documented
-			}
-		}
 		
 		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
 			operation init():ptBoolean
@@ -27,13 +18,14 @@ Environment Model {
 			}
 		}
 		
-		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
+		actor actCaptchaService role rnactCaptchaService cardinality[1 .. 1]{
 			operation init():ptBoolean
-			input interface inactCaptchaValidator {
+			input interface inactCaptchaService {
+				operation ieGenerateCaptcha():ptBoolean//Documented
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
-				operation ieRegisterAnswer(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
 			}
-			output interface outactCaptchaValidator {
+			output interface outactCaptchaService {
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean//Partly Documented
 				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
 				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
 			}

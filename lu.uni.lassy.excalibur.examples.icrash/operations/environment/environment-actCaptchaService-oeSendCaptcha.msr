@@ -1,0 +1,45 @@
+package icrash.environment.authentication.operations.actCaptchaService.outactCaptchaService.oeSendCaptcha {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.primarytypes.authentication.datatypes
+import icrash.environment.authentication
+
+	Operation Model {
+
+		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean{
+			preP{
+				let TheSystem: ctState in
+				self.rnActor.rnSystem = TheSystem
+  
+				/* PreP01 */
+				and TheSystem.vpStarted = true
+			}
+			preF{
+				true
+			}
+			postF{
+				let TheSystem: ctState in
+				let TheactGenerator:actCaptchaService in
+				let TheactAuthenticated:actAuthenticated in
+				
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactGenerator
+				
+				/* PostF01 */
+				and TheactValidator.rnInterfaceIN^ieRegisterAnswer(AdtResponse)
+				/* PostF02 */
+				and TheactAuthenticated.rnInterfaceIN^ieConfirmCaptcha(AdtCaptcha)
+			}
+			postP{
+				true//TODO: Is this correct?
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+/*
+@author michm
+@date Wed Apr 05 20:37:49 CEST 2017
+*/
+
+@@Operation
+icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptchaValid
+//parameters
+@parameter
+icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptchaValid.AdtCaptchaId
+"The id of the supplied captcha test"
+@endParameters
+
+@description "Returns an answer to the system to notify that the supplied captcha was valid"
+//preProtocol descriptions
+@preP
+"The system must be started"
+@preP
+"The actor for generating captcha tests must have first generated a captcha test and must have send it to the validating actor to store it locally"
+@endPreP
+//preFunctional descriptions
+@preF
+"none"
+@endPreF
+//postFunctional descriptions
+@postF 
+"The user is notified by the system about the valid answer to the given captcha test by a message"
+@endPostF
+//postProtocol descriptions
+@postP 
+"The actor does no longer hold reference to the correct answer to the given captcha test"
+@endPostP
+//example
+@example" "
+

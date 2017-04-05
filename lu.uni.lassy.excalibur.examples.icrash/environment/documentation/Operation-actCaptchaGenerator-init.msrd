@@ -5,12 +5,12 @@
 
 
 @@Operation
-icrash.environment.authentication.actCaptchaGenerator.init
+icrash.environment.authentication.actCaptchaService.init
 @description "
-used to initialize the current object as a new instance of the actCaptchaGenerator type. "
+used to initialize the current object as a new instance of the actCaptchaService type. "
 //postFunctional descriptions
 @postF 
-"true iff the system poststate includes the current object as a new actCaptchaGenerator instance having its attributes equal to the ones provided as parameters. "
+"true iff the system poststate includes the current object as a new actCaptchaService instance having its attributes equal to the ones provided as parameters. "
 @endPostF
 //example
 @example" "

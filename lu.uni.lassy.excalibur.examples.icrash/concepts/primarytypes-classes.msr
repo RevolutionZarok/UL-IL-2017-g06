@@ -119,10 +119,7 @@ import icrash.concepts.primarytypes.authentication.datatypes
 			}
 			
 			//Michel:
-			class ctCaptchaGenerator role rnctCaptchaGenerator cardinality [1..1]{//TODO: View
-				operation init():ptBoolean//TODO: Improve
-			}
-			class ctCaptchaValidator role rnctCaptchaValidator cardinality [1..1]{//TODO: View
+			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{//TODO: View
 				attribute map:dtCaptchaResponseMap
 				
 				operation init():ptBoolean//TODO: Improve

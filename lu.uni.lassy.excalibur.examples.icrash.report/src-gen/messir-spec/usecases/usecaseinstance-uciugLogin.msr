@@ -38,21 +38,19 @@ import icrash.environment.authentication
 		use case instance uciugLoginCaptchaSuccess : ugLogin{
 			actors {
 				MKremer : actAuthenticated
-				CaptchaGenerator : actCaptchaGenerator
-				CaptchaValidator : actCaptchaValidator
+				CaptchaService : actCaptchaService
 			}
 			use case steps {
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
-					ieGenerateCaptcha() returned to CaptchaGenerator
+					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaGenerator executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
-					ieRegisterAnswer("Captcha answer") returned to CaptchaValidator
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {
-					ieVerifyCaptcha("Captcha user response") returned to CaptchaValidator
+					ieVerifyCaptcha("Captcha user response") returned to CaptchaService
 				}
-				CaptchaValidator executed instanceof subfunction oeCaptchaValid("Captcha id"){
+				CaptchaService executed instanceof subfunction oeCaptchaValid("Captcha id"){
 					ieMessage("You are now logged in!") returned to MKremer
 				}
 			}
@@ -60,21 +58,19 @@ import icrash.environment.authentication
 		use case instance uciugLoginCaptchaFailure : ugLogin{
 			actors {
 				MKremer : actAuthenticated
-				CaptchaGenerator : actCaptchaGenerator
-				CaptchaValidator : actCaptchaValidator
+				CaptchaService : actCaptchaService
 			}
 			use case steps {
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
-					ieGenerateCaptcha() returned to CaptchaGenerator
+					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaGenerator executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
-					ieRegisterAnswer("Captcha answer") returned to CaptchaValidator
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {
-					ieVerifyCaptcha("Captcha user response") returned to CaptchaValidator
+					ieVerifyCaptcha("Captcha user response") returned to CaptchaService
 				}
-				CaptchaValidator executed instanceof subfunction oeCaptchaInvalid("Captcha id"){
+				CaptchaService executed instanceof subfunction oeCaptchaInvalid("Captcha id"){
 					ieMessage("Your submitted captcha response is invalid. Try again.") returned to MKremer
 				}
 
@@ -84,22 +80,20 @@ import icrash.environment.authentication
 		use case instance uciugLoginCaptchaToleranceExceeded : ugLogin{
 			actors {
 				MKremer : actAuthenticated
-				CaptchaGenerator : actCaptchaGenerator
-				CaptchaValidator : actCaptchaValidator
+				CaptchaService : actCaptchaService
 				GMail : actMailingService
 			}
 			use case steps {
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
-					ieGenerateCaptcha() returned to CaptchaGenerator
+					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaGenerator executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
-					ieRegisterAnswer("Captcha answer") returned to CaptchaValidator
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {
-					ieVerifyCaptcha("Captcha user response") returned to CaptchaValidator
+					ieVerifyCaptcha("Captcha user response") returned to CaptchaService
 				}
-				CaptchaValidator executed instanceof subfunction oeCaptchaInvalid("Captcha id"){
+				CaptchaService executed instanceof subfunction oeCaptchaInvalid("Captcha id"){
 					ieSendMail("michel.kremer.003@student.uni.lu", "Your account has been locked", "Notification and unblocking instructions (a bit too long to write here...)") returned to GMail
 					ieMessage("Your user name will be blocked for logging in. Please contact an administrator.") returned to MKremer
 				}
