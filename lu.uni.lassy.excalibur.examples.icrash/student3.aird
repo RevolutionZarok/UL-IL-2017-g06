@@ -563,6 +563,14 @@
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtgetStatisticCrisisinTime.msrd</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtgetStatisticTypeCrisis.msrd</semanticResources>
     <semanticResources>operations/environment-actAdministrator-oegetstatisticUser.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtgetStatisticUserActivity-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-classes/primarytypes-classes-ctgetStatistic-getstatisticUser.msr</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticUser.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-classes/primarytypes-classes-ctgetStatistic-getstatisticUser1.msr</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Class-ctgetStatistic.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctgetStatistic-getstatisticCrises.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctgetStatistic-getstatisticUser.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctgetStatistic-init.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_z6iwkBLhEeeZAOo5Nrpa5w" name="em-view10" representation="_z6iwkRLhEeeZAOo5Nrpa5w">

@@ -1,0 +1,39 @@
+/*
+@author samri
+@date Wed Apr 05 09:42:04 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser
+//parameters
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.statisticUser
+""
+@endParameters
+
+@description "This function will send the user activity. This mean that it will show the user number with the time"
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"The function ugAdministarteTheSystem must be executed first, So the Administrator must bee login."
+@preP 
+"The function getStatistic must be execute. This is the button statistic and must bee execute"
+@endPreP
+//preFunctional descriptions
+@preF
+"none "
+@endPreF
+//postFunctional descriptions
+@postF 
+"After the execution of the function oegetStatistic()(this will present the button in the GUI of the Administrator) so the next function getstatisticUser() will execute.  "
+
+@endPostF
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP
+//example
+@example" "

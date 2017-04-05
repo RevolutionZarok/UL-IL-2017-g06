@@ -25,10 +25,8 @@ import lu.uni.lassy.messir.libraries.calendar
 												AcrisisReminderPeriod:dtSecond ,
 												AmaxCrisisReminderPeriod:dtSecond ,
 												AvpLastReminder:dtDateAndTime ,
-												AvpStarted:ptBoolean,
-												statisticUser: dtgetStatisticUserActivity,
-												statisticCrises: dtgetStatisticCrisisinTime,
-												statisticTypes: dtgetStatisticTypeCrisis ): ptBoolean
+												AvpStarted:ptBoolean
+			): ptBoolean
 			}
 	
 			class ctAlert role rnctAlert cardinality [0..*]{

@@ -34,13 +34,7 @@ package icrash.operations.environment.actAdministrator.oegetStatistic.msr {
 } 
 /*Pre Functional*/
 preF { 
-	let TheSystem : ctState in 
-	let TheActor : actAdministrator in 
-	self. rnActor . rnSystem = TheSystem and 
-	self. rnActor = TheActor
-	/* PreF01 */
-	and TheSystem.rnctAdministrator.vpIsLogged = true
-	//TODO
+	true
 	
 /*Post Protocol*/
 } 

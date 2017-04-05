@@ -1,0 +1,12 @@
+package icrash.concepts.primarytypes.classes.operations.classes.ctgetStatistic.getstatisticUser {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+	Operation Model {
+
+		
+	}
+}
