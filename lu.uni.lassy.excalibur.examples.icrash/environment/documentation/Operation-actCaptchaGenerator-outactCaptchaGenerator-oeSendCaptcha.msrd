@@ -19,20 +19,22 @@ icrash.environment.authentication.actCaptchaGenerator.outactCaptchaGenerator.oeS
 //preProtocol descriptions
 @preP
 "the system must be started"
+@preP
+"the system must be in the state for awaiting a captcha test"
 @endPreP
 //preFunctional descriptions
 @preF
-"none"
+"the generated captcha test is supposed to be a valid captcha test"
+@preF
+"the generated captcha answer should be valid and should be related to the captcha test over it's id number"
 @endPreF
 //postFunctional descriptions
 @postF
-"the correct answer to the generated captcha test will be sent to the actor responsible for the validation of the users response"
-@postF 
-"the received captcha test will be forwarded to an actor"
+"the system is no longer in the state of waiting for a captcha test"
 @endPostF
 //postProtocol descriptions
 @postP 
-"the system has received the requested randomly generated captcha test to be able to forward the captcha test to an actor"
+"none"
 @endPostP
 //example
 @example" "
