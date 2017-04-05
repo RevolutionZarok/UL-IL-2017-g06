@@ -87,9 +87,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute typeC : ptString
 				attribute time : dtTime
 			}
-			datatype dtTimestamp{
-				attribute time : dtTime
-			}
+			
 		}
 	}
 }

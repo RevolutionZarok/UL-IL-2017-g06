@@ -14,7 +14,7 @@ import icrash.environment
 		use case system usergoal ugVictimSendFamilyNotification() {
 		actor actSystem[primary, active]
 		actor actAuthenticated[secondary, active]
-		actor actCoordinator[secondary, proactive]
+		actor actCoordinator[secondary, active]
 		
 		reuse oeCreateAlert[1..*]
 		reuse oeCreateCrisis[1..1]

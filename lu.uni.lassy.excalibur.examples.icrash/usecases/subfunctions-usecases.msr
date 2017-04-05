@@ -220,14 +220,7 @@ import icrash.environment
 			}
 	}
 	
-	//Vlad:
-	use case system subfunction oeCreateAlert(){
-		actor actAuthenticated[primary, active]
-		actor actCoordinator[secondary]
-	}
-	use case system subfunction oeCreateCrisis(){
-		actor actCoordinator[primary, active]
-	}
+	//Vlad:	
 	use case system subfunction oeUpdateCrisis(){
 		actor actCoordinator[primary, proactive]
 	}
@@ -235,7 +228,6 @@ import icrash.environment
 		actor actSystem[primary, active]
 	}
 	
-	//Unidentifiable:
 	use case system subfunction oeChooseInformation(){
 		actor actSystem[primary, active]
 		actor actAuthenticated[secondary]
