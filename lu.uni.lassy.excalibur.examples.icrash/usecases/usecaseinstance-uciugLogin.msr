@@ -9,6 +9,7 @@ import lu.uni.lassy.messir.libraries.primitives
 import icrash.environment
 import icrash.usecases.subfunctions
 import icrash.usecases.ugLogin
+import icrash.environment.authentication
 
 
 	Use Case Model {

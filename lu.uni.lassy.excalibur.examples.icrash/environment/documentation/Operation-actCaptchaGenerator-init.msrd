@@ -5,7 +5,7 @@
 
 
 @@Operation
-icrash.environment.actCaptchaGenerator.init
+icrash.environment.authentication.actCaptchaGenerator.init
 @description "
 used to initialize the current object as a new instance of the actCaptchaGenerator type. "
 //postFunctional descriptions

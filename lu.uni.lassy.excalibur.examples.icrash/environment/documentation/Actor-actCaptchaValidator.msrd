@@ -4,20 +4,20 @@
 */
 
 
-@@Actor icrash.environment.actCaptchaValidator
+@@Actor icrash.environment.authentication.actCaptchaValidator
 @description "Actor responsible for validating a captcha test"
 //input events
 @inputEvent
-icrash.environment.actCaptchaValidator.inactCaptchaValidator.ieVerifyCaptcha
+icrash.environment.authentication.actCaptchaValidator.inactCaptchaValidator.ieVerifyCaptcha
 "Submits a captcha response to the actor to be verified"
 
 @endInputEvents
 //output events
 @outputEvent
-icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid
+icrash.environment.authentication.actCaptchaValidator.outactCaptchaValidator.oeCaptchaInvalid
 "Returns an answer to the system to notify that the supplied captcha was invalid"
 @outputEvent
-icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid
+icrash.environment.authentication.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid
 "Returns an answer to the system to notify that the supplied captcha was valid"
 
 @endOutputEvents

@@ -1,8 +1,3 @@
-/*
-* @author michm
-* @date Wed Apr 05 11:03:42 CEST 2017
-*/
-
 package icrash.concepts.primarytypes.authentication.datatypes {
 
 import lu.uni.lassy.messir.libraries.primitives

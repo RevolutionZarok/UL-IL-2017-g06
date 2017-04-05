@@ -5,10 +5,10 @@
 
 
 @@Operation
-icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid
+icrash.environment.authentication.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid
 //parameters
 @parameter
-icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid.AdtCaptchaId
+icrash.environment.authentication.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid.AdtCaptchaId
 "The id of the supplied captcha test"
 @endParameters
 

@@ -1,0 +1,44 @@
+package icrash.environment.authentication {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.concepts.primarytypes.authentication.datatypes
+
+/*
+	This file is dedicated for actors in relation with the authentication feature. Please use your own file dedicated for your feature
+	if you want to add new actors.
+*/
+Environment Model {
+		actor actCaptchaGenerator role rnactCaptchaGenerator cardinality[1 .. 1] {
+			operation init():ptBoolean
+			input interface inactCaptchaGenerator {
+				operation ieGenerateCaptcha():ptBoolean//Documented
+			}
+			output interface outactCaptchaGenerator {
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean//Partly Documented
+			}
+		}
+		
+		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
+			operation init():ptBoolean
+			input interface inactMailingService {
+				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
+			}
+			output interface outactMailingService {
+			}
+		}
+		
+		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
+			operation init():ptBoolean
+			input interface inactCaptchaValidator {
+				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
+				operation ieRegisterAnswer(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
+			}
+			output interface outactCaptchaValidator {
+				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
+				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
+			}
+		}
+	}
+
+
+}

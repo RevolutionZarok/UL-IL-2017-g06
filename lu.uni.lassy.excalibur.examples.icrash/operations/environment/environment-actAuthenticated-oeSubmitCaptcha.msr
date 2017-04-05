@@ -9,6 +9,7 @@ import icrash.environment
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
 import icrash.concepts.primarytypes.authentication.datatypes
+import icrash.environment.authentication
 
 	Operation Model {
 

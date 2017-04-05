@@ -564,20 +564,9 @@
     <semanticResources>concepts/documentation/Operation-dtCaptchaResponseMap-remove.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actMailingService-init.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actCaptchaValidator-init.msrd</semanticResources>
+    <semanticResources>concepts/environment-authentication.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p2U5oBLhEeeZAOo5Nrpa5w" name="em-view8" representation="_p2U5oRLhEeeZAOo5Nrpa5w">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-        <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_taXoIBLhEeeZAOo5Nrpa5w" name="em-view9" representation="_taXoIRLhEeeZAOo5Nrpa5w">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-        <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_3coXQBLhEeeZAOo5Nrpa5w" name="em-view11" representation="_3coXQRLhEeeZAOo5Nrpa5w">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-        <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-      </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hTVyoBLmEeeZAOo5Nrpa5w" name="uc-ugLogin" representation="_hTVyoRLmEeeZAOo5Nrpa5w">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Use_Case_Diagram']"/>
         <target xmi:type="messir:UseCaseSummaryOrUsergoal" href="usecases/usecase-ugLogin.msr#icrash.usecases.ugLogin.ugLogin"/>
@@ -611,114 +600,6 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_p2U5oRLhEeeZAOo5Nrpa5w" name="em-view8">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_p2U5ohLhEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_p2U5oxLhEeeZAOo5Nrpa5w"/>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_p2eqoBLhEeeZAOo5Nrpa5w" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_p2eqoRLhEeeZAOo5Nrpa5w" type="Sirius" element="_p2U5oRLhEeeZAOo5Nrpa5w" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_p-18cBLhEeeZAOo5Nrpa5w" type="2003" element="_p2i8EBLhEeeZAOo5Nrpa5w">
-          <children xmi:type="notation:Node" xmi:id="_p-3xoBLhEeeZAOo5Nrpa5w" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_p-3xoRLhEeeZAOo5Nrpa5w" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_eoA80BnhEee4i9YYMzd7_A" type="3010" element="_engmgBnhEee4i9YYMzd7_A">
-              <styles xmi:type="notation:FontStyle" xmi:id="_eoA80RnhEee4i9YYMzd7_A" fontName="Segoe UI" fontHeight="14"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_eoA80hnhEee4i9YYMzd7_A"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_p-3xohLhEeeZAOo5Nrpa5w"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_p-3xoxLhEeeZAOo5Nrpa5w"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_p-18cRLhEeeZAOo5Nrpa5w" fontName="Segoe UI" fontHeight="14" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p-18chLhEeeZAOo5Nrpa5w" y="30" width="285" height="81"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_p2eqohLhEeeZAOo5Nrpa5w"/>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_p2i8EBLhEeeZAOo5Nrpa5w" name="actCaptchaGenerator">
-      <target xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actCaptchaGenerator"/>
-      <semanticElements xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actCaptchaGenerator"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_p2lYUBLhEeeZAOo5Nrpa5w" labelSize="14" iconPath="/lu.uni.lassy.excalibur.dsl.messir.ui/icons/actor.png" borderSize="1" borderSizeComputationExpression="1">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_engmgBnhEee4i9YYMzd7_A" name="init(): ptBoolean    ">
-        <target xmi:type="messir:OperationDeclaration" href="environment/environment.msr#icrash.environment.actCaptchaGenerator.init"/>
-        <semanticElements xmi:type="messir:OperationDeclaration" href="environment/environment.msr#icrash.environment.actCaptchaGenerator.init"/>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_enk38BnhEee4i9YYMzd7_A" labelSize="14" iconPath="/lu.uni.lassy.excalibur.dsl.messir.ui/icons/operation.png" labelAlignment="LEFT">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@subNodeMappings[name='Actor_Operations']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@subNodeMappings[name='Actor_Operations']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_p2U5pBLhEeeZAOo5Nrpa5w"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer"/>
-    <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_taXoIRLhEeeZAOo5Nrpa5w" name="em-view9">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_taXoIhLhEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_taXoIxLhEeeZAOo5Nrpa5w"/>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_taXoJRLhEeeZAOo5Nrpa5w" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_taXoJhLhEeeZAOo5Nrpa5w" type="Sirius" element="_taXoIRLhEeeZAOo5Nrpa5w" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_tiELkBLhEeeZAOo5Nrpa5w" type="2003" element="_taXoKBLhEeeZAOo5Nrpa5w">
-          <children xmi:type="notation:Node" xmi:id="_tiEyoBLhEeeZAOo5Nrpa5w" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_tiEyoRLhEeeZAOo5Nrpa5w" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_tiEyohLhEeeZAOo5Nrpa5w"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_tiEyoxLhEeeZAOo5Nrpa5w"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_tiELkRLhEeeZAOo5Nrpa5w" fontName="Segoe UI" fontHeight="14" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tiELkhLhEeeZAOo5Nrpa5w" y="30" width="261"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_taXoJxLhEeeZAOo5Nrpa5w"/>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_taXoKBLhEeeZAOo5Nrpa5w" name="actCaptchaValidator">
-      <target xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actCaptchaValidator"/>
-      <semanticElements xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actCaptchaValidator"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_taY2QBLhEeeZAOo5Nrpa5w" labelSize="14" iconPath="/lu.uni.lassy.excalibur.dsl.messir.ui/icons/actor.png" borderSize="1" borderSizeComputationExpression="1">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_taXoJBLhEeeZAOo5Nrpa5w"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer"/>
-    <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_3coXQRLhEeeZAOo5Nrpa5w" name="em-view11">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3coXQhLhEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_3coXQxLhEeeZAOo5Nrpa5w"/>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3coXRRLhEeeZAOo5Nrpa5w" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_3coXRhLhEeeZAOo5Nrpa5w" type="Sirius" element="_3coXQRLhEeeZAOo5Nrpa5w" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_3j4OwBLhEeeZAOo5Nrpa5w" type="2003" element="_3co-UBLhEeeZAOo5Nrpa5w">
-          <children xmi:type="notation:Node" xmi:id="_3j410BLhEeeZAOo5Nrpa5w" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_3j410RLhEeeZAOo5Nrpa5w" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_3j410hLhEeeZAOo5Nrpa5w"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_3j410xLhEeeZAOo5Nrpa5w"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_3j4OwRLhEeeZAOo5Nrpa5w" fontName="Segoe UI" fontHeight="14" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3j4OwhLhEeeZAOo5Nrpa5w" y="30" width="237"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_3coXRxLhEeeZAOo5Nrpa5w"/>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_3co-UBLhEeeZAOo5Nrpa5w" name="actMailingService">
-      <target xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actMailingService"/>
-      <semanticElements xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actMailingService"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_3cqMcBLhEeeZAOo5Nrpa5w" labelSize="14" iconPath="/lu.uni.lassy.excalibur.dsl.messir.ui/icons/actor.png" borderSize="1" borderSizeComputationExpression="1">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_3coXRBLhEeeZAOo5Nrpa5w"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer"/>
-    <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-  </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram xmi:id="_hTVyoRLmEeeZAOo5Nrpa5w" name="uc-ugLogin">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hTVyohLmEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_hTVyoxLmEeeZAOo5Nrpa5w"/>

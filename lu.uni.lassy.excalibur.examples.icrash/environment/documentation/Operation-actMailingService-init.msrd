@@ -5,7 +5,7 @@
 
 
 @@Operation
-icrash.environment.actMailingService.init
+icrash.environment.authentication.actMailingService.init
 @description "
 used to initialize the current object as a new instance of the actMailingService type. "
 //postFunctional descriptions

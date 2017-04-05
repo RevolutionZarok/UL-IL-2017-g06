@@ -8,6 +8,7 @@ package icrash.usecases.ugLogin {
 import lu.uni.lassy.messir.libraries.primitives
 import icrash.usecases.subfunctions
 import icrash.environment
+import icrash.environment.authentication
 
 
 	Use Case Model {

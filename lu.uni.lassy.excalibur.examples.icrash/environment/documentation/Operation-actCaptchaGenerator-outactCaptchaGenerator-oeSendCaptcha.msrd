@@ -5,13 +5,13 @@
 
 
 @@Operation
-icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha
+icrash.environment.authentication.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha
 //parameters
 @parameter
-icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha.AdtCaptcha
+icrash.environment.authentication.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha.AdtCaptcha
 "The generated captcha test"
 @parameter
-icrash.environment.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha.AdtResponse
+icrash.environment.authentication.actCaptchaGenerator.outactCaptchaGenerator.oeSendCaptcha.AdtResponse
 "The correct answer to the generated captcha test"
 @endParameters
 
