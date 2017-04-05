@@ -4,12 +4,12 @@
 */
 
 
-@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCaptchaImage
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage
 @description "The actual representation of an image related to a captcha test. The inheritance from dtString allows to store the binary data of the image as bytes in string format."
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptchaImage.width
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage.width
 "Represents the width of the image in pixels"
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptchaImage.height
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage.height
 "Represents the height of the image in pixels"
 @endAttributes

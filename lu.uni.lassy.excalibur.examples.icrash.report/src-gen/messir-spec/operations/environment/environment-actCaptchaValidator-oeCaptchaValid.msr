@@ -1,0 +1,54 @@
+package icrash.environment.operations.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
+	Operation Model {
+
+		operation: icrash.environment.actCaptchaValidator.outactCaptchaValidator.oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean{
+			preP{
+				let TheSystem: ctState in
+  				let TheactValidator:actCaptchaValidator in
+				self.rnActor.rnSystem = TheSystem
+  
+				/* PreP01 */
+				and TheSystem.vpStarted = true
+				/* PreP02 */
+				and TheactValidator.rnactCaptchaValidator.map.get(AdtCaptchaId).is() = true
+			}
+			preF{
+				true
+			}
+			postF{
+				let TheSystem: ctState in
+				let TheactValidator:actCaptchaValidator in
+				let TheactAuthenticated:actAuthenticated in
+				
+				let AptStringMessageForTheactValidator: ptString in
+				  
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactValidator
+				
+				/* PostF01 */
+				and AptStringMessageForTheactValidator.eq('You are now logged in!')
+				and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactValidator)
+			}
+			postP{
+				let TheSystem: ctState in
+			  	let TheactValidator:actCaptchaValidator in
+			  
+			  	self.rnActor.rnSystem = TheSystem
+			  	and self.rnActor = TheactValidator
+			  	
+			  	/* PostP01 */
+				and TheactValidator.rnactCaptchaValidator.map.remove(AdtCaptchaId)
+			}
+		}
+	}
+}

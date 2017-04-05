@@ -1,0 +1,22 @@
+/*
+@author michm
+@date Wed Apr 05 10:54:47 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.get
+//parameters
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.get.AId
+"The id number related to a captcha test"
+@endParameters
+
+@description "Returns a stored captcha response by the given id number"
+//postFunctional descriptions
+@postF 
+"If an answer to a captcha test has been stored for the given id number, then it is returned as a value. Otherwise, an empty result is returned."
+@endPostF
+//example
+@example" "
+

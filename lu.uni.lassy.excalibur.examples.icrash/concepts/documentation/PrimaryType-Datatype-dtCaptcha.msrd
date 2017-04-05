@@ -4,12 +4,12 @@
 */
 
 
-@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCaptcha
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha
 @description "Contains the actual representation of an image based captcha test"
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptcha.id
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.id
 "The internal id of this captcha test. This is used for the actCaptchaGenerator to identify the captcha test in case of a response."
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptcha.question
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.question
 "The human readable question related to this captcha test, needed by a human to be able to solve the captcha test"
 @endAttributes

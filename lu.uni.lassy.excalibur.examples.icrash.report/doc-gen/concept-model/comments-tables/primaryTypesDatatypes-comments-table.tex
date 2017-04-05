@@ -14,15 +14,22 @@ The table below is providing comments on the graphical views given for the datat
 \addsingletwocolumnrow{extends}{dtString}
 \adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which strings are considered as valid alert identifiers.}
 \adddoublerow{dtCaptcha}{Contains the actual representation of an image based captcha test}
-\adddoubletwocolumnrow{attribute}{\msrcode{id: ptInteger}}{The internal id of this captcha test. This is used for the actCaptchaGenerator to identify the captcha test in case of a response.}
+\adddoubletwocolumnrow{attribute}{\msrcode{id: dtCaptchaId}}{The internal id of this captcha test. This is used for the actCaptchaGenerator to identify the captcha test in case of a response.}
 \adddoubletwocolumnrow{attribute}{\msrcode{question: ptString}}{The human readable question related to this captcha test, needed by a human to be able to solve the captcha test}
+\adddoublerow{dtCaptchaId}{}
+\addsingletwocolumnrow{extends}{dtInteger}
 \adddoublerow{dtCaptchaImage}{The actual representation of an image related to a captcha test. The inheritance from dtString allows to store the binary data of the image as bytes in string format.}
 \addsingletwocolumnrow{extends}{dtString}
-\adddoubletwocolumnrow{attribute}{\msrcode{height: ptInteger}}{Represents the height of the image in pixels}
-\adddoubletwocolumnrow{attribute}{\msrcode{width: ptInteger}}{Represents the width of the image in pixels}
+\adddoubletwocolumnrow{attribute}{\msrcode{height: dtInteger}}{Represents the height of the image in pixels}
+\adddoubletwocolumnrow{attribute}{\msrcode{width: dtInteger}}{Represents the width of the image in pixels}
 \adddoublerow{dtCaptchaResponse}{Contains the users response to a given captcha test}
-\adddoubletwocolumnrow{attribute}{\msrcode{id: ptInteger}}{The internal id which qualifies the related captcha test}
+\adddoubletwocolumnrow{attribute}{\msrcode{id: dtCaptchaId}}{The internal id which qualifies the related captcha test}
 \adddoubletwocolumnrow{attribute}{\msrcode{response: ptString}}{The response data given by the user}
+\adddoublerow{dtCaptchaResponseMap}{A data structure which hold references to correct answers, each one related to one captcha test. This data structure maps an id number to at last one answer.}
+\adddoubletwocolumnrow{operation}{\msrcode{get(AId:dtCaptchaId):dtCaptchaResponse}}{Gets the answer of the mapping from the given id}
+\adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{Verifies if this map is a valid data structure}
+\adddoubletwocolumnrow{operation}{\msrcode{register(AdtResponse:dtCaptchaResponse):ptBoolean}}{Saves an answer to a captcha test to this data structure}
+\adddoubletwocolumnrow{operation}{\msrcode{remove(AId:dtCaptchaId):ptBoolean}}{Removes the reference to an answer from this data structure by the given id number}
 \adddoublerow{dtComment}{a datatype made of a string value used to receive,store and send textual information about crisis and alerts.}
 \addsingletwocolumnrow{extends}{dtString}
 \adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which strings are considered as valid comments.}
@@ -61,8 +68,6 @@ The table below is providing comments on the graphical views given for the datat
 \adddoublerow{dtStatisticUserActivity}{Represents a statistic of a number of users in relation to a specific timespan}
 \adddoubletwocolumnrow{attribute}{\msrcode{number: ptInteger}}{The amount of involved users}
 \adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp}
-\adddoublerow{dtTimestamp}{Crash timestamp composed of hour, minute and second}
-\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The internal representation of the time stamp}
 \end{datadictionary}
 
 

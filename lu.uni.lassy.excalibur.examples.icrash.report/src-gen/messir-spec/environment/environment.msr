@@ -6,6 +6,7 @@ import icrash.concepts.secondarytypes.datatypes
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
 
 	Environment Model { 
 
@@ -166,6 +167,7 @@ import lu.uni.lassy.messir.libraries.calendar
 		}
 		
 		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
+			operation init():ptBoolean
 			input interface inactMailingService {
 				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
 			}
@@ -174,6 +176,7 @@ import lu.uni.lassy.messir.libraries.calendar
 		}
 		
 		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
+			operation init():ptBoolean
 			input interface inactCaptchaValidator {
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
 				operation ieRegisterAnswer(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean

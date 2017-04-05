@@ -5,6 +5,7 @@ import icrash.environment
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
 
 	Concept Model {
 		
@@ -122,6 +123,8 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation init():ptBoolean//TODO: Improve
 			}
 			class ctCaptchaValidator role rnctCaptchaValidator cardinality [1..1]{//TODO: View
+				attribute map:dtCaptchaResponseMap
+				
 				operation init():ptBoolean//TODO: Improve
 			}
 			class ctMailingService role rnctMailingService cardinality [1..1]{//TODO: View
