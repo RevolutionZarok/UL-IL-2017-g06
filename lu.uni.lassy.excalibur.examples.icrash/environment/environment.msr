@@ -131,6 +131,15 @@ import lu.uni.lassy.messir.libraries.calendar
 				//Michel:
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
 				
+				//Vlad:
+				operation oeCreateAlert(AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
+				
 			}
 			
 			input interface inactAuthenticated{

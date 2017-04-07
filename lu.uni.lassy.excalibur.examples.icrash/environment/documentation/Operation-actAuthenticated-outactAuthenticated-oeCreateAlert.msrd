@@ -1,0 +1,49 @@
+/*
+@author ToshW
+@date Fri Apr 07 10:08:59 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert
+//parameters
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AetHumanKind
+"Bla"
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AdtDate
+"Bla"
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AdtTime
+"Bla"
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AdtPhoneNumber
+"Bla"
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AdtGPSLocation
+"Bla"
+@parameter
+icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert.AdtComment
+"Bla"
+@endParameters
+
+@description "Bla
+ "
+//preProtocol descriptions
+@preP
+" Bla"
+@endPreP
+//preFunctional descriptions
+@preF
+" Bla"
+@endPreF
+//postFunctional descriptions
+@postF 
+"Bla "
+@endPostF
+//postProtocol descriptions
+@postP 
+" Bla"
+@endPostP
+//example
+@example"Bla "

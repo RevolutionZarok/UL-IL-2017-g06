@@ -18,7 +18,7 @@ package usecases.uciugVictimSendFamilyNotification {
 				Coordinator executed instanceof subfunction oeCreateAlert(){
 					
 				}
-				Coordinator executed instanceof subfunction oeCreateCrisis(){
+				Coordinator executed instanceof subfunction oeValidateAlert(){
 					
 				}
 				Coordinator executed instanceof subfunction oeUpdateCrisis(){

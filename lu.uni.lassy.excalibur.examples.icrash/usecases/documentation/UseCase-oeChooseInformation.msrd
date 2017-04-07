@@ -5,20 +5,15 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeChooseInformation
-@description ""//Output event in which the system selects alert or crisis information to be sent to the family of the identified victim
+@description "Output event in which the system selects predefined alert or crisis information to be sent to the family of the identified victim"
 @protocolCondition
-"
-"
+"The system has to be started and a crisis has to be created already"
 @endProtocolConditions
 @preCondition
-"
-"
+"The information given by the alert creator has to be correct"
 @endPreConditions
 @postCondition
-"
-"
+"La notification a été envoyée"
 @endPostConditions
 @additionalInformation
-"
-none
-"
+"none"
