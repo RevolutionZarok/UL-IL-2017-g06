@@ -17,10 +17,10 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="547.0">
               <children>
-                <TableView layoutX="54.0" layoutY="40.0" prefHeight="287.0" prefWidth="476.0">
+                <TableView layoutX="14.0" layoutY="22.0" prefHeight="305.0000999999975" prefWidth="533.0">
                   <columns>
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="230.0" text="Time" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="247.0" text="User " />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="247.0" text="User  login" />
                   </columns>
                 </TableView>
               </children>
@@ -29,7 +29,16 @@
         </Tab>
         <Tab text="Number of sended crises">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView layoutX="14.0" layoutY="14.0" prefHeight="313.0" prefWidth="533.0">
+                  <columns>
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="268.0" text="Time" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="317.0" text="sended Crises" />
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
         <Tab text="Average Time of the different types of a crises">

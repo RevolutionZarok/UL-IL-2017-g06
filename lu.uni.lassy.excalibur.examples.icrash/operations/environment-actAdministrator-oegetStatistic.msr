@@ -1,7 +1,6 @@
 
 /*
 * @author samri
-* @date Mon Apr 03 10:31:06 CEST 2017
 */
 package icrash.operations.environment.actAdministrator.oegetStatistic.msr {
 	import lu.uni.lassy.messir.libraries.primitives
@@ -55,7 +54,9 @@ postF {
     and  TheSystem.ctgetStatistic.statisticTypeCrisis()
 } 
 /*Post Protocol*/
-postP { true } 
+postP { true
+	// Not sure
+} 
 } 
 }
  }

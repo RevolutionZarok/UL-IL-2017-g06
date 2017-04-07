@@ -571,6 +571,9 @@
     <semanticResources>concepts/documentation/Operation-ctgetStatistic-getstatisticCrises.msrd</semanticResources>
     <semanticResources>concepts/documentation/Operation-ctgetStatistic-getstatisticUser.msrd</semanticResources>
     <semanticResources>concepts/documentation/Operation-ctgetStatistic-init.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctgetStatistic-getstatisticTypes.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticCrises.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-classes/primarytypes-classes-ctgetStatistic-getstatisticCrises.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_z6iwkBLhEeeZAOo5Nrpa5w" name="em-view10" representation="_z6iwkRLhEeeZAOo5Nrpa5w">

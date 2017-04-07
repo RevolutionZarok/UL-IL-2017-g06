@@ -1,26 +1,22 @@
-/*
-* @author samri
-* @date Tue Apr 04 10:38:02 CEST 2017
-*/
-
-package icrash.operations.environment.actAdministrator.oegetstatisticUser.msr {
+package icrash.environment.operations.actAdministrator.outactAdministrator.oegetstatisticCrises {
 
 import lu.uni.lassy.messir.libraries.primitives
-	import lu.uni.lassy.messir.libraries.math
-	import lu.uni.lassy.messir.libraries.string
-	import lu.uni.lassy.messir.libraries.calendar
-	
-	import icrash.environment
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
 	
 	import icrash.concepts.primarytypes.classes
 	import icrash.environment
 	import icrash.concepts.primarytypes.datatypes
 	import icrash.concepts.secondarytypes.datatypes
-//SAM Time statistic for the operation oegetstatisticUser
+	
+	//SAM Time statistic for the operation oegetstatisticCrises
 	Operation Model {
-		operation: actAdministrator.outactAdministrator.oegetstatisticUser(mstatisticUser: dtgetStatisticUserActivity) : ptBoolean
-{
-	/* Pre Protocol*/
+
+		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises(statisticCrises:dtgetStatisticCrisisinTime):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
 preP {
 	let TheSystem : ctState in 
 	let TheActor : actAdministrator in 
@@ -47,9 +43,9 @@ postF {
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor
     /*PostF01*/
-    and TheSystemToGetTheStatistic.getstatisticUser()
+    and TheSystemToGetTheStatistic.getstatisticCrises()
     /*PostF02*/
-   	and  TheSystemToGetTheStatistic.ctgetStatistic.statisticUser()
+   	and TheSystemToGetTheStatistic.ctgetStatistic.statisticCrises()
     
 } 
 /*Post Protocol*/
@@ -66,10 +62,6 @@ postP {
  	//TODO?
 	// open the database and take the information and send it back to the table(GUI) 
 } 
+		}
 	}
-
-
 }
-
-}
-

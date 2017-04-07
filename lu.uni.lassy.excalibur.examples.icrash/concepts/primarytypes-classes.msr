@@ -130,7 +130,8 @@ import lu.uni.lassy.messir.libraries.calendar
 			) : ptBoolean 
 			operation getstatisticTypes(
 				statisticTypes: dtgetStatisticTypeCrisis
-			) : ptBoolean //To do
+			) : ptBoolean 
+			operation sendStatistic(): ptBoolean //To do
 		}
 		
 		}

@@ -12,11 +12,11 @@ icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticUser.statisticUs
 ""
 @endParameters
 
-@description "
+@description " This a function will get the statistic for the number of the user activity 
  "
 //postFunctional descriptions
 @postF 
-" "
+" After the execution the"
 @endPostF
 //example
 @example" "

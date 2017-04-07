@@ -16,7 +16,7 @@ icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticCrises.statistic
  "
 //postFunctional descriptions
 @postF 
-" "
+"After the execution the  "
 @endPostF
 //example
 @example" "
