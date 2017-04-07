@@ -1,9 +1,3 @@
-/*
-@author michm
-@date Mon Mar 27 10:06:58 CEST 2017
-*/
-
-
 @@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha
 @description "Contains the actual representation of an image based captcha test"
 @attribute
@@ -13,3 +7,7 @@ icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.id
 icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.question
 "The human readable question related to this captcha test, needed by a human to be able to solve the captcha test"
 @endAttributes
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.is
+"Determines if this captcha test is a valid data structure"
+@endOperations

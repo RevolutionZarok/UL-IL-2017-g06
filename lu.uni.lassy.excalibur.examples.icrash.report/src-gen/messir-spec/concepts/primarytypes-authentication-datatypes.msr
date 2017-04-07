@@ -13,16 +13,16 @@ Concept Model {
 
 		Primary Types {
 			datatype dtCaptchaId extends dtInteger{//TODO: View
-				
+				operation is():ptBoolean
 			}
 			datatype dtCaptcha {//TODO: link to images
 				attribute id: dtCaptchaId
-				attribute question: ptString
+				attribute question: dtString
 				operation is():ptBoolean
 			}
 			datatype dtCaptchaResponse {
 				attribute id: dtCaptchaId
-				attribute response: ptString//TODO: Type?
+				attribute response: dtString//TODO: Type?
 				operation is():ptBoolean
 			}
 			datatype dtCaptchaImage extends dtString{

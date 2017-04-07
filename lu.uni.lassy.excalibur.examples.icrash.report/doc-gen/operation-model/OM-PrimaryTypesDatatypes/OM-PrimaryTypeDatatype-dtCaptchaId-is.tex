@@ -1,0 +1,54 @@
+\subsection{Operation Model for is}
+
+\label{OM-is}
+
+
+The \msrcode{is} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{is}{Determines if this id number is a valid one to represent a captcha test}
+
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+		
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{If the value of this id number is a ptInteger greather or equal to 0 then the operation returns the ptBoolean true, else the ptBoolean false.}
+
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-dtCaptchaId-is-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{is}.},label=OM-dtCaptchaId-is-MCL-LST]
+
+	
+	
+	/* Post Functional:*/ 
+	postF{let TheResult:ptBoolean in(if(self.value.geq(0))
+					then(TheResult = true)
+					else(TheResult = false)
+					endif result = TheResult)}
+	
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

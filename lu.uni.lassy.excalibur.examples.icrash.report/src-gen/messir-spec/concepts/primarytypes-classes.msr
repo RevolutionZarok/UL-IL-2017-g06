@@ -88,7 +88,7 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				attribute pwd: dtPassword
 				attribute vpIsLogged:ptBoolean
 				
-				attribute awaitedCaptchaId:ptInteger //Michel
+				attribute awaitedCaptchaId:dtCaptchaId //Michel
 				
 				operation init(
 										Alogin:dtLogin ,

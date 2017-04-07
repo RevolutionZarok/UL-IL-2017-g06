@@ -6,11 +6,10 @@
 
 @@Operation
 icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.is
-@description "
- "
+@description "Checks if this captcha answer is a valid data structure"
 //postFunctional descriptions
 @postF 
-" "
+"If the captcha id is valid and the length of the response is a ptInteger with a value greater than 0, then the ptBoolean true is returned, otherwise the ptBoolean false is returned."
 @endPostF
 //example
 @example" "
