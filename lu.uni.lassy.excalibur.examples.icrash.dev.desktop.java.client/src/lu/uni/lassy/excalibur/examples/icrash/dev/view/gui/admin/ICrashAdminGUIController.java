@@ -18,6 +18,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CrisisController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.SystemStateController;
@@ -36,6 +38,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator.CreateICrashCoordGUI;
 import javafx.scene.layout.GridPane;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,6 +47,7 @@ import javafx.event.EventHandler;
  */
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -53,6 +57,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 /*
  * This is the end of the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
  */
@@ -139,7 +144,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
    
     //The button event that will show the controls for open the statistic
     @FXML
-    public void bttnBottomAdminStatisticUserActivity_OnClick(){
+    public void bttnBottomAdminStatistic_OnClick(){
  
     	showStatistic(TypeOfStatic.Call);
 	}
@@ -238,41 +243,21 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		setUpMessageTables(tblvwAdminMessages);
 	}
 	
-	// show the statistic table that open after a click of the statistic button. 
+	// This function show the button for the Statistic and also whta happen if the administrator click on the button 
+	// so a new windows will open and show a table with the statistic for the administrator. The 
 	private void showStatistic(TypeOfStatic type){
 		for(int i = anchrpnCoordinatorDetails.getChildren().size() -1; i >= 0; i--)
 			anchrpnCoordinatorDetails.getChildren().remove(i);
 		
 		GridPane grdpn = new GridPane();
 		
-		/*try {
-			addCrisesToTableView(tblvwStaticCrises, crisisController.getAllCtCrises());
-		} catch (ServerOfflineException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ServerNotBoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
-		AnchorPane root2;
-		try {
-			root2 = FXMLLoader.load(getClass().getResource("ICrashAdminStatisticGUI.fxml"));
-			Scene scene2 = new Scene(root2);
-			Stage stage2 = new Stage();
-			stage2.setTitle("iCrash Admin Statistic");
-			stage2.setScene(scene2);
-			stage2.show();
-        
-		} catch (IOException e) {
-			System.err.println("Error in catch");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
         
 		Button bttntypOK = null;
 		//grdpn.add(txtfldUserID, 1, 1);
 		bttntypOK = new Button("Delete");
+		
 		grdpn.add(bttntypOK, 1, 2);
 
 		bttntypOK.setDefaultButton(true);
@@ -281,6 +266,37 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setLeftAnchor(grdpn, 0.0);
 		AnchorPane.setBottomAnchor(grdpn, 0.0);
 		AnchorPane.setRightAnchor(grdpn, 0.0);
+		try {		
+			URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
+			FXMLLoader loader = new FXMLLoader(url);
+			System.out.println(" Hallo333 ");
+			Parent root2 = (Parent)loader.load();
+			
+			//root2 = FXMLLoader.load(getClass().getResource("ICrashAdminStatisticGUI.fxml"));
+			Stage stage2 = new Stage();
+			stage2.setTitle("iCrash Admin Statistic");
+			stage2.setScene(new Scene(root2));
+			stage2.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent e) {
+                   Platform.exit();
+                   System.exit(0);
+                }
+             });
+			//Scene scene2 = new Scene(root2);
+			
+			
+			
+			stage2.setX(350);
+            stage2.setY(1);
+			stage2.show();
+        
+		} 
+		catch (IOException e) {
+			System.err.println("Error in catch for the button Statistic");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
