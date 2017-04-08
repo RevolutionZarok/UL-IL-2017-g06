@@ -25,6 +25,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -88,6 +89,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		
 		if(loginCounter.getValue() >= 8){//TODO: Excalibur
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
+			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
 		}
 
@@ -100,13 +102,14 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin successfully executed by the system");
 			loginCounter = new PtInteger(0);//TODO: Excalibur
 		}else{//TODO: Excalibur
-			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 			if(loginCounter.getValue() >= 3){
 				log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
+				ieConfirmCaptcha(new DtCaptcha());
 			}else{
 				log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			}
 		}
+		loginCounter = new PtInteger(loginCounter.getValue() + 1);
 
 		return res;
 	}
@@ -170,6 +173,22 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			ActProxyAuthenticated aProxy = iterator.next();
 			try {
 				aProxy.ieMessage(aMessage);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+	}
+	
+	@Override
+	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha){
+		Logger log = Log4JUtils.getInstance().getLogger();
+		log.info("message ActAuthenticated.ieConfirmCaptcha received from system");
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				aProxy.ieConfirmCaptcha(captcha);
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				iterator.remove();

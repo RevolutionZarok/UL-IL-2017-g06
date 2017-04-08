@@ -16,10 +16,10 @@ import icrash.concepts.primarytypes.classes
 	Concept Model {
 
 		Primary Types {
-			association assctCaptchaServiceactCaptchaService
+			association assctCaptchaServiceactCaptchaService//TODO: View
  					ctCaptchaService(rnctCaptchaService)[1..1]
  					actCaptchaService(rnactCaptchaService)[1..1]
-			association assctMailingServiceactMailingService
+			association assctMailingServiceactMailingService//TODO: View
  					ctMailingService(rnctMailingService)[1..1]
  					actMailingService(rnactMailingService)[1..1]
 		}
