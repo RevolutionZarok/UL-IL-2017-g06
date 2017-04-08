@@ -1,0 +1,34 @@
+/*
+@author samri
+@date Sat Apr 08 14:12:33 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises
+//parameters
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises.statisticTypes
+""
+@endParameters
+
+@description "
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

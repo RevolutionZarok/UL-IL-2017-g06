@@ -17,46 +17,6 @@ package icrash.operations.environment.actAdministrator.oegetStatistic.msr {
 /* This is the Operation Model for the statistic */
 	Operation Model {
 
-		operation: actAdministrator.outactAdministrator.oegetStatistic(statisticUser:dtgetStatisticUserActivity, statisticCrises:dtgetStatisticCrisisinTime, statisticTypes:dtgetStatisticTypeCrisis) : ptBoolean
-		 { 
-		/* Pre Protocol*/
-		preP {
-		 	 let TheSystem : ctState in 
-		 	 let TheActor : actAdministrator in 
-		 	 self. rnActor . rnSystem = TheSystem 
-		 	 and self. rnActor = TheActor
-		/* PreP01 */
-		and TheSystem.vpStarted = true
-		/* PreP02 */
-		and TheActor.rnctAuthenticated . vpIsLogged = true
-
-} 
-/*Pre Functional*/
-preF { 
-	true
-	
-/*Post Protocol*/
-} 
-postF {
-	let TheSystem: ctState in
-    let TheActor:actAdministrator in
-    let TheSystemToGetTheStatistic : actSystem in
-	self.rnActor.rnSystem = TheSystem
-    and self.rnActor = TheActor
-    /*PostF01*/
-    and 
-    TheSystemToGetTheStatistic.init()
-    /*PostF02*/
-    and  TheSystem.ctgetStatistic.statisticUser()
-    /*PostF03*/
-    and  TheSystem.ctgetStatistic.statisticCrises()			
-    /*PostF04*/
-    and  TheSystem.ctgetStatistic.statisticTypeCrisis()
-} 
-/*Post Protocol*/
-postP { true
-	// Not sure
-} 
-} 
+		 
 }
  }

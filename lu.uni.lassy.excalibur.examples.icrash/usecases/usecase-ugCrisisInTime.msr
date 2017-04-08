@@ -18,7 +18,7 @@ import icrash.usecases.ugAdministrateTheSystem
 		actor actDatabase [primary, proactive]
 		actor actSystem[secondary, active]
 		
-		reuse oeStatistic[1..*]
+		reuse oegetStatistic[1..*]
 		reuse ugSercurelyUserSystem[0..*]
 		reuse oeNumberOfCrisis[0..*]
 		reuse ugAdministrateTheSystem[1..*]
@@ -27,7 +27,7 @@ import icrash.usecases.ugAdministrateTheSystem
 		executes ugSercurelyUserSystem()
 		
 		step b: actSystem
-		executes oeStatistic()
+		executes oegetStatistic()
 		
 		step c : actAdministrator
 		executes oeNumberOfCrisis()

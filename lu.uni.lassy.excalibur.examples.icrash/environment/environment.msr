@@ -26,6 +26,7 @@ import lu.uni.lassy.messir.libraries.calendar
 						extends actAuthenticated {
 
 			operation init():ptBoolean
+			operation oegetStatistic():ptBoolean
 
 			output interface outactAdministrator{
 				
@@ -38,18 +39,13 @@ import lu.uni.lassy.messir.libraries.calendar
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
 											
 				//Sam:
-				operation oegetStatistic(
-					statisticUser: dtgetStatisticUserActivity,
-					statisticCrises: dtgetStatisticCrisisinTime,
-					statisticTypes: dtgetStatisticTypeCrisis
-				): ptBoolean
 				operation oegetstatisticUser(
 					statisticUser: dtgetStatisticUserActivity
 				) : ptBoolean
 				operation oegetstatisticCrises(
 					statisticCrises: dtgetStatisticCrisisinTime
 				) : ptBoolean
-				operation oegetstatisticTypes(
+				operation oegetstatisticTypesOfCrises(
 					statisticTypes: dtgetStatisticTypeCrisis
 				) : ptBoolean
 				/*operation oeUserActivityStatistic() : ptBoolean
@@ -197,9 +193,9 @@ import lu.uni.lassy.messir.libraries.calendar
 		//Sam:
 		actor actSystem role rnactSystem cardinality[1 .. 1] {
 			input interface inactSystem {
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+			/*	operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean*/
 			}
 			output interface outactSystem {
 				operation ugSercurelyUserSystem() : ptBoolean
@@ -208,6 +204,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeChooseInformation() : ptBoolean
 				operation oeSendNotification() : ptBoolean
 				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		
@@ -216,10 +213,11 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
 				operation ieCallTypeWithTimeAverage() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
-				operation oegetStatistic() : ptBoolean
+				
 			}
 			output interface outactDatabase {
+				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		

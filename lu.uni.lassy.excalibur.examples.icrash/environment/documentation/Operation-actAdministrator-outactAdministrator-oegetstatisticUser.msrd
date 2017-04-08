@@ -1,6 +1,5 @@
 /*
 @author samri
-@date Wed Apr 05 09:42:04 CEST 2017
 */
 
 
@@ -16,19 +15,25 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.stati
 
 //preProtocol descriptions
 @preP
-"the system is started"
+"The system is started"
 @preP
-"The function ugAdministarteTheSystem must be executed first, So the Administrator must bee login."
-@preP 
-"The function getStatistic must be execute. This is the button statistic and must bee execute"
+"The function ugAdministarteTheSystem must be executed first. So the Administrator must bee login."
+@preP
+"The Database must be open. "
 @endPreP
 //preFunctional descriptions
 @preF
 "none "
 @endPreF
 //postFunctional descriptions
+@postF
+"At first search all the information for this statistic. So the database must bee open to get the information"
 @postF 
-"After the execution of the function oegetStatistic()(this will present the button in the GUI of the Administrator) so the next function getstatisticUser() will execute.  "
+"The information from the database will be calculate to the different times. "
+@postF 
+"After this the operation getstatisticUser() give the statistic"
+@postF 
+"And at least the statistic will bee show it into the interface. "
 
 @endPostF
 //postProtocol descriptions
@@ -36,4 +41,4 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.stati
 "none"
 @endPostP
 //example
-@example" "
+@example"none"

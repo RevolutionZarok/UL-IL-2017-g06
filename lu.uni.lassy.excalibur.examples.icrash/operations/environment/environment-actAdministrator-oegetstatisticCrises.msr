@@ -16,20 +16,22 @@ import icrash.environment
 	Operation Model {
 
 		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises(statisticCrises:dtgetStatisticCrisisinTime):ptBoolean{
-		// include below the specification information (pre,post or ocl or prolog)
+		
 preP {
 	let TheSystem : ctState in 
 	let TheActor : actAdministrator in 
 	let TheSystemToGetTheStatistic : actSystem in 
+	let TheSytemDatabase : actSystem in 
+	
 	self. rnActor . rnSystem = TheSystem 
 	and self. rnActor = TheActor
-		/* PreP01 */
-		and TheSystem.vpStarted = true
-		/* PreP02 */
-		and TheActor.rnctAuthenticated . vpIsLogged = true
-		/* PreP02 */
-		and TheSystem.oegetStatistic() = true
-
+	
+	/* PreP01 The system must run(is execute)*/
+	and TheSystem.vpStarted = true
+	/* PreP02 Must login ass Administrator*/
+	and TheActor.rnctAuthenticated . vpIsLogged = true
+	/* PreP02 The Database(SQL) must open because without this the information for the statistic can´t bee call. */
+	and TheSytemDatabase.openDatabase() = true
 }
  /*Pre Functional*/
 preF { 
@@ -40,27 +42,25 @@ postF {
 	let TheSystem: ctState in
     let TheActor:actAdministrator in
     let TheSystemToGetTheStatistic : actSystem in
+    let TheSytemDatabase : actSystem in 
+    
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor
-    /*PostF01*/
+    
+    /*PostF01 At first search all the information for this statistic*/
+    and TheSytemDatabase.searchInfromation(AdtStatistic)
+    /*PostF02 This calculate the information*/
+    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticCrises)
+    /*PostF03 get the Statistic*/
     and TheSystemToGetTheStatistic.getstatisticCrises()
-    /*PostF02*/
-   	and TheSystemToGetTheStatistic.ctgetStatistic.statisticCrises()
+    /*PostF04 show the statistic in the Interface.*/
+   	and TheActor.rnInterfaceIN^oegetstatisticCrises(AdtStatisticCrises)
     
 } 
 /*Post Protocol*/
 postP { 
-	let TheSystem: ctState in
-    let TheActor:actAdministrator in
-    let TheSystemToGetTheStatistic : actSystem in
-	self.rnActor.rnSystem = TheSystem
-    and self.rnActor = TheActor
-    
-    /* PostP01  */
-     and TheSystemToGetTheStatistic.oesendStatistic()
-     /* PostP02 */
- 	//TODO?
-	// open the database and take the information and send it back to the table(GUI) 
+	true
+	// close database and logout. but at the final end not to do it yet.
 } 
 		}
 	}
