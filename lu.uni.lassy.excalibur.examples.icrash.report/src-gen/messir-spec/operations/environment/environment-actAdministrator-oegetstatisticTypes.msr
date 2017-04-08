@@ -1,0 +1,72 @@
+package icrash.environment.operations.actAdministrator.outactAdministrator.oegetstatisticTypes {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+	
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.secondarytypes.datatypes
+	
+//SAM Time /statistic for the operation oegetstatisticTypesOfCrises
+	Operation Model {
+
+		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises(statisticTypes:dtgetStatisticTypeCrisis):ptBoolean{
+		
+		/* Pre Protocol*/
+preP {
+	let TheSystem : ctState in 
+	let TheActor : actAdministrator in 
+	let TheSystemToGetTheStatistic : actSystem in 
+	let TheSytemDatabase : actSystem in 
+	
+	self. rnActor . rnSystem = TheSystem 
+	and self. rnActor = TheActor
+	
+	/* PreP01 The system must run(is execute)*/
+	and TheSystem.vpStarted = true
+	/* PreP02 Must login ass Administrator*/
+	and TheActor.rnctAuthenticated . vpIsLogged = true
+	/* PreP02 The Database(SQL) must open because without this the information for the statistic can´t bee call. */
+	and TheSytemDatabase.openDatabase() = true
+}
+
+ /*Pre Functional*/
+preF { 
+	true
+} 
+
+/*Post Functional*/
+postF {
+	let TheSystem: ctState in
+    let TheActor:actAdministrator in
+    let TheSystemToGetTheStatistic : actSystem in
+    let TheSytemDatabase : actSystem in 
+    
+	self.rnActor.rnSystem = TheSystem
+    and self.rnActor = TheActor
+    
+    /*PostF01 At first search all the information for this statistic*/
+    and TheSytemDatabase.searchInfromation(AdtStatistic)
+    /*PostF02 This calculate the information*/
+    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticTypesOfCrises)
+    /*PostF03 get the Statistic*/
+    and TheSystemToGetTheStatistic.getstatisticTypesOfCrises()
+   	/*PostF04 show the statistic in the Interface.*/
+   	and TheActor.rnInterfaceIN^oegetstatisticTypesOfCrises(AdtStatisticTypesofCrises)
+    
+} 
+
+/*Post Protocol*/
+postP { 
+	true
+	// close database and logout. but at the final end not to do it yet.
+} 		
+
+		}
+	}
+}

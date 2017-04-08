@@ -577,6 +577,16 @@
     <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticTypes.msr</semanticResources>
     <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticTypesOfCrises.msr</semanticResources>
     <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticTypesOfCrises.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticCrises.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oegetstatisticTypesOfCrises.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oegetstatisticCrises.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oegetstatisticUser.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctgetStatistic-sendStatistic.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-oegetStatistic.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oegetStatistic.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actDatabase-outactDatabase-oeSendStatistic.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actDatabase-outactDatabase-oegetStatistic.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oegetStatistic.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_z6iwkBLhEeeZAOo5Nrpa5w" name="em-view10" representation="_z6iwkRLhEeeZAOo5Nrpa5w">

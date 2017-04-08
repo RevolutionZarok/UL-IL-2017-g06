@@ -1,0 +1,16 @@
+/*
+@author samri
+@date Sat Apr 08 16:54:42 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctgetStatistic.sendStatistic
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

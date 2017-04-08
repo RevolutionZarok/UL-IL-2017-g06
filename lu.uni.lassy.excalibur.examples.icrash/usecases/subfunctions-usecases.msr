@@ -190,14 +190,14 @@ import icrash.environment
 			
 		}
 	}
-	use case system subfunction oeNumberOfCrisis(){
+	use case system subfunction oegetstatisticCrises(){
 		actor actAdministrator[primary, active]
 		actor actDatabase[secondary, passive]
 		returned messages{
 			
 		}
 	}
-	use case system subfunction oeTimeOfTypeOfCrisis(){
+	use case system subfunction oegetstatisticTypesOfCrises(){
 		actor actAdministrator[primary, active]
 		actor actDatabase[secondary, passive]
 		actor actSystem[secondary, passive]

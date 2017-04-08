@@ -11,7 +11,7 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.stati
 ""
 @endParameters
 
-@description "This function will send the user activity. This mean that it will show the user number with the time"
+@description "This operation will send the statistic for the user activity. This mean that it will show the user number with the time"
 
 //preProtocol descriptions
 @preP

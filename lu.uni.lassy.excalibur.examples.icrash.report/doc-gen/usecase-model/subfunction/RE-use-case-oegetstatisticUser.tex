@@ -1,0 +1,51 @@
+\subsubsection{subfunction-oegetstatisticUser}
+
+\label{RE-use-case-oegetstatisticUser}
+
+
+An actor has been login as a Administrator to use the statistic function. So he can see number of the user login compared with the time		  
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{oegetstatisticUser}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{subfunction}
+  
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actAdministrator[active]}}
+
+
+\addrowheading{Secondary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actDatabase[passive]}}
+
+\addrowheading{Goal(s) description}
+\addsinglerow{An actor has been login as a Administrator to use the statistic function. So he can see number of the user login compared with the time}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{The actor  has been login as a administrator and he has to click on the button statistic.
+}
+\addnumberedsinglerow{}{The actor must be able to access the system (connected to the Internet)}
+\addnumberedsinglerow{}{The system must run.
+}
+\addnumberedsinglerow{}{The database must bee open
+}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{The actor is not login as a administrator, so he can click the button statistic.
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{if the login was successful, the actor is now identified and thus able to access the AdministrateTheSystem
+}
+\addnumberedsinglerow{}{So later the statistic will be show to the administrator and also the information of the Database will be send to the system. 
+}
+
+\addrowheading{Additional Information}
+\addsinglerow{
+none
+}
+
+\end{usecase} 
+

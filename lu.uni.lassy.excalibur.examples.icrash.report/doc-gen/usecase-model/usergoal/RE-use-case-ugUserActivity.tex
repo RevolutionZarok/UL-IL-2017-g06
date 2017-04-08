@@ -25,13 +25,13 @@ An actor has been login as a Administrator to use the statistic function. So he 
 \addsinglerow{An actor has been login as a Administrator to use the statistic function. So he can see the number of user compared with the time}
 
 \addrowheading{Reuse}
-\addnumberedsinglerow{}{\msrucname{oeStatistic [1..*]}}
+\addnumberedsinglerow{}{\msrucname{oegetStatistic [1..*]}}
 \addnumberedsinglerow{}{\msrucname{ugSercurelyUserSystem [0..*]}}
-\addnumberedsinglerow{}{\msrucname{oeUserActivityStatistic [0..*]}}
+\addnumberedsinglerow{}{\msrucname{oegetstatisticUser [0..*]}}
 \addnumberedsinglerow{}{\msrucname{ugAdministrateTheSystem [1..*]}}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{The actor  has been login as a administrator and he has to click on the button static.
+\addnumberedsinglerow{}{The actor  has been login as a administrator and he has to click on the button statistic.
 }
 \addnumberedsinglerow{}{The actor must be able to access the system (connected to the internet)}
 
@@ -47,10 +47,10 @@ An actor has been login as a Administrator to use the statistic function. So he 
 
 \addrowheading{Main Steps}
 \addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{ugSercurelyUserSystem} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oeStatistic} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{oeUserActivityStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oegetStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{oegetstatisticUser} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{ugAdministrateTheSystem} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actDatabase} executes the \msrucname{oeUserActivityStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actDatabase} executes the \msrucname{oegetstatisticUser} use case}
 \addrowheading{Steps Ordering Constraints}
 \addnumberedsinglerow{}{at least a}
 \addnumberedsinglerow{}{if b then previously a}
@@ -66,7 +66,7 @@ none
 
 
 Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugUserActivity}
-The actor administrator will open the statics the activity of the users, there he can find out how many users are active at any time. Also the abstract user System give the information 
+The actor administrator will open the statistic. the activity of the users, there he can find out how many users are active at any time. Also the abstract user System give the information 
 
 \begin{figure}[htbp]
 \begin{center}

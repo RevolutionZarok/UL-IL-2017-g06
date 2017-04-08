@@ -25,13 +25,13 @@ An actor has been login as a Administrator to use the statistic function. So he 
 \addsinglerow{An actor has been login as a Administrator to use the statistic function. So he can see the average time for the different types of a crises}
 
 \addrowheading{Reuse}
-\addnumberedsinglerow{}{\msrucname{oeStatistic [1..*]}}
+\addnumberedsinglerow{}{\msrucname{oegetStatistic [1..*]}}
 \addnumberedsinglerow{}{\msrucname{ugSercurelyUserSystem [0..*]}}
-\addnumberedsinglerow{}{\msrucname{oeTimeOfTypeOfCrisis [0..*]}}
+\addnumberedsinglerow{}{\msrucname{oegetstatisticTypesOfCrises [0..*]}}
 \addnumberedsinglerow{}{\msrucname{ugAdministrateTheSystem [1..*]}}
 
 \addrowheading{Protocol condition(s)}
-\addnumberedsinglerow{}{The actor has been login as a administrator and he has to click on the button static.
+\addnumberedsinglerow{}{The actor has been login as a administrator and he has to click on the button statistic..
 }
 \addnumberedsinglerow{}{The actor must be able to access the system (connected to the internet)}
 
@@ -47,10 +47,10 @@ An actor has been login as a Administrator to use the statistic function. So he 
 
 \addrowheading{Main Steps}
 \addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{ugSercurelyUserSystem} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oeStatistic} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{oeTimeOfTypeOfCrisis} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oegetStatistic} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{oegetstatisticTypesOfCrises} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAdministrator} executes the \msrucname{ugAdministrateTheSystem} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actDatabase} executes the \msrucname{oeTimeOfTypeOfCrisis} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actDatabase} executes the \msrucname{oegetstatisticTypesOfCrises} use case}
 \addrowheading{Steps Ordering Constraints}
 \addnumberedsinglerow{}{at least a}
 \addnumberedsinglerow{}{if b then previously a}
@@ -66,7 +66,7 @@ none
 
 
 Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugAverageTypeofCrisis}
-The actor administrator will open the statics the average time for each type of crises,there the administrator can find out how long the different types of crisis needs.The tree types of a crises are small, medium and huge . Also the abstract user System give the information  
+The actor administrator will open the statistic. the average time for each type of crises,there the administrator can find out how long the different types of crisis needs.The tree types of a crises are small, medium and huge . Also the abstract user System give the information  
 
 \begin{figure}[htbp]
 \begin{center}

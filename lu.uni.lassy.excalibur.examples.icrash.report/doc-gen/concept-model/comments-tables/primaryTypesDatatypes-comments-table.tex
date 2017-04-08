@@ -32,6 +32,16 @@ The table below is providing comments on the graphical views given for the datat
 \adddoublerow{dtCrisisID}{ A string used to identify crisis.}
 \addsingletwocolumnrow{extends}{dtString}
 \adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which strings are considered as valid crisis identifiers.}
+\adddoublerow{dtgetStatisticCrisisinTime}{Statistic representing a number of crises compared with a specific timespan
+}
+\adddoubletwocolumnrow{attribute}{\msrcode{number: ptInteger}}{The amount of crises}
+\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp}
+\adddoublerow{dtgetStatisticTypeCrisis}{Show what the attribute for the static the average time of the different crises}
+\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp representing the date}
+\adddoubletwocolumnrow{attribute}{\msrcode{typeC: ptString}}{The type of the crisis}
+\adddoublerow{dtgetStatisticUserActivity}{Represents a statistic of a number of users in relation to a specific timespan}
+\adddoubletwocolumnrow{attribute}{\msrcode{number: ptInteger}}{The amount of involved users}
+\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp}
 \adddoublerow{dtGPSLocation}{used to define coordinates of geograpical positions on earth. It is defined a couple made of a latitude and a longitude.}
 \adddoubletwocolumnrow{attribute}{\msrcode{latitude: dtLatitude}}{for the latitude part of the coordinate.}
 \adddoubletwocolumnrow{attribute}{\msrcode{longitude: dtLongitude}}{for the longitude part of the coordinate.}
@@ -52,17 +62,6 @@ The table below is providing comments on the graphical views given for the datat
 \adddoublerow{dtPhoneNumber}{a string used to store the phone number from the human declaring the crisis or the alert.}
 \addsingletwocolumnrow{extends}{dtString}
 \adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which strings are considered as valid dtPhoneNumber.}
-\adddoublerow{dtStatisticCrisisinTime}{Statistic representing a number of crises compared with a specific timespan}
-\adddoubletwocolumnrow{attribute}{\msrcode{number: ptInteger}}{The amount of crises}
-\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp}
-\adddoublerow{dtStatisticTypeCrisis}{Show what the attribute for the static the average time of the different crises}
-\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp representing the date}
-\adddoubletwocolumnrow{attribute}{\msrcode{typeC: ptString}}{The type of the crisis}
-\adddoublerow{dtStatisticUserActivity}{Represents a statistic of a number of users in relation to a specific timespan}
-\adddoubletwocolumnrow{attribute}{\msrcode{number: ptInteger}}{The amount of involved users}
-\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The related timestamp}
-\adddoublerow{dtTimestamp}{Crash timestamp composed of hour, minute and second}
-\adddoubletwocolumnrow{attribute}{\msrcode{time: dtTime}}{The internal representation of the time stamp}
 \end{datadictionary}
 
 

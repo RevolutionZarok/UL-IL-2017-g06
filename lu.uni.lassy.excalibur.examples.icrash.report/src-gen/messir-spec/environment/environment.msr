@@ -26,6 +26,7 @@ import lu.uni.lassy.messir.libraries.calendar
 						extends actAuthenticated {
 
 			operation init():ptBoolean
+			operation oegetStatistic():ptBoolean
 
 			output interface outactAdministrator{
 				
@@ -38,22 +39,28 @@ import lu.uni.lassy.messir.libraries.calendar
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
 											
 				//Sam:
-				operation oeUserActivityStatistic() : ptBoolean
+				operation oegetstatisticUser(
+					statisticUser: dtgetStatisticUserActivity
+				) : ptBoolean
+				operation oegetstatisticCrises(
+					statisticCrises: dtgetStatisticCrisisinTime
+				) : ptBoolean
+				operation oegetstatisticTypesOfCrises(
+					statisticTypes: dtgetStatisticTypeCrisis
+				) : ptBoolean
+				/*operation oeUserActivityStatistic() : ptBoolean
 				operation oeNumberOfCrisis() : ptBoolean
 				operation oeTimeOfTypeOfCrisis() : ptBoolean
 				operation ugAdministrateTheSystem() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				operation oeStatistic() : ptBoolean*/
 			}
 			
 			input interface inactAdministrator{
 				
 				operation ieCoordinatorAdded():ptBoolean
 				operation ieCoordinatorDeleted():ptBoolean
-				
 				//Sam:
-				operation ieClickStatistic() : ptBoolean
-				operation ieStatistic() : ptBoolean
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation iegetStatistic() : ptBoolean
 	 		}
 		}
 		
@@ -186,9 +193,9 @@ import lu.uni.lassy.messir.libraries.calendar
 		//Sam:
 		actor actSystem role rnactSystem cardinality[1 .. 1] {
 			input interface inactSystem {
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+			/*	operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean*/
 			}
 			output interface outactSystem {
 				operation ugSercurelyUserSystem() : ptBoolean
@@ -197,6 +204,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeChooseInformation() : ptBoolean
 				operation oeSendNotification() : ptBoolean
 				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		
@@ -205,10 +213,11 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
 				operation ieCallTypeWithTimeAverage() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				
 			}
 			output interface outactDatabase {
+				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		

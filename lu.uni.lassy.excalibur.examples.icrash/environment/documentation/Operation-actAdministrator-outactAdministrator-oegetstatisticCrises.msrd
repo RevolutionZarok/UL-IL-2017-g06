@@ -1,18 +1,18 @@
 /*
 @author samri
-@date Sat Apr 08 14:12:33 CEST 2017
+@date Sat Apr 08 16:33:05 CEST 2017
 */
 
 
 @@Operation
-icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises
 //parameters
 @parameter
-icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises.statisticTypes
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises.statisticCrises
 ""
 @endParameters
 
-@description "This operation will send the statistic for the average time for the three different types of crises(Small, medium and high)."
+@description "This operation will send the statistic for the sendding number of crises. This mean that it will show the sending crises with the time"
 
 //preProtocol descriptions
 @preP
@@ -32,7 +32,7 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCri
 @postF 
 "The information from the database will be calculate to the different times. "
 @postF 
-"After this the operation getstatisticTypesOfCrises() give the statistic"
+"After this the operation getstatisticCrises() give the statistic"
 @postF 
 "And at least the statistic will bee show it into the interface. "
 

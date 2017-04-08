@@ -173,7 +173,7 @@ import icrash.environment
 		}
 		
 	//Sam:
-	use case system subfunction oeStatistic(){
+	use case system subfunction oegetStatistic(){
 		actor actAdministrator[primary, active]
 		actor actSystem[secondary,passive]
 		returned messages{
@@ -182,7 +182,7 @@ import icrash.environment
 				ieCallTypeWithTimeAverage returned to actSystem
 		}
 	}
-	use case system subfunction oeUserActivityStatistic(){
+	use case system subfunction oegetstatisticUser(){
 		actor actAdministrator[primary, active]
 		actor actDatabase[secondary, passive]
 		
@@ -190,14 +190,14 @@ import icrash.environment
 			
 		}
 	}
-	use case system subfunction oeNumberOfCrisis(){
+	use case system subfunction oegetstatisticCrises(){
 		actor actAdministrator[primary, active]
 		actor actDatabase[secondary, passive]
 		returned messages{
 			
 		}
 	}
-	use case system subfunction oeTimeOfTypeOfCrisis(){
+	use case system subfunction oegetstatisticTypesOfCrises(){
 		actor actAdministrator[primary, active]
 		actor actDatabase[secondary, passive]
 		actor actSystem[secondary, passive]
