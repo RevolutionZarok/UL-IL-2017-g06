@@ -10,7 +10,7 @@ import icrash.concepts.primarytypes.authentication.datatypes
 Environment Model {
 		
 		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
-			operation init():ptBoolean
+			operation init():ptBoolean//TODO: Parameters
 			input interface inactMailingService {
 				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
 			}
@@ -19,7 +19,7 @@ Environment Model {
 		}
 		
 		actor actCaptchaService role rnactCaptchaService cardinality[1 .. 1]{
-			operation init():ptBoolean
+			operation init():ptBoolean//TODO: Parameters
 			input interface inactCaptchaService {
 				operation ieGenerateCaptcha():ptBoolean//Documented
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean

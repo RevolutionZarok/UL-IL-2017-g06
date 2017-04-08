@@ -5,7 +5,7 @@
 
 
 @@Operation
-icrash.concepts.primarytypes.classes.ctCaptchaService.init
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaService.init
 @description "
 used to initialize the current object as a new instance of the ctCaptchaService type. "
 //postFunctional descriptions

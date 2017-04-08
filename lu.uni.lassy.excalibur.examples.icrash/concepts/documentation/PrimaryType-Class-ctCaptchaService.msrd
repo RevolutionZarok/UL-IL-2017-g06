@@ -4,13 +4,13 @@
 */
 
 
-@@Primary Type Class icrash.concepts.primarytypes.classes.ctCaptchaService
+@@Primary Type Class icrash.concepts.primarytypes.authentication.classes.ctCaptchaService
 @description ""
 @attribute
-icrash.concepts.primarytypes.classes.ctCaptchaService.map
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaService.map
 ""
 @endAttributes
 @operation
-icrash.concepts.primarytypes.classes.ctCaptchaService.init
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaService.init
 ""
 @endOperations

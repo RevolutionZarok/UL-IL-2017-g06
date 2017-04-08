@@ -4,9 +4,9 @@
 */
 
 
-@@Primary Type Class icrash.concepts.primarytypes.classes.ctMailingService
+@@Primary Type Class icrash.concepts.primarytypes.authentication.classes.ctMailingService
 @description ""
 @operation
-icrash.concepts.primarytypes.classes.ctMailingService.init
+icrash.concepts.primarytypes.authentication.classes.ctMailingService.init
 ""
 @endOperations

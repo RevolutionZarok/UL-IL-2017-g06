@@ -5,7 +5,7 @@
 
 
 @@Operation
-icrash.concepts.primarytypes.classes.ctMailingService.init
+icrash.concepts.primarytypes.authentication.classes.ctMailingService.init
 @description "
 used to initialize the current object as a new instance of the ctMailingService type. "
 //postFunctional descriptions

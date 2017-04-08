@@ -89,6 +89,7 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				attribute vpIsLogged:ptBoolean
 				
 				attribute awaitedCaptchaId:dtCaptchaId //Michel
+				attribute loginCounter:ptInteger//Michel
 				
 				operation init(
 										Alogin:dtLogin ,
@@ -118,15 +119,6 @@ import icrash.concepts.primarytypes.authentication.datatypes
 										Apwd:dtPassword ):ptBoolean
 			}
 			
-			//Michel:
-			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{//TODO: View
-				attribute map:dtCaptchaResponseMap
-				
-				operation init():ptBoolean//TODO: Improve
-			}
-			class ctMailingService role rnctMailingService cardinality [1..1]{//TODO: View
-				operation init():ptBoolean//TODO: Improve
-			}
 		}
 	}
 }
