@@ -2,3 +2,5 @@
 .recommenders/
 lu.uni.lassy.excalibur.examples.icrash.group6.report/*.pdf
 /.project
+*.eps
+*.svg
