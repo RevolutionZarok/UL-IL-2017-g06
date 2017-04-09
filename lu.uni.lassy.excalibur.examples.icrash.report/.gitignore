@@ -5,6 +5,9 @@
 *.mtc0
 *.mtc1
 report.pdf
+report_DEF.pdf
+report_SIM.pdf
+report_SPEC.pdf
 /report.aux
 /report.dvi
 /report.ilg
