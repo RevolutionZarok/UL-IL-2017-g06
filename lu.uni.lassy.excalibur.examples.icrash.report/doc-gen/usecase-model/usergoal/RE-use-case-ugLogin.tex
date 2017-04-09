@@ -18,8 +18,7 @@ An actor wants to identify himself in order to gain access to the systems functi
 
 
 \addrowheading{Secondary actor(s)}
-\addnumberedsinglerow{}{\msrcode{actCaptchaGenerator[active]}}
-\addnumberedsinglerow{}{\msrcode{actCaptchaValidator[active]}}
+\addnumberedsinglerow{}{\msrcode{actCaptchaService[active]}}
 \addnumberedsinglerow{}{\msrcode{actMailingService[active]}}
 
 \addrowheading{Goal(s) description}
@@ -47,10 +46,10 @@ An actor wants to identify himself in order to gain access to the systems functi
 
 \addrowheading{Main Steps}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeLogin} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaGenerator} executes the \msrucname{oeSendCaptcha} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaService} executes the \msrucname{oeSendCaptcha} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeSubmitCaptcha} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaValidator} executes the \msrucname{oeCaptchaInvalid} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaValidator} executes the \msrucname{oeCaptchaValid} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaService} executes the \msrucname{oeCaptchaInvalid} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCaptchaService} executes the \msrucname{oeCaptchaValid} use case}
 \addrowheading{Steps Ordering Constraints}
 \addnumberedsinglerow{}{at least a}
 \addnumberedsinglerow{}{if b then previously a}

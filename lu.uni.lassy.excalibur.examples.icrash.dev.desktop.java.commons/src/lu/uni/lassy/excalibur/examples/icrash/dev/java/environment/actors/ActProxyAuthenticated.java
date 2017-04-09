@@ -19,6 +19,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -66,6 +67,13 @@ public interface ActProxyAuthenticated extends Remote, JIntHasServerSideActor, J
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean ieMessage(PtString aMessage) throws RemoteException;
+	
+	/**
+	 * Requests the actor to answer to a captcha test
+	 * @return The success of the method
+	 * @throws RemoteException
+	 */
+	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha) throws RemoteException;
 	
 	/**
 	 * An enum of different user types, makes it easier to read code where you can check the type rather than having to call instance of to check the actor type.

@@ -1,0 +1,39 @@
+/*
+* @author michm
+* @date Sat Apr 08 19:13:41 CEST 2017
+*/
+
+package icrash.concepts.primarytypes.authentication.classes {
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.environment
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
+
+/*
+	This file is dedicated for classes in relation with the authentication feature. Please use your own file dedicated for your feature
+	if you want to add new classes.
+*/
+Concept Model {
+
+		Primary Types {
+			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{//TODO: View
+				attribute map:dtCaptchaResponseMap
+				
+				operation init():ptBoolean//TODO: Improve
+			}
+			class ctMailingService role rnctMailingService cardinality [1..1]{//TODO: View
+				operation init():ptBoolean//TODO: Improve
+			}
+		}
+
+		Secondary Types {
+
+		}
+
+	}
+
+
+}

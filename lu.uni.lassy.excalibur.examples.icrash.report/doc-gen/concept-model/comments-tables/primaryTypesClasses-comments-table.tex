@@ -24,6 +24,9 @@ The table below is providing comments on the graphical views given for the class
 \adddoubletwocolumnrow{attribute}{\msrcode{pwd: dtPassword}}{a key for authentication.}
 \adddoubletwocolumnrow{attribute}{\msrcode{vpIsLogged: ptBoolean}}{used to determine the access status.}
 \adddoubletwocolumnrow{operation}{\msrcode{init(Alogin:dtLogin, Apwd:dtPassword):ptBoolean}}{used to initialize the current object as a new instance of the ctAuthenticated type.}
+\adddoublerow{ctCaptchaService}{}
+\adddoubletwocolumnrow{attribute}{\msrcode{map: dtCaptchaResponseMap}}{}
+\adddoubletwocolumnrow{operation}{\msrcode{init():ptBoolean}}{}
 \adddoublerow{ctCoordinator}{used to model system's representation about the actors that have the responsibility to handle alerts and crisis.}
 \addsingletwocolumnrow{extends}{icrash.concepts.primarytypes.classes.ctAuthenticated}
 \adddoubletwocolumnrow{attribute}{\msrcode{id: dtCoordinatorID}}{a unique identification information.}
@@ -50,7 +53,12 @@ The table below is providing comments on the graphical views given for the class
 \adddoubletwocolumnrow{attribute}{\msrcode{id: dtPhoneNumber}}{the number of the communication device used to send an alert to \msricrash system.}
 \adddoubletwocolumnrow{attribute}{\msrcode{kind: etHumanKind}}{role with respect to the alert notified.}
 \adddoubletwocolumnrow{operation}{\msrcode{init(Aid:dtPhoneNumber, Akind:etHumanKind):ptBoolean}}{\msrcode{init}: used to initialize the current object as a new instance of the ctHuman type.}
+<<<<<<< HEAD
 \adddoubletwocolumnrow{operation}{\msrcode{isAcknowledged():ptBoolean}}{ }
+=======
+\adddoublerow{ctMailingService}{}
+\adddoubletwocolumnrow{operation}{\msrcode{init():ptBoolean}}{}
+>>>>>>> refs/remotes/origin/authentication
 \adddoublerow{ctState}{used to model the system. Each system specified using \msrmessir must include a ctState class for which there is only one instance at any state of the abstract machine after creation.}
 \adddoubletwocolumnrow{attribute}{\msrcode{clock: dtDateAndTime}}{used to represent the system local time.}
 \adddoubletwocolumnrow{attribute}{\msrcode{crisisReminderPeriod: dtSecond}}{used to define the delay between two reminders after which a reminder must be sent to the administrator and to the known coordinators to encourage them to handle the crisis.}

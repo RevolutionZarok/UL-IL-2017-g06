@@ -1,0 +1,21 @@
+/*
+@author michm
+@date Mon Apr 03 12:19:26 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap
+@description "A data structure which hold references to correct answers, each one related to one captcha test. This data structure maps an id number to at last one answer."
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.is
+"Verifies if this map is a valid data structure"
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.register
+"Saves an answer to a captcha test to this data structure"
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.get
+"Gets the answer of the mapping from the given id"
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.remove
+"Removes the reference to an answer from this data structure by the given id number"
+@endOperations

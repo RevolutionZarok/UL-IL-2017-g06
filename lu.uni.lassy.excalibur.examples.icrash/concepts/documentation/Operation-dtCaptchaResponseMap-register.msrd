@@ -1,0 +1,22 @@
+/*
+@author michm
+@date Wed Apr 05 11:18:08 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.register
+//parameters
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponseMap.register.AdtResponse
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

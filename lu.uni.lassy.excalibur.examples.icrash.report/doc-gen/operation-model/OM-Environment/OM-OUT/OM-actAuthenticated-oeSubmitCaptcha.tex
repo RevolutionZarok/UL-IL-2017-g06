@@ -1,0 +1,102 @@
+\subsection{Operation Model for oeSubmitCaptcha}
+
+\label{OM-oeSubmitCaptcha}
+
+
+The \msrcode{oeSubmitCaptcha} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeSubmitCaptcha}{Submits a response to a captcha test to the system}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtResponse: dtCaptchaResponse}{The response given by the user of the captcha test} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system must be started}
+	\addnumberedsinglerow{PreP}{the actor must not be logged in yet}
+	\addnumberedsinglerow{PreP}{the system is awaiting the actor to answer to a captcha test}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{the given answer to a captcha test is valid}
+	\addnumberedsinglerow{PreF}{the given answer has the same id than the captcha test the system is waiting for}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{none}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{the system is no longer expecting the actor to answer a captcha test}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAuthenticated-oeSubmitCaptcha-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeSubmitCaptcha}.},label=OM-actAuthenticated-oeSubmitCaptcha-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+					let TheActor:actAuthenticated in
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheActor
+	  
+					/* PreP01 */
+					and TheSystem.vpStarted = true
+					/* PreP02 */
+					and TheActor.rnctAuthenticated.vpIsLogged = false
+					/* PreP03 */
+					and TheActor.rnctAuthenticated.awaitedCaptchaId.is() = true}
+	
+	/* Pre Functional:*/
+	preF{let TheSystem: ctState in
+					let TheActor:actAuthenticated in
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheActor
+					
+					/* PreF01 */
+					and AdtResponse.is() = true
+					/* PreF02 */
+					and TheactAuthenticates.rnctAuthenticated.awaitedCaptchaId.eq(AdtResponse.id) = true}
+	
+	/* Post Functional:*/ 
+	postF{/*let TheSystem: ctState in
+					let TheactAuthenticated:actAuthenticated in
+					let TheactValidator:actCaptchaService in
+	  
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheactAuthenticated
+					
+					/* PostF01 */
+					/*and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)*/
+	           		true}
+	
+	/* Post Protocol:*/ 
+	postP{ let TheSystem: ctState in
+					let TheactAuthenticated:actAuthenticated in
+	  
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheactAuthenticated
+					
+					/* PostF01 */
+					and TheactAuthenticated.rnctAuthenticated.awaitedCaptchaId.is() = false}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

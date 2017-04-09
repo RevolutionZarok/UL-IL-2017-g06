@@ -1,0 +1,29 @@
+/*
+@author michm
+@date Wed Apr 05 20:18:36 CEST 2017
+*/
+
+
+@@Actor icrash.environment.authentication.actCaptchaService
+@description "Actor providing a randomly generated captcha test to hedge a users login process. It also keeps track of the related correct answers and he is responsible for verifying a user's answer to a given captcha test."
+//input events
+@inputEvent
+icrash.environment.authentication.actCaptchaService.inactCaptchaService.ieGenerateCaptcha
+"The request to the actor to generate and provide a captcha test"
+@inputEvent
+icrash.environment.authentication.actCaptchaService.inactCaptchaService.ieVerifyCaptcha
+"Submits a captcha answer to the actor to be verified"
+
+@endInputEvents
+//output events
+@outputEvent
+icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha
+"The response by the actor which provides a captcha test to the system"
+@outputEvent
+icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptchaInvalid
+"Returns an answer to the system to notify that the supplied captcha was invalid"
+@outputEvent
+icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptchaValid
+"Returns an answer to the system to notify that the supplied captcha was valid"
+
+@endOutputEvents

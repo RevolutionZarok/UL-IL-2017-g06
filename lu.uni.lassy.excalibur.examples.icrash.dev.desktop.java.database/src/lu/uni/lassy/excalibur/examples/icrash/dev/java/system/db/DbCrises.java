@@ -343,7 +343,7 @@ public class DbCrises extends DbAbstract {
 					aCtCoordinator = new CtCoordinator();
 					//coordinator's id
 					DtCoordinatorID aId1 = new DtCoordinatorID(new PtString(
-							res.getString("coordiantor")));
+							res.getString("coordinator")));
 					//coordinator's login
 					DtLogin aLogin = new DtLogin(new PtString(
 							res.getString("login")));

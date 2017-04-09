@@ -1,0 +1,35 @@
+/*
+* @author michm
+* @date Fri Apr 07 17:21:38 CEST 2017
+*/
+
+package icrash.concepts.primarytypes.associations.authentication {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.environment.authentication
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.primarytypes.authentication.classes
+
+/*
+	This file is dedicated for associations in relation with the authentication feature. Please use your own file dedicated for your feature
+	if you want to add new associations.
+*/
+	Concept Model {
+
+		Primary Types {
+			association assctCaptchaServiceactCaptchaService//TODO: View
+ 					ctCaptchaService(rnctCaptchaService)[1..1]
+ 					actCaptchaService(rnactCaptchaService)[1..1]
+			association assctMailingServiceactMailingService//TODO: View
+ 					ctMailingService(rnctMailingService)[1..1]
+ 					actMailingService(rnactMailingService)[1..1]
+		}
+
+		Secondary Types {
+
+		}
+
+	}
+
+
+}

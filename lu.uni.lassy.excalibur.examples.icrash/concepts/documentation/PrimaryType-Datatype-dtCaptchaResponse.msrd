@@ -1,15 +1,13 @@
-/*
-@author michm
-@date Mon Mar 27 10:07:43 CEST 2017
-*/
-
-
-@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCaptchaResponse
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse
 @description "Contains the users response to a given captcha test"
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptchaResponse.id
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.id
 "The internal id which qualifies the related captcha test"
 @attribute
-icrash.concepts.primarytypes.datatypes.dtCaptchaResponse.response
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.response
 "The response data given by the user"
 @endAttributes
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.is
+"Determines if this answer to a captcha test is valid in relation to its data structure. This method does not verify if the given answer is correct."
+@endOperations

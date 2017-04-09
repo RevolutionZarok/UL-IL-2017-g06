@@ -1,5 +1,9 @@
 ;; xindy style file created by the glossaries package
+<<<<<<< HEAD
 ;; for document 'report' on 2017-4-9
+=======
+;; for document 'report' on 2017-4-5
+>>>>>>> refs/remotes/origin/authentication
 
 ; required styles
 

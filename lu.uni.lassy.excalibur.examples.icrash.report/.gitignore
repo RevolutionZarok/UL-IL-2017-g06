@@ -16,3 +16,5 @@ report.pdf
 /report.toc
 *.eps
 *.svg
+/doc-gen/*
+/src-gen/*

@@ -1,0 +1,92 @@
+\subsection{Operation Model for oeCaptchaInvalid}
+
+\label{OM-oeCaptchaInvalid}
+
+
+The \msrcode{oeCaptchaInvalid} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeCaptchaInvalid}{Returns an answer to the system to notify that the supplied captcha was invalid}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCaptchaId: ptInteger}{The id of the supplied captcha test} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{The system must be started}
+	\addnumberedsinglerow{PreP}{The actor must have stored a captcha test with the supplied captcha id first}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{The supplied captcha id must be valid}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{The user is successfully notified about the failure of the captcha answer validation}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{The actor does no longer hold reference to the correct answer to the given captcha test}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actCaptchaService-oeCaptchaInvalid-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeCaptchaInvalid}.},label=OM-actCaptchaService-oeCaptchaInvalid-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+	  				let TheactValidator:actCaptchaService in
+					self.rnActor.rnSystem = TheSystem
+	  
+					/* PreP01 */
+					and TheSystem.vpStarted = true
+					/* PreP02 */
+					and TheactValidator.rnactCaptchaValidator.map.get(AdtCaptchaId).is() = true}
+	
+	/* Pre Functional:*/
+	preF{/* PreF01 */
+					AdtCaptchaId.is() = true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+					let TheactValidator:actCaptchaService in
+					let TheactAuthenticated:actAuthenticated in
+					
+					let AptStringMessageForTheactValidator: ptString in
+					  
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheactValidator
+					
+					/* PostF01 */
+					and AptStringMessageForTheactValidator.eq('Your submitted captcha response is invalid. Try again.')
+					and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactValidator)}
+	
+	/* Post Protocol:*/ 
+	postP{ let TheSystem: ctState in
+				  	let TheactValidator:actCaptchaService in
+				  
+				  	self.rnActor.rnSystem = TheSystem
+				  	and self.rnActor = TheactValidator
+				  	
+				  	/* PostP01 */
+					and TheactValidator.rnactCaptchaValidator.map.remove(AdtCaptchaId)}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

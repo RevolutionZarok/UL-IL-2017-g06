@@ -5,6 +5,7 @@ import icrash.environment
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
 
 	Concept Model {
 		
@@ -25,8 +26,7 @@ import lu.uni.lassy.messir.libraries.calendar
 												AcrisisReminderPeriod:dtSecond ,
 												AmaxCrisisReminderPeriod:dtSecond ,
 												AvpLastReminder:dtDateAndTime ,
-												AvpStarted:ptBoolean
-			): ptBoolean
+												AvpStarted:ptBoolean): ptBoolean
 			}
 	
 			class ctAlert role rnctAlert cardinality [0..*]{
@@ -87,6 +87,9 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute login:dtLogin
 				attribute pwd: dtPassword
 				attribute vpIsLogged:ptBoolean
+				
+				attribute awaitedCaptchaId:dtCaptchaId //Michel
+				attribute loginCounter:ptInteger//Michel
 				
 				operation init(
 										Alogin:dtLogin ,

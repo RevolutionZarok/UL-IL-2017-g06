@@ -2,6 +2,7 @@ package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.captcha;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,9 +23,11 @@ public class CaptchaUI {
 	}
 	
 	public void show(){
-		Stage stage = new Stage();
-        stage.setTitle("Captcha verification");
-        stage.setScene(new Scene(root, 600, 550));
-        stage.show();
+		Platform.runLater(() -> {
+			Stage stage = new Stage();
+	        stage.setTitle("Captcha verification");
+	        stage.setScene(new Scene(root, 600, 550));
+	        stage.show();
+		});
 	}
 }

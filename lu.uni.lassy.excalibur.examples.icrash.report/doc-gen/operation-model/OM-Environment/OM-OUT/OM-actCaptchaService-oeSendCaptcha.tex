@@ -1,0 +1,85 @@
+\subsection{Operation Model for oeSendCaptcha}
+
+\label{OM-oeSendCaptcha}
+
+
+The \msrcode{oeSendCaptcha} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeSendCaptcha}{Sends a generated captcha test to the system}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCaptcha: dtCaptcha}{The generated captcha test} 
+	\addnumbereddoublerow{}{AdtResponse: dtCaptchaResponse}{The correct answer to the generated captcha test} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system must be started}
+	\addnumberedsinglerow{PreP}{the system must be in the state for awaiting a captcha test}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{the generated captcha test is supposed to be valid}
+	\addnumberedsinglerow{PreF}{the generated captcha answer is supposed to be valid}
+	\addnumberedsinglerow{PreF}{the generated captcha answer should be related to the captcha test over it's id number}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{the system is no longer in the state of waiting for a captcha test}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actCaptchaService-oeSendCaptcha-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeSendCaptcha}.},label=OM-actCaptchaService-oeSendCaptcha-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem: ctState in
+					self.rnActor.rnSystem = TheSystem
+	  
+					/* PreP01 */
+					and TheSystem.vpStarted = true}
+	
+	/* Pre Functional:*/
+	preF{/* PreF01 */
+					AdtCaptcha.is() = true
+					/* PreF02 */
+					and AdtResponse.is() = true
+					/* PreF03 */
+					and AdtCaptcha.id.eq(AdtResponse.id) = true}
+	
+	/* Post Functional:*/ 
+	postF{/*let TheSystem: ctState in
+					let TheactGenerator:actCaptchaService in
+					let TheactAuthenticated:actAuthenticated in
+					
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheactGenerator*/
+					
+					true}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

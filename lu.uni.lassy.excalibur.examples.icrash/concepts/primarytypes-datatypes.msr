@@ -60,20 +60,6 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation is():ptBoolean
 			}
 			
-			//Michel
-			datatype dtCaptcha {//TODO: link to images
-				attribute id: ptInteger
-				attribute question: ptString
-			}
-			datatype dtCaptchaResponse {
-				attribute id: ptInteger
-				attribute response: ptString//TODO: Type?
-			}
-			datatype dtCaptchaImage extends dtString{
-				attribute width : ptInteger
-				attribute height : ptInteger
-			}
-			
 			//Sam
 			datatype dtgetStatisticUserActivity{
 				attribute number: ptInteger

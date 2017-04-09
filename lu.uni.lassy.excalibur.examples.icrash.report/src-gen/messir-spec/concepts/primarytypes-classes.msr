@@ -5,6 +5,7 @@ import icrash.environment
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
 
 	Concept Model {
 		
@@ -88,6 +89,9 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute pwd: dtPassword
 				attribute vpIsLogged:ptBoolean
 				
+				attribute awaitedCaptchaId:dtCaptchaId //Michel
+				attribute loginCounter:ptInteger//Michel
+				
 				operation init(
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
@@ -115,6 +119,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
 			}
+<<<<<<< HEAD
 			// Sam class for the time/statistic 
 		class ctgetStatistic role rnctSystem cardinality[1..1]{
 			operation init(
@@ -134,6 +139,9 @@ import lu.uni.lassy.messir.libraries.calendar
 			operation sendStatistic(): ptBoolean //To do
 		}
 		
+=======
+			
+>>>>>>> refs/remotes/origin/authentication
 		}
 	}
 }

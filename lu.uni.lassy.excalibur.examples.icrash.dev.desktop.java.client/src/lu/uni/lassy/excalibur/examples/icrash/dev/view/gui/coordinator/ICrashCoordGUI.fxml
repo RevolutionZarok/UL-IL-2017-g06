@@ -92,7 +92,7 @@
                       <children>
                         <TextField fx:id="txtfldCoordLogonUserName" promptText="Username" GridPane.columnSpan="2" />
                         <PasswordField fx:id="psswrdfldCoordLogonPassword" promptText="Password" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                        <Button fx:id="bttnCoordLogon" defaultButton="true" font="$x1" mnemonicParsing="false" onAction="#bttnCoordLogon_OnClick" onContextMenuRequested="#btnCoordLogon_OnContextMenuRequested" text="Logon" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="bttnCoordLogon" defaultButton="true" font="$x1" mnemonicParsing="false" onAction="#bttnCoordLogon_OnClick" text="Logon" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                       </children>
                       <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

@@ -8,13 +8,13 @@ package icrash.usecases.ugLogin {
 import lu.uni.lassy.messir.libraries.primitives
 import icrash.usecases.subfunctions
 import icrash.environment
+import icrash.environment.authentication
 
 
 	Use Case Model {
 		use case system usergoal ugLogin() {
 		actor actAuthenticated[primary, active]
-		actor actCaptchaGenerator[secondary, active]
-		actor actCaptchaValidator[secondary, active]
+		actor actCaptchaService[secondary, active]
 		actor actMailingService[secondary, active]
 		
 		reuse oeLogin[1..1]
@@ -26,16 +26,16 @@ import icrash.environment
 		step a: actAuthenticated
 		executes oeLogin
 		
-		step b: actCaptchaGenerator
+		step b: actCaptchaService
 		executes oeSendCaptcha
 		
 		step c: actAuthenticated
 		executes oeSubmitCaptcha
 		
-		step d: actCaptchaValidator
+		step d: actCaptchaService
 		executes oeCaptchaInvalid
 		
-		step e: actCaptchaValidator
+		step e: actCaptchaService
 		executes oeCaptchaValid
 		
 		ordering constraint "at least a"

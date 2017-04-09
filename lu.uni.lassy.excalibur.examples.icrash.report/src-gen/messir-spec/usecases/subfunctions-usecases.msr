@@ -8,6 +8,7 @@ import icrash.concepts.secondarytypes.datatypes
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.environment.authentication
 
 import icrash.environment
 
@@ -87,11 +88,11 @@ import icrash.environment
     }
   }    
 //----------------------------------------------------
-  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {//Modified by Michel
+  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {
 		actor actAuthenticated[primary,active]
 		returned messages {
 			ieConfirmCaptcha(ACaptcha) returned to actAuthenticated
-			ieGenerateCaptcha returned to actCaptchaGenerator
+			ieGenerateCaptcha returned to actCaptchaService//Modified by Michel
 			ieMessage(AMessage) returned to actAuthenticated
 		}
 	}   
@@ -140,7 +141,7 @@ import icrash.environment
   
   //Michel:
   use case system subfunction oeSendCaptcha() {
-			actor actCaptchaGenerator[primary, active]
+			actor actCaptchaService[primary, active]
 			actor actAuthenticated[secondary]
 			returned messages{
 				ieConfirmCaptcha() returned to actAuthenticated
@@ -148,15 +149,15 @@ import icrash.environment
 	}
 	use case system subfunction oeSubmitCaptcha() {
 			actor actAuthenticated[primary, active]
-			actor actCaptchaValidator[secondary]
+			actor actCaptchaService[secondary]
 			returned messages{
 				ieMessage returned to actAuthenticated
-				ieVerifyCaptcha returned to actCaptchaValidator
+				ieVerifyCaptcha returned to actCaptchaService
 			}
 	}
 	
 	use case system subfunction oeCaptchaInvalid() {
-			actor actCaptchaValidator[primary, active]
+			actor actCaptchaService[primary, active]
 			actor actMailingService[secondary]
 			actor actAuthenticated[secondary]
 			returned messages{
@@ -165,7 +166,7 @@ import icrash.environment
 			}
 		}
 	use case system subfunction oeCaptchaValid() {
-			actor actCaptchaValidator[primary, active]
+			actor actCaptchaService[primary, active]
 			actor actAuthenticated[secondary]
 			returned messages{
 				ieMessage() returned to actAuthenticated
