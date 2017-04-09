@@ -23,12 +23,6 @@ icrash.environment.actSystem.inactSystem.ieCallTypeWithTimeAverage
 icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem
 ""
 @outputEvent
-icrash.environment.actSystem.outactSystem.ugVictimSendFamilyNotification
-""
-@outputEvent
-icrash.environment.actSystem.outactSystem.ugWitnessSendFamilyNotification
-""
-@outputEvent
 icrash.environment.actSystem.outactSystem.oeChooseInformation
 ""
 @outputEvent
