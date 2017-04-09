@@ -1,5 +1,0 @@
-(indexentry :tkey (("system operation" "\\glossentry{system operation}") ) :locref "{}{16}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("\\msrglsstyle {actor}" "\\glossentry{actor}") ) :locref "{}{16}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("\\msrglsstyle {direct actor}" "\\glossentry{direct actor}") ) :locref "{}{20}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("\\msrglsstyle {indirect actor}" "\\glossentry{indirect actor}") ) :locref "{}{20}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("\\msrglsstyle {abstract actor}" "\\glossentry{abstract actor}") ) :locref "{}{20}" :attr "pageglsnumberformat" ) 
