@@ -28,10 +28,18 @@ import icrash.environment.authentication
 				and TheActor.rnctAuthenticated.awaitedCaptchaId.is() = true
 			}
 			preF{
-				true
+				let TheSystem: ctState in
+				let TheActor:actAuthenticated in
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheActor
+				
+				/* PreF01 */
+				and AdtResponse.is() = true
+				/* PreF02 */
+				and TheactAuthenticates.rnctAuthenticated.awaitedCaptchaId.eq(AdtResponse.id) = true
 			}
 			postF{
-				let TheSystem: ctState in
+				/*let TheSystem: ctState in
 				let TheactAuthenticated:actAuthenticated in
 				let TheactValidator:actCaptchaService in
   
@@ -39,8 +47,8 @@ import icrash.environment.authentication
 				and self.rnActor = TheactAuthenticated
 				
 				/* PostF01 */
-				and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)
-           		
+				/*and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)*/
+           		true //TODO: Verify
 			}
 			postP{
 				let TheSystem: ctState in

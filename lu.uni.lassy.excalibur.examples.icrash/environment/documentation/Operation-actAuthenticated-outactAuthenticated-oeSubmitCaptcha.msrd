@@ -19,19 +19,21 @@ icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtRespo
 @preP
 "the actor must not be logged in yet"
 @preP
-"the system must have send a captcha test to the actor first"
+"the system is awaiting the actor to answer to a captcha test"
 @endPreP
 //preFunctional descriptions
 @preF
-"none"
+"the given answer to a captcha test is valid"
+@preF
+"the given answer has the same id than the captcha test the system is waiting for"
 @endPreF
 //postFunctional descriptions
 @postF 
-"the actors answer to the captcha test will be forwarded to the captcha validator"
+"none"//TODO: Verify
 @endPostF
 //postProtocol descriptions
 @postP 
-"the system is no longer expecting the user to answer a captcha test"
+"the system is no longer expecting the actor to answer a captcha test"
 @endPostP
 //example
 @example" "

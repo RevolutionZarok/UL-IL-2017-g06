@@ -103,13 +103,13 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	
 	@Override
 	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha){
+		Logger log = Log4JUtils.getInstance().getLogger();
 		try{
-			Logger log = Log4JUtils.getInstance().getLogger();
 			new CaptchaUI().show();
 			log.info("CaptchaUI launched successfully");
 			return new PtBoolean(true);
 		}catch(Exception e){
-			e.printStackTrace();
+			log.error("CaptchaUI could not be launched", e);
 			return new PtBoolean(false);
 		}
 		
