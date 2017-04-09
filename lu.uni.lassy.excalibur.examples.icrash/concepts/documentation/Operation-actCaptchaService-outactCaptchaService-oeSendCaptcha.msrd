@@ -30,9 +30,11 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendC
 @endPreP
 //preFunctional descriptions
 @preF
-"the generated captcha test is supposed to be a valid captcha test"
+"the generated captcha test is supposed to be valid"
 @preF
-"the generated captcha answer should be valid and should be related to the captcha test over it's id number"
+"the generated captcha answer is supposed to be valid"
+@preF
+"the generated captcha answer should be related to the captcha test over it's id number"
 @endPreF
 //postFunctional descriptions
 @postF
