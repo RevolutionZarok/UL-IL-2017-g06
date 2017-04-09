@@ -1,0 +1,10 @@
+/*
+@author michm
+@date Sun Apr 09 22:18:01 CEST 2017
+*/
+
+
+@@view uc-ugWitnessSendFamilyNotification
+@model Use-Case icrash.usecases.ugWitnessSendFamilyNotification.ugWitnessSendFamilyNotification
+@description ""
+@caption ""

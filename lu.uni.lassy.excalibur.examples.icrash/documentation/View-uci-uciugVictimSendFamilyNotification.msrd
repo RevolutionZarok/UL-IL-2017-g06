@@ -1,0 +1,10 @@
+/*
+@author michm
+@date Sun Apr 09 22:18:02 CEST 2017
+*/
+
+
+@@view uci-uciugVictimSendFamilyNotification
+@instance Use-Case usecases.uciugVictimSendFamilyNotification.uciugVictimSendFamilyNotification
+@description ""
+@caption ""

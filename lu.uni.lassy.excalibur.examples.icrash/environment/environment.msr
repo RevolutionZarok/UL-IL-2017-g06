@@ -97,11 +97,6 @@ import icrash.concepts.primarytypes.authentication.datatypes
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
-				
-				//Vlad:
-				operation oeCreateAlert() : ptBoolean
-				operation oeCreateCrisis() : ptBoolean
-				operation oeUpdateCrisis() : ptBoolean
 			}
 			
 			input interface inactCoordinator{

@@ -580,6 +580,12 @@
   <semanticResources>operations/environment/environment-actCaptchaService-oeSendCaptcha.msr</semanticResources>
   <semanticResources>operations/environment/environment-actAuthenticated-oeCreateAlert.msr</semanticResources>
   <semanticResources>operations/environment/environment-actCoordinator-oeUpdateCrisis.msr</semanticResources>
+  <semanticResources>documentation/View-uc-ugVictimSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>documentation/View-uc-ugWitnessSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>documentation/View-uci-uciugVictimSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>documentation/View-uci-uciugWitnessSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugVictimSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugWitnessSendFamilyNotification.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_X0EtsPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>
