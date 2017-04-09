@@ -4,23 +4,26 @@
 \begin{actortable}
 	\addheading{Actor}
 	
-	\adddoublerow{actDatabase}{}
+	\adddoublerow{actDatabase}{This is the abstract actor Database.This save all Information. }
 	
 	
 	
 	
 
+	\addrowheading{OutputInterfaces}
+	\addnumbereddoublerow{OUT}{\hypertarget{actDatabase.outactDatabase.oeSendStatistic}
+			{\msrcode{oeSendStatistic():ptBoolean}}}
+			{ send the statistic to the GUI}
+	\addnumbereddoublerow{OUT}{\hypertarget{actDatabase.outactDatabase.oegetStatistic}
+			{\msrcode{oegetStatistic():ptBoolean}}}
+			{ give the statistic }
 	
 	\addrowheading{InputInterfaces}
 	\addnumbereddoublerow{IN}{\msrcode{ieCallTimeAndCrisisNumber():ptBoolean}}
-							 {}
+							 {give Time for the crises}
 	\addnumbereddoublerow{IN}{\msrcode{ieCallUserActivity():ptBoolean}}
-							 {}
+							 {Give the user activity with the time}
 	\addnumbereddoublerow{IN}{\msrcode{ieCallTypeWithTimeAverage():ptBoolean}}
-							 {}
-	\addnumbereddoublerow{IN}{\msrcode{null():}}
-							 {}
-	\addnumbereddoublerow{IN}{\msrcode{null():}}
-							 {}
+							 {Give the average time of the 3 type of crises. }
 	
 \end{actortable}
