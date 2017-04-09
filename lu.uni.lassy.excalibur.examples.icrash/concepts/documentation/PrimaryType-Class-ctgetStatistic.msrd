@@ -18,4 +18,6 @@ icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticCrises
 @operation
 icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticTypes
 ""
+@operation icrash.concepts.primarytypes.classes.ctgetStatistic.sendStatistic
+" "
 @endOperations
