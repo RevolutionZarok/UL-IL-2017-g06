@@ -13,7 +13,7 @@
 "The information given by the alert creator has to be correct"
 @endPreConditions
 @postCondition
-"La notification a été envoyée"
+"The information is added to the family notification"
 @endPostConditions
 @additionalInformation
 "none"

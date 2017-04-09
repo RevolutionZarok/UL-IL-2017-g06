@@ -70,6 +70,12 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
 				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
 				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeUpdateCrisis(	AdtCrisisID:dtCrisisID, 
+											AetAlertStatus:etAlertStatus,
+											AdtDate:dtDate,
+											AdtTime:dtTime,
+											AdtComment:dtComment 
+											 ):ptBoolean // Vlad
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
 											AdtComment:dtComment 
@@ -83,11 +89,7 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
-				
-				//Vlad:
-				operation oeCreateAlert() : ptBoolean
-				operation oeCreateCrisis() : ptBoolean
-				operation oeUpdateCrisis() : ptBoolean
+
 			}
 			
 			input interface inactCoordinator{
@@ -130,7 +132,14 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
 				
 				//Vlad:
-				operation oeCreateAlert() : ptBoolean
+				operation oeCreateAlert(AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
+				
 			}
 			
 			input interface inactAuthenticated{
@@ -183,7 +192,6 @@ import lu.uni.lassy.messir.libraries.calendar
 			}
 		}
 		
-		//Sam:
 		actor actSystem role rnactSystem cardinality[1 .. 1] {
 			input interface inactSystem {
 				operation ieCallTimeAndCrisisNumber() : ptBoolean
@@ -192,8 +200,6 @@ import lu.uni.lassy.messir.libraries.calendar
 			}
 			output interface outactSystem {
 				operation ugSercurelyUserSystem() : ptBoolean
-				operation ugVictimSendFamilyNotification() : ptBoolean
-				operation ugWitnessSendFamilyNotification() : ptBoolean
 				operation oeChooseInformation() : ptBoolean
 				operation oeSendNotification() : ptBoolean
 				operation oeSendStatistic() : ptBoolean
@@ -210,8 +216,6 @@ import lu.uni.lassy.messir.libraries.calendar
 			}
 			output interface outactDatabase {
 			}
-		}
-		
-		
+		}		
 	}
 }

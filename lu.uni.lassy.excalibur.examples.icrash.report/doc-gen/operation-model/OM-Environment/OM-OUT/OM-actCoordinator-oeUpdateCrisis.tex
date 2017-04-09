@@ -1,0 +1,97 @@
+\subsection{Operation Model for oeUpdateCrisis}
+
+\label{OM-oeUpdateCrisis}
+
+
+The \msrcode{oeUpdateCrisis} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeUpdateCrisis}{Output event which is sent when a crisis is updated
+	 }
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{The ID of the crisis} 
+	\addnumbereddoublerow{}{AdtDate: dtDate}{The current date} 
+	\addnumbereddoublerow{}{AdtTime: dtTime}{The current time in hour, minutes and seconds} 
+	\addnumbereddoublerow{}{AdtComment: dtComment}{Comment made by the creator of the alert and editable by the coordinator} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{The system must be turned on}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{The updated date and time must be greater than the current date and time }
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{ }
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{ }
+	\end{operationmodel}
+
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actCoordinator-oeUpdateCrisis-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oeUpdateCrisis}.},label=OM-actCoordinator-oeUpdateCrisis-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{TheSystem.vpStarted = true}
+	
+	/* Pre Functional:*/
+	preF{let TheSystem: ctState in
+					self.rnActor.rnCoordinator = TheCoordinator
+	  
+					and (TheSystem.clock.date.gt(AdtDate)
+	       				or (TheSystem.clock.date.eq(AdtDate)
+	           				and TheSystem.clock.time.gt(AdtTime)
+	          			)
+	      			)}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+					let  ActCrisis:ctCrisis in
+					let  AdtCrisisID:dtCrisisID in
+					let  AetCrisisType:etCrisisType in
+					let  AetCrisisStatus:etCrisisStatus in
+					let  ACrisisInstant:dtDateAndTime in
+					let  ACrisisdtComment:dtComment in
+					let  AptStringMessage:ptString in
+					
+					self.rnActor.rnCoordinator = TheCoordinator
+					
+					and ACrisisInstant.date = AdtDate
+					and ACrisisInstant.time = AdtTime
+					
+					and ACrisisStatus = pending
+					
+					and ActCrisis.update(
+						AetAlertStatus,
+						AdtDate,
+	 					AdtTimee,
+	 					AdtComment
+					)}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="140.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.comcompany.CommunicationCompanyGUIController">
+<AnchorPane prefHeight="950.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.comcompany.CommunicationCompanyGUIController">
    <children>
       <SplitPane dividerPositions="0.5942760942760943" prefHeight="344.0" prefWidth="323.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>

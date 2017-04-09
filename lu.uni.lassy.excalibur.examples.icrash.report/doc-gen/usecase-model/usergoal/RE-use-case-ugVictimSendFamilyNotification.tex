@@ -18,14 +18,14 @@
 
 \addrowheading{Secondary actor(s)}
 \addnumberedsinglerow{}{\msrcode{actAuthenticated[active]}}
-\addnumberedsinglerow{}{\msrcode{actCoordinator[proactive]}}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[active]}}
 
 \addrowheading{Goal(s) description}
 \addsinglerow{}
 
 \addrowheading{Reuse}
 \addnumberedsinglerow{}{\msrucname{oeCreateAlert [1..*]}}
-\addnumberedsinglerow{}{\msrucname{oeCreateCrisis [1..1]}}
+\addnumberedsinglerow{}{\msrucname{oeValidateAlert [1..1]}}
 \addnumberedsinglerow{}{\msrucname{oeUpdateCrisis [0..*]}}
 
 \addrowheading{Protocol condition(s)}
@@ -43,7 +43,7 @@
 \addrowheading{Main Steps}
 \addalphanumberedsinglerow{}{the actor \msrcode{actAuthenticated} executes the \msrucname{oeCreateAlert} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeCreateAlert} use case}
-\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeCreateCrisis} use case}
+\addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeValidateAlert} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actSystem} executes the \msrucname{oeChooseInformation} use case}
 \addalphanumberedsinglerow{}{the actor \msrcode{actCoordinator} executes the \msrucname{oeUpdateCrisis} use case}
 \addrowheading{Steps Ordering Constraints}
@@ -58,18 +58,3 @@ none
 
 \end{usecase} 
 
-
-Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugVictimSendFamilyNotification}
-
-\begin{figure}[htbp]
-\begin{center}
-
-\includegraphics[
-angle=0
-,width=1.0\textwidth
-]{./images-report-gen/usecase-model/usergoal/uc-ugVictimSendFamilyNotification.eps}
-\end{center}
-\caption[lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugVictimSendFamilyNotification]{}
-\label{fig:lu.uni.lassy.excalibur.examples.icrash-RE-UCD-uc-ugVictimSendFamilyNotification}
-\end{figure}
-\vspace{0.5cm}
