@@ -16,15 +16,15 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptc
 @preP
 "The system must be started"
 @preP
-"The actor for generating captcha tests must have first generated a captcha test and must have send it to the validating actor to store it locally"
+"The actor must have stored a captcha test with the supplied captcha id first"
 @endPreP
 //preFunctional descriptions
 @preF
-"none"
+"The supplied captcha id must be valid"
 @endPreF
 //postFunctional descriptions
 @postF 
-"The user is notified by the system about the valid answer to the given captcha test by a message"
+"The user is successfully notified about the success of the captcha answer validation"
 @endPostF
 //postProtocol descriptions
 @postP 
@@ -32,4 +32,3 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptc
 @endPostP
 //example
 @example" "
-
