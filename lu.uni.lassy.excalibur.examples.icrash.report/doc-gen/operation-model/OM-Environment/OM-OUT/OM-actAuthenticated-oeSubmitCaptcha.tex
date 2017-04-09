@@ -18,16 +18,17 @@ The \msrcode{oeSubmitCaptcha} operation has the following properties:
 	\addrowheading{Pre-Condition (protocol)}
 	\addnumberedsinglerow{PreP}{the system must be started}
 	\addnumberedsinglerow{PreP}{the actor must not be logged in yet}
-	\addnumberedsinglerow{PreP}{the system must have send a captcha test to the actor first}
+	\addnumberedsinglerow{PreP}{the system is awaiting the actor to answer to a captcha test}
 		
 	\addrowheading{Pre-Condition (functional)}
-	\addnumberedsinglerow{PreF}{none}
+	\addnumberedsinglerow{PreF}{the given answer to a captcha test is valid}
+	\addnumberedsinglerow{PreF}{the given answer has the same id than the captcha test the system is waiting for}
 
 	\addrowheading{Post-Condition (functional)}
-	\addnumberedsinglerow{PostF}{the actors answer to the captcha test will be forwarded to the captcha validator}
+	\addnumberedsinglerow{PostF}{none}
 
 	\addrowheading{Post-Condition (protocol)}
-	\addnumberedsinglerow{PostP}{the system is no longer expecting the user to answer a captcha test}
+	\addnumberedsinglerow{PostP}{the system is no longer expecting the actor to answer a captcha test}
 	\end{operationmodel}
 
 
@@ -56,10 +57,18 @@ The \msrcode{oeSubmitCaptcha} operation has the following properties:
 					and TheActor.rnctAuthenticated.awaitedCaptchaId.is() = true}
 	
 	/* Pre Functional:*/
-	preF{true}
+	preF{let TheSystem: ctState in
+					let TheActor:actAuthenticated in
+					self.rnActor.rnSystem = TheSystem
+					and self.rnActor = TheActor
+					
+					/* PreF01 */
+					and AdtResponse.is() = true
+					/* PreF02 */
+					and TheactAuthenticates.rnctAuthenticated.awaitedCaptchaId.eq(AdtResponse.id) = true}
 	
 	/* Post Functional:*/ 
-	postF{let TheSystem: ctState in
+	postF{/*let TheSystem: ctState in
 					let TheactAuthenticated:actAuthenticated in
 					let TheactValidator:actCaptchaService in
 	  
@@ -67,7 +76,8 @@ The \msrcode{oeSubmitCaptcha} operation has the following properties:
 					and self.rnActor = TheactAuthenticated
 					
 					/* PostF01 */
-					and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)}
+					/*and TheactValidator.rnInterfaceIN^ieVerifyCaptcha(AdtResponse)*/
+	           		true}
 	
 	/* Post Protocol:*/ 
 	postP{ let TheSystem: ctState in

@@ -21,8 +21,9 @@ The \msrcode{oeSendCaptcha} operation has the following properties:
 	\addnumberedsinglerow{PreP}{the system must be in the state for awaiting a captcha test}
 		
 	\addrowheading{Pre-Condition (functional)}
-	\addnumberedsinglerow{PreF}{the generated captcha test is supposed to be a valid captcha test}
-	\addnumberedsinglerow{PreF}{the generated captcha answer should be valid and should be related to the captcha test over it's id number}
+	\addnumberedsinglerow{PreF}{the generated captcha test is supposed to be valid}
+	\addnumberedsinglerow{PreF}{the generated captcha answer is supposed to be valid}
+	\addnumberedsinglerow{PreF}{the generated captcha answer should be related to the captcha test over it's id number}
 
 	\addrowheading{Post-Condition (functional)}
 	\addnumberedsinglerow{PostF}{the system is no longer in the state of waiting for a captcha test}
@@ -51,20 +52,22 @@ The \msrcode{oeSendCaptcha} operation has the following properties:
 					and TheSystem.vpStarted = true}
 	
 	/* Pre Functional:*/
-	preF{true}
+	preF{/* PreF01 */
+					AdtCaptcha.is() = true
+					/* PreF02 */
+					and AdtResponse.is() = true
+					/* PreF03 */
+					and AdtCaptcha.id.eq(AdtResponse.id) = true}
 	
 	/* Post Functional:*/ 
-	postF{let TheSystem: ctState in
+	postF{/*let TheSystem: ctState in
 					let TheactGenerator:actCaptchaService in
 					let TheactAuthenticated:actAuthenticated in
 					
 					self.rnActor.rnSystem = TheSystem
-					and self.rnActor = TheactGenerator
+					and self.rnActor = TheactGenerator*/
 					
-					/* PostF01 */
-					and TheactValidator.rnInterfaceIN^ieRegisterAnswer(AdtResponse)
-					/* PostF02 */
-					and TheactAuthenticated.rnInterfaceIN^ieConfirmCaptcha(AdtCaptcha)}
+					true}
 	
 	/* Post Protocol:*/ 
 	postP{ true}

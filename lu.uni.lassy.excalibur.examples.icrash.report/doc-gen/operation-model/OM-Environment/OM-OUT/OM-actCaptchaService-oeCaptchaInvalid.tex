@@ -17,13 +17,13 @@ The \msrcode{oeCaptchaInvalid} operation has the following properties:
 
 	\addrowheading{Pre-Condition (protocol)}
 	\addnumberedsinglerow{PreP}{The system must be started}
-	\addnumberedsinglerow{PreP}{The actor for generating captcha tests must have first generated a captcha test and must have send it to the validating actor to store it locally}
+	\addnumberedsinglerow{PreP}{The actor must have stored a captcha test with the supplied captcha id first}
 		
 	\addrowheading{Pre-Condition (functional)}
-	\addnumberedsinglerow{PreF}{none}
+	\addnumberedsinglerow{PreF}{The supplied captcha id must be valid}
 
 	\addrowheading{Post-Condition (functional)}
-	\addnumberedsinglerow{PostF}{The user is notified by the system about the invalid answer to the given captcha test by a message}
+	\addnumberedsinglerow{PostF}{The user is successfully notified about the failure of the captcha answer validation}
 
 	\addrowheading{Post-Condition (protocol)}
 	\addnumberedsinglerow{PostP}{The actor does no longer hold reference to the correct answer to the given captcha test}
@@ -52,7 +52,8 @@ The \msrcode{oeCaptchaInvalid} operation has the following properties:
 					and TheactValidator.rnactCaptchaValidator.map.get(AdtCaptchaId).is() = true}
 	
 	/* Pre Functional:*/
-	preF{true}
+	preF{/* PreF01 */
+					AdtCaptchaId.is() = true}
 	
 	/* Post Functional:*/ 
 	postF{let TheSystem: ctState in

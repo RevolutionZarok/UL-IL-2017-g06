@@ -85,8 +85,9 @@ public interface ActAuthenticated extends java.rmi.Remote, Serializable, JIntIsA
 	
 	/**
 	 * Requests the actor to answer to a captcha test
+	 * @param captcha The captcha test
 	 * @return The success of the method
 	 * @throws RemoteException
 	 */
-	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha) throws RemoteException;//TODO: Captcha parameter
+	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha) throws RemoteException;
 }

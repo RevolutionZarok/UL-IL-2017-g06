@@ -22,7 +22,7 @@ Concept Model {
 			}
 			datatype dtCaptchaResponse {
 				attribute id: dtCaptchaId
-				attribute response: dtString//TODO: Type?
+				attribute response: dtString
 				operation is():ptBoolean
 			}
 			datatype dtCaptchaImage extends dtString{

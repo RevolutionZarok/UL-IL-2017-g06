@@ -24,7 +24,8 @@ import icrash.environment.authentication
 				and TheactValidator.rnactCaptchaValidator.map.get(AdtCaptchaId).is() = true
 			}
 			preF{
-				true
+				/* PreF01 */
+				AdtCaptchaId.is() = true
 			}
 			postF{
 				let TheSystem: ctState in
