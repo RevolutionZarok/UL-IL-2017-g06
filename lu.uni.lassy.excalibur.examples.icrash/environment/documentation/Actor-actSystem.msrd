@@ -12,12 +12,6 @@
 icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem
 "For the login"
 @outputEvent
-icrash.environment.actSystem.outactSystem.ugVictimSendFamilyNotification
-""
-@outputEvent
-icrash.environment.actSystem.outactSystem.ugWitnessSendFamilyNotification
-""
-@outputEvent
 icrash.environment.actSystem.outactSystem.oeChooseInformation
 ""
 @outputEvent

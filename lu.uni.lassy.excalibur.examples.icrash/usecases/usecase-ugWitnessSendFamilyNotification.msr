@@ -17,7 +17,7 @@ import icrash.environment
 		actor actCoordinator[secondary, proactive]
 		
 		reuse oeCreateAlert[1..*]
-		reuse oeCreateCrisis[1..1]
+		reuse oeValidateAlert[1..1]
 		reuse oeUpdateCrisis[0..*]
 		
 		step a: actAuthenticated
@@ -27,7 +27,7 @@ import icrash.environment
 		executes oeCreateAlert()
 		
 		step c: actCoordinator
-		executes oeCreateCrisis()
+		executes oeValidateAlert()
 		
 		step d: actSystem
 		executes oeChooseInformation()

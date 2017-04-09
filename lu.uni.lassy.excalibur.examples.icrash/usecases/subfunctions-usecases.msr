@@ -172,6 +172,26 @@ import icrash.environment
 				ieMessage() returned to actAuthenticated
 			}
 		}
+	//Vlad:	
+	use case system subfunction oeCreateAlert(){
+		actor actAuthenticated[primary,active]
+		returned messages{
+			ieMessage(AMessage) returned to actAuthenticated
+		}
+	}
+	use case system subfunction oeUpdateCrisis(){
+		actor actCoordinator[primary, proactive]
+		returned messages{
+			ieMessage(AMessage) returned to actCoordinator
+		}
+	}
+	use case system subfunction oeSendNotification(){
+		actor actSystem[primary, active]
+	}
+	
+	use case system subfunction oeChooseInformation(){
+		actor actSystem[primary, active]
+	}
 		
 	//Sam:
 	use case system subfunction oegetStatistic(){
@@ -220,27 +240,5 @@ import icrash.environment
 				ieShowStaticCrisis returned to actAdministrator
 			}
 	}
-	
-	//Vlad:
-	use case system subfunction oeCreateAlert(){
-		actor actAuthenticated[primary, active]
-		actor actCoordinator[secondary]
-	}
-	use case system subfunction oeCreateCrisis(){
-		actor actCoordinator[primary, active]
-	}
-	use case system subfunction oeUpdateCrisis(){
-		actor actCoordinator[primary, proactive]
-	}
-	use case system subfunction oeSendNotification(){
-		actor actSystem[primary, active]
-	}
-	
-	//Unidentifiable:
-	use case system subfunction oeChooseInformation(){
-		actor actSystem[primary, active]
-		actor actAuthenticated[secondary]
-	}
-
 }
 }

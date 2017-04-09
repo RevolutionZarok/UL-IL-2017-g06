@@ -1,0 +1,34 @@
+package usecases.uciugWitnessSendFamilyNotification {
+	import icrash.usecases.ugWitnessSendFamilyNotification
+	import icrash.environment
+	import icrash.usecases.subfunctions
+
+	Use Case Model {
+
+		use case instance uciugWitnessSendFamilyNotification : ugWitnessSendFamilyNotification{
+			actors {
+				User : actAuthenticated
+				Coordinator : actCoordinator
+				System : actSystem
+				
+			}
+			use case steps {
+				User executed instanceof subfunction oeCreateAlert("Add name and surname of the victim"){
+					
+				}
+				Coordinator executed instanceof subfunction oeCreateAlert(){
+					
+				}
+				Coordinator executed instanceof subfunction oeValidateAlert(){
+					
+				}
+				Coordinator executed instanceof subfunction oeUpdateCrisis(){
+					
+				}
+				System executed instanceof subfunction oeSendNotification(){
+					
+				}
+			}
+		}
+	}
+}

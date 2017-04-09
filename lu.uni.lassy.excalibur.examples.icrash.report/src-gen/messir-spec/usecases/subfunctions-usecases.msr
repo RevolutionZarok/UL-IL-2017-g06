@@ -1,0 +1,243 @@
+package icrash.usecases.subfunctions {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+
+  Use Case Model {
+    
+//----------------------------------------------------
+  use case system subfunction oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword){
+    actor actAdministrator[primary,active]
+    returned messages {
+      ieCoordinatorAdded() returned to actAdministrator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeAlert(
+                                   AetKind:etHumanKind,
+                                   AdtMyDate:dtDate,
+                                   AdtTime:dtTime,
+                                   AdtPhoneNumber:dtPhoneNumber,
+                                   AdtGPSLocation:dtGPSLocation,
+                                   AdtComment:dtComment) {
+    actor actComCompany[primary,active]
+    returned messages {
+      ieSmsSend(AdtPhoneNumber,AdtSMS) returned to actComCompany
+ 		}
+  }
+//----------------------------------------------------
+  use case system subfunction oeInvalidateAlert(AdtAlertID:dtAlertID) {
+    actor actCoordinator[primary,active]
+    actor actComCompany[secondary,passive]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+		}
+  }
+//----------------------------------------------------
+  use case system subfunction oeCloseCrisis(AdtCrisisID:dtCrisisID) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }    }
+//----------------------------------------------------
+  use case system subfunction oeCreateSystemAndEnvironment(AqtyComCompanies:ptInteger) {
+    actor actMsrCreator[primary,active]
+  }
+//----------------------------------------------------
+  use case system subfunction oeDeleteCoordinator(AdtCoordinatorID:dtCoordinatorID) {
+    actor actAdministrator[primary,active]
+    returned messages {
+      ieCoordinatorDeleted() returned to actAdministrator
+    }
+  }   
+//----------------------------------------------------
+  use case system subfunction oeGetAlertsSet(AetAlertStatus:etAlertStatus) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieSendAnAlert(ActAlert) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeGetCrisisSet(AetCrisisStatus:etCrisisStatus){
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieSendACrisis(ActCrisis) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSetCrisisHandler(AdtCrisisID:dtCrisisID) {
+    actor actCoordinator[primary,active]
+    actor actCoordinator[secondary,passive]
+    actor actComCompany[secondary,passive,multiple]
+    returned messages {
+      ieMessage(AMessage) 
+        returned to actCoordinator
+      ieSendAnAlert(ActAlert)
+        returned to actCoordinator
+      ieSmsSend(AdtPhoneNumber,AdtSMS)
+        returned to actComCompany
+    }
+  }    
+//----------------------------------------------------
+  use case system subfunction oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword) {//Modified by Michel
+		actor actAuthenticated[primary,active]
+		returned messages {
+			ieConfirmCaptcha(ACaptcha) returned to actAuthenticated
+			ieGenerateCaptcha returned to actCaptchaGenerator
+			ieMessage(AMessage) returned to actAuthenticated
+		}
+	}   
+//----------------------------------------------------
+  use case system subfunction oeLogout() {
+    actor actAuthenticated[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actAuthenticated
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeReportOnCrisis(AdtCrisisID:dtCrisisID,AdtComment:dtComment) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSetClock(AcurrentClock:dtDateAndTime) {
+    actor actActivator[primary,proactive]
+  }    
+//----------------------------------------------------
+  use case system subfunction oeSetCrisisStatus(AdtCrisisID:dtCrisisID ,AetCrisisStatus:etCrisisStatus) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeSollicitateCrisisHandling() {
+    actor actActivator[primary,proactive]
+    actor actCoordinator[secondary,passive,multiple]
+    actor actAdministrator[secondary,passive]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+      //ieMessage(AMessage) returned to actAdministrator
+    }
+  }            
+//----------------------------------------------------
+  use case system subfunction oeValidateAlert(AdtAlertID:dtAlertID) {
+    actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+  
+  //Michel:
+  use case system subfunction oeSendCaptcha() {
+			actor actCaptchaGenerator[primary, active]
+			actor actAuthenticated[secondary]
+			returned messages{
+				ieConfirmCaptcha() returned to actAuthenticated
+			}
+	}
+	use case system subfunction oeSubmitCaptcha() {
+			actor actAuthenticated[primary, active]
+			actor actCaptchaValidator[secondary]
+			returned messages{
+				ieMessage returned to actAuthenticated
+				ieVerifyCaptcha returned to actCaptchaValidator
+			}
+	}
+	
+	use case system subfunction oeCaptchaInvalid() {
+			actor actCaptchaValidator[primary, active]
+			actor actMailingService[secondary]
+			actor actAuthenticated[secondary]
+			returned messages{
+				ieSendMail() returned to actMailingService
+				ieMessage() returned to actAuthenticated
+			}
+		}
+	use case system subfunction oeCaptchaValid() {
+			actor actCaptchaValidator[primary, active]
+			actor actAuthenticated[secondary]
+			returned messages{
+				ieMessage() returned to actAuthenticated
+			}
+		}
+	//Vlad:	
+	use case system subfunction oeCreateAlert(){
+		actor actAuthenticated[primary,active]
+		returned messages{
+			ieMessage(AMessage) returned to actAuthenticated
+		}
+	}
+	use case system subfunction oeUpdateCrisis(){
+		actor actCoordinator[primary, proactive]
+		returned messages{
+			ieMessage(AMessage) returned to actCoordinator
+		}
+	}
+	use case system subfunction oeSendNotification(){
+		actor actSystem[primary, active]
+	}
+	
+	use case system subfunction oeChooseInformation(){
+		actor actSystem[primary, active]
+	}
+		
+	//Sam:
+	use case system subfunction oeStatistic(){
+		actor actAdministrator[primary, active]
+		actor actSystem[secondary,passive]
+		returned messages{
+				ieCallTimeAndCrisisNumber returned to actSystem
+				ieCallUserActivity returned to actSystem
+				ieCallTypeWithTimeAverage returned to actSystem
+		}
+	}
+	use case system subfunction oeUserActivityStatistic(){
+		actor actAdministrator[primary, active]
+		actor actDatabase[secondary, passive]
+		
+		returned messages{
+			
+		}
+	}
+	use case system subfunction oeNumberOfCrisis(){
+		actor actAdministrator[primary, active]
+		actor actDatabase[secondary, passive]
+		returned messages{
+			
+		}
+	}
+	use case system subfunction oeTimeOfTypeOfCrisis(){
+		actor actAdministrator[primary, active]
+		actor actDatabase[secondary, passive]
+		actor actSystem[secondary, passive]
+		returned messages{
+			ieCallTimeAndCrisisNumber returned to actSystem
+		}
+	}
+	use case system subfunction ugSercurelyUserSystem(){
+		actor actSystem[primary, active]
+		
+	}
+	use case system subfunction oeSendStatistic(){
+		actor actSystem[primary, active]
+		actor actAdministrator[secondary, passive]
+		actor actDatabase[secondary, passive]
+		returned messages{
+				ieShowStaticTimeAverage returned to actAdministrator
+				ieShowStaticUser returned to actAdministrator
+				ieShowStaticCrisis returned to actAdministrator
+			}
+	}
+}
+}

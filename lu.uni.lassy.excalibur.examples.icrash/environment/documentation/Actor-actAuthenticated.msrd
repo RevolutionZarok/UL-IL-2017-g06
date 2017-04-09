@@ -18,7 +18,5 @@
 "sent to end the secured access to specific system operations."
 @outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
 "sent to submit an answer to a previously given captcha test"
-@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert
-"sent to create a new alert"
 
 @endOutputEvents

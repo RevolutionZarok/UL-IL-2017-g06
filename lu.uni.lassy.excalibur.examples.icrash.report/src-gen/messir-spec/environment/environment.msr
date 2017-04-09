@@ -1,0 +1,221 @@
+package icrash.environment{
+	
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.calendar
+
+	Environment Model { 
+
+		actor actMsrCreator role rnactMsrCreator cardinality [1..1] {
+		  
+		 operation init():ptBoolean
+		  
+		 input interface inactMsrCreator {
+		 }
+			output interface outactMsrCreator {
+				operation oeCreateSystemAndEnvironment(AqtyComCompanies:ptInteger ):ptBoolean
+			}
+		}
+
+		actor actAdministrator 
+						role rnactAdministrator 
+						cardinality [1..1] 
+						extends actAuthenticated {
+
+			operation init():ptBoolean
+
+			output interface outactAdministrator{
+				
+				operation oeAddCoordinator(
+											AdtCoordinatorID:dtCoordinatorID ,
+											AdtLogin:dtLogin , 
+											AdtPassword:dtPassword ):ptBoolean
+											
+				operation oeDeleteCoordinator(
+											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
+											
+				//Sam:
+				operation oeUserActivityStatistic() : ptBoolean
+				operation oeNumberOfCrisis() : ptBoolean
+				operation oeTimeOfTypeOfCrisis() : ptBoolean
+				operation ugAdministrateTheSystem() : ptBoolean
+				operation oeStatistic() : ptBoolean
+			}
+			
+			input interface inactAdministrator{
+				
+				operation ieCoordinatorAdded():ptBoolean
+				operation ieCoordinatorDeleted():ptBoolean
+				
+				//Sam:
+				operation ieClickStatistic() : ptBoolean
+				operation ieStatistic() : ptBoolean
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
+	 		}
+		}
+		
+		actor actCoordinator 
+						role rnactCoordinator 
+						cardinality [0..*] 
+						extends actAuthenticated{
+
+			operation init():ptBoolean
+
+			output interface outactCoordinator{
+				operation oeInvalidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+				operation oeCloseCrisis(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
+				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
+				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeUpdateCrisis(	AdtCrisisID:dtCrisisID, 
+											AetAlertStatus:etAlertStatus,
+											AdtDate:dtDate,
+											AdtTime:dtTime,
+											AdtComment:dtComment 
+											 ):ptBoolean // Vlad
+				operation oeReportOnCrisis(
+											AdtCrisisID:dtCrisisID ,
+											AdtComment:dtComment 
+											):ptBoolean
+				operation oeSetCrisisStatus(
+											AdtCrisisID:dtCrisisID ,
+											AetCrisisStatus:etCrisisStatus 
+											):ptBoolean
+				operation oeSetCrisisType(
+                                          AdtCrisisID:dtCrisisID ,
+                                          AetCrisisType:etCrisisType
+                                          ):ptBoolean
+				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+
+			}
+			
+			input interface inactCoordinator{
+				operation ieSendAnAlert(ActAlert:ctAlert ):ptBoolean
+				operation ieSendACrisis(ActCrisis:ctCrisis ):ptBoolean
+	 		}
+		}
+		
+		actor actComCompany role rnactComCompany cardinality [0..*]{
+
+			operation init():ptBoolean
+
+			output interface outactComCompany{
+				operation oeAlert(
+										AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
+			}
+			
+			input interface inactComCompany{
+				operation ieSmsSend(AdtPhoneNumber:dtPhoneNumber , 
+														AdtSMS:dtSMS 
+														):ptBoolean
+	 		}
+		}
+
+		actor actAuthenticated role rnactAuthenticated cardinality [0..*]{
+
+			operation init():ptBoolean
+
+			output interface outactAuthenticated{
+				operation oeLogin(AdtLogin:dtLogin , AdtPassword:dtPassword ):ptBoolean
+				operation oeLogout():ptBoolean
+				
+				//Michel:
+				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
+				
+				//Vlad:
+				operation oeCreateAlert(AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
+				
+			}
+			
+			input interface inactAuthenticated{
+				operation ieMessage(AMessage:ptString):ptBoolean
+				
+				//Michel:
+				operation ieConfirmCaptcha(ACaptcha:dtCaptcha):ptBoolean
+	 		}
+		}
+
+		actor actActivator[proactive] role rnactActivator cardinality [1..1]{
+
+			operation init():ptBoolean
+
+			output interface outactActivator{
+				proactive operation oeSollicitateCrisisHandling():ptBoolean
+				proactive operation oeSetClock(AcurrentClock:dtDateAndTime ):ptBoolean
+			}
+			
+			input interface inactActivator{
+	 		}
+		}
+		
+		//Michel:
+		actor actCaptchaGenerator role rnactCaptchaGenerator cardinality[1 .. 1] {
+			input interface inactCaptchaGenerator {
+				operation ieGenerateCaptcha():ptBoolean//Documented
+				operation ieValidateCaptcha(AResponse:dtCaptchaResponse):ptBoolean//Documented
+			}
+			output interface outactCaptchaGenerator {
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean//Partly Documented
+			}
+		}
+		
+		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
+			input interface inactMailingService {
+				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
+			}
+			output interface outactMailingService {
+			}
+		}
+		
+		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
+			input interface inactCaptchaValidator {
+				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
+			}
+			output interface outactCaptchaValidator {
+				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
+				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
+			}
+		}
+		
+		actor actSystem role rnactSystem cardinality[1 .. 1] {
+			input interface inactSystem {
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation ieCallUserActivity() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean
+			}
+			output interface outactSystem {
+				operation ugSercurelyUserSystem() : ptBoolean
+				operation oeChooseInformation() : ptBoolean
+				operation oeSendNotification() : ptBoolean
+				operation oeSendStatistic() : ptBoolean
+			}
+		}
+		
+		actor actDatabase role rnactDatabase cardinality[1 .. 1] {
+			input interface inactDatabase {
+				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation ieCallUserActivity() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation oeSendStatistic() : ptBoolean
+				operation oeStatistic() : ptBoolean
+			}
+			output interface outactDatabase {
+			}
+		}		
+	}
+}

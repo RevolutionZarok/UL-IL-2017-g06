@@ -78,6 +78,12 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
 				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
 				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeUpdateCrisis(	AdtCrisisID:dtCrisisID, 
+											AetAlertStatus:etAlertStatus,
+											AdtDate:dtDate,
+											AdtTime:dtTime,
+											AdtComment:dtComment 
+											 ):ptBoolean // Vlad
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
 											AdtComment:dtComment 
@@ -138,7 +144,13 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
 				
 				//Vlad:
-				operation oeCreateAlert() : ptBoolean
+				operation oeCreateAlert(AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
 			}
 			
 			input interface inactAuthenticated{

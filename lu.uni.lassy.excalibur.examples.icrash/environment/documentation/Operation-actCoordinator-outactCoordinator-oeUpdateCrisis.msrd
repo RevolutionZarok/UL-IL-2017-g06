@@ -1,19 +1,35 @@
 /*
-@author michm
-@date Mon Mar 27 10:55:33 CEST 2017
+@author ToshW
+@date Wed Apr 05 10:36:11 CEST 2017
 */
 
 
 @@Operation
 icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis
-@description "" //A coordinator can update an existing crisis
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtCrisisID
+"The ID of the crisis"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtDate
+"The current date"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtTime
+"The current time in hour, minutes and seconds"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtComment
+"Comment made by the creator of the alert and editable by the coordinator"
+@endParameters
+
+@description "Output event which is sent when a crisis is updated
+ "
 //preProtocol descriptions
 @preP
-" "
+"The system must be turned on"
 @endPreP
 //preFunctional descriptions
 @preF
-" "//A crisis has to exist
+"The updated date and time must be greater than the current date and time "
 @endPreF
 //postFunctional descriptions
 @postF 
