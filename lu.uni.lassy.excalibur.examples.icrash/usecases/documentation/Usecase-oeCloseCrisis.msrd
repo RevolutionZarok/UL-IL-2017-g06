@@ -4,6 +4,9 @@
 "
 the \msrcode{actCoordinator}'s goal is to declare a crisis as closed. 
 "
+@parameter icrash.usecases.subfunctions.oeCloseCrisis.AdtCrisisID
+" "
+@endParameters
 @protocolCondition
 "
 the iCrash system has been deployed.

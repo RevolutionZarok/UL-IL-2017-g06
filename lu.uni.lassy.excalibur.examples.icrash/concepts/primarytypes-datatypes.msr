@@ -75,21 +75,25 @@ import lu.uni.lassy.messir.libraries.calendar
 			}
 			
 			//Sam
-			datatype dtStatisticUserActivity{
+			datatype dtgetStatisticUserActivity{
 				attribute number: ptInteger
 				attribute time : dtTime
+				//is as a control for this dt. 
+				//operation is():ptBoolean
 			}
-			datatype dtStatisticCrisisinTime{
+			datatype dtgetStatisticCrisisinTime{
 				attribute number : ptInteger
 				attribute time : dtTime
+				//is as a control for this dt. 
+				//operation is():ptBoolean
 			}
-			datatype dtStatisticTypeCrisis{
+			datatype dtgetStatisticTypeCrisis{
 				attribute typeC : ptString
 				attribute time : dtTime
+				//is as a control for this dt. 
+				//operation is():ptBoolean
 			}
-			datatype dtTimestamp{
-				attribute time : dtTime
-			}
+			
 		}
 	}
 }

@@ -18,25 +18,25 @@ import icrash.usecases.ugAdministrateTheSystem
 		actor actDatabase [primary, proactive]
 		actor actSystem[secondary, active]
 		
-		reuse oeStatistic[1..*]
+		reuse oegetStatistic[1..*]
 		reuse ugSercurelyUserSystem[0..*]
-		reuse oeUserActivityStatistic[0..*]
+		reuse oegetstatisticUser[0..*]
 		reuse ugAdministrateTheSystem[1..*]
 		
 		step a: actSystem
 		executes ugSercurelyUserSystem()
 		
 		step b: actSystem
-		executes oeStatistic()
+		executes oegetStatistic()
 		
 		step c : actAdministrator
-		executes oeUserActivityStatistic()
+		executes oegetstatisticUser()
 		
 		step d : actAdministrator
 		executes ugAdministrateTheSystem()
 		
 		step e : actDatabase
-		executes oeUserActivityStatistic()
+		executes oegetstatisticUser()
 		
 		ordering constraint "at least a"
 		ordering constraint "if b then previously a"

@@ -1,0 +1,15 @@
+/*
+@author samri
+@date Mon Apr 03 16:36:33 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtgetStatisticUserActivity
+@description "Represents a statistic of a number of users in relation to a specific timespan"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticUserActivity.number
+"The amount of involved users"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticUserActivity.time
+"The related timestamp"
+@endAttributes

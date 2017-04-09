@@ -1,0 +1,45 @@
+/*
+@author samri
+@date Sat Apr 08 14:12:33 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises
+//parameters
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises.statisticTypes
+""
+@endParameters
+
+@description "This operation will send the statistic for the average time for the three different types of crises(Small, medium and high)."
+
+//preProtocol descriptions
+@preP
+"The system is started"
+@preP
+"The function ugAdministarteTheSystem must be executed first. So the Administrator must bee login."
+@preP
+"The Database must be open. "
+@endPreP
+//preFunctional descriptions
+@preF
+"none "
+@endPreF
+//postFunctional descriptions
+@postF
+"At first search all the information for this statistic. So the database must bee open to get the information"
+@postF 
+"The information from the database will be calculate to the different times. "
+@postF 
+"After this the operation getstatisticTypesOfCrises() give the statistic"
+@postF 
+"And at least the statistic will bee show it into the interface. "
+
+@endPostF
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP
+//example
+@example"none"

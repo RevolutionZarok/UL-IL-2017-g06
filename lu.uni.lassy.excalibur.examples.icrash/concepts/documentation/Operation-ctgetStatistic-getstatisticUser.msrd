@@ -1,0 +1,22 @@
+/*
+@author samri
+@date Wed Apr 05 11:19:47 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticUser
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticUser.statisticUser
+""
+@endParameters
+
+@description " This a function will get the statistic for the number of the user activity 
+ "
+//postFunctional descriptions
+@postF 
+" After the execution the"
+@endPostF
+//example
+@example" "

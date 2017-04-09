@@ -12,7 +12,7 @@ package usecases.uciugUserActivity {
 				
 			}
 			use case steps {
-				User executed instanceof subfunction oeStatistic{
+				User executed instanceof subfunction oegetStatistic{
 					ieCallUserActivity() returned to Database
 				}
 				Database executed instanceof subfunction oeSendStatistic("Statistic for the user activity"){

@@ -11,7 +11,7 @@ package usecases.uciugCrisisInTime {
 				Database : actDatabase
 			}
 			use case steps {
-				User executed instanceof subfunction oeStatistic{
+				User executed instanceof subfunction oegetStatistic{
 					ieCallTimeAndCrisisNumber() returned to Database
 				}
 				Database executed instanceof subfunction oeSendStatistic("For the number of cisises in time for the different type of crisis"){

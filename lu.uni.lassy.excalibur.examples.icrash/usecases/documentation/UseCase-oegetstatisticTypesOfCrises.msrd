@@ -1,0 +1,34 @@
+/*
+@author samri
+*/
+
+
+@@Use Case Subfunction icrash.usecases.subfunctions.oegetstatisticTypesOfCrises
+@description "An actor has been login as a Administrator to use the statistic function. So he can see the average time for the different types of a crises(small, medium and high)"
+@protocolCondition
+"The actor has been login as a administrator and he has to click on the button statistic..
+"
+@protocolCondition
+"The actor must be able to access the system (connected to the Internet)"
+@protocolCondition
+"The system must run.
+"
+@protocolCondition
+"The database must bee open
+"
+@endProtocolConditions
+@preCondition
+"The actor is not login as a administrator, so he can click the button statistic.
+"
+@endPreConditions
+@postCondition
+"if the login was successful, the actor is now identified and thus able to access the AdministrateTheSystem
+"
+@postCondition
+"So later the statistic will be show to the administrator and also the information of the Database will be send to the system. 
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

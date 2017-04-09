@@ -6,15 +6,21 @@
 
 @@Operation
 icrash.environment.actSystem.outactSystem.oeSendStatistic
-@description "
+@description " This function is into the class getStatistic. 
  "
 //preProtocol descriptions
 @preP
-" "
+"the system is started"
+@preP
+"the actor must login ass Administrator"
+@preP
+"the function oegetStatistic must bee execute."
+@preP
+"One of the operation oegetstatisticUser(),oegetstatisticCrises() or oegetstatisticTypes() must bee execute "
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+" One of the statistic must bee execute and also existing.  "
 @endPreF
 //postFunctional descriptions
 @postF 
@@ -22,7 +28,7 @@ icrash.environment.actSystem.outactSystem.oeSendStatistic
 @endPostF
 //postProtocol descriptions
 @postP 
-" "
+" none "
 @endPostP
 //example
 @example" "

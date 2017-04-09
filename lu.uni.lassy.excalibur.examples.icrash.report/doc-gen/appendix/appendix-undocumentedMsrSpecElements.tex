@@ -18,6 +18,7 @@
 \item icrash.usecases.subfunctions.oeCreateCrisis 
 \item icrash.usecases.subfunctions.oeSendNotification 
 \item icrash.usecases.subfunctions.oeUpdateCrisis 
+\item icrash.usecases.subfunctions.oegetStatistic 
 \item icrash.usecases.subfunctions.ugSercurelyUserSystem 
 \end{itemize}
 
@@ -44,11 +45,6 @@
 \end{itemize}
 
 
-\section[Undocumented Actors]{Undocumented Actors}
-\begin{itemize}
-\item icrash.environment.actDatabase 
-\item icrash.environment.actSystem 
-\end{itemize}
 
 
 \section[Undocumented Environment Model Views]{Undocumented Environment Model Views}
@@ -56,6 +52,17 @@
 \item em-view10 
 \item em-view12 
 \end{itemize}
+
+
+\section[Undocumented Primary Types]{Undocumented Primary Types}
+
+\subsection[Undocumented Primary Classe Types]{Undocumented Primary Classe Types}
+\begin{itemize}
+\item icrash.concepts.primarytypes.classes.ctgetStatistic 
+\end{itemize}
+
+
+
 
 
 
@@ -76,14 +83,18 @@
 
 \section[Undocumented Operation Specifications]{Undocumented Operation Specifications}
 \begin{itemize}
-\item icrash.environment.actAdministrator.outactAdministrator.ugAdministrateTheSystem 
+\item icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticCrises 
+\item icrash.concepts.primarytypes.classes.ctgetStatistic.sendStatistic 
+\item icrash.environment.actAdministrator.oegetStatistic 
 \item icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert 
 \item icrash.environment.actCoordinator.outactCoordinator.oeCreateAlert 
 \item icrash.environment.actCoordinator.outactCoordinator.oeCreateCrisis 
 \item icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis 
+\item icrash.environment.actDatabase.outactDatabase.oeSendStatistic 
+\item icrash.environment.actDatabase.outactDatabase.oegetStatistic 
 \item icrash.environment.actSystem.outactSystem.oeChooseInformation 
 \item icrash.environment.actSystem.outactSystem.oeSendNotification 
-\item icrash.environment.actSystem.outactSystem.oeSendStatistic 
+\item icrash.environment.actSystem.outactSystem.oegetStatistic 
 \item icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem 
 \item icrash.environment.actSystem.outactSystem.ugVictimSendFamilyNotification 
 \item icrash.environment.actSystem.outactSystem.ugWitnessSendFamilyNotification 

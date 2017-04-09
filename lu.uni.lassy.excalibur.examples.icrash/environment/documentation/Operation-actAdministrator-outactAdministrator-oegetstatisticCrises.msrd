@@ -1,0 +1,45 @@
+/*
+@author samri
+@date Sat Apr 08 16:33:05 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises
+//parameters
+@parameter
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises.statisticCrises
+""
+@endParameters
+
+@description "This operation will send the statistic for the sendding number of crises. This mean that it will show the sending crises with the time"
+
+//preProtocol descriptions
+@preP
+"The system is started"
+@preP
+"The function ugAdministarteTheSystem must be executed first. So the Administrator must bee login."
+@preP
+"The Database must be open. "
+@endPreP
+//preFunctional descriptions
+@preF
+"none "
+@endPreF
+//postFunctional descriptions
+@postF
+"At first search all the information for this statistic. So the database must bee open to get the information"
+@postF 
+"The information from the database will be calculate to the different times. "
+@postF 
+"After this the operation getstatisticCrises() give the statistic"
+@postF 
+"And at least the statistic will bee show it into the interface. "
+
+@endPostF
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP
+//example
+@example"none"

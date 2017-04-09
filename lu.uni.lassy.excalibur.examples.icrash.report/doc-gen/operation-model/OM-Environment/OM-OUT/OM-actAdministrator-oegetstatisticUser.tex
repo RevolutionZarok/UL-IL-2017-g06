@@ -1,0 +1,105 @@
+\subsection{Operation Model for oegetstatisticUser}
+
+\label{OM-oegetstatisticUser}
+
+
+The \msrcode{oegetstatisticUser} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oegetstatisticUser}{This operation will send the statistic for the user activity. This mean that it will show the user number with the time}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{statisticUser: dtgetStatisticUserActivity}{} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{The system is started}
+	\addnumberedsinglerow{PreP}{The function ugAdministarteTheSystem must be executed first. So the Administrator must bee login.}
+	\addnumberedsinglerow{PreP}{The Database must be open. }
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{none }
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{At first search all the information for this statistic. So the database must bee open to get the information}
+	\addnumberedsinglerow{PostF}{The information from the database will be calculate to the different times. }
+	\addnumberedsinglerow{PostF}{After this the operation getstatisticUser() give the statistic}
+	\addnumberedsinglerow{PostF}{And at least the statistic will bee show it into the interface. }
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+	\textbf{Example:}
+	\scriptsize
+	\lstset{language=PROLOG}
+	\begin{lstlisting}[firstnumber=auto,captionpos=b,caption=Example for \emph{oegetstatisticUser} operation]
+	none
+	\end{lstlisting}
+	\normalsize
+
+
+	% ------------------------------------------
+	% MCL Listing
+	% ------------------------------------------
+	\vspace{1cm}
+	The listing~\ref{OM-actAdministrator-oegetstatisticUser-MCL-LST} provides the \msrmessir (MCL-oriented) specification of the operation.
+	
+	\scriptsize
+	\vspace{0.5cm}
+	\begin{lstlisting}[style=MessirStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (MCL-oriented) specification of the operation \emph{oegetstatisticUser}.},label=OM-actAdministrator-oegetstatisticUser-MCL-LST]
+
+	/* Pre Protocol:*/ 
+	preP{let TheSystem : ctState in 
+		let TheActor : actAdministrator in 
+		let TheSystemToGetTheStatistic : actSystem in 
+		let TheSytemDatabase : actSystem in 
+		
+		self. rnActor . rnSystem = TheSystem 
+		and self. rnActor = TheActor
+		
+		/* PreP01 The system must run(is execute)*/
+		and TheSystem.vpStarted = true
+		/* PreP02 Must login ass Administrator*/
+		and TheActor.rnctAuthenticated . vpIsLogged = true
+		/* PreP02 The Database(SQL) must open because without this the information for the statistic can't be called. */
+		and TheSytemDatabase.openDatabase() = true}
+	
+	/* Pre Functional:*/
+	preF{true}
+	
+	/* Post Functional:*/ 
+	postF{let TheSystem: ctState in
+	    let TheActor:actAdministrator in
+	    let TheSystemToGetTheStatistic : actSystem in
+	    let TheSytemDatabase : actSystem in 
+	    
+		self.rnActor.rnSystem = TheSystem
+	    and self.rnActor = TheActor
+	    
+	    /*PostF01 At first search all the information for this statistic*/
+	    and TheSytemDatabase.searchInfromation(AdtStatistic)
+	    /*PostF02 This calculate the information*/
+	    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticUser)
+	    /*PostF03 get the Statistic*/
+	    and TheSystemToGetTheStatistic.getstatisticUser()
+	   	/*PostF04 show the statistic in the Interface.*/
+	   	and TheActor.rnInterfaceIN^oegetstatisticUser(AdtStatisticUser)}
+	
+	/* Post Protocol:*/ 
+	postP{ true}
+	
+	\end{lstlisting}
+	\normalsize 
+	
+	
+	
+	
+
+
+
+
+
