@@ -19,8 +19,8 @@
               <children>
                 <TableView layoutX="14.0" layoutY="22.0" prefHeight="305.0000999999975" prefWidth="533.0">
                   <columns>
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="230.0" text="Time" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="247.0" text="User  login" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="268.0" text="Time" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="299.0" text="User  login" />
                   </columns>
                 </TableView>
               </children>
@@ -34,7 +34,7 @@
                 <TableView layoutX="14.0" layoutY="14.0" prefHeight="313.0" prefWidth="533.0">
                   <columns>
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="268.0" text="Time" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="317.0" text="sended Crises" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="317.0" text="Sended Crises" />
                   </columns>
                 </TableView>
               </children>

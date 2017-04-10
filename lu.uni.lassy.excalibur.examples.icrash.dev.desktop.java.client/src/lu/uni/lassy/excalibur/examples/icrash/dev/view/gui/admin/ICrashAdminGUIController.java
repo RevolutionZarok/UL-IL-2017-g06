@@ -287,7 +287,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			
 			
 			
-			stage2.setX(350);
+			stage2.setX(360);
             stage2.setY(1);
 			stage2.show();
         
