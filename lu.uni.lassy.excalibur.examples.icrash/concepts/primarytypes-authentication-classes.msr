@@ -19,12 +19,12 @@ import icrash.concepts.primarytypes.authentication.datatypes
 Concept Model {
 
 		Primary Types {
-			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{//TODO: View
+			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{
 				attribute map:dtCaptchaResponseMap
 				
 				operation init():ptBoolean//TODO: Improve
 			}
-			class ctMailingService role rnctMailingService cardinality [1..1]{//TODO: View
+			class ctMailingService role rnctMailingService cardinality [1..1]{
 				operation init():ptBoolean//TODO: Improve
 			}
 		}

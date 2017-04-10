@@ -586,6 +586,10 @@
   <semanticResources>documentation/View-uci-uciugWitnessSendFamilyNotification.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugVictimSendFamilyNotification.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugWitnessSendFamilyNotification.msrd</semanticResources>
+  <semanticResources>documentation/View-cm-view13.msrd</semanticResources>
+  <semanticResources>documentation/View-cm-view14.msrd</semanticResources>
+  <semanticResources>documentation/View-cm-view15.msrd</semanticResources>
+  <semanticResources>documentation/View-cm-view16.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_X0EtsPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

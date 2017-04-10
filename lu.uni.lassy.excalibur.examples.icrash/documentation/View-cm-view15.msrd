@@ -1,0 +1,13 @@
+/*
+@author michm
+@date Mon Apr 10 08:25:20 CEST 2017
+*/
+
+
+@@view cm-view15
+@model Concept
+@level Local
+@sublevel Primary Datatype
+@number 15
+@description "This identification type is an extended type of a dtInteger in order to provide a validation method of the state of this value"
+@caption "The id type for a captcha test"

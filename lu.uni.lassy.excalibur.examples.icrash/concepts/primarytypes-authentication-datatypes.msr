@@ -12,7 +12,7 @@ import lu.uni.lassy.messir.libraries.calendar
 Concept Model {
 
 		Primary Types {
-			datatype dtCaptchaId extends dtInteger{//TODO: View
+			datatype dtCaptchaId extends dtInteger{
 				operation is():ptBoolean
 			}
 			datatype dtCaptcha {//TODO: link to images
@@ -31,7 +31,7 @@ Concept Model {
 				operation is():ptBoolean
 			}
 			datatype dtCaptchaResponseMap{//TODO: Is this sufficient?
-				operation is():ptBoolean//TODO: View
+				operation is():ptBoolean
 				
 				operation register(AdtResponse:dtCaptchaResponse):ptBoolean
 				operation get(AId:dtCaptchaId):dtCaptchaResponse
