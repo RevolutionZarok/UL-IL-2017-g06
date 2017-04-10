@@ -1,0 +1,6 @@
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaId
+@description "The id number of a captcha test and of it's related answer(s)"
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaId.is
+"Operation to check if the id number is valid for a captcha test"
+@endOperations

@@ -1,9 +1,0 @@
-package icrash.concepts.secondarytypes.associations {
-	
-	Concept Model {
-		
-		Secondary Types{
-		
-		}
-	}
-}

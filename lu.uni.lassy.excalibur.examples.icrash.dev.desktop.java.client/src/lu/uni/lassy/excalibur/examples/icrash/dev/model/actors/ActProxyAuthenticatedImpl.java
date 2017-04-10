@@ -17,7 +17,16 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.*;
+import org.apache.log4j.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAuthenticated;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompany;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -26,11 +35,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message.MessageType;
-
-import org.apache.log4j.Logger;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.captcha.CaptchaUI;
 
 /**
  * The Class ActProxyAuthenticatedImpl, which creates a client side actor of authenticated type.
@@ -94,6 +99,20 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 		log.info("ieMessage is: " + aMessage.getValue());
 		listOfMessages.add(new Message(MessageType.ieMessage, aMessage.getValue()));
 		return new PtBoolean(true);
+	}
+	
+	@Override
+	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha){
+		Logger log = Log4JUtils.getInstance().getLogger();
+		try{
+			new CaptchaUI().show();
+			log.info("CaptchaUI launched successfully");
+			return new PtBoolean(true);
+		}catch(Exception e){
+			log.error("CaptchaUI could not be launched", e);
+			return new PtBoolean(false);
+		}
+		
 	}
 
 	/**

@@ -1,0 +1,22 @@
+/*
+@author samri
+@date Wed Apr 05 11:46:30 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticTypes
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticTypes.statisticTypes
+""
+@endParameters
+
+@description "This a function will get the statistic for the average time for the 3 different types of crises 
+ "
+//postFunctional descriptions
+@postF 
+" After the execution, the system  get the information. So the stored information will bee send. "
+@endPostF
+//example
+@example" "

@@ -1,0 +1,16 @@
+/*
+@author michm
+@date Wed Apr 05 20:27:44 CEST 2017
+*/
+
+
+@@Primary Type Class icrash.concepts.primarytypes.authentication.classes.ctCaptchaService
+@description ""
+@attribute
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaService.map
+""
+@endAttributes
+@operation
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaService.init
+""
+@endOperations

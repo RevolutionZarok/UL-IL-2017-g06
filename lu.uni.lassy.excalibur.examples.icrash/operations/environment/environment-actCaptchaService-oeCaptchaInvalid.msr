@@ -1,0 +1,56 @@
+package icrash.environment.operations.actCaptchaService.outactCaptchaService.oeCaptchaInvalid {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment.authentication
+
+	Operation Model {
+
+		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean{
+			preP{
+				let TheSystem: ctState in
+  				let TheactValidator:actCaptchaService in
+				self.rnActor.rnSystem = TheSystem
+  
+				/* PreP01 */
+				and TheSystem.vpStarted = true
+				/* PreP02 */
+				and TheactValidator.rnactCaptchaValidator.map.get(AdtCaptchaId).is() = true
+			}
+			preF{
+				/* PreF01 */
+				AdtCaptchaId.is() = true
+			}
+			postF{
+				let TheSystem: ctState in
+				let TheactValidator:actCaptchaService in
+				let TheactAuthenticated:actAuthenticated in
+				
+				let AptStringMessageForTheactValidator: ptString in
+				  
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactValidator
+				
+				/* PostF01 */
+				and AptStringMessageForTheactValidator.eq('Your submitted captcha response is invalid. Try again.')
+				and TheactAuthenticated.rnInterfaceIN^ieMessage(AptStringMessageForTheactValidator)
+			}
+			postP{
+				let TheSystem: ctState in
+			  	let TheactValidator:actCaptchaService in
+			  
+			  	self.rnActor.rnSystem = TheSystem
+			  	and self.rnActor = TheactValidator
+			  	
+			  	/* PostP01 */
+				and TheactValidator.rnactCaptchaValidator.map.remove(AdtCaptchaId)
+			}
+		}
+	}
+}

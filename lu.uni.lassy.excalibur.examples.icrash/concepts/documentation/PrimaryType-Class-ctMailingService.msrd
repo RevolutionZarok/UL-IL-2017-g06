@@ -1,0 +1,12 @@
+/*
+@author michm
+@date Mon Apr 03 10:51:37 CEST 2017
+*/
+
+
+@@Primary Type Class icrash.concepts.primarytypes.authentication.classes.ctMailingService
+@description ""
+@operation
+icrash.concepts.primarytypes.authentication.classes.ctMailingService.init
+""
+@endOperations

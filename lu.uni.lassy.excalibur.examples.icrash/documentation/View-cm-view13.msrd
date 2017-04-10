@@ -1,0 +1,14 @@
+/*
+@author michm
+@date Mon Apr 10 08:22:53 CEST 2017
+*/
+
+
+@@view cm-view13
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 13
+@description "Represents the class associated with the actor responsible for captcha generation and verification"
+@caption "The service for captcha tests"
+@scale MaxWidth

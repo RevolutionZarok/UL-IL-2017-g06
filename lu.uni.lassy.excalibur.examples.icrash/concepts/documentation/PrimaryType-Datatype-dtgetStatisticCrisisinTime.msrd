@@ -1,0 +1,16 @@
+/*
+@author samri
+@date Mon Apr 03 16:36:56 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtgetStatisticCrisisinTime
+@description "Statistic representing a number of crises compared with a specific timespan
+"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticCrisisinTime.number
+"The amount of crises"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticCrisisinTime.time
+"The related timestamp"
+@endAttributes

@@ -15,8 +15,8 @@ import icrash.environment
 Operation Model {
 
 operation: actComCompany.outactComCompany.oeAlert(
- AetKind:etHumanKind,
- AdtMyDate:dtDate,
+ AetHumanKind:etHumanKind,
+ AdtDate:dtDate,
  AdtTime:dtTime,
  AdtPhoneNumber:dtPhoneNumber,
  AdtGPSLocation:dtGPSLocation,

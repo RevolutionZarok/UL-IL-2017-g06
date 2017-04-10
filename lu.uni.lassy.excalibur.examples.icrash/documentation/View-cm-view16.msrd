@@ -1,0 +1,13 @@
+/*
+@author michm
+@date Mon Apr 10 08:26:53 CEST 2017
+*/
+
+
+@@view cm-view16
+@model Concept
+@level Local
+@sublevel Primary Datatype
+@number 16
+@description "This data type is responsible to store answers to specific captcha tests in relation to the given id number"
+@caption "The storage for answers to captcha tests"

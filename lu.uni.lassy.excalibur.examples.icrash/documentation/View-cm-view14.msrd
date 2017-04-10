@@ -1,0 +1,14 @@
+/*
+@author michm
+@date Mon Apr 10 08:24:15 CEST 2017
+*/
+
+
+@@view cm-view14
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 14
+@description "Represents the class associated with the actor responsible for sending e-mails"
+@caption "The mailing service"
+@scale MaxWidth

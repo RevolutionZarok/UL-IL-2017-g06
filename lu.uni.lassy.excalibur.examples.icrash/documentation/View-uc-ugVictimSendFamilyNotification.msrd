@@ -1,11 +1,10 @@
 /*
 @author michm
-@date Mon Mar 27 14:16:55 CEST 2017
+@date Sun Apr 09 22:17:59 CEST 2017
 */
 
 
 @@view uc-ugVictimSendFamilyNotification
-@model Use-Case icrash.usecases.ugVictimSendFamilyNotification.ugVictimSendFamilyNotification 
+@model Use-Case icrash.usecases.ugVictimSendFamilyNotification.ugVictimSendFamilyNotification
 @description ""
 @caption ""
-@scale MaxWidth

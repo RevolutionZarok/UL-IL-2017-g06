@@ -11,7 +11,7 @@ package usecases.uciugAverageTypeofCrisis {
 				Database : actDatabase
 			}
 			use case steps {
-				User executed instanceof subfunction oeStatistic{
+				User executed instanceof subfunction oegetStatistic{
 					ieCallTypeWithTimeAverage() returned to Database
 				}
 				Database executed instanceof subfunction oeSendStatistic("For the average time for the different type of crises"){

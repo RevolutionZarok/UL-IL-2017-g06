@@ -1,0 +1,15 @@
+/*
+@author michm
+@date Mon Apr 03 10:35:48 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage.is
+@description "Determines if this captcha image is a valid data structure"
+//postFunctional descriptions
+@postF 
+"If the width is a dtInteger with a value greater than 0 and the height is a dtInteger with a value greater than 0, then the ptBoolean true is returned, otherwise the ptBoolean false is returned."
+@endPostF
+//example
+@example" "

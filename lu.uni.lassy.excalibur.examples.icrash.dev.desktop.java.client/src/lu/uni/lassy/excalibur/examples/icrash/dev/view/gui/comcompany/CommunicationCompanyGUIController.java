@@ -21,14 +21,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+/*
+ * This is the import section to be replaced by modifications in the CommunicationCompanyGUI.fxml document from the sample skeleton controller
+ */
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ListView.EditEvent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -41,19 +48,13 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOf
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.StringToNumberException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind; 
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractGUIController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.HasTables;
-/*
- * This is the import section to be replaced by modifications in the CommunicationCompanyGUI.fxml document from the sample skeleton controller
- */
-import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
 
 /*
  * This is the end of the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
@@ -102,7 +103,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		ListView<EtHumanKind> lstvwPersonType = new ListView<EtHumanKind>();
 		lstvwPersonType.setMinWidth(width);
 		lstvwPersonType.setMaxWidth(width);
-		lstvwPersonType.setMaxHeight(50);
+		lstvwPersonType.setMaxHeight(40);
 		lstvwPersonType.setItems( FXCollections.observableArrayList( EtHumanKind.values()));
 		lstvwPersonType.getSelectionModel().select(EtHumanKind.witness);
 		lstvwPersonType.setOnEditCommit(new EventHandler<ListView.EditEvent<EtHumanKind>>() {
@@ -142,6 +143,13 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		txtarComment.setMinWidth(width);
 		txtarComment.setMaxWidth(width);
 		txtarComment.setPromptText("Enter a comment");
+		CheckBox cboxFamily = new CheckBox();
+		cboxFamily.setText("Send family notification");
+		cboxFamily.setSelected(false);
+		TextArea txtarFamilyComment = new TextArea();
+		txtarFamilyComment.setMinWidth(width);
+		txtarFamilyComment.setMaxWidth(width);
+		txtarFamilyComment.setPromptText("Enter a comment for the family");
 		Button bttnOk = new Button("Send alert");
 		bttnOk.setDefaultButton(true);
 		Button bttnClear = new Button("Reset form");
@@ -153,7 +161,9 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		grdpn.add(txtfldPhone, 1, 5, 2, 1);
 		grdpn.add(txtfldLatitude, 1, 6, 2, 1);
 		grdpn.add(txtfldLongitude, 1, 7, 2, 1);
+		grdpn.add(cboxFamily, 1, 15);
 		grdpn.add(txtarComment, 1, 8, 2, 1);
+		grdpn.add(txtarFamilyComment, 1, 16, 2, 1);
 		grdpn.add(lblTimeHour, 1, 9);
 		grdpn.add(sldrHourPicker, 1, 10);
 		grdpn.add(txtfldCurrentSetHour, 2, 10);
@@ -163,8 +173,8 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		grdpn.add(lblTimeSecond, 1, 13);
 		grdpn.add(sldrSecondPicker, 1, 14);
 		grdpn.add(txtfldCurrentSetSecond, 2, 14);
-		grdpn.add(bttnOk, 1, 15);
-		grdpn.add(bttnClear, 2, 15);
+		grdpn.add(bttnOk, 1, 18);
+		grdpn.add(bttnClear, 2, 18);
 		bttnOk.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

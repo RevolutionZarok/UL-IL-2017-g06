@@ -6,6 +6,7 @@ import icrash.concepts.secondarytypes.datatypes
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.datatypes
 
 	Environment Model { 
 
@@ -26,6 +27,7 @@ import lu.uni.lassy.messir.libraries.calendar
 						extends actAuthenticated {
 
 			operation init():ptBoolean
+			operation oegetStatistic():ptBoolean
 
 			output interface outactAdministrator{
 				
@@ -38,22 +40,28 @@ import lu.uni.lassy.messir.libraries.calendar
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
 											
 				//Sam:
-				operation oeUserActivityStatistic() : ptBoolean
+				operation oegetstatisticUser(
+					statisticUser: dtgetStatisticUserActivity
+				) : ptBoolean
+				operation oegetstatisticCrises(
+					statisticCrises: dtgetStatisticCrisisinTime
+				) : ptBoolean
+				operation oegetstatisticTypesOfCrises(
+					statisticTypes: dtgetStatisticTypeCrisis
+				) : ptBoolean
+				/*operation oeUserActivityStatistic() : ptBoolean
 				operation oeNumberOfCrisis() : ptBoolean
 				operation oeTimeOfTypeOfCrisis() : ptBoolean
 				operation ugAdministrateTheSystem() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				operation oeStatistic() : ptBoolean*/
 			}
 			
 			input interface inactAdministrator{
 				
 				operation ieCoordinatorAdded():ptBoolean
 				operation ieCoordinatorDeleted():ptBoolean
-				
 				//Sam:
-				operation ieClickStatistic() : ptBoolean
-				operation ieStatistic() : ptBoolean
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+				operation iegetStatistic() : ptBoolean
 	 		}
 		}
 		
@@ -70,6 +78,12 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
 				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
 				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				operation oeUpdateCrisis(	AdtCrisisID:dtCrisisID, 
+											AetAlertStatus:etAlertStatus,
+											AdtDate:dtDate,
+											AdtTime:dtTime,
+											AdtComment:dtComment 
+											 ):ptBoolean // Vlad
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
 											AdtComment:dtComment 
@@ -83,11 +97,6 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
-				
-				//Vlad:
-				operation oeCreateAlert() : ptBoolean
-				operation oeCreateCrisis() : ptBoolean
-				operation oeUpdateCrisis() : ptBoolean
 			}
 			
 			input interface inactCoordinator{
@@ -130,7 +139,13 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
 				
 				//Vlad:
-				operation oeCreateAlert() : ptBoolean
+				operation oeCreateAlert(AetHumanKind:etHumanKind , 
+										AdtDate:dtDate , 
+										AdtTime:dtTime , 
+										AdtPhoneNumber:dtPhoneNumber ,
+										AdtGPSLocation:dtGPSLocation , 
+										AdtComment:dtComment 
+										):ptBoolean
 			}
 			
 			input interface inactAuthenticated{
@@ -154,41 +169,12 @@ import lu.uni.lassy.messir.libraries.calendar
 	 		}
 		}
 		
-		//Michel:
-		actor actCaptchaGenerator role rnactCaptchaGenerator cardinality[1 .. 1] {
-			input interface inactCaptchaGenerator {
-				operation ieGenerateCaptcha():ptBoolean//Documented
-				operation ieValidateCaptcha(AResponse:dtCaptchaResponse):ptBoolean//Documented
-			}
-			output interface outactCaptchaGenerator {
-				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean//Partly Documented
-			}
-		}
-		
-		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
-			input interface inactMailingService {
-				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
-			}
-			output interface outactMailingService {
-			}
-		}
-		
-		actor actCaptchaValidator role rnactCaptchaValidator cardinality[1 .. 1] {
-			input interface inactCaptchaValidator {
-				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
-			}
-			output interface outactCaptchaValidator {
-				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
-				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
-			}
-		}
-		
 		//Sam:
 		actor actSystem role rnactSystem cardinality[1 .. 1] {
 			input interface inactSystem {
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
+			/*	operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean
+				operation ieCallTypeWithTimeAverage() : ptBoolean*/
 			}
 			output interface outactSystem {
 				operation ugSercurelyUserSystem() : ptBoolean
@@ -197,6 +183,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeChooseInformation() : ptBoolean
 				operation oeSendNotification() : ptBoolean
 				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		
@@ -205,10 +192,11 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation ieCallTimeAndCrisisNumber() : ptBoolean
 				operation ieCallUserActivity() : ptBoolean
 				operation ieCallTypeWithTimeAverage() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
-				operation oeStatistic() : ptBoolean
+				
 			}
 			output interface outactDatabase {
+				operation oeSendStatistic() : ptBoolean
+				operation oegetStatistic() : ptBoolean
 			}
 		}
 		

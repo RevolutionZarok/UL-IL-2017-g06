@@ -5,24 +5,23 @@
 
 
 @@Actor icrash.environment.actDatabase
-@description ""
+@description "This is the abstract actor Database.This save all Information. "
 //input events
 @inputEvent
 icrash.environment.actDatabase.inactDatabase.ieCallTimeAndCrisisNumber
-""
+"give Time for the crises"
 @inputEvent
 icrash.environment.actDatabase.inactDatabase.ieCallUserActivity
-""
+"Give the user activity with the time"
 @inputEvent
 icrash.environment.actDatabase.inactDatabase.ieCallTypeWithTimeAverage
-""
-@inputEvent
-icrash.environment.actDatabase.inactDatabase.oeSendStatistic
-""
-@inputEvent
-icrash.environment.actDatabase.inactDatabase.oeStatistic
-""
+"Give the average time of the 3 type of crises. "
 
 @endInputEvents
 //output events
 
+@outputEvent icrash.environment.actDatabase.outactDatabase.oeSendStatistic
+" send the statistic to the GUI"
+@outputEvent icrash.environment.actDatabase.outactDatabase.oegetStatistic
+" give the statistic "
+@endOutputEvents

@@ -3,31 +3,14 @@
 @date Mon Mar 27 10:25:06 CEST 2017
 */
 
-
 @@Actor icrash.environment.actSystem
-@description ""
+@description "This is the actor System "
 //input events
-@inputEvent
-icrash.environment.actSystem.inactSystem.ieCallTimeAndCrisisNumber
-""
-@inputEvent
-icrash.environment.actSystem.inactSystem.ieCallUserActivity
-""
-@inputEvent
-icrash.environment.actSystem.inactSystem.ieCallTypeWithTimeAverage
-""
 
-@endInputEvents
 //output events
 @outputEvent
 icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem
-""
-@outputEvent
-icrash.environment.actSystem.outactSystem.ugVictimSendFamilyNotification
-""
-@outputEvent
-icrash.environment.actSystem.outactSystem.ugWitnessSendFamilyNotification
-""
+"For the login"
 @outputEvent
 icrash.environment.actSystem.outactSystem.oeChooseInformation
 ""
@@ -36,6 +19,9 @@ icrash.environment.actSystem.outactSystem.oeSendNotification
 ""
 @outputEvent
 icrash.environment.actSystem.outactSystem.oeSendStatistic
-""
+"Send the statistic "
+@outputEvent
+icrash.environment.actSystem.outactSystem.oegetStatistic
+"Get the statistic"
 
 @endOutputEvents

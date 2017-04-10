@@ -1,0 +1,25 @@
+package icrash.environment.operations.actAuthenticated.outactAuthenticated.oeCreateAlert {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+
+	Operation Model {
+
+		operation: icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert(AetHumanKind:etHumanKind, 
+																							AdtDate:dtDate,
+																							AdtTime:dtTime, 
+																							AdtPhoneNumber:dtPhoneNumber, 
+																							AdtGPSLocation:dtGPSLocation, 
+																							AdtComment:dtComment):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		}
+	}
+}

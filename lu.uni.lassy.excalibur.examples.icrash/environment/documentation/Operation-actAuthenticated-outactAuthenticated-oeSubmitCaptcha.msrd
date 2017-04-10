@@ -15,23 +15,25 @@ icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtRespo
 @description "Submits a response to a captcha test to the system"
 //preProtocol descriptions
 @preP
-"the actor must have requested to answer to a captcha test first. (i.e. the system must have send a captcha test to the actor first)"
+"the system must be started"
+@preP
+"the actor must not be logged in yet"
+@preP
+"the system is awaiting the actor to answer to a captcha test"
 @endPreP
 //preFunctional descriptions
 @preF
-"none"
+"the given answer to a captcha test is valid"
+@preF
+"the given answer has the same id than the captcha test the system is waiting for"
 @endPreF
 //postFunctional descriptions
 @postF 
-"if the response is correct (validated successfully by the system), the actor is notified with a positive message"
-@postF 
-"if the response is incorrect (validated erroneously by the system), the actor is notified with a negative message"
+"none"//TODO: Verify
 @endPostF
 //postProtocol descriptions
 @postP 
-"if the response is correct (validated successfully by the system), the actor can proceed normally with the login process"
-@postP 
-"if the response is incorrect (validated erroneously by the system), the current login process is aborted. After 5 wrong attempts to submit a response to a captcha test, the user name used to log in will be blocked."
+"the system is no longer expecting the actor to answer a captcha test"
 @endPostP
 //example
 @example" "

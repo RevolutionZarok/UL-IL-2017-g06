@@ -1,0 +1,15 @@
+/*
+@author samri
+@date Mon Apr 03 16:38:51 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtgetStatisticTypeCrisis
+@description "Show what the attribute for the static the average time of the different crises"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticTypeCrisis.typeC
+"The type of the crisis"
+@attribute
+icrash.concepts.primarytypes.datatypes.dtgetStatisticTypeCrisis.time
+"The related timestamp representing the date"
+@endAttributes
