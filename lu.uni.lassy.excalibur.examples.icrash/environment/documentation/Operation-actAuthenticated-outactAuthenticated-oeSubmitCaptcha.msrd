@@ -23,7 +23,7 @@ icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtRespo
 @endPreP
 //preFunctional descriptions
 @preF
-"the given answer to a captcha test is valid"
+"the given answer to a captcha test is a valid data structure"
 @preF
 "the given answer has the same id than the captcha test the system is waiting for"
 @endPreF

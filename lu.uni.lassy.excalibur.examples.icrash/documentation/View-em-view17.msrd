@@ -1,0 +1,13 @@
+/*
+@author michm
+@date Tue Apr 11 07:31:56 CEST 2017
+*/
+
+
+@@view em-view17-actCaptchaService
+@model Environment
+@level Local
+@number 17
+@description "This represents the actor responsible to generate captcha tests and validate answers given to a specific captcha test"
+@caption "The captcha service"
+@scale MaxWidth

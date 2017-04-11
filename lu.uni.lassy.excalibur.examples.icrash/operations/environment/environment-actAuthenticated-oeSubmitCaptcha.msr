@@ -36,7 +36,7 @@ import icrash.environment.authentication
 				/* PreF01 */
 				and AdtResponse.is() = true
 				/* PreF02 */
-				and TheactAuthenticates.rnctAuthenticated.awaitedCaptchaId.eq(AdtResponse.id) = true
+				and TheactAuthenticated.rnctAuthenticated.awaitedCaptchaId.eq(AdtResponse.id) = true
 			}
 			postF{
 				/*let TheSystem: ctState in
