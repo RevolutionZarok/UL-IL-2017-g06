@@ -7,21 +7,21 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
-public class DtCaptcha implements Serializable, JIntIs{//TODO: Complete this class (Images)
-	
-	private static final long serialVersionUID = 7612248309713646319L;
+public class DtCaptchaResponse implements Serializable, JIntIs{
+
+	private static final long serialVersionUID = 2666825432999015497L;
 
 	private DtCaptchaId id;
-	private DtString question;
+	private DtString response;
 	
-	public DtCaptcha(DtCaptchaId id, PtString question){
+	public DtCaptchaResponse(DtCaptchaId id, PtString response){
 		this.id = id;
-		this.question = new DtString(question);
+		this.response = new DtString(response);
 	}
 
 	@Override
 	public PtBoolean is() {
-		return new PtBoolean(id.is().getValue() && question.value.getValue().length() >= 10);
+		return new PtBoolean(id.is().getValue() && response.value.getValue().length() >= 0);
 	}
 
 }
