@@ -243,17 +243,14 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		setUpMessageTables(tblvwAdminMessages);
 	}
 	
-	// This function show the button for the Statistic and also whta happen if the administrator click on the button 
+	// This function show the button for the Statistic and also what happen if the administrator click on the button 
 	// so a new windows will open and show a table with the statistic for the administrator. The 
 	private void showStatistic(TypeOfStatic type){
 		for(int i = anchrpnCoordinatorDetails.getChildren().size() -1; i >= 0; i--)
 			anchrpnCoordinatorDetails.getChildren().remove(i);
 		
 		GridPane grdpn = new GridPane();
-		
-		
-		
-        
+
 		Button bttntypOK = null;
 		//grdpn.add(txtfldUserID, 1, 1);
 		bttntypOK = new Button("Delete");
@@ -269,7 +266,6 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		try {		
 			URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
 			FXMLLoader loader = new FXMLLoader(url);
-			System.out.println(" Hallo333 ");
 			Parent root2 = (Parent)loader.load();
 			
 			//root2 = FXMLLoader.load(getClass().getResource("ICrashAdminStatisticGUI.fxml"));
@@ -284,9 +280,6 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
                 }
              });
 			//Scene scene2 = new Scene(root2);
-			
-			
-			
 			stage2.setX(360);
             stage2.setY(1);
 			stage2.show();

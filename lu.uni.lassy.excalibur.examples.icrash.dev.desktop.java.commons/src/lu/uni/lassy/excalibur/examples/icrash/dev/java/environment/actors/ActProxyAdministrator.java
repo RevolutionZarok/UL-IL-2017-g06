@@ -25,52 +25,112 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
  * The Interface ActProxyAdministrator.
  */
 public interface ActProxyAdministrator extends ActProxyAuthenticated {
-	
+
 	/**
 	 * Add a coordinator to the system, using the parameters passed.
 	 *
-	 * @param aDtCoordinatorID The ID to use when creating the coordinator
-	 * @param aDtLogin The username to use when creating the coordinator
-	 * @param aDtPassword The password to use when creating the coordinator
+	 * @param aDtCoordinatorID
+	 *            The ID to use when creating the coordinator
+	 * @param aDtLogin
+	 *            The username to use when creating the coordinator
+	 * @param aDtPassword
+	 *            The password to use when creating the coordinator
 	 * @return The success of the method
-	 * @throws RemoteException Thrown if the server is offline
-	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 * @throws NotBoundException
+	 *             Thrown if the server has not been bound correctly in RMI
+	 *             settings
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin,DtPassword aDtPassword) throws RemoteException, NotBoundException;
-	
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin, DtPassword aDtPassword)
+			throws RemoteException, NotBoundException;
+
 	/**
 	 * Delete a coordinator to the system, using the parameters passed.
 	 *
-	 * @param aDtCoordinatorID The ID to use when looking for the coordinator to delete
+	 * @param aDtCoordinatorID
+	 *            The ID to use when looking for the coordinator to delete
 	 * @return The success of the method
-	 * @throws RemoteException Thrown if the server is offline
-	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 * @throws NotBoundException
+	 *             Thrown if the server has not been bound correctly in RMI
+	 *             settings
 	 */
 	public PtBoolean oeDeleteCoordinator(DtCoordinatorID aDtCoordinatorID) throws RemoteException, NotBoundException;
-	
+
+	////////////////////////////
+	public PtBoolean oegetStatistic() throws RemoteException, NotBoundException;
+
+	public PtBoolean oegetStatisticUserActivity() throws RemoteException, NotBoundException;
+
+	public PtBoolean oegetStatisticNumberOfCrises() throws RemoteException, NotBoundException;
+
+	public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException;
+
+	///////////////////////////
 	/**
-	 * A message received from the server side actor saying the coordinator was created .
+	 * A message received from the server side actor saying the coordinator was
+	 * created .
 	 *
 	 * @return The success of the method
-	 * @throws RemoteException Thrown if the server is offline
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
 	 */
+
 	public PtBoolean ieCoordinatorAdded() throws RemoteException;
-	
+
 	/**
-	 * A message received from the server side actor saying the coordinator was deleted.
+	 * A message received from the server side actor saying the coordinator was
+	 * deleted.
 	 *
 	 * @return The success of the method
-	 * @throws RemoteException Thrown if the server is offline
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
 	 */
 	public PtBoolean ieCoordinatorDeleted() throws RemoteException;
-	
+
 	/**
-	 * A message received from the server side actor saying the coordinator was updated.
+	 * A message received from the server side actor saying the coordinator was
+	 * updated.
 	 *
 	 * @return The success of the method
-	 * @throws RemoteException Thrown if the server is offline
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
 	 */
 	public PtBoolean ieCoordinatorUpdated() throws RemoteException;
 	
-	
+	/////////////////////////
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 */
+	public PtBoolean iegetStatistic() throws RemoteException;
+
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 */
+	public PtBoolean iegetStatisticUserActivity() throws RemoteException;
+
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 */
+	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException;
+
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 *             Thrown if the server is offline
+	 */
+	public PtBoolean iegetStatisticTypes() throws RemoteException;
+
 }
