@@ -50,7 +50,7 @@ postF {
     /*PostF01 At first search all the information for this statistic*/
     and TheSytemDatabase.searchInfromation(AdtStatistic)
     /*PostF02 This calculate the information*/
-    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticCrises)
+    and TheSystemToGetTheStatistic.calculeTheStatistic(aDtStatisticCrises)
     /*PostF03 get the Statistic*/
     and TheSystemToGetTheStatistic.getstatisticCrises()
     /*PostF04 show the statistic in the Interface.*/

@@ -19,6 +19,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
@@ -30,7 +32,7 @@ import org.apache.log4j.Logger;
  * The Class ActProxyAdministratorImpl, that implements the client side actor
  * for the administrator.
  */
-public class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl implements ActProxyAdministrator {
+public  class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl implements ActProxyAdministrator {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 227L;
@@ -96,20 +98,20 @@ public class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl impleme
 
 	}
 	// oe function-- Statistic for the user activity with the time
-	synchronized public PtBoolean oegetStatisticUserActivity() throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oegetStatisticUserActivity(DtgetstatisticUserActivity aDtgetstatisticUserActivity) throws RemoteException, NotBoundException {
 		if (getServerSideActor() != null) {
 			// TODO
-			return ((ActAdministrator) getServerSideActor()).oegetStatistic();
+			return ((ActAdministrator) getServerSideActor()).oegetStatisticUserActivity(aDtgetstatisticUserActivity);
 		} else {
 			return new PtBoolean(false);
 		}
 
 	}
 	// oe function-- Statistic for the number of sending crises
-	synchronized public PtBoolean oegetStatisticNumberOfCrises() throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oegetStatisticNumberOfCrises(DtgetStatisticNumberOfCrises aDtgetstatisticNumberOfCrises) throws RemoteException, NotBoundException {
 		if (getServerSideActor() != null) {
 			// TODO
-			return ((ActAdministrator) getServerSideActor()).oegetStatistic();
+			return ((ActAdministrator) getServerSideActor()).oegetStatisticNumberOfCrises(aDtgetstatisticNumberOfCrises);
 		} else {
 			return new PtBoolean(false);
 		}
@@ -208,4 +210,10 @@ public class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl impleme
 		listOfMessages.add(new Message(MessageType.iegetstatisticTypes));
 		return new PtBoolean(true);
 	}
+
+	
+
+	
+
+	
 }

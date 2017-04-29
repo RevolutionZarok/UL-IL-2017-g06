@@ -19,6 +19,8 @@ import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
 /**
@@ -62,9 +64,9 @@ public interface ActProxyAdministrator extends ActProxyAuthenticated {
 	////////////////////////////
 	public PtBoolean oegetStatistic() throws RemoteException, NotBoundException;
 
-	public PtBoolean oegetStatisticUserActivity() throws RemoteException, NotBoundException;
+	public PtBoolean oegetStatisticUserActivity(DtgetstatisticUserActivity aDtgetstatisticUserActivity) throws RemoteException, NotBoundException;
 
-	public PtBoolean oegetStatisticNumberOfCrises() throws RemoteException, NotBoundException;
+	public PtBoolean oegetStatisticNumberOfCrises(DtgetStatisticNumberOfCrises aDtgetstatisticNumberOfCrises) throws RemoteException, NotBoundException;
 
 	public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException;
 

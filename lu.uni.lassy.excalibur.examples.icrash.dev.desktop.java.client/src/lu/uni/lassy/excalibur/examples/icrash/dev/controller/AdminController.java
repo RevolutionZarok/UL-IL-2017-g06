@@ -25,7 +25,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntI
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyAdministratorImpl;
@@ -111,6 +113,7 @@ public class AdminController extends AbstractUserController {
 	public PtBoolean oegetStatistic()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			
 			try {
 			return actorAdmin.oegetStatistic();
 			} catch (RemoteException e) {
@@ -123,11 +126,15 @@ public class AdminController extends AbstractUserController {
 		}
 		return new PtBoolean(false);
 	}
-	public PtBoolean oegetStatisticUserActivity()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+	//TODO define a valuer for int so i must give something with this function. 
+	public PtBoolean oegetStatisticUserActivity(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			DtgetstatisticUserActivity aDtgetstatisticUserActivity = new DtgetstatisticUserActivity(new PtInteger(statisticNumber));
+			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
+			ht.put(aDtgetstatisticUserActivity, aDtgetstatisticUserActivity.value.getValue());
 			try {
-			return actorAdmin.oegetStatisticUserActivity();
+			return actorAdmin.oegetStatisticUserActivity(aDtgetstatisticUserActivity);
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerOfflineException();
@@ -138,9 +145,12 @@ public class AdminController extends AbstractUserController {
 		}
 		return new PtBoolean(false);
 	}
-	public PtBoolean oegetStatisticNumberOfCrises()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+	public PtBoolean oegetStatisticNumberOfCrises(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			DtgetstatisticUserActivity aDtgetstatisticUserActivity = new DtgetstatisticUserActivity(new PtInteger(statisticNumber));
+			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
+			ht.put(aDtgetstatisticUserActivity, aDtgetstatisticUserActivity.value.getValue());
 			try {
 			return actorAdmin.oegetStatistic();
 			} catch (RemoteException e) {
@@ -153,6 +163,7 @@ public class AdminController extends AbstractUserController {
 		}
 		return new PtBoolean(false);
 	}
+	//TODO make a time value not a int because is for the average time. 
 	public PtBoolean oegetStatisticTypes()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();

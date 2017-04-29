@@ -117,6 +117,16 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     /** The tableview of the recieved messages from the system */
     @FXML
     private TableView<Message> tblvwAdminMessages;
+  
+    /** The tableview of the statistic for the user activity **/
+    @FXML
+    private TableView<Message> tblvwUserActivity;
+    /** The tableview of the statistic for the number of sending crises **/
+    @FXML
+    private TableView<Message> tblvwNumberOfCrises;
+    /** The tableview of the statistic for the different types **/
+    @FXML
+    private TableView<Message> tblvwDifferentTypes;
 
     /** The button that allows a user to logoff */
     @FXML
@@ -152,7 +162,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	//
 	private enum TypeOfStatic{
 		// Show Statistic 
-		Call
+		Call,
+		
+		CallUser
 	}
 
     /**
@@ -263,26 +275,50 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setLeftAnchor(grdpn, 0.0);
 		AnchorPane.setBottomAnchor(grdpn, 0.0);
 		AnchorPane.setRightAnchor(grdpn, 0.0);
-		try {		
-			URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
-			FXMLLoader loader = new FXMLLoader(url);
-			Parent root2 = (Parent)loader.load();
-			
-			//root2 = FXMLLoader.load(getClass().getResource("ICrashAdminStatisticGUI.fxml"));
-			Stage stage2 = new Stage();
-			stage2.setTitle("iCrash Admin Statistic");
-			stage2.setScene(new Scene(root2));
-			stage2.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent e) {
-                   Platform.exit();
-                   System.exit(0);
-                }
-             });
-			//Scene scene2 = new Scene(root2);
-			stage2.setX(360);
-            stage2.setY(1);
-			stage2.show();
+		try {	
+			switch (type) {
+			case Call:
+				URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
+				FXMLLoader loader = new FXMLLoader(url);
+				Parent root2 = (Parent)loader.load();
+				
+				Stage stage2 = new Stage();
+				stage2.setTitle("iCrash Admin Statistic");
+				stage2.setScene(new Scene(root2));
+				stage2.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	                @Override
+	                public void handle(WindowEvent e) {
+	                   Platform.exit();
+	                   System.exit(0);
+	                }
+	             });
+				stage2.setX(360);
+	            stage2.setY(1);
+				stage2.show();
+				break;
+			case CallUser:
+				URL url1 = this.getClass().getResource("iCrashAdminStatisticUserLoginGUI.fxml");
+				FXMLLoader loader1 = new FXMLLoader(url1);
+				Parent root21 = (Parent)loader1.load();
+				
+				Stage stage21 = new Stage();
+				stage21.setTitle("iCrash Admin Statistic");
+				stage21.setScene(new Scene(root21));
+				stage21.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	                @Override
+	                public void handle(WindowEvent e) {
+	                   Platform.exit();
+	                   System.exit(0);
+	                }
+	             });
+				//Scene scene2 = new Scene(root2);
+				stage21.setX(360);
+	            stage21.setY(1);
+				stage21.show();
+
+			default:
+				break;
+			}
         
 		} 
 		catch (IOException e) {
@@ -290,6 +326,43 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		/*bttntypOK.setDefaultButton(true);
+		bttntypOK.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (!checkIfAllDialogHasBeenFilledIn(grdpn))
+					showWarningNoDataEntered();
+				else{
+					try {
+						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
+						switch(type){
+						case Call:
+							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText()).getValue()){
+								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
+								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
+							}
+							else
+								showErrorMessage("Unable to add coordinator", "An error occured when adding the coordinator");
+							break;
+						case CallUser:
+							if (userController.oeDeleteCoordinator(txtfldUserID.getText()).getValue()){
+								for(CreateICrashCoordGUI window : listOfOpenWindows){
+									if (window.getDtCoordinatorID().value.getValue().equals(coordID.value.getValue()))
+										window.closeWindow();
+								}
+								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
+							}
+							else
+								showErrorMessage("Unable to delete coordinator", "An error occured when deleting the coordinator");
+							break;
+						}
+					} catch (ServerOfflineException | ServerNotBoundException | IncorrectFormatException e) {
+						showExceptionErrorMessage(e);
+					}					
+				}
+			}
+		});*/
 		
 	}
 
