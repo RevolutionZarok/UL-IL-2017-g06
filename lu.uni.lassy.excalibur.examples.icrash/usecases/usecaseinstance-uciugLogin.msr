@@ -44,7 +44,7 @@ import icrash.environment.authentication
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
 					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {
@@ -64,7 +64,7 @@ import icrash.environment.authentication
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
 					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {
@@ -87,7 +87,7 @@ import icrash.environment.authentication
 				MKremer executed instanceof subfunction oeLogin("mkremer003", "Raichu124") {
 					ieGenerateCaptcha() returned to CaptchaService
 				}
-				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test", "Captcha answer") {
+				CaptchaService executed instanceof subfunction oeSendCaptcha("Captcha test") {
 					ieConfirmCaptcha("Captcha test") returned to MKremer
 				}
 				MKremer executed instanceof subfunction oeSubmitCaptcha("Captcha user response") {

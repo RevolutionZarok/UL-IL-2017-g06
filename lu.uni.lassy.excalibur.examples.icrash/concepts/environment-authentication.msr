@@ -25,7 +25,7 @@ Environment Model {
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
 			}
 			output interface outactCaptchaService {
-				operation oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean//Partly Documented
+				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean
 				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
 				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
 			}

@@ -13,7 +13,7 @@ import icrash.environment.authentication
 
 	Operation Model {
 
-		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha(AdtCaptcha:dtCaptcha, AdtResponse:dtCaptchaResponse):ptBoolean{
+		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean{
 			preP{
 				let TheSystem: ctState in
 				self.rnActor.rnSystem = TheSystem
@@ -26,10 +26,6 @@ import icrash.environment.authentication
 			preF{
 				/* PreF01 */
 				AdtCaptcha.is() = true
-				/* PreF02 */
-				and AdtResponse.is() = true
-				/* PreF03 */
-				and AdtCaptcha.id.eq(AdtResponse.id) = true
 			}
 			postF{
 				/*let TheSystem: ctState in

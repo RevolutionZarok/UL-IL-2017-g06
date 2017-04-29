@@ -16,9 +16,6 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendC
 @parameter
 icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha.AdtCaptcha
 "The generated captcha test"
-@parameter
-icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha.AdtResponse
-"The correct answer to the generated captcha test"
 @endParameters
 
 @description "Sends a generated captcha test to the system"
@@ -31,10 +28,6 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendC
 //preFunctional descriptions
 @preF
 "the generated captcha test is supposed to be valid"
-@preF
-"the generated captcha answer is supposed to be valid"
-@preF
-"the generated captcha answer should be related to the captcha test over it's id number"
 @endPreF
 //postFunctional descriptions
 @postF
