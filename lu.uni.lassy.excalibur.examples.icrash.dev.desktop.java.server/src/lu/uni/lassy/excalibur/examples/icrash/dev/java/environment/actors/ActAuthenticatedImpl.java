@@ -104,7 +104,8 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		}else{//TODO: Excalibur
 			if(loginCounter.getValue() >= 3){
 				log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
-				ieConfirmCaptcha(new DtCaptcha());
+				
+				ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
 			}else{
 				log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			}

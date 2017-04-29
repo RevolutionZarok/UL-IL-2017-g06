@@ -19,5 +19,19 @@ public class DtCaptchaId extends DtInteger implements Serializable, JIntIs{
 	public PtBoolean is() {
 		return new PtBoolean(value.getValue() >= 0);
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof DtCaptchaId){
+			return ((DtCaptchaId)obj).value.getValue() == this.value.getValue();
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public int hashCode(){
+		return this.value.getValue();
+	}
 
 }

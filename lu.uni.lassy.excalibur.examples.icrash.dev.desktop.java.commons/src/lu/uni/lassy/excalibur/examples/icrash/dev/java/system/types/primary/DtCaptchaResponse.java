@@ -23,5 +23,28 @@ public class DtCaptchaResponse implements Serializable, JIntIs{
 	public PtBoolean is() {
 		return new PtBoolean(id.is().getValue() && response.value.getValue().length() >= 0);
 	}
+	
+	public DtCaptchaId getId(){
+		return id;//TODO: Add to messir
+	}
+	
+	public DtString getResponse(){
+		return response;//TODO: Add to messir
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof DtCaptchaResponse){
+			DtCaptchaResponse ores = (DtCaptchaResponse) obj;
+			return ores.id.equals(this.id) && ores.response.eq(this.response).getValue();
+		}else{
+			return false;
+		}
+	}
+	
+	@Override
+	public int hashCode(){
+		return (id.hashCode() * 32) + response.value.getValue().hashCode();
+	}
 
 }
