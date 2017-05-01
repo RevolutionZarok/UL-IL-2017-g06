@@ -41,7 +41,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		
 		log.info("Generating captcha test...");
 		DtCaptchaId id = new DtCaptchaId(new PtInteger((int)(Integer.MAX_VALUE * Math.random())));
-		DtCaptcha captchaTest = new DtCaptcha(id, new PtString("Select all the dogs"));//TODO: Captcha -> make variable
+		DtCaptcha captchaTest = new DtCaptcha(id, new PtString("Select the pictures showing a dog"));//TODO: Captcha -> make variable
 		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString(buildBinaryAnswerString(new boolean[]{false, true, true, false, false, false, false, true, true})));//TODO: Captcha -> make variable
 
 		log.info("Saving captcha test and answer...");

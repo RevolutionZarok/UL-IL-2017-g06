@@ -36,7 +36,7 @@ public class CaptchaUIController {
 	
 	@FXML
     public void initialize() {//TODO: Load images from actual captcha test
-		labelQuestion.setText("Select the pictures containing a dog");
+		labelQuestion.setText(captchaTest.getQuestion().toString());
 		img0.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_0.jpg"));
 		img1.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_1.jpg"));
 		img2.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_2.jpg"));
