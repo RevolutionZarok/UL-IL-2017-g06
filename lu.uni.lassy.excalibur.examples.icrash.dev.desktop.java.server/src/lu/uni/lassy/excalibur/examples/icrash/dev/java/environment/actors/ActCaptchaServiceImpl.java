@@ -42,7 +42,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		log.info("Generating captcha test...");
 		DtCaptchaId id = new DtCaptchaId(new PtInteger((int)(Integer.MAX_VALUE * Math.random())));
 		DtCaptcha captchaTest = new DtCaptcha(id, new PtString("Select all the dogs"));//TODO: Captcha -> make variable
-		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString("answer"));//TODO: Captcha -> make variable
+		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString(buildBinaryAnswerString(new boolean[]{false, true, true, false, false, false, false, true, true})));//TODO: Captcha -> make variable
 
 		log.info("Saving captcha test and answer...");
 		responseMap.register(captchaAnswer);
@@ -50,11 +50,37 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		iCrashSys_Server.oeSendCaptcha(captchaTest);
 		return new PtBoolean(true);
 	}
+	
+	private String buildBinaryAnswerString(boolean answer[]){
+		if(answer.length != 9){
+			throw new IllegalArgumentException();
+		}
+		StringBuilder sb = new StringBuilder();
+		int currentChar = 0;
+		for(int i = 0 ; i < 9 ; i++){
+			currentChar |= (answer[i] ? (1 << i) : 0);
+		}
+		sb.append((char)(currentChar & 255));
+		sb.append((char)((currentChar >> 8) & 255));
+		return sb.toString();
+	}
 
 	@Override
 	public PtBoolean ieVerifyCaptcha(DtCaptchaResponse AdtCaptchaResponse) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		Logger log = Log4JUtils.getInstance().getLogger();
+		DtCaptchaResponse master = responseMap.get(AdtCaptchaResponse.getId());
+		if(master.is().getValue()){
+			if(master.compare(AdtCaptchaResponse).getValue()){
+				log.info("Captcha answer is valid");
+				oeCaptchaValid(master.getId());
+			}else{
+				log.info("Captcha answer is invalid");
+				oeCaptchaInvalid(master.getId());
+			}
+		}else{
+			log.info("Unknown captcha test answer received");
+		}
+		return new PtBoolean(true);
 	}
 
 	@Override
@@ -68,13 +94,13 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 	@Override
 	public PtBoolean oeCaptchaInvalid(DtCaptchaId AdtCaptchaId) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new PtBoolean(true);
 	}
 
 	@Override
 	public PtBoolean oeCaptchaValid(DtCaptchaId AdtCaptchaId) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return new PtBoolean(true);
 	}
 	
 	public static ActCaptchaService getInstance() throws RemoteException{//TODO: RMI

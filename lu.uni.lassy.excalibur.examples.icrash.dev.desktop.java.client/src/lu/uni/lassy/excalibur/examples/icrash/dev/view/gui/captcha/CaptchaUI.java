@@ -7,14 +7,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
 
 public class CaptchaUI {
 	
 	private final Parent root;
 
-	public CaptchaUI(){
+	public CaptchaUI(DtCaptcha captchaTest, ActProxyAuthenticated actAuthenticated){
 		try {
-			root = FXMLLoader.load(getClass().getResource("CaptchaUI.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("CaptchaUI.fxml"));
+			loader.setController(new CaptchaUIController(captchaTest, actAuthenticated));
+			root = loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException("This should not happen");

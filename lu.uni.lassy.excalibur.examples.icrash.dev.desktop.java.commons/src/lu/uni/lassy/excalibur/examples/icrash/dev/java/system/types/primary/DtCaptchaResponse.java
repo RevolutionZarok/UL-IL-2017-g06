@@ -32,6 +32,10 @@ public class DtCaptchaResponse implements Serializable, JIntIs{
 		return response;//TODO: Add to messir
 	}
 	
+	public PtBoolean compare(DtCaptchaResponse response){
+		return new PtBoolean(equals(response));//TODO: Add to messir
+	}
+	
 	@Override
 	public boolean equals(Object obj){
 		if(obj instanceof DtCaptchaResponse){

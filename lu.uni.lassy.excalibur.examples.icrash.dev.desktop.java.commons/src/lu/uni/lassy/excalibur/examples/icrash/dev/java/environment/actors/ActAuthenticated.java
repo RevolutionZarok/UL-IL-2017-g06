@@ -18,6 +18,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -90,4 +91,12 @@ public interface ActAuthenticated extends java.rmi.Remote, Serializable, JIntIsA
 	 * @throws RemoteException
 	 */
 	public PtBoolean ieConfirmCaptcha(DtCaptcha aCaptcha) throws RemoteException;
+	
+	/**
+	 * Submits an answer to the previously given captcha test
+	 * @param captcha The answer to the given captcha test
+	 * @return The success of the method
+	 * @throws RemoteException
+	 */
+	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException;
 }

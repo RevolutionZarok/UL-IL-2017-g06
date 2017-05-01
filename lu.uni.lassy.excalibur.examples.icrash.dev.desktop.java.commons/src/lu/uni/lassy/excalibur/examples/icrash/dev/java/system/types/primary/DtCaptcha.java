@@ -23,5 +23,9 @@ public class DtCaptcha implements Serializable, JIntIs{//TODO: Complete this cla
 	public PtBoolean is() {
 		return new PtBoolean(id.is().getValue() && question.value.getValue().length() >= 10);
 	}
+	
+	public DtCaptchaId getId(){//TODO: Messir
+		return id;
+	}
 
 }

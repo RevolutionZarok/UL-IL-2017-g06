@@ -26,6 +26,7 @@ import org.apache.log4j.Logger;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -195,6 +196,14 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 				iterator.remove();
 			}
 		}
+		return new PtBoolean(true);
+	}
+
+	@Override
+	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException{
+		Logger log = Log4JUtils.getInstance().getLogger();
+		log.info("actAuthenticated has submitted an answer to a captcha test");
+		ActCaptchaServiceImpl.getInstance().ieVerifyCaptcha(aResponse);
 		return new PtBoolean(true);
 	}
 	
