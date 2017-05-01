@@ -92,10 +92,20 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
 			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
+		}else if(loginCounter.getValue() >= 3){
+			log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
+			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
+			return new PtBoolean(false);
 		}
 
 		log.info("message ActAuthenticated.oeLogin sent to system");
+		
+		return internalLogin(iCrashSys_Server, aDtLogin, aDtPassword);
+	}
+	
+	private PtBoolean internalLogin(IcrashSystem iCrashSys_Server, DtLogin aDtLogin, DtPassword aDtPassword) throws RemoteException{
 		PtBoolean res = iCrashSys_Server.oeLogin(aDtLogin, aDtPassword);
+		Logger log = Log4JUtils.getInstance().getLogger();
 
 		//Modify here for captcha
 		
@@ -103,16 +113,10 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin successfully executed by the system");
 			loginCounter = new PtInteger(0);//TODO: Excalibur
 		}else{//TODO: Excalibur
-			if(loginCounter.getValue() >= 3){
-				log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
-				
-				ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
-			}else{
-				log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
-			}
+			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
+			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 		}
-		loginCounter = new PtInteger(loginCounter.getValue() + 1);
-
+		
 		return res;
 	}
 	
