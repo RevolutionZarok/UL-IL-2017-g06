@@ -1,0 +1,25 @@
+package icrash.concepts.primarytypes.datatypes.operations.datatypes.dtVictimLastName.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtVictimLastName.is():ptBoolean{
+			postF{
+				let TheResult: ptBoolean in
+		        ( if
+		          ( self.value.length().gt(0)
+		            and self.value.length().lt(21)
+		          )
+		          then (TheResult = true)
+		          else (TheResult = false)
+		          endif
+		          result = TheResult
+		        )
+			}
+		}
+	}
+}

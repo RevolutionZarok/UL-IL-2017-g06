@@ -1,0 +1,19 @@
+package icrash.environment.operations.actComCompany.outactComCompany.oeSendFamilyNotification {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+
+	Operation Model {
+
+		operation: icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification(AdtVictimFirstName:dtVictimFirstName, AdtVictimLastName:dtVictimLastName, AdtDate:dtDate, AdtComment:dtComment):ptBoolean{
+		
+
+		}
+	}
+}

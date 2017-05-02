@@ -78,12 +78,13 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				operation oeGetAlertsSet(AetAlertStatus:etAlertStatus ):ptBoolean
 				operation oeGetCrisisSet(AetCrisisStatus:etCrisisStatus ):ptBoolean
 				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
+				// Vlad
 				operation oeUpdateCrisis(	AdtCrisisID:dtCrisisID, 
 											AetAlertStatus:etAlertStatus,
 											AdtDate:dtDate,
 											AdtTime:dtTime,
 											AdtComment:dtComment 
-											 ):ptBoolean // Vlad
+											 ):ptBoolean
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
 											AdtComment:dtComment 
@@ -102,7 +103,8 @@ import icrash.concepts.primarytypes.authentication.datatypes
 			input interface inactCoordinator{
 				operation ieSendAnAlert(ActAlert:ctAlert ):ptBoolean
 				operation ieSendACrisis(ActCrisis:ctCrisis ):ptBoolean
-	 		}
+	 		operation ieMessage():ptBoolean
+			}
 		}
 		
 		actor actComCompany role rnactComCompany cardinality [0..*]{
@@ -111,13 +113,19 @@ import icrash.concepts.primarytypes.authentication.datatypes
 
 			output interface outactComCompany{
 				operation oeAlert(
-										AetHumanKind:etHumanKind , 
-										AdtDate:dtDate , 
-										AdtTime:dtTime , 
-										AdtPhoneNumber:dtPhoneNumber ,
-										AdtGPSLocation:dtGPSLocation , 
-										AdtComment:dtComment 
-										):ptBoolean
+					AetHumanKind:etHumanKind , 
+					AdtDate:dtDate , 
+					AdtTime:dtTime , 
+					AdtPhoneNumber:dtPhoneNumber ,
+					AdtGPSLocation:dtGPSLocation , 
+					AdtComment:dtComment 
+				):ptBoolean
+				operation oeSendFamilyNotification(
+					AdtVictimFirstName:dtVictimFirstName,
+					AdtVictimLastName:dtVictimLastName,
+					AdtDate:dtDate,
+					AdtComment:dtComment		
+				):ptBoolean
 			}
 			
 			input interface inactComCompany{
@@ -137,15 +145,6 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				
 				//Michel:
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
-				
-				//Vlad:
-				operation oeCreateAlert(AetHumanKind:etHumanKind , 
-										AdtDate:dtDate , 
-										AdtTime:dtTime , 
-										AdtPhoneNumber:dtPhoneNumber ,
-										AdtGPSLocation:dtGPSLocation , 
-										AdtComment:dtComment 
-										):ptBoolean
 			}
 			
 			input interface inactAuthenticated{
@@ -170,35 +169,9 @@ import icrash.concepts.primarytypes.authentication.datatypes
 		}
 		
 		//Sam:
-		actor actSystem role rnactSystem cardinality[1 .. 1] {
-			input interface inactSystem {
-			/*	operation ieCallTimeAndCrisisNumber() : ptBoolean
-				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean*/
-			}
-			output interface outactSystem {
-				operation ugSercurelyUserSystem() : ptBoolean
-				operation ugVictimSendFamilyNotification() : ptBoolean
-				operation ugWitnessSendFamilyNotification() : ptBoolean
-				operation oeChooseInformation() : ptBoolean
-				operation oeSendNotification() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
-				operation oegetStatistic() : ptBoolean
-			}
-		}
 		
-		actor actDatabase role rnactDatabase cardinality[1 .. 1] {
-			input interface inactDatabase {
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
-				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean
-				
-			}
-			output interface outactDatabase {
-				operation oeSendStatistic() : ptBoolean
-				operation oegetStatistic() : ptBoolean
-			}
-		}
+		
+		
 		
 		
 	}

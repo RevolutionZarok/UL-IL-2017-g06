@@ -79,7 +79,15 @@ import lu.uni.lassy.messir.libraries.calendar
 				//is as a control for this dt. 
 				//operation is():ptBoolean
 			}
-			
+			datatype dtVictimFirstName extends dtString{
+				operation is():ptBoolean
+			}
+			datatype dtVictimLastName extends dtString{
+				operation is():ptBoolean
+			}
+			datatype dtFamilyComment extends dtString{
+				operation is():ptBoolean
+			}
 		}
 	}
 }
