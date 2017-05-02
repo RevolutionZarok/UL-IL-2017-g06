@@ -614,8 +614,6 @@
     <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticTypesOfCrises.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oegetstatisticCrises.msrd</semanticResources>
     <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticUserActivity.msr</semanticResources>
-    <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticUserActivity1.msr</semanticResources>
-    <semanticResources>operations/environment/environment-actSystem-oegetstatisticUserActivity.msr</semanticResources>
     <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticUserActivity.msrd</semanticResources>
     <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticTypes.msr</semanticResources>
     <semanticResources>operations/environment-actAdministrator-oegetstatisticUserActivity.msr</semanticResources>
