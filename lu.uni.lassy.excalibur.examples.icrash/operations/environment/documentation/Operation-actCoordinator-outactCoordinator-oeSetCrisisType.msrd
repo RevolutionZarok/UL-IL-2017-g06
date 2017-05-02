@@ -5,6 +5,10 @@ icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisType
 "the identification information used to determine the crisis"
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisType.AetCrisisType
 "the new type value"
+@parameter icrash.operations.environment.actCoordinator.oeSetCrisisType.operationmodel.actCoordinator.outactCoordinator.oeSetCrisisType.AdtCrisisID
+" "
+@parameter icrash.operations.environment.actCoordinator.oeSetCrisisType.operationmodel.actCoordinator.outactCoordinator.oeSetCrisisType.AetCrisisType
+" "
 @endParameters
 @description
 "sent to define the gravity type of a specific crisis."

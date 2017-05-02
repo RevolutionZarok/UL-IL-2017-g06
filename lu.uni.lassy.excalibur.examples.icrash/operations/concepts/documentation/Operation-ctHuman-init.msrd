@@ -5,6 +5,10 @@ icrash.concepts.primarytypes.classes.ctHuman.init
 "used to initialize the id field"
 @parameter icrash.concepts.primarytypes.classes.ctHuman.init.Akind
 "used to initialize the kind field"
+@parameter icrash.operations.concepts.primarytypes.classes.ctHuman.init.operationmodel.icrash.concepts.primarytypes.classes.ctHuman.init.Aid
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctHuman.init.operationmodel.icrash.concepts.primarytypes.classes.ctHuman.init.Akind
+" "
 @endParameters
 @description
 "used to initialize the current object as a new instance of the ctHuman type."

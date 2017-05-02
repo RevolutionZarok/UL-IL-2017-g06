@@ -10,6 +10,8 @@ icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
 @parameter
 icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtResponse
 "The response given by the user of the captcha test"
+@parameter icrash.environment.operations.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.operationmodel.icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha.AdtResponse
+" "
 @endParameters
 
 @description "Submits a response to a captcha test to the system"

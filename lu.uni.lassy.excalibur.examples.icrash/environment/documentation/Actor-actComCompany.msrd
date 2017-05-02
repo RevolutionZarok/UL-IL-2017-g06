@@ -2,6 +2,9 @@
 
 @description
 "represents the communication company stakeholder ensuring the input/ouput of textual messages with humans having communicaiton devices."
+@operation icrash.environment.actComCompany.init
+" "
+@endOperations
 
 //input events
 @inputEvent icrash.environment.actComCompany.inactComCompany.ieSmsSend

@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeInvalidateAlert
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeInvalidateAlert.AdtAlertID
 "the identification information used to determine the alert to close"
+@parameter icrash.operations.environment.actCoordinator.oeInvalidateAlert.operationmodel.actCoordinator.outactCoordinator.oeInvalidateAlert.AdtAlertID
+" "
 @endParameters
 @description
 " sent to indicate that an alert should be considered as closed."

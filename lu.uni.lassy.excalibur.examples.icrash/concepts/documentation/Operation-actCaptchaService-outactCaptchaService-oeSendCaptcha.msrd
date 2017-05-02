@@ -19,6 +19,10 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendC
 @parameter
 icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha.AdtResponse
 "The correct answer to the generated captcha test"
+@parameter icrash.environment.authentication.operations.actCaptchaService.outactCaptchaService.oeSendCaptcha.operationmodel.icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha.AdtCaptcha
+" "
+@parameter icrash.environment.authentication.operations.actCaptchaService.outactCaptchaService.oeSendCaptcha.operationmodel.icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha.AdtResponse
+" "
 @endParameters
 
 @description "Sends a generated captcha test to the system"
@@ -46,4 +50,3 @@ icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendC
 @endPostP
 //example
 @example" "
-

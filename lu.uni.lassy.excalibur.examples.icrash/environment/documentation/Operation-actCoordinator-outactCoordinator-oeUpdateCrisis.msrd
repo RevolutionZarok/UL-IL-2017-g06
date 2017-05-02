@@ -19,6 +19,16 @@ icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtTime
 @parameter
 icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtComment
 "Comment made by the creator of the alert and editable by the coordinator"
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtCrisisID
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AetAlertStatus
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtDate
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtTime
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtComment
+" "
 @endParameters
 
 @description "Output event which is sent when a crisis is updated

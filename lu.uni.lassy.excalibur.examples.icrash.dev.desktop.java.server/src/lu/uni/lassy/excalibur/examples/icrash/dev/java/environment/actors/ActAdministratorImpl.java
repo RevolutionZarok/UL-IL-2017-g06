@@ -22,6 +22,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
@@ -159,6 +161,56 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 			}
 		}
 		return new PtBoolean(true);
+	}
+
+	@Override
+	public PtBoolean oegetStatistic() throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticUserActivity(DtgetstatisticUserActivity aDtgetstatisticUserActivity)
+			throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticNumberOfCrises(DtgetStatisticNumberOfCrises aDtgetstatisticNumberOfCrises)
+			throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean iegetStatistic() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean iegetStatisticUserActivity() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean iegetStatisticTypes() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

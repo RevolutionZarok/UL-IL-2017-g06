@@ -5,20 +5,21 @@ package usecases.uciugAverageTypeofCrisis {
 
 	Use Case Model {
 
-		use case instance uciugStatisticAverageTypeofCrisis : ugAverageTypeofCrisis{
-			actors { 
-				User : actAdministrator
-				Database : actDatabase
+		use case instance uciugStatisticAverageTypeofCrisis:ugAverageTypeofCrisis {
+			actors {
+				User_Bill:actAdministrator
 			}
 			use case steps {
-				User executed instanceof subfunction oegetStatistic{
-					ieCallTypeWithTimeAverage() returned to Database
+				User_Bill executed instanceof subfunction oegetStatistic {
+					ieCallTypeWithTimeAverage() returned to User_Bill
 				}
-				Database executed instanceof subfunction oeSendStatistic("For the average time for the different type of crises"){
-					ieShowStatisticTimeAverage() returned to User
+				User_Bill executed instanceof subfunction oegetstatisticTypesOfCrises {
+					ieShowStatisticTimeAverage() returned to User_Bill
 				}
-						
 			}
+
 		}
 	}
 }
+	
+

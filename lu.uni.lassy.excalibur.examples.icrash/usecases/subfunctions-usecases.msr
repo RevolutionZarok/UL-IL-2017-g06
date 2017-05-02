@@ -185,55 +185,41 @@ import icrash.environment
 			ieMessage(AMessage) returned to actCoordinator
 		}
 	}
-	use case system subfunction oeSendNotification(){
-		actor actSystem[primary, active]
-	}
 	
-	use case system subfunction oeChooseInformation(){
-		actor actSystem[primary, active]
-	}
+	
+	
 		
 	//Sam:
 	use case system subfunction oegetStatistic(){
 		actor actAdministrator[primary, active]
-		actor actSystem[secondary,passive]
 		returned messages{
-				ieCallTimeAndCrisisNumber returned to actSystem
-				ieCallUserActivity returned to actSystem
-				ieCallTypeWithTimeAverage returned to actSystem
+				ieCallTimeAndCrisisNumber returned to actAdministrator
+				ieCallUserActivity returned to actAdministrator
+				ieCallTypeWithTimeAverage returned to actAdministrator
 		}
 	}
-	use case system subfunction oegetstatisticUser(){
+	use case system subfunction oegetstatisticUserActivity(){
 		actor actAdministrator[primary, active]
-		actor actDatabase[secondary, passive]
 		
 		returned messages{
-			
+			ieMessage(AMessage) returned to actAdministrator
 		}
 	}
 	use case system subfunction oegetstatisticCrises(){
 		actor actAdministrator[primary, active]
-		actor actDatabase[secondary, passive]
 		returned messages{
-			
+			ieMessage(AMessage) returned to actAdministrator
 		}
 	}
 	use case system subfunction oegetstatisticTypesOfCrises(){
 		actor actAdministrator[primary, active]
-		actor actDatabase[secondary, passive]
-		actor actSystem[secondary, passive]
 		returned messages{
-			ieCallTimeAndCrisisNumber returned to actSystem
+			ieMessage(AMessage) returned to actAdministrator
 		}
 	}
-	use case system subfunction ugSercurelyUserSystem(){
-		actor actSystem[primary, active]
-		
-	}
+
 	use case system subfunction oeSendStatistic(){
-		actor actSystem[primary, active]
-		actor actAdministrator[secondary, passive]
-		actor actDatabase[secondary, passive]
+		actor actAdministrator[primary, passive]
 		returned messages{
 				ieShowStaticTimeAverage returned to actAdministrator
 				ieShowStaticUser returned to actAdministrator

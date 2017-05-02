@@ -16,7 +16,7 @@ icrash.concepts.primarytypes.classes.ctgetStatistic.getstatisticUser.statisticUs
  "
 //postFunctional descriptions
 @postF 
-" After the execution the"
+" After the execution the system  get the information. So the stored information will bee send. "
 @endPostF
 //example
 @example" "

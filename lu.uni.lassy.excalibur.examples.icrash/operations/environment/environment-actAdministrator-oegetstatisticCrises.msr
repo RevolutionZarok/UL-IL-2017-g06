@@ -15,13 +15,12 @@ import icrash.environment
 	//SAM Time statistic for the operation oegetstatisticCrises
 	Operation Model {
 
-		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises(statisticCrises:dtgetStatisticCrisisinTime):ptBoolean{
+		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticCrises(AdtgetstatisticCrises:dtInteger):ptBoolean{
 		
 preP {
 	let TheSystem : ctState in 
 	let TheActor : actAdministrator in 
-	let TheSystemToGetTheStatistic : actSystem in 
-	let TheSytemDatabase : actSystem in 
+	let TheSytemDatabase : ctState  in 
 	
 	self. rnActor . rnSystem = TheSystem 
 	and self. rnActor = TheActor
@@ -41,8 +40,8 @@ preF {
 postF {
 	let TheSystem: ctState in
     let TheActor:actAdministrator in
-    let TheSystemToGetTheStatistic : actSystem in
-    let TheSytemDatabase : actSystem in 
+    let TheSystemToGetTheStatistic : ctState  in
+    let TheSytemDatabase : ctState in 
     
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor

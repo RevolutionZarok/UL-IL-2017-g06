@@ -6,6 +6,9 @@
 
 @@Actor icrash.environment.authentication.actCaptchaService
 @description "Actor providing a randomly generated captcha test to hedge a users login process. It also keeps track of the related correct answers and he is responsible for verifying a user's answer to a given captcha test."
+@operation icrash.environment.authentication.actCaptchaService.init
+" "
+@endOperations
 //input events
 @inputEvent
 icrash.environment.authentication.actCaptchaService.inactCaptchaService.ieGenerateCaptcha

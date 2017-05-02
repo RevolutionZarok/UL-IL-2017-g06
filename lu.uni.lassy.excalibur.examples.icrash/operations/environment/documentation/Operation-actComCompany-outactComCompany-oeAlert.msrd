@@ -13,6 +13,18 @@ icrash.environment.actComCompany.outactComCompany.oeAlert
 " the GPS position of the phone at the date and time the message was sent."
 @parameter icrash.environment.actComCompany.outactComCompany.oeAlert.AdtComment
 "a free text message sent by the human providing information on the alert that he wants to declare"
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AetHumanKind
+" "
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AdtDate
+" "
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AdtTime
+" "
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AdtPhoneNumber
+" "
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AdtGPSLocation
+" "
+@parameter icrash.operations.environment.actComCompany.operationmodel.actComCompany.outactComCompany.oeAlert.AdtComment
+" "
 @endParameters
 @description
 "Any human having a phone able to connect to the communication companies using the \msricrash system can send his company an sms message with structured information in order to declare an alert."

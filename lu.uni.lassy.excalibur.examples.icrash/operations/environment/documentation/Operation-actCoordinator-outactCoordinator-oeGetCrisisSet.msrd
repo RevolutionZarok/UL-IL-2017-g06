@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeGetCrisisSet
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeGetCrisisSet.AetCrisisStatus
 "the status information used to determine the crisis to send back to the actor"
+@parameter icrash.operations.environment.actCoordinator.oeGetCrisisSet.operationmodel.actCoordinator.outactCoordinator.oeGetCrisisSet.AetCrisisStatus
+" "
 @endParameters
 @description
 "sent to request all the ctCrisis instances having a specific status."

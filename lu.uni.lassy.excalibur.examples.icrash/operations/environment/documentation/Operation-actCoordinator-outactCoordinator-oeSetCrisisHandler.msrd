@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler.AdtCrisisID
 "the identification information used to determine the crisis"
+@parameter icrash.operations.environment.actCoordinator.oeSetCrisisHandler.operationmodel.actCoordinator.outactCoordinator.oeSetCrisisHandler.AdtCrisisID
+" "
 @endParameters
 @description
 "sent to declare himself as been the handler of a crisis having the specified id."

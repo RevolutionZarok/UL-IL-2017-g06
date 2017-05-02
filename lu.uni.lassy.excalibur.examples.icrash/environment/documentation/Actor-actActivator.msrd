@@ -2,6 +2,9 @@
 
 @description
 "represents a logical actor for time automatic message sending based on system's or environment status."
+@operation icrash.environment.actActivator.init
+" "
+@endOperations
 
 //output events
 @outputEvent icrash.environment.actActivator.outactActivator.oeSollicitateCrisisHandling

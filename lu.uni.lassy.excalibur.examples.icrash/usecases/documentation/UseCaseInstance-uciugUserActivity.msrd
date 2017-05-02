@@ -5,4 +5,5 @@
 
 
 @@Instance Use Case usecases.uciugUserActivity.uciugUserActivity
-@description "The actor administrator will open the statistic the activity of the users,there he can find out how many users are active at any time. Also the abstract user System give the information"
+@description "The actor administrator will open the statistic the activity of the users,there he can find out how many users are active at any time. Also the abstract user System give the information.Also the acor must login as a Administrator to see the statistic. "
+

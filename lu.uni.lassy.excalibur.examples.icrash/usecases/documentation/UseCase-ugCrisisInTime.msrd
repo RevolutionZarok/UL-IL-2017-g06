@@ -11,6 +11,8 @@
 "
 @protocolCondition
 "The actor must be able to access the system (connected to the internet)"
+@protocolCondition
+"The database must open/run"
 @endProtocolConditions
 @preCondition
 "The actor is not login as a administrator, so he can click the button statistic.

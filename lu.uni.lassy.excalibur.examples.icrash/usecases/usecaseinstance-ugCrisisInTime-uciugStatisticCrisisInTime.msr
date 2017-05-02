@@ -7,15 +7,14 @@ package usecases.uciugCrisisInTime {
 
 		use case instance uciugStatisticCrisisInTime : ugCrisisInTime{
 			actors {
-				User : actAdministrator
-				Database : actDatabase
+				User_Bill : actAdministrator
 			}
 			use case steps {
-				User executed instanceof subfunction oegetStatistic{
-					ieCallTimeAndCrisisNumber() returned to Database
+				User_Bill executed instanceof subfunction oegetStatistic{
+					ieCallTimeAndCrisisNumber() returned to User_Bill
 				}
-				Database executed instanceof subfunction oeSendStatistic("For the number of cisises in time for the different type of crisis"){
-					ieShowStatisticCrisis() returned to User
+				User_Bill executed instanceof subfunction oegetstatisticCrises{
+					ieShowStatisticCrisis() returned to User_Bill
 				}	
 			
 			}

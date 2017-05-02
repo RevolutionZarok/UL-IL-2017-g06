@@ -13,6 +13,18 @@ icrash.concepts.primarytypes.classes.ctCrisis.init
 "used to initialize the instant field"
 @parameter icrash.concepts.primarytypes.classes.ctCrisis.init.Acomment
 "used to initialize the comment field"
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Aid
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Atype
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Astatus
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Alocation
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Ainstant
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCrisis.operationmodel.icrash.concepts.primarytypes.classes.ctCrisis.init.Acomment
+" "
 @endParameters
 @description
 " used to initialize the current object as a new instance of the ctCrisis type."
