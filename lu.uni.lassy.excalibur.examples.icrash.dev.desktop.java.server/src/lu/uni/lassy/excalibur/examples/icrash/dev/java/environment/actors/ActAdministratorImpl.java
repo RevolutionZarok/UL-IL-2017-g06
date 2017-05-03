@@ -188,29 +188,72 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//TODO or change the name of the function!!
 	@Override
 	public PtBoolean iegetStatistic() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatistic();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
 	}
-
+	// Statistic Feature --> ie Message 
 	@Override
 	public PtBoolean iegetStatisticUserActivity() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticUserActivity();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+		
 	}
-
+	// Statistic Feature --> ie Message 
 	@Override
 	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticNumberOfCrises();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+		
 	}
-
+	// Statistic Feature --> ie Message 
 	@Override
 	public PtBoolean iegetStatisticTypes() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticTypes();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
 	}
 
 }
