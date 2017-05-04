@@ -17,12 +17,15 @@ import icrash.concepts.primarytypes.authentication.classes
 	Concept Model {
 
 		Primary Types {
-			association assctCaptchaServiceactCaptchaService//TODO: View
+			association assctCaptchaServiceactCaptchaService
  					ctCaptchaService(rnctCaptchaService)[1..1]
  					actCaptchaService(rnactCaptchaService)[1..1]
-			association assctMailingServiceactMailingService//TODO: View
+			association assctMailingServiceactMailingService
  					ctMailingService(rnctMailingService)[1..1]
  					actMailingService(rnactMailingService)[1..1]
+ 			association assctCaptchaImages//TODO: View [Sprint3]
+ 					ctCaptcha(rnctCaptcha)[1..1]
+ 					ctCaptchaImage(rnctCaptchaImage)[9..9]
 		}
 
 		Secondary Types {

@@ -1,4 +1,4 @@
-package icrash.concepts.primarytypes.authentication.datatypes.operations.datatypes.dtCaptcha.is {
+package icrash.concepts.primarytypes.authentication.classes.operations.datatypes.ctCaptcha.is {
 
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
@@ -7,7 +7,7 @@ import lu.uni.lassy.messir.libraries.calendar
 
 	Operation Model {
 
-		operation: icrash.concepts.primarytypes.authentication.datatypes.dtCaptcha.is():ptBoolean{
+		operation: icrash.concepts.primarytypes.authentication.classes.ctCaptcha.is():ptBoolean{
 			postF {
 				let TheResult:ptBoolean in(if(self.id.is() = true and self.question.length().geq(10) /*TODO: and 9 images contained*/)
 				then(TheResult = true)

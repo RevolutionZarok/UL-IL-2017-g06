@@ -2,6 +2,7 @@ package icrash.environment.authentication {
 
 import lu.uni.lassy.messir.libraries.primitives
 import icrash.concepts.primarytypes.authentication.datatypes
+import icrash.concepts.primarytypes.authentication.classes
 
 /*
 	This file is dedicated for actors in relation with the authentication feature. Please use your own file dedicated for your feature
@@ -25,7 +26,7 @@ Environment Model {
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
 			}
 			output interface outactCaptchaService {
-				operation oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean
+				operation oeSendCaptcha(AdtCaptcha:ctCaptcha):ptBoolean
 				operation oeCaptchaInvalid(AdtCaptchaId:ptInteger):ptBoolean
 				operation oeCaptchaValid(AdtCaptchaId:ptInteger):ptBoolean
 			}

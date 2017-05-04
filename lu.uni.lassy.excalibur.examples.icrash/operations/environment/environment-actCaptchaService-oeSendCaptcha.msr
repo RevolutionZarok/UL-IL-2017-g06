@@ -9,11 +9,12 @@ import icrash.environment
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
 import icrash.concepts.primarytypes.authentication.datatypes
+import icrash.concepts.primarytypes.authentication.classes
 import icrash.environment.authentication
 
 	Operation Model {
 
-		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha(AdtCaptcha:dtCaptcha):ptBoolean{
+		operation: icrash.environment.authentication.actCaptchaService.outactCaptchaService.oeSendCaptcha(AdtCaptcha:ctCaptcha):ptBoolean{
 			preP{
 				let TheSystem: ctState in
 				self.rnActor.rnSystem = TheSystem

@@ -1,4 +1,4 @@
-package icrash.concepts.primarytypes.authentication.datatypes.operations.datatypes.dtCaptchaImage.is {
+package icrash.concepts.primarytypes.authentication.classes.operations.datatypes.dtCaptchaImage.is {
 
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
@@ -7,7 +7,7 @@ import lu.uni.lassy.messir.libraries.calendar
 
 	Operation Model {
 
-		operation: icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage.is():ptBoolean{
+		operation: icrash.concepts.primarytypes.authentication.classes.ctCaptchaImage.is():ptBoolean{
 			postF {
 				let TheResult:ptBoolean in(if(self.width.gt(0) and self.height.gt(0))
 				then(TheResult = true)

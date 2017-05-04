@@ -7,6 +7,7 @@ import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.authentication.datatypes
+import icrash.concepts.primarytypes.authentication.classes
 
 	Environment Model { 
 
@@ -152,7 +153,7 @@ import icrash.concepts.primarytypes.authentication.datatypes
 				operation ieMessage(AMessage:ptString):ptBoolean
 				
 				//Michel:
-				operation ieConfirmCaptcha(ACaptcha:dtCaptcha):ptBoolean
+				operation ieConfirmCaptcha(ACaptcha:ctCaptcha):ptBoolean
 	 		}
 		}
 

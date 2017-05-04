@@ -4,6 +4,7 @@ import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.authentication.classes
 
 /*
 	This file is dedicated for datatypes in relation with the authentication feature. Please use your own file dedicated for your feature
@@ -16,25 +17,11 @@ Concept Model {
 				operation init(Aid:ptInteger):ptBoolean
 				operation is():ptBoolean
 			}
-			datatype dtCaptcha {//TODO: link to images
-				attribute id: dtCaptchaId
-				attribute question: dtString
-				
-				operation init(Aid:dtCaptchaId, Aquestion:ptString):ptBoolean
-				operation is():ptBoolean
-			}
 			datatype dtCaptchaResponse {
 				attribute id: dtCaptchaId
-				attribute response: dtString
+				attribute response: dtInteger//TODO: Sprint3: Changed from ptString -> dtInteger
 				
-				operation init(Aid:dtCaptchaId, Aresponse:ptString):ptBoolean
-				operation is():ptBoolean
-			}
-			datatype dtCaptchaImage extends dtString{
-				attribute width : dtInteger
-				attribute height : dtInteger
-				
-				operation init(Abinary:ptString, Awidth:ptInteger, Aheight:ptInteger) : ptBoolean
+				operation init(Aid:dtCaptchaId, Aresponse:dtInteger):ptBoolean
 				operation is():ptBoolean
 			}
 			datatype dtCaptchaResponseMap{//TODO: Is this sufficient?

@@ -11,6 +11,7 @@ import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.authentication.datatypes
+import lu.uni.lassy.messir.libraries.string
 
 /*
 	This file is dedicated for classes in relation with the authentication feature. Please use your own file dedicated for your feature
@@ -26,6 +27,20 @@ Concept Model {
 			}
 			class ctMailingService role rnctMailingService cardinality [1..1]{
 				operation init():ptBoolean//TODO: Improve
+			}
+			class ctCaptcha role rnctCaptcha cardinality [1..1]{//TODO: View [Sprint3]
+				attribute id: dtCaptchaId
+				attribute question: dtString
+				
+				operation init(Aid:dtCaptchaId, Aquestion:dtString):ptBoolean
+				operation is():ptBoolean
+			}
+			class ctCaptchaImage role rnctCaptchaImage cardinality [9..9]{//TODO: View [Sprint3]
+				attribute index:ptInteger
+				attribute url:dtString
+				
+				operation init(Aindex:ptInteger, Aurl:dtString):ptBoolean
+				operation is():ptBoolean
 			}
 		}
 

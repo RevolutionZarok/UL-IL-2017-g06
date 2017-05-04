@@ -1,0 +1,25 @@
+/*
+@author michm
+@date Thu May 04 11:12:54 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.init
+//parameters
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.init.Aid
+""
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaResponse.init.Aresponse
+""
+@endParameters
+
+@description "
+used to initialize the current object as a new instance of the dtCaptchaResponse type. "
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new dtCaptchaResponse instance having its attributes equal to the ones provided as parameters. "
+@endPostF
+//example
+@example" "

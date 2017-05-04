@@ -5,7 +5,7 @@
 
 
 @@Operation
-icrash.concepts.primarytypes.authentication.datatypes.dtCaptchaImage.is
+icrash.concepts.primarytypes.authentication.classes.ctCaptchaImage.is
 @description "Determines if this captcha image is a valid data structure"
 //postFunctional descriptions
 @postF 
