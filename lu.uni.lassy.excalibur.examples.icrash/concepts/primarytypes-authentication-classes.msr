@@ -34,13 +34,15 @@ Concept Model {
 				
 				operation init(Aid:dtCaptchaId, Aquestion:dtString):ptBoolean
 				operation is():ptBoolean
+				operation getImageAt(Aindex:ptInteger):ctCaptchaImage//Sprint3
 			}
 			class ctCaptchaImage role rnctCaptchaImage cardinality [9..9]{//TODO: View [Sprint3]
 				attribute index:ptInteger
 				attribute url:dtString
 				
-				operation init(Aindex:ptInteger, Aurl:dtString):ptBoolean
+				operation init(Aindex:ptInteger, Aurl:ptString):ptBoolean
 				operation is():ptBoolean
+				operation getUrl():dtString//Sprint3
 			}
 		}
 
