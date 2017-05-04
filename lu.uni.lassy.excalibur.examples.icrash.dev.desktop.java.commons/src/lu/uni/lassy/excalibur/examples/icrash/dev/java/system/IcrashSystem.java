@@ -30,7 +30,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
@@ -378,6 +378,10 @@ public interface IcrashSystem extends Remote {
 	 */
 	public PtBoolean oeSetClock(DtDateAndTime aCurrentClock) throws RemoteException; 
 	
-	public PtBoolean oeSendCaptcha(DtCaptcha aCaptcha) throws RemoteException, NotBoundException;
+	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException;
 
+	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;//TODO: Messir?
+	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;//TODO: Messir?
+	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;//TODO: Messir?
+	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;//TODO: Messir?
 }

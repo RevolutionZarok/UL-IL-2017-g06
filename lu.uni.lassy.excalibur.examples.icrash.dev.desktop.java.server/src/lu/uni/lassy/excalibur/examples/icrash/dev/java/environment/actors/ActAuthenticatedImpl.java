@@ -25,7 +25,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
@@ -50,7 +50,9 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	private DtLogin login;
 	
 	/** The internal counter for login attempts */
-	private PtInteger loginCounter = new PtInteger(0);//TODO: Excalibur
+	private PtInteger loginCounter = new PtInteger(0);//TODO: Messir
+	
+	private PtBoolean exceptCaptcha = new PtBoolean(false);//TODO: Messir
 	
 	/**
 	 * Instantiates a new server side actor of type authenticated.
@@ -92,20 +94,17 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
 			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
-		}else if(loginCounter.getValue() >= 3){
+		}else if(loginCounter.getValue() >= 3 && !exceptCaptcha.getValue()){
 			log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
+			iCrashSys_Server.setCurrentRequestingAuthenticatedLogin(aDtLogin);
+			iCrashSys_Server.setCurrentRequestingAuthenticatedPassword(aDtPassword);
 			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
 			return new PtBoolean(false);
 		}
 
 		log.info("message ActAuthenticated.oeLogin sent to system");
 		
-		return internalLogin(iCrashSys_Server, aDtLogin, aDtPassword);
-	}
-	
-	private PtBoolean internalLogin(IcrashSystem iCrashSys_Server, DtLogin aDtLogin, DtPassword aDtPassword) throws RemoteException{
 		PtBoolean res = iCrashSys_Server.oeLogin(aDtLogin, aDtPassword);
-		Logger log = Log4JUtils.getInstance().getLogger();
 
 		//Modify here for captcha
 		
@@ -116,6 +115,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 		}
+		exceptCaptcha = new PtBoolean(false);
 		
 		return res;
 	}
@@ -188,7 +188,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	}
 	
 	@Override
-	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha){
+	public PtBoolean ieConfirmCaptcha(CtCaptcha captcha){
 		Logger log = Log4JUtils.getInstance().getLogger();
 		log.info("message ActAuthenticated.ieConfirmCaptcha received from system");
 		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator.hasNext();) {
@@ -204,10 +204,14 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	}
 
 	@Override
-	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException{
+	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException{
 		Logger log = Log4JUtils.getInstance().getLogger();
 		log.info("actAuthenticated has submitted an answer to a captcha test");
-		ActCaptchaServiceImpl.getInstance().ieVerifyCaptcha(aResponse);
+		exceptCaptcha = new PtBoolean(true);//TODO: Messir?
+		if(!ActCaptchaServiceImpl.getInstance().ieVerifyCaptcha(aResponse).getValue()){
+			loginCounter = new PtInteger(loginCounter.getValue() + 1);
+			exceptCaptcha = new PtBoolean(false);
+		}
 		return new PtBoolean(true);
 	}
 	

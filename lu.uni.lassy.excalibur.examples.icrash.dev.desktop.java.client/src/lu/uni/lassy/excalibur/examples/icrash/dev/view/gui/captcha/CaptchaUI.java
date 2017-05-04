@@ -8,13 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 
 public class CaptchaUI {
 	
 	private final Parent root;
 
-	public CaptchaUI(DtCaptcha captchaTest, ActProxyAuthenticated actAuthenticated){
+	public CaptchaUI(CtCaptcha captchaTest, ActProxyAuthenticated actAuthenticated){
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("CaptchaUI.fxml"));
 			loader.setController(new CaptchaUIController(captchaTest, actAuthenticated));

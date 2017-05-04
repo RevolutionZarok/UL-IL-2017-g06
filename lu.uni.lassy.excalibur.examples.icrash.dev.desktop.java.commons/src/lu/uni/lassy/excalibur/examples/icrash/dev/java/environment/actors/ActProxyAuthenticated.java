@@ -19,7 +19,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
@@ -75,15 +75,16 @@ public interface ActProxyAuthenticated extends Remote, JIntHasServerSideActor, J
 	 * @return The success of the method
 	 * @throws RemoteException
 	 */
-	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha) throws RemoteException;
+	public PtBoolean ieConfirmCaptcha(CtCaptcha captcha) throws RemoteException;
 	
 	/**
 	 * Submits an answer to the previously given captcha test
 	 * @param captcha The answer to the given captcha test
 	 * @return The success of the method
 	 * @throws RemoteException
+	 * @throws NotBoundException 
 	 */
-	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException;
+	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException;
 	
 	/**
 	 * An enum of different user types, makes it easier to read code where you can check the type rather than having to call instance of to check the actor type.

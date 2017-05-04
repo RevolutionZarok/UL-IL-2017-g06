@@ -26,7 +26,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAut
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
@@ -103,8 +103,9 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	}
 	
 	@Override
-	public PtBoolean ieConfirmCaptcha(DtCaptcha captcha){
+	public PtBoolean ieConfirmCaptcha(CtCaptcha captcha){
 		Logger log = Log4JUtils.getInstance().getLogger();
+		log.info("Received ieConfirmCaptcha from server");
 		try{
 			new CaptchaUI(captcha, this).show();
 			log.info("CaptchaUI launched successfully");
@@ -117,7 +118,7 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	}
 	
 	@Override
-	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException{
+	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException{
 		return _serverSideActor.oeSubmitCaptcha(aResponse);
 	}
 

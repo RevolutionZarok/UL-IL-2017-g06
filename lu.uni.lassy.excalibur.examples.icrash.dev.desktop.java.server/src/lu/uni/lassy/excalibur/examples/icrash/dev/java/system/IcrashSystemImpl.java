@@ -49,7 +49,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
@@ -92,6 +92,9 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	/** The current requesting authenticated actor that is performing a method on the system.
 	 * This is set by the Actor itself before it performs an oe action*/
 	ActAuthenticated currentRequestingAuthenticatedActor;
+	
+	DtLogin currentRequestingAuthenticatedLogin;//TODO: Messir?
+	DtPassword currentRequestingAuthenticatedPassword;//TODO: Messir?
 	
 	/** The current connected communication company that is performing a method on the system.
 	 * This is set by the Actor itself before it performs an oe action*/
@@ -1365,7 +1368,27 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public PtBoolean oeSendCaptcha(DtCaptcha aCaptcha) throws RemoteException, NotBoundException {
+	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException {
 		return ActCaptchaServiceImpl.getInstance().oeSendCaptcha(aCaptcha);
+	}
+
+	@Override
+	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException {
+		this.currentRequestingAuthenticatedLogin = aDtLogin;
+	}
+
+	@Override
+	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException {
+		this.currentRequestingAuthenticatedPassword = aDtPassword;
+	}
+
+	@Override
+	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException {
+		return currentRequestingAuthenticatedLogin;
+	}
+
+	@Override
+	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException {
+		return currentRequestingAuthenticatedPassword;
 	}
 }

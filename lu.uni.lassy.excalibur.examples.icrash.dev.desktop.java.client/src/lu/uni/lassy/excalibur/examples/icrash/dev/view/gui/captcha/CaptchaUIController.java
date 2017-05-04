@@ -1,5 +1,6 @@
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.captcha;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javafx.fxml.FXML;
@@ -7,8 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptcha;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 public class CaptchaUIController {
@@ -27,9 +29,9 @@ public class CaptchaUIController {
 	
 	private final boolean selection[] = new boolean[9];
 	private final ActProxyAuthenticated actAuthenticated;
-	private final DtCaptcha captchaTest;
+	private final CtCaptcha captchaTest;
 	
-	CaptchaUIController(DtCaptcha captchaTest, ActProxyAuthenticated actAuthenticated){
+	CaptchaUIController(CtCaptcha captchaTest, ActProxyAuthenticated actAuthenticated){
 		this.captchaTest = captchaTest;
 		this.actAuthenticated = actAuthenticated;
 	}
@@ -37,7 +39,8 @@ public class CaptchaUIController {
 	@FXML
     public void initialize() {//TODO: Load images from actual captcha test
 		labelQuestion.setText(captchaTest.getQuestion().toString());
-		img0.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_0.jpg"));
+		System.out.println("Loading images...");//TODO: Remove
+		/*img0.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_0.jpg"));
 		img1.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_1.jpg"));
 		img2.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_2.jpg"));
 		img3.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_3.jpg"));
@@ -45,7 +48,17 @@ public class CaptchaUIController {
 		img5.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_5.jpg"));
 		img6.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_6.jpg"));
 		img7.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_7.jpg"));
-		img8.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_8.jpg"));
+		img8.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_8.jpg"));*/
+		img0.setImage(new Image(captchaTest.getImageAt(new PtInteger(0)).getUrl().toString()));
+		img1.setImage(new Image(captchaTest.getImageAt(new PtInteger(1)).getUrl().toString()));
+		img2.setImage(new Image(captchaTest.getImageAt(new PtInteger(2)).getUrl().toString()));
+		img3.setImage(new Image(captchaTest.getImageAt(new PtInteger(3)).getUrl().toString()));
+		img4.setImage(new Image(captchaTest.getImageAt(new PtInteger(4)).getUrl().toString()));
+		img5.setImage(new Image(captchaTest.getImageAt(new PtInteger(5)).getUrl().toString()));
+		img6.setImage(new Image(captchaTest.getImageAt(new PtInteger(6)).getUrl().toString()));
+		img7.setImage(new Image(captchaTest.getImageAt(new PtInteger(7)).getUrl().toString()));
+		img8.setImage(new Image(captchaTest.getImageAt(new PtInteger(8)).getUrl().toString()));
+		System.out.println("Done");//TODO: Remove
 	}
 	
 	@FXML
@@ -53,6 +66,8 @@ public class CaptchaUIController {
 		try {
 			actAuthenticated.oeSubmitCaptcha(new DtCaptchaResponse(captchaTest.getId(), new PtString(buildBinaryAnswerString())));
 		} catch (RemoteException e) {
+			throw new RuntimeException(e);
+		} catch (NotBoundException e) {
 			throw new RuntimeException(e);
 		}
 		labelQuestion.getScene().getWindow().hide();
