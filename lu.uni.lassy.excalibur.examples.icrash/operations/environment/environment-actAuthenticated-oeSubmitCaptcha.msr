@@ -57,8 +57,8 @@ import icrash.environment.authentication
 				self.rnActor.rnSystem = TheSystem
 				and self.rnActor = TheactAuthenticated
 				
-				/* PostF01 */
-				and TheactAuthenticated.rnctAuthenticated.awaitedCaptchaId.is() = false
+				/* PostP01 */
+				and TheactAuthenticated@post.rnctAuthenticated.awaitedCaptchaId = null
 			}
 			/*prolog{
 				"src/Operations/Environment/OUT/outactAuthenticated-oeSubmitCaptcha.pl"
