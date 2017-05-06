@@ -4,5 +4,5 @@
 */
 
 
-@@Primary Type Association icrash.concepts.primarytypes.associations.authentication.assctCaptchaImages
-@description ""
+@@Primary Type Composition icrash.concepts.primarytypes.associations.authentication.assctCaptchaImages
+@description "The composition of a captcha test and its related pictures"
