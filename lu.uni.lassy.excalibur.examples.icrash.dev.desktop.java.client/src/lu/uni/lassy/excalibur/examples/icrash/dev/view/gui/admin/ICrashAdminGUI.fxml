@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="485.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin.ICrashAdminGUIController">
   <children>
-    <SplitPane dividerPositions="0.3944723618090452" orientation="VERTICAL" prefHeight="399.9999000000025" prefWidth="485.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-135.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.314070351758794, 0.6658291457286433" orientation="VERTICAL" prefHeight="400.0" prefWidth="485.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
@@ -41,7 +41,7 @@
             </Pane>
             <BorderPane fx:id="brdpnAdmin" prefHeight="232.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <center>
-                <AnchorPane fx:id="anchrpnCoordinatorDetails" prefHeight="149.0" prefWidth="445.0" BorderPane.alignment="CENTER" />
+                <AnchorPane fx:id="anchrpnCoordinatorDetails" prefHeight="101.0" prefWidth="470.0" BorderPane.alignment="CENTER" />
               </center>
               <top>
                 <HBox prefHeight="53.0" prefWidth="240.0" BorderPane.alignment="CENTER">
@@ -49,30 +49,25 @@
                     <Button fx:id="bttnBottomAdminCoordinatorAddACoordinator" font="$x1" mnemonicParsing="false" onAction="#bttnBottomAdminCoordinatorAddACoordinator_OnClick" prefHeight="50.0" prefWidth="100.0" text="Add a coordinator" textAlignment="CENTER" wrapText="true" />
                     <Button fx:id="bttnBottomAdminCoordinatorDeleteACoordinator" font="$x1" mnemonicParsing="false" onAction="#bttnBottomAdminCoordinatorDeleteACoordinator_OnClick" prefHeight="50.0" prefWidth="100.0" text="Delete a coordinator" textAlignment="CENTER" wrapText="true" />
                     <Button fx:id="bttnBottomAdminStatistic" font="$x1" mnemonicParsing="false" onAction="#bttnBottomAdminStatistic_OnClick" prefHeight="50.0" prefWidth="100.0" text="Open statistic " textAlignment="CENTER" wrapText="true" />
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="97.0" text="Button" />
                   </children>
                 </HBox>
               </top>
             </BorderPane>
           </children>
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-          <children>
-            <BorderPane prefHeight="142.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <bottom>
-                <HBox alignment="TOP_RIGHT" prefHeight="51.0" prefWidth="748.0" BorderPane.alignment="CENTER">
-                  <children>
-                    <Button id="bttnTopLogoff" fx:id="bttnAdminLogoff" disable="true" font="$x1" mnemonicParsing="false" onAction="#bttnTopLogoff_OnClick" prefHeight="50.0" prefWidth="100.0" text="Logoff" />
-                  </children>
-                </HBox>
-              </bottom>
-              <center>
-                <TableView id="tblvwBottomAdminNotifications" fx:id="tblvwAdminMessages" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-              </center>
-            </BorderPane>
-          </children>
-        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        <BorderPane prefHeight="238.0" prefWidth="618.0">
+          <bottom>
+            <HBox alignment="TOP_RIGHT" prefHeight="51.0" prefWidth="748.0" BorderPane.alignment="CENTER">
+              <children>
+                <Button id="bttnTopLogoff" fx:id="bttnAdminLogoff" disable="true" font="$x1" mnemonicParsing="false" onAction="#bttnTopLogoff_OnClick" prefHeight="50.0" prefWidth="100.0" text="Logoff" />
+              </children>
+            </HBox>
+          </bottom>
+          <center>
+            <TableView id="tblvwBottomAdminNotifications" fx:id="tblvwAdminMessages" prefHeight="187.0" prefWidth="470.0" BorderPane.alignment="CENTER" />
+          </center>
+        </BorderPane>
       </items>
     </SplitPane>
   </children>

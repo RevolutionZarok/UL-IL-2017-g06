@@ -283,8 +283,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	
 	public void setUpTables(){
 		setUpMessageTables(tblvwAdminMessages);
+		//TODO 
 		//setUpAlertTables(tblvwAlerts);
-	    //setUpCrisesTables(tblvwCrises);
+	   // setUpCrisesTables(tblvwCrises);
 	}
 	
 	
