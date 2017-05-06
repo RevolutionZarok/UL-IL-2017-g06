@@ -1,0 +1,74 @@
+/*
+* @author samri
+* @date Tue May 02 10:58:07 CEST 2017
+*/
+
+package lu.uni.lassy.excalibur.examples.icrash.operations.environment.actAdministrator.oegetstatisticUserActivity.msr {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.environment
+	
+	import icrash.concepts.primarytypes.classes
+	import icrash.environment
+	import icrash.concepts.primarytypes.datatypes
+	import icrash.concepts.secondarytypes.datatypes
+	
+
+
+	Operation Model {
+				operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUserActivity(AdtgetstatisticUserActivity: dtInteger):ptBoolean{
+		
+preP {
+	let TheSystem : ctState in 
+	let TheActor : actAdministrator in 
+	let TheSytemDatabase : ctState in 
+	
+	self. rnActor . rnSystem = TheSystem 
+	and self. rnActor = TheActor
+	
+	/* PreP01 The system must run(is execute)*/
+	and TheSystem.vpStarted = true
+	/* PreP02 Must login ass Administrator*/
+	and TheActor.rnctAuthenticated . vpIsLogged = true
+	/* PreP02 The Database(SQL) must open because without this the information for the statistic can't be called. */
+	and TheSytemDatabase.openDatabase() = true
+}
+ /*Pre Functional*/
+preF { 
+	true
+} 
+/*Post Functional*/
+postF {
+	let TheSystem: ctState in
+    let TheActor:actAdministrator in
+    let TheSystemToGetTheStatistic : ctState  in
+    let TheSytemDatabase : ctState in 
+    
+	self.rnActor.rnSystem = TheSystem
+    and self.rnActor = TheActor
+    
+    /*PostF01 At first search all the information for this statistic*/
+    and TheSytemDatabase.searchInfromation(AdtStatistic)
+    /*PostF02 This calculate the information*/
+    and TheSystemToGetTheStatistic.calculeTheStatistic(aDtStatisticUserActivity)
+    /*PostF03 get the Statistic*/
+    and TheSystemToGetTheStatistic.getstatisticCrises()
+    /*PostF04 show the statistic in the Interface.*/
+   	and TheActor.rnInterfaceIN^oegetstatisticUserActivity(AdtStatisticUserActivity)
+    
+} 
+/*Post Protocol*/
+postP { 
+	true
+	// close database and logout. but at the final end not to do it yet.
+} 
+		}
+	}
+}
+	
+	

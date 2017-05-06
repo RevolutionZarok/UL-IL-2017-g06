@@ -19,8 +19,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetStatisticNumberOfCrises;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
@@ -98,20 +98,20 @@ public  class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl implem
 
 	}
 	// oe function-- Statistic for the user activity with the time
-	synchronized public PtBoolean oegetStatisticUserActivity(DtgetstatisticUserActivity aDtgetstatisticUserActivity) throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity) throws RemoteException, NotBoundException {
 		if (getServerSideActor() != null) {
 			// TODO
-			return ((ActAdministrator) getServerSideActor()).oegetStatisticUserActivity(aDtgetstatisticUserActivity);
+			return ((ActAdministrator) getServerSideActor()).oegetStatisticUserActivity(aDtStatisticUserActivity);
 		} else {
 			return new PtBoolean(false);
 		}
 
 	}
 	// oe function-- Statistic for the number of sending crises
-	synchronized public PtBoolean oegetStatisticNumberOfCrises(DtgetStatisticNumberOfCrises aDtgetstatisticNumberOfCrises) throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises) throws RemoteException, NotBoundException {
 		if (getServerSideActor() != null) {
 			// TODO
-			return ((ActAdministrator) getServerSideActor()).oegetStatisticNumberOfCrises(aDtgetstatisticNumberOfCrises);
+			return ((ActAdministrator) getServerSideActor()).oegetStatisticNumberOfCrises(aDtStatisticNumberOfCrises);
 		} else {
 			return new PtBoolean(false);
 		}

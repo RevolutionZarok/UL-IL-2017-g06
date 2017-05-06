@@ -326,8 +326,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 		
-		bttntypOK.setDefaultButton(true);
+		/*bttntypOK.setDefaultButton(true);
 		bttntypOK.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -338,7 +339,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
 						switch(type){
 						case Call:
-							if (userController.oegetStatisticNumberOfCrises(statisticNumber.getValue()){
+							if (userController.oegetStatisticNumberOfCrises(statisticNumber.getValue())){
 								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
 								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
 							}
@@ -364,7 +365,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			}
 		})
 		
-	}
+	}*/
 
 	/**
 	 * Shows the modify coordinator screen.

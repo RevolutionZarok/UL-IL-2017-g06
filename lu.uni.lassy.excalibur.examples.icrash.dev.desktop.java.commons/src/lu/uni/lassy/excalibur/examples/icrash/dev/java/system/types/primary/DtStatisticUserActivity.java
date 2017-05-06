@@ -7,11 +7,11 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 
-public class DtgetstatisticUserActivity extends DtInteger implements JIntIs{
+public class DtStatisticUserActivity extends DtInteger implements JIntIs{
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 227L;
 	
-	public DtgetstatisticUserActivity(PtInteger v) {
+	public DtStatisticUserActivity(PtInteger v) {
 		super(v);
 	}
 	

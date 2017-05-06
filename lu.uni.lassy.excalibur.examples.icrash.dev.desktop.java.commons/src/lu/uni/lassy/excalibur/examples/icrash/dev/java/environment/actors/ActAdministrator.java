@@ -18,8 +18,8 @@ import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetStatisticNumberOfCrises;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
 /**
@@ -110,7 +110,7 @@ public interface ActAdministrator extends ActAuthenticated {
 	 *             Thrown if the server has not been bound correctly in RMI
 	 *             settings
 	 */
-	public PtBoolean oegetStatisticUserActivity(DtgetstatisticUserActivity aDtgetstatisticUserActivity) throws RemoteException, NotBoundException;
+	public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity) throws RemoteException, NotBoundException;
 
 	/**
 	 * 
@@ -121,7 +121,7 @@ public interface ActAdministrator extends ActAuthenticated {
 	 *             Thrown if the server has not been bound correctly in RMI
 	 *             settings
 	 */
-	public PtBoolean oegetStatisticNumberOfCrises(DtgetStatisticNumberOfCrises aDtgetstatisticNumberOfCrises) throws RemoteException, NotBoundException;
+	public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtsStatisticNumberOfCrises) throws RemoteException, NotBoundException;
 
 	/**
 	 * 

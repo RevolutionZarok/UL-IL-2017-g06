@@ -25,7 +25,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntI
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtgetstatisticUserActivity;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
@@ -130,7 +130,7 @@ public class AdminController extends AbstractUserController {
 	public PtBoolean oegetStatisticUserActivity(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
-			DtgetstatisticUserActivity aDtgetstatisticUserActivity = new DtgetstatisticUserActivity(new PtInteger(statisticNumber));
+			DtStatisticUserActivity aDtgetstatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
 			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
 			ht.put(aDtgetstatisticUserActivity, aDtgetstatisticUserActivity.value.getValue());
 			try {
@@ -148,9 +148,9 @@ public class AdminController extends AbstractUserController {
 	public PtBoolean oegetStatisticNumberOfCrises(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
-			DtgetstatisticUserActivity aDtgetstatisticUserActivity = new DtgetstatisticUserActivity(new PtInteger(statisticNumber));
+			DtStatisticUserActivity aDtStatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
 			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
-			ht.put(aDtgetstatisticUserActivity, aDtgetstatisticUserActivity.value.getValue());
+			ht.put(aDtStatisticUserActivity, aDtStatisticUserActivity.value.getValue());
 			try {
 			return actorAdmin.oegetStatistic();
 			} catch (RemoteException e) {
