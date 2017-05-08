@@ -387,25 +387,33 @@ public abstract class AbstractGUIController implements Initializable {
 	 * @param tblvw The tableview to add the columns to
 	 */
 	public void setUpAlertTables(TableView<CtAlert> tblvw){
+		System.out.println("33.1");
 		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
+		System.out.println("33.3"+ idCol);
 		TableColumn<CtAlert, String> dateCol = new TableColumn<CtAlert, String>("Date");
 		TableColumn<CtAlert, String> timeCol = new TableColumn<CtAlert, String>("Time");
 		TableColumn<CtAlert, Double> longitudeCol = new TableColumn<CtAlert, Double>("Longitude");
 		TableColumn<CtAlert, Double> latitudeCol = new TableColumn<CtAlert, Double>("Latitude");
 		TableColumn<CtAlert, String> commentCol = new TableColumn<CtAlert, String>("Comment");
 		TableColumn<CtAlert, String> statusCol = new TableColumn<CtAlert, String>("Status");
-		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+		System.out.println("33.2");
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() 
+			{
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) 
+			{
+				System.out.println("33.4");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().id.value.getValue());
 			}
 		});
 		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				System.out.println("33.5");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.date.toString());
 			}
 		});
 		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				System.out.println("33.6");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.time.toString());
 			}
 		});
@@ -428,15 +436,19 @@ public abstract class AbstractGUIController implements Initializable {
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().status.name());
 			}
-		});		
+		});	
+		System.out.println("33.7"+idCol);
 		tblvw.getColumns().add(idCol);
+		System.out.println("33.8");
 		tblvw.getColumns().add(dateCol);
 		tblvw.getColumns().add(timeCol);
 		tblvw.getColumns().add(longitudeCol);
 		tblvw.getColumns().add(latitudeCol);
 		tblvw.getColumns().add(commentCol);
 		tblvw.getColumns().add(statusCol);
+		System.out.println("33.9");
 		setColumnsSameWidth(tblvw);
+		System.out.println("33.10");
 	}
 	
 	/**
