@@ -1,9 +1,10 @@
 /*
 @author samri
+@date Sat Apr 29 17:59:33 CEST 2017
 */
 
 
-@@Use Case Subfunction icrash.usecases.subfunctions.oegetstatisticUser
+@@Use Case Subfunction icrash.usecases.subfunctions.oegetstatisticUserActivity
 @description "An actor has been login as a Administrator to use the statistic function. So he can see number of the user login compared with the time"
 @protocolCondition
 "The actor  has been login as a administrator and he has to click on the button statistic.

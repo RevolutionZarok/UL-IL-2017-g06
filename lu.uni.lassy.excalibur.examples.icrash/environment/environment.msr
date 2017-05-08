@@ -41,20 +41,17 @@ import icrash.concepts.primarytypes.authentication.classes
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
 											
 				//Sam:
-				operation oegetstatisticUser(
-					statisticUser: dtgetStatisticUserActivity
+				operation oegetstatisticUserActivity(
+					AdtgetstatisticUserActivity:dtInteger
 				) : ptBoolean
 				operation oegetstatisticCrises(
-					statisticCrises: dtgetStatisticCrisisinTime
+					AdtgetstatisticCrises:dtInteger
 				) : ptBoolean
 				operation oegetstatisticTypesOfCrises(
-					statisticTypes: dtgetStatisticTypeCrisis
+					AdtgetstatisticTypes:dtTime
 				) : ptBoolean
-				/*operation oeUserActivityStatistic() : ptBoolean
-				operation oeNumberOfCrisis() : ptBoolean
-				operation oeTimeOfTypeOfCrisis() : ptBoolean
-				operation ugAdministrateTheSystem() : ptBoolean
-				operation oeStatistic() : ptBoolean*/
+				operation oeSendStatistic() : ptBoolean
+				
 			}
 			
 			input interface inactAdministrator{
@@ -170,36 +167,6 @@ import icrash.concepts.primarytypes.authentication.classes
 	 		}
 		}
 		
-		//Sam:
-		actor actSystem role rnactSystem cardinality[1 .. 1] {
-			input interface inactSystem {
-			/*	operation ieCallTimeAndCrisisNumber() : ptBoolean
-				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean*/
-			}
-			output interface outactSystem {
-				operation ugSercurelyUserSystem() : ptBoolean
-				operation ugVictimSendFamilyNotification() : ptBoolean
-				operation ugWitnessSendFamilyNotification() : ptBoolean
-				operation oeChooseInformation() : ptBoolean
-				operation oeSendNotification() : ptBoolean
-				operation oeSendStatistic() : ptBoolean
-				operation oegetStatistic() : ptBoolean
-			}
-		}
-		
-		actor actDatabase role rnactDatabase cardinality[1 .. 1] {
-			input interface inactDatabase {
-				operation ieCallTimeAndCrisisNumber() : ptBoolean
-				operation ieCallUserActivity() : ptBoolean
-				operation ieCallTypeWithTimeAverage() : ptBoolean
-				
-			}
-			output interface outactDatabase {
-				operation oeSendStatistic() : ptBoolean
-				operation oegetStatistic() : ptBoolean
-			}
-		}
 		
 		
 	}

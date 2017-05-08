@@ -12,6 +12,10 @@
 @attribute icrash.concepts.primarytypes.classes.ctAuthenticated.vpIsLogged
 "used to determine the access status."
 
+@attribute icrash.concepts.primarytypes.classes.ctAuthenticated.awaitedCaptchaId
+" "
+@attribute icrash.concepts.primarytypes.classes.ctAuthenticated.loginCounter
+" "
 @endAttributes
 
 @operation icrash.concepts.primarytypes.classes.ctAuthenticated.init

@@ -1,12 +1,13 @@
 /*
-@author michm
-@date Mon Mar 27 10:34:04 CEST 2017
+@author samri
+@date Tue May 02 17:03:31 CEST 2017
 */
 
 
 @@Operation
-icrash.environment.actSystem.outactSystem.ugSercurelyUserSystem
-@description " "
+icrash.environment.actAdministrator.outactAdministrator.oeSendStatistic
+@description "
+ "
 //preProtocol descriptions
 @preP
 " "

@@ -6,6 +6,9 @@
 
 @@Actor icrash.environment.authentication.actMailingService
 @description "An actor who is responsible for sending mails to actors who are registered in the system with an e-mail address"
+@operation icrash.environment.authentication.actMailingService.init
+" "
+@endOperations
 //input events
 @inputEvent
 icrash.environment.authentication.actMailingService.inactMailingService.ieSendMail
@@ -13,4 +16,3 @@ icrash.environment.authentication.actMailingService.inactMailingService.ieSendMa
 
 @endInputEvents
 //output events
-

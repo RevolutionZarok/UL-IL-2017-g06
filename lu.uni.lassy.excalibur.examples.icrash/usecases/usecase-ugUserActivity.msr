@@ -10,33 +10,29 @@ import icrash.usecases.subfunctions
 import icrash.environment
 
 import icrash.usecases.ugAdministrateTheSystem
+import icrash.usecases.ugSecurelyUseSystem
 
 
 	Use Case Model {
 		use case system usergoal ugUserActivity() {
 		actor actAdministrator[primary, active]
-		actor actDatabase [primary, proactive]
-		actor actSystem[secondary, active]
+		actor actAuthenticated[secondary, proactive]
 		
 		reuse oegetStatistic[1..*]
-		reuse ugSercurelyUserSystem[0..*]
-		reuse oegetstatisticUser[0..*]
+		reuse oegetstatisticUserActivity[0..*]
 		reuse ugAdministrateTheSystem[1..*]
 		
-		step a: actSystem
-		executes ugSercurelyUserSystem()
+		step a: actAuthenticated
+		executes ugSecurelyUseSystem()
 		
-		step b: actSystem
+		step b: actAdministrator
 		executes oegetStatistic()
 		
 		step c : actAdministrator
-		executes oegetstatisticUser()
+		executes oegetstatisticUserActivity()
 		
 		step d : actAdministrator
 		executes ugAdministrateTheSystem()
-		
-		step e : actDatabase
-		executes oegetstatisticUser()
 		
 		ordering constraint "at least a"
 		ordering constraint "if b then previously a"

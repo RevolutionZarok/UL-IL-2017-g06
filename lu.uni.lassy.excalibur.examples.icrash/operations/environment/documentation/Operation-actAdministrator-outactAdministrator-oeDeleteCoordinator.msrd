@@ -3,6 +3,8 @@ icrash.environment.actAdministrator.outactAdministrator.oeDeleteCoordinator
 //parameters
 @parameter icrash.environment.actAdministrator.outactAdministrator.oeDeleteCoordinator.AdtCoordinatorID
 "used for ctCoordinator instance retrieval"
+@parameter icrash.operations.environment.actAdministrator.oeDeleteCoordinator.operationmodel.actAdministrator.outactAdministrator.oeDeleteCoordinator.AdtCoordinatorID
+" "
 @endParameters
 @description
 "sent to delete an existing coordinator in the system's post state and environment's post state."

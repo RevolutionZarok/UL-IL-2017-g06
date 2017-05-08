@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeGetAlertsSet
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeGetAlertsSet.AetAlertStatus
 "the criteria used to select the alerts to send back to the actor"
+@parameter icrash.operations.environment.actCoordinator.oeGetAlertsSet.operationmodel.actCoordinator.outactCoordinator.oeGetAlertsSet.AetAlertStatus
+" "
 @endParameters
 @description
 "sent to request all the ctAlert instances having a specific status."

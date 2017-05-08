@@ -5,6 +5,10 @@ icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus
 "the identification information used to determine the crisis"
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus.AetCrisisStatus
 "the new status value"
+@parameter icrash.operations.environment.actCoordinator.oeSetCrisisStatus.operationmodel.actCoordinator.outactCoordinator.oeSetCrisisStatus.AdtCrisisID
+" "
+@parameter icrash.operations.environment.actCoordinator.oeSetCrisisStatus.operationmodel.actCoordinator.outactCoordinator.oeSetCrisisStatus.AetCrisisStatus
+" "
 @endParameters
 @description
 "sent to define the handling status of a specific crisis."

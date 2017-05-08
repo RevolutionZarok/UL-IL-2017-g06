@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis.AdtCrisisID
 "the identification information used to determine the crisis to close"
+@parameter icrash.operations.environment.actCoordinator.oeCloseCrisis.operationmodel.actCoordinator.outactCoordinator.oeCloseCrisis.AdtCrisisID
+" "
 @endParameters
 @description
 "sent to indicate that a crisis should be considered as closed."

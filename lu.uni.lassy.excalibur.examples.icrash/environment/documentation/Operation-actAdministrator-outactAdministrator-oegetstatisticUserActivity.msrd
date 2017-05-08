@@ -1,23 +1,25 @@
 /*
 @author samri
+@date Sun Apr 30 17:30:02 CEST 2017
 */
 
 
+
 @@Operation
-icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUserActivity
 //parameters
 @parameter
-icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.statisticUser
+icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUserActivity.AdtgetstatisticUserActivity
 ""
 @endParameters
 
-@description "This operation will send the statistic for the user activity. This mean that it will show the user number with the time"
+@description "This operation will send the statistic for the number of the user activity. "
 
 //preProtocol descriptions
 @preP
 "The system is started"
 @preP
-"The function ugAdministarteTheSystem must be executed first. So the Administrator must bee login."
+"The actor must bee login as a Administrator."
 @preP
 "The Database must be open. "
 @endPreP
@@ -31,7 +33,7 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUser.stati
 @postF 
 "The information from the database will be calculate to the different times. "
 @postF 
-"After this the operation getstatisticUser() give the statistic"
+"After this the operation getstatisticTypesOfCrises() give the statistic"
 @postF 
 "And at least the statistic will bee show it into the interface. "
 

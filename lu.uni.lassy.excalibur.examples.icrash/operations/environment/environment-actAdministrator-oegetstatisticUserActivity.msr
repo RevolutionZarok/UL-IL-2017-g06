@@ -1,15 +1,9 @@
-/*
-* @author samri
-* @date Tue Apr 04 10:38:02 CEST 2017
-*/
-
-package icrash.operations.environment.actAdministrator.oegetstatisticUserActivity{
+package icrash.environment.operations.actAdministrator.outactAdministrator.oegetstatisticUserActivity1 {
 
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.calendar
-	
 import icrash.environment
 	
 import icrash.concepts.primarytypes.classes
@@ -17,12 +11,12 @@ import icrash.environment
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.secondarytypes.datatypes
 	
-//SAM Time statistic for the operation oegetstatisticUser
+//SAM Time statistic for the operation oegetstatisticUserActivity
 	Operation Model {
 		
 
+		
 
-}
-
-}
+		}
+	}
 

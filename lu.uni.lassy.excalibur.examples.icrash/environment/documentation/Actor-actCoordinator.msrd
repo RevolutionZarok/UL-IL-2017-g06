@@ -2,6 +2,9 @@
 
 @description
 "represents actor responsible of handling one or several crisis for the \msricrash system."
+@operation icrash.environment.actCoordinator.init
+" "
+@endOperations
 //input events
 @inputEvent icrash.environment.actCoordinator.inactCoordinator.ieSendAnAlert
 "allows for receiving a requested ctAlert instance."
@@ -30,4 +33,6 @@
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeValidateAlert
 "sent to indicate that a specific alert is not a fake."
 
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis
+" "
 @endOutputEvents

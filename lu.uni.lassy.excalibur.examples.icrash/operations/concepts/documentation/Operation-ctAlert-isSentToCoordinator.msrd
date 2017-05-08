@@ -3,6 +3,8 @@ icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator
 //parameters
 @parameter icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator.AactCoordinator
 "the message destination"
+@parameter icrash.operations.concepts.primarytypes.classes.ctAlert.operationmodel.icrash.concepts.primarytypes.classes.ctAlert.isSentToCoordinator.AactCoordinator
+" "
 @endParameters
 @description
 " used to provide a given coordinator with current alert information."

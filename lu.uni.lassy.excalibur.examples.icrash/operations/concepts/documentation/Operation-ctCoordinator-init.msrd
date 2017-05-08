@@ -7,6 +7,12 @@ icrash.concepts.primarytypes.classes.ctCoordinator.init
 "used to initialize the login field"
 @parameter icrash.concepts.primarytypes.classes.ctCoordinator.init.Apwd
 "used to initialize the password field"
+@parameter icrash.operations.concepts.primarytypes.classes.ctCoordinator.init.operationmodel.icrash.concepts.primarytypes.classes.ctCoordinator.init.Aid
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCoordinator.init.operationmodel.icrash.concepts.primarytypes.classes.ctCoordinator.init.Alogin
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctCoordinator.init.operationmodel.icrash.concepts.primarytypes.classes.ctCoordinator.init.Apwd
+" "
 @endParameters
 @description
 "used to initialize the current object as a new instance of the ctCoordinator type."

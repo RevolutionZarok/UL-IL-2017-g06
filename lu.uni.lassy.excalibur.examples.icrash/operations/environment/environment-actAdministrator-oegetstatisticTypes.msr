@@ -15,14 +15,13 @@ import icrash.concepts.secondarytypes.datatypes
 //SAM Time /statistic for the operation oegetstatisticTypesOfCrises
 	Operation Model {
 
-		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises(statisticTypes:dtgetStatisticTypeCrisis):ptBoolean{
+		operation: icrash.environment.actAdministrator.outactAdministrator.oegetstatisticTypesOfCrises(AdtgetstatisticTypes:dtTime):ptBoolean{
 		
 		/* Pre Protocol*/
 preP {
 	let TheSystem : ctState in 
 	let TheActor : actAdministrator in 
-	let TheSystemToGetTheStatistic : actSystem in 
-	let TheSytemDatabase : actSystem in 
+	let TheSytemDatabase : ctState in 
 	
 	self. rnActor . rnSystem = TheSystem 
 	and self. rnActor = TheActor
@@ -44,8 +43,8 @@ preF {
 postF {
 	let TheSystem: ctState in
     let TheActor:actAdministrator in
-    let TheSystemToGetTheStatistic : actSystem in
-    let TheSytemDatabase : actSystem in 
+    let TheSystemToGetTheStatistic : ctState  in
+    let TheSytemDatabase : ctState  in 
     
 	self.rnActor.rnSystem = TheSystem
     and self.rnActor = TheActor
@@ -53,11 +52,11 @@ postF {
     /*PostF01 At first search all the information for this statistic*/
     and TheSytemDatabase.searchInfromation(AdtStatistic)
     /*PostF02 This calculate the information*/
-    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticTypesOfCrises)
+    and TheSystemToGetTheStatistic.calculeTheStatistic(AdtStatisticTypes)
     /*PostF03 get the Statistic*/
     and TheSystemToGetTheStatistic.getstatisticTypesOfCrises()
    	/*PostF04 show the statistic in the Interface.*/
-   	and TheActor.rnInterfaceIN^oegetstatisticTypesOfCrises(AdtStatisticTypesofCrises)
+   	and TheActor.rnInterfaceIN^oegetstatisticTypesOfCrises(AdtStatisticTypes)
     
 } 
 

@@ -7,6 +7,12 @@ icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator
 "used to initialize the login field"
 @parameter icrash.environment.actAdministrator.outactAdministrator.oeAddCoordinator.AdtPassword
 "used to initialize the password field"
+@parameter icrash.operations.environment.actAdministrator.oeAddCoordinator.operationmodel.actAdministrator.outactAdministrator.oeAddCoordinator.AdtCoordinatorID
+" "
+@parameter icrash.operations.environment.actAdministrator.oeAddCoordinator.operationmodel.actAdministrator.outactAdministrator.oeAddCoordinator.AdtLogin
+" "
+@parameter icrash.operations.environment.actAdministrator.oeAddCoordinator.operationmodel.actAdministrator.outactAdministrator.oeAddCoordinator.AdtPassword
+" "
 @endParameters
 @description
 "sent to add a new coordinator in the system's post state and environment's post state."

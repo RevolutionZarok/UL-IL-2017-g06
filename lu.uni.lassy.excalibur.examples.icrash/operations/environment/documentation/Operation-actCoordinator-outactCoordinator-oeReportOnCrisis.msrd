@@ -5,6 +5,10 @@ icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
 "the identification information used to determine the crisis to report on"
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis.AdtComment
 "the textual information commenting the crisis"
+@parameter icrash.operations.environment.actCoordinator.oeReportOnCrisis.operationmodel.actCoordinator.outactCoordinator.oeReportOnCrisis.AdtCrisisID
+" "
+@parameter icrash.operations.environment.actCoordinator.oeReportOnCrisis.operationmodel.actCoordinator.outactCoordinator.oeReportOnCrisis.AdtComment
+" "
 @endParameters
 @description
 "sent to update the textual information available for a specific handled crisis."

@@ -2,6 +2,9 @@
 
 @description
 "abstract actor providing reusable input and output interfaces for actors that need to authenticate themselves."
+@operation icrash.environment.actAuthenticated.init
+" "
+@endOperations
 
 //input events
 @inputEvent icrash.environment.actAuthenticated.inactAuthenticated.ieMessage
@@ -19,4 +22,6 @@
 @outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
 "sent to submit an answer to a previously given captcha test"
 
+@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert
+" "
 @endOutputEvents

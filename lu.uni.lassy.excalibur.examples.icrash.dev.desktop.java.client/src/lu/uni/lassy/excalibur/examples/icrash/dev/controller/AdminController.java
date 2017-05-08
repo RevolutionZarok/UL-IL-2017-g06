@@ -25,7 +25,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntI
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyAdministratorImpl;
@@ -105,4 +107,80 @@ public class AdminController extends AbstractUserController {
 		}
 		return new PtBoolean(false);
 	}
+	
+	// TODO Not finish for the moment has now the basic but nothing for the statistic. 
+	// For the Function Statistic
+	public PtBoolean oegetStatistic()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		if (getUserType() == UserType.Admin){
+			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			
+			try {
+			return actorAdmin.oegetStatistic();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	//TODO define a valuer for int so i must give something with this function. 
+	public PtBoolean oegetStatisticUserActivity(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		if (getUserType() == UserType.Admin){
+			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			DtStatisticUserActivity aDtgetstatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
+			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
+			ht.put(aDtgetstatisticUserActivity, aDtgetstatisticUserActivity.value.getValue());
+			try {
+			return actorAdmin.oegetStatisticUserActivity(aDtgetstatisticUserActivity);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	public PtBoolean oegetStatisticNumberOfCrises(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		if (getUserType() == UserType.Admin){
+			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			DtStatisticUserActivity aDtStatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
+			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
+			ht.put(aDtStatisticUserActivity, aDtStatisticUserActivity.value.getValue());
+			try {
+			return actorAdmin.oegetStatistic();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	//TODO make a time value not a int because is for the average time. 
+	public PtBoolean oegetStatisticTypes()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		if (getUserType() == UserType.Admin){
+			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			try {
+			return actorAdmin.oegetStatistic();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	
+	
 }
+
+

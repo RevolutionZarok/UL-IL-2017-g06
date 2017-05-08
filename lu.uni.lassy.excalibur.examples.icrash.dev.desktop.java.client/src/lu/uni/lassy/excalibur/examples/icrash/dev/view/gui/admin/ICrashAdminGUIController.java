@@ -15,20 +15,26 @@ import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
+import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AlertController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CrisisController;
+import lu.uni.lassy.excalibur.examples.icrash.dev.controller.HumanController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.SystemStateController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectActorException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectFormatException;
+import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.NullValueException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNotBoundException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOfflineException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -39,6 +45,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractA
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator.CreateICrashCoordGUI;
 import javafx.scene.layout.GridPane;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,6 +59,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -117,7 +126,24 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     /** The tableview of the recieved messages from the system */
     @FXML
     private TableView<Message> tblvwAdminMessages;
+    
+    
+  /////////// NEW
+    /** The tableview of the alerts in the system. */
+	@FXML
+    private TableView<CtAlert> tblvwAlerts;
+	
+	/** The tableview of the crises in the system. */
+    @FXML
+    private TableView<CtCrisis> tblvwCrises;
 
+	  /** The alert controller, which allows alert specific functions, like getting a list of alerts. */
+    private AlertController alertController;
+    
+    /** The crisis controller, which allows crisis specific functions, like getting a list of crises. */
+    private CrisisController crisisController;
+	
+	//////
     /** The button that allows a user to logoff */
     @FXML
     private Button bttnAdminLogoff;
@@ -149,9 +175,8 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     	showStatistic(TypeOfStatic.Call);
 	}
 	
-	//
+	//// Show Statistic 
 	private enum TypeOfStatic{
-		// Show Statistic 
 		Call
 	}
 
@@ -226,6 +251,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		
 	}	
 	
+	
 	/**
 	 * Server has gone down.
 	 */
@@ -235,25 +261,45 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	protected void serverHasGoneDown(){
 		logoff();
 	}
-	
+	 /**
+     * Populates the monitor tables with the data.
+     */
+	 public void populateTables(){
+	    	try {
+				addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
+				addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
+			//	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			} catch (ServerOfflineException | ServerNotBoundException e) {
+				showExceptionErrorMessage(e);
+			} catch (NullPointerException e){
+				Log4JUtils.getInstance().getLogger().error(e);
+				showExceptionErrorMessage(new NullValueException(this.getClass()));
+			}
+	 }
+	    	
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.HasTables#setUpTables()
 	 */
+	
 	public void setUpTables(){
 		setUpMessageTables(tblvwAdminMessages);
+		//TODO 
+		//setUpAlertTables(tblvwAlerts);
+	   // setUpCrisesTables(tblvwCrises);
 	}
 	
-	// This function show the button for the Statistic and also whta happen if the administrator click on the button 
+	
+	
+	
+	
+	// This function show the button for the Statistic and also what happen if the administrator click on the button 
 	// so a new windows will open and show a table with the statistic for the administrator. The 
 	private void showStatistic(TypeOfStatic type){
 		for(int i = anchrpnCoordinatorDetails.getChildren().size() -1; i >= 0; i--)
 			anchrpnCoordinatorDetails.getChildren().remove(i);
 		
 		GridPane grdpn = new GridPane();
-		
-		
-		
-        
+
 		Button bttntypOK = null;
 		//grdpn.add(txtfldUserID, 1, 1);
 		bttntypOK = new Button("Delete");
@@ -266,39 +312,71 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setLeftAnchor(grdpn, 0.0);
 		AnchorPane.setBottomAnchor(grdpn, 0.0);
 		AnchorPane.setRightAnchor(grdpn, 0.0);
-		try {		
-			URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
-			FXMLLoader loader = new FXMLLoader(url);
-			System.out.println(" Hallo333 ");
-			Parent root2 = (Parent)loader.load();
-			
-			//root2 = FXMLLoader.load(getClass().getResource("ICrashAdminStatisticGUI.fxml"));
-			Stage stage2 = new Stage();
-			stage2.setTitle("iCrash Admin Statistic");
-			stage2.setScene(new Scene(root2));
-			stage2.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent e) {
-                   Platform.exit();
-                   System.exit(0);
-                }
-             });
-			//Scene scene2 = new Scene(root2);
-			
-			
-			
-			stage2.setX(350);
-            stage2.setY(1);
-			stage2.show();
+		try {	
+				URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
+				FXMLLoader loader = new FXMLLoader(url);
+				Parent root2 = (Parent)loader.load();
+				
+				Stage stage2 = new Stage();
+				stage2.setTitle("iCrash Admin Statistic");
+				stage2.setScene(new Scene(root2));
+				stage2.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	                @Override
+	                public void handle(WindowEvent e) {
+	                   Platform.exit();
+	                   System.exit(0);
+	                }
+	             });
+				stage2.setX(360);
+	            stage2.setY(1);
+				stage2.show();
+		
         
 		} 
 		catch (IOException e) {
 			System.err.println("Error in catch for the button Statistic");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 		
-	}
+		/*bttntypOK.setDefaultButton(true);
+		bttntypOK.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (!checkIfAllDialogHasBeenFilledIn(grdpn))
+					showWarningNoDataEntered();
+				else{
+					try {
+						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
+						switch(type){
+						case Call:
+							if (userController.oegetStatisticNumberOfCrises(statisticNumber.getValue())){
+								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
+								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
+							}
+							else
+								showErrorMessage("Unable to add coordinator", "An error occured when adding the coordinator");
+							break;
+						case CallUser:
+							if (userController.oeDeleteCoordinator(txtfldUserID.getText()).getValue()){
+								for(CreateICrashCoordGUI window : listOfOpenWindows){
+									if (window.getDtCoordinatorID().value.getValue().equals(coordID.value.getValue()))
+										window.closeWindow();
+								}
+								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
+							}
+							else
+								showErrorMessage("Unable to delete coordinator", "An error occured when deleting the coordinator");
+							break;
+						}
+					} catch (ServerOfflineException | ServerNotBoundException | IncorrectFormatException e) {
+						showExceptionErrorMessage(e);
+					}					
+				}
+			}
+		})
+		
+	}*/
 
 	/**
 	 * Shows the modify coordinator screen.
@@ -420,11 +498,14 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		systemstateController = new SystemStateController();
+		crisisController = new CrisisController();
+    	alertController = new AlertController();
 		logonShowPanes(false);
 		setUpTables();
-		
+		populateTables();
 	}
-
+	
+	
 	@Override
 	public PtBoolean setActor(JIntIsActor actor) {
 		try {

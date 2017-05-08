@@ -5,6 +5,10 @@ icrash.concepts.primarytypes.classes.ctAuthenticated.init
 "used to initialize the login field"
 @parameter icrash.concepts.primarytypes.classes.ctAuthenticated.init.Apwd
 "used to initialize the password field"
+@parameter icrash.operations.concepts.primarytypes.classes.ctAuthenticated.operationmodel.icrash.concepts.primarytypes.classes.ctAuthenticated.init.Alogin
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctAuthenticated.operationmodel.icrash.concepts.primarytypes.classes.ctAuthenticated.init.Apwd
+" "
 @endParameters
 @description
 "used to initialize the current object as a new instance of the ctAuthenticated type."

@@ -5,6 +5,10 @@ icrash.environment.actAuthenticated.outactAuthenticated.oeLogin
 "first information used to determine accessibility rights for the actual actor."
 @parameter icrash.environment.actAuthenticated.outactAuthenticated.oeLogin.AdtPassword
 "second information used to determine accessibility rights for the actual actor."
+@parameter icrash.operations.environment.actAuthenticated.operationmodel.actAuthenticated.outactAuthenticated.oeLogin.AdtLogin
+" "
+@parameter icrash.operations.environment.actAuthenticated.operationmodel.actAuthenticated.outactAuthenticated.oeLogin.AdtPassword
+" "
 @endParameters
 @description
 "sent to request authorization to request access secured system operations."

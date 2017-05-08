@@ -22,6 +22,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
@@ -153,6 +155,99 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 			try {
 				if (aProxy instanceof ActProxyAdministrator)
 					((ActProxyAdministrator) aProxy).ieCoordinatorUpdated();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+	}
+
+	@Override
+	public PtBoolean oegetStatistic() throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity)
+			throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises)
+			throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//TODO or change the name of the function!!
+	@Override
+	public PtBoolean iegetStatistic() throws RemoteException {
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatistic();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+	}
+	// Statistic Feature --> ie Message 
+	@Override
+	public PtBoolean iegetStatisticUserActivity() throws RemoteException {
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticUserActivity();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+		
+	}
+	// Statistic Feature --> ie Message 
+	@Override
+	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException {
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticNumberOfCrises();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+		
+	}
+	// Statistic Feature --> ie Message 
+	@Override
+	public PtBoolean iegetStatisticTypes() throws RemoteException {
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
+				.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				if (aProxy instanceof ActProxyAdministrator)
+					((ActProxyAdministrator) aProxy).iegetStatisticTypes();
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				iterator.remove();

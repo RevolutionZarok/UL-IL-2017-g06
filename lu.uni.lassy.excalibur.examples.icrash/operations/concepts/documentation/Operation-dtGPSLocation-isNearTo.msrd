@@ -3,6 +3,8 @@ icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo
 //parameters
 @parameter icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo.AGPSLocation
 "the GPS location to be compared to."
+@parameter icrash.operations.concepts.primarytypes.datatypes.dtGPSLocation.operationmodel.icrash.concepts.primarytypes.datatypes.dtGPSLocation.isNearTo.aGPSLocation
+" "
 @endParameters
 @description
 "used to determine if locations are considered enough close to be treated as equivalent in the application domain context. In the context of the iCrash system, we compute the distance between two GPS locations using the following Haversine formula.

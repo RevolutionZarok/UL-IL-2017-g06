@@ -7,16 +7,15 @@ package usecases.uciugUserActivity {
 
 		use case instance uciugUserActivity : ugUserActivity{
 			actors {
-				User : actAdministrator
-				Database : actDatabase
+				User_Bill : actAdministrator
 				
 			}
 			use case steps {
-				User executed instanceof subfunction oegetStatistic{
-					ieCallUserActivity() returned to Database
+				User_Bill executed instanceof subfunction oegetStatistic{
+					ieCallUserActivity() returned to User_Bill
 				}
-				Database executed instanceof subfunction oeSendStatistic("Statistic for the user activity"){
-					ieShowStatisticUser() returned to User
+				User_Bill executed instanceof subfunction oegetstatisticUserActivity{
+					ieShowStatisticUser() returned to User_Bill
 				}
 			}
 		}

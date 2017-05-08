@@ -15,6 +15,20 @@ icrash.concepts.primarytypes.classes.ctState.init
 "used to initialize the vpLastReminder field"
 @parameter icrash.concepts.primarytypes.classes.ctState.init.AvpStarted
 "used to initialize the vpStarted field"
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AnextValueForAlertID
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AnextValueForCrisisID
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.dtAclock
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AcrisisReminderPeriod
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AmaxCrisisReminderPeriod
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AvpLastReminder
+" "
+@parameter icrash.operations.concepts.primarytypes.classes.ctState.operationmodel.icrash.concepts.primarytypes.classes.ctState.init.AvpStarted
+" "
 @endParameters
 @description
 " used to initialize the current object as a new instance of the ctState type."
