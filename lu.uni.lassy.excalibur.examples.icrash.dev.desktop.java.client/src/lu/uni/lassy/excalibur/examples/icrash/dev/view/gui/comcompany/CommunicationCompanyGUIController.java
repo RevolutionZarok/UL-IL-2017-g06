@@ -17,6 +17,8 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -38,6 +40,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.ComCompanyController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectActorException;
@@ -146,10 +149,22 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		CheckBox cboxFamily = new CheckBox();
 		cboxFamily.setText("Send family notification");
 		cboxFamily.setSelected(false);
+		cboxFamily.setVisible(false);
 		TextArea txtarFamilyComment = new TextArea();
 		txtarFamilyComment.setMinWidth(width);
 		txtarFamilyComment.setMaxWidth(width);
 		txtarFamilyComment.setPromptText("Enter a comment for the family");
+		txtarFamilyComment.setVisible(false);
+		Label lblVictimIdentification = new Label("Fill out if you can identify the victim:");
+		lblVictimIdentification.setVisible(false);
+		TextField txtfldVictimFirstName = new TextField("Enter victim's first name");
+		TextField txtfldVictimLastName = new TextField("Enter victim's last name");
+		txtfldVictimFirstName.setMinWidth(width);
+		txtfldVictimFirstName.setMaxWidth(width);
+		txtfldVictimLastName.setMinWidth(width);
+		txtfldVictimLastName.setMaxWidth(width);
+		txtfldVictimFirstName.setVisible(false);
+		txtfldVictimLastName.setVisible(false);		
 		Button bttnOk = new Button("Send alert");
 		bttnOk.setDefaultButton(true);
 		Button bttnClear = new Button("Reset form");
@@ -161,9 +176,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		grdpn.add(txtfldPhone, 1, 5, 2, 1);
 		grdpn.add(txtfldLatitude, 1, 6, 2, 1);
 		grdpn.add(txtfldLongitude, 1, 7, 2, 1);
-		grdpn.add(cboxFamily, 1, 15);
 		grdpn.add(txtarComment, 1, 8, 2, 1);
-		grdpn.add(txtarFamilyComment, 1, 16, 2, 1);
 		grdpn.add(lblTimeHour, 1, 9);
 		grdpn.add(sldrHourPicker, 1, 10);
 		grdpn.add(txtfldCurrentSetHour, 2, 10);
@@ -173,8 +186,40 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		grdpn.add(lblTimeSecond, 1, 13);
 		grdpn.add(sldrSecondPicker, 1, 14);
 		grdpn.add(txtfldCurrentSetSecond, 2, 14);
-		grdpn.add(bttnOk, 1, 18);
-		grdpn.add(bttnClear, 2, 18);
+		grdpn.add(cboxFamily, 1, 15);
+		grdpn.add(txtarFamilyComment, 1, 16, 2, 1);
+		grdpn.add(lblVictimIdentification, 1, 17);
+		grdpn.add(txtfldVictimFirstName, 1, 18, 2, 1);
+		grdpn.add(txtfldVictimLastName, 1, 19, 2, 1);
+		grdpn.add(bttnOk, 1, 20);
+		grdpn.add(bttnClear, 2, 20);
+		lstvwPersonType.setOnMouseClicked(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent event) {
+				if(lstvwPersonType.getSelectionModel().getSelectedItem().equals(EtHumanKind.victim)){
+					cboxFamily.setVisible(true);
+					lblVictimIdentification.setVisible(false);
+					txtfldVictimFirstName.setVisible(false);
+					txtfldVictimLastName.setVisible(false);
+				}else if(lstvwPersonType.getSelectionModel().getSelectedItem().equals(EtHumanKind.witness) || lstvwPersonType.getSelectionModel().getSelectedItem().equals(EtHumanKind.anonym)){
+					cboxFamily.setVisible(false);
+					txtarFamilyComment.setVisible(false);
+					lblVictimIdentification.setVisible(true);
+					txtfldVictimFirstName.setVisible(true);
+					txtfldVictimLastName.setVisible(true);
+				}
+	        }
+	    });
+		cboxFamily.selectedProperty().addListener(new ChangeListener<Boolean>(){
+			@Override
+		    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+		        if(cboxFamily.isSelected() == true){
+		        	txtarFamilyComment.setVisible(true);
+		        }else{
+		        	txtarFamilyComment.setVisible(false);
+		        }
+		    }
+		});
 		bttnOk.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
