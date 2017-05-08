@@ -595,7 +595,6 @@
     <semanticResources>operations/environment/environment-actCaptchaService-oeCaptchaInvalid.msr</semanticResources>
     <semanticResources>operations/environment/environment-actCaptchaService-oeCaptchaValid.msr</semanticResources>
     <semanticResources>operations/environment/environment-actCaptchaService-oeSendCaptcha.msr</semanticResources>
-    <semanticResources>operations/environment/environment-actAuthenticated-oeCreateAlert.msr</semanticResources>
     <semanticResources>operations/environment/environment-actCoordinator-oeUpdateCrisis.msr</semanticResources>
     <semanticResources>documentation/View-uc-ugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-uc-ugWitnessSendFamilyNotification.msrd</semanticResources>
@@ -618,12 +617,22 @@
     <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticTypes.msr</semanticResources>
     <semanticResources>operations/environment-actAdministrator-oegetstatisticUserActivity.msr</semanticResources>
     <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeSendStatistic.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtFamilyComment-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtVictimFirstName-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtVictimLastName-is.msr</semanticResources>
+    <semanticResources>operations/environment/environment-actComCompany-oeSendFamilyNotification.msr</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptcha-getImageAt.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptchaImage-getUrl.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtVictimFirstName.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtVictimFirstName-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtVictimLastName.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtVictimLastName-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtFamilyComment.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtFamilyComment-is.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actComCompany-outactComCompany-oeSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oeSendFamilyNotification.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8w0NsBLhEeeZAOo5Nrpa5w" name="em-view12" representation="_8w0NsRLhEeeZAOo5Nrpa5w">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-        <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-      </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_XHx6YBLiEeeZAOo5Nrpa5w" name="uc-ugAverageTypeofCrisis" representation="_XHx6YRLiEeeZAOo5Nrpa5w">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Use_Case_Diagram']"/>
         <target xmi:type="messir:UseCaseSummaryOrUsergoal" href="usecases/usecase-ugAverageTypeofCrisis.msr#icrash.usecases.ugAverageTypeofCrisis.ugAverageTypeofCrisis"/>
@@ -653,38 +662,6 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_8w0NsRLhEeeZAOo5Nrpa5w" name="em-view12">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8w0NshLhEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_8w0NsxLhEeeZAOo5Nrpa5w"/>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8w0NtRLhEeeZAOo5Nrpa5w" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_8w0NthLhEeeZAOo5Nrpa5w" type="Sirius" element="_8w0NsRLhEeeZAOo5Nrpa5w" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_9A_XsBLhEeeZAOo5Nrpa5w" type="2003" element="_8w00wBLhEeeZAOo5Nrpa5w">
-          <children xmi:type="notation:Node" xmi:id="_9A_-wBLhEeeZAOo5Nrpa5w" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_9A_-wRLhEeeZAOo5Nrpa5w" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_9A_-whLhEeeZAOo5Nrpa5w"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_9A_-wxLhEeeZAOo5Nrpa5w"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_9A_XsRLhEeeZAOo5Nrpa5w" fontName="Segoe UI" fontHeight="14" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9A_XshLhEeeZAOo5Nrpa5w" y="30" width="153"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_8w0NtxLhEeeZAOo5Nrpa5w"/>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_8w00wBLhEeeZAOo5Nrpa5w" name="actSystem">
-      <target xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actSystem"/>
-      <semanticElements xmi:type="messir:Actor" href="environment/environment.msr#icrash.environment.actSystem"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_8w1b0BLhEeeZAOo5Nrpa5w" labelSize="14" iconPath="/lu.uni.lassy.excalibur.dsl.messir.ui/icons/actor.png" borderSize="1" borderSizeComputationExpression="1">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer/@containerMappings[name='Actor']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_8w0NtBLhEeeZAOo5Nrpa5w"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']/@ownedRepresentations[name='Messir%20Diagram']/@defaultLayer"/>
-    <target xmi:type="messir:PackageDeclaration" href="environment/environment.msr#icrash.environment"/>
-  </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram xmi:id="_XHx6YRLiEeeZAOo5Nrpa5w" name="uc-ugAverageTypeofCrisis">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_XHx6YhLiEeeZAOo5Nrpa5w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_XHx6YxLiEeeZAOo5Nrpa5w"/>

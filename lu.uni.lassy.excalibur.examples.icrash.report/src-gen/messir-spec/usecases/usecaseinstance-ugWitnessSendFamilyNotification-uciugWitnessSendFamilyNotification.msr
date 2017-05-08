@@ -9,7 +9,7 @@ package usecases.uciugWitnessSendFamilyNotification {
 			actors {
 				User : actAuthenticated
 				Coordinator : actCoordinator
-				System : actSystem
+				ComCompany : actComCompany
 				
 			}
 			use case steps {
@@ -25,7 +25,7 @@ package usecases.uciugWitnessSendFamilyNotification {
 				Coordinator executed instanceof subfunction oeUpdateCrisis(){
 					
 				}
-				System executed instanceof subfunction oeSendNotification(){
+				ComCompany executed instanceof subfunction oeSendFamilyNotification(){
 					
 				}
 			}

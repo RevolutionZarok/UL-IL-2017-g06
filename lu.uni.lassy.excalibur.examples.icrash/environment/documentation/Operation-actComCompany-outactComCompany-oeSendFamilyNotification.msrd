@@ -1,0 +1,43 @@
+/*
+@author michm
+@date Mon May 08 09:47:07 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification
+//parameters
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification.AdtVictimFirstName
+""
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification.AdtVictimLastName
+""
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification.AdtDate
+""
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeSendFamilyNotification.AdtComment
+""
+@endParameters
+
+@description "
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

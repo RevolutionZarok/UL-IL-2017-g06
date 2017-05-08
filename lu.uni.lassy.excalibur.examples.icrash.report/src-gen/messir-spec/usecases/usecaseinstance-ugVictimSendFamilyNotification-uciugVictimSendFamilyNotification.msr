@@ -9,7 +9,7 @@ package usecases.uciugVictimSendFamilyNotification {
 			actors {
 				User : actAuthenticated
 				Coordinator : actCoordinator
-				System : actSystem
+				ComCompany : actComCompany
 			}
 			use case steps {
 				User executed instanceof subfunction oeCreateAlert("Chose if an alert will be sent to the family"){
@@ -24,7 +24,7 @@ package usecases.uciugVictimSendFamilyNotification {
 				Coordinator executed instanceof subfunction oeUpdateCrisis(){
 					
 				}
-				System executed instanceof subfunction oeSendNotification(){
+				ComCompany executed instanceof subfunction oeSendFamilyNotification(){
 					
 				}
 			}

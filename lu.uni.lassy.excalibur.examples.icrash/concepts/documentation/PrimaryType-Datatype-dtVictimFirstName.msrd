@@ -1,0 +1,12 @@
+/*
+@author michm
+@date Mon May 08 09:46:58 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtVictimFirstName
+@description ""
+@operation
+icrash.concepts.primarytypes.datatypes.dtVictimFirstName.is
+""
+@endOperations

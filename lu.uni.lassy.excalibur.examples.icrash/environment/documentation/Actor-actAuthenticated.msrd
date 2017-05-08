@@ -22,6 +22,4 @@
 @outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeSubmitCaptcha
 "sent to submit an answer to a previously given captcha test"
 
-@outputEvent icrash.environment.actAuthenticated.outactAuthenticated.oeCreateAlert
-" "
 @endOutputEvents

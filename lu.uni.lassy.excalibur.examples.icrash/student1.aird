@@ -453,7 +453,6 @@
     <semanticResources>concepts/documentation/PrimaryType-Datatype-dtTimestamp.msrd</semanticResources>
     <semanticResources>environment/documentation/Actor-actCaptchaGenerator.msrd</semanticResources>
     <semanticResources>environment/documentation/Actor-actCaptchaValidator.msrd</semanticResources>
-    <semanticResources>environment/documentation/Actor-actDatabase.msrd</semanticResources>
     <semanticResources>environment/documentation/Actor-actMailingService.msrd</semanticResources>
     <semanticResources>environment/documentation/Actor-actSystem.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actCaptchaValidator-outactCaptchaValidator-oeCaptchaInvalid.msrd</semanticResources>
@@ -461,7 +460,6 @@
     <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeChooseInformation.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actCaptchaGenerator-outactCaptchaGenerator-oeSendCaptcha.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeSendNotification.msrd</semanticResources>
-    <semanticResources>environment/documentation/Operation-actSystem-outactSystem-ugSercurelyUserSystem.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actAuthenticated-outactAuthenticated-oeSubmitCaptcha.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actAuthenticated-outactAuthenticated-oeCreateAlert.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeNumberOfCrisis.msrd</semanticResources>
@@ -474,7 +472,6 @@
     <semanticResources>usecases/usecase-ugUserActivity.msr</semanticResources>
     <semanticResources>usecases/usecase-ugWitnessSendFamilyNotification.msr</semanticResources>
     <semanticResources>usecases/usecase-ugVictimSendFamilyNotification.msr</semanticResources>
-    <semanticResources>environment/documentation/Operation-actSystem-outactSystem-oeSendStatistic.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSendCaptcha.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSubmitCaptcha.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeCaptchaInvalid.msrd</semanticResources>
@@ -483,7 +480,6 @@
     <semanticResources>usecases/documentation/UseCase-oeUserActivityStatistic.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeNumberOfCrisis.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeTimeOfTypeOfCrisis.msrd</semanticResources>
-    <semanticResources>usecases/documentation/UseCase-ugSercurelyUserSystem.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSendStatistic.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeCreateAlert.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeUpdateCrisis.msrd</semanticResources>
@@ -499,7 +495,6 @@
     <semanticResources>usecases/usecase-ugAverageTypeofCrisis.msr</semanticResources>
     <semanticResources>documentation/View-em-view8.msrd</semanticResources>
     <semanticResources>documentation/View-em-view9.msrd</semanticResources>
-    <semanticResources>documentation/View-em-view10.msrd</semanticResources>
     <semanticResources>documentation/View-em-view11.msrd</semanticResources>
     <semanticResources>documentation/View-em-view12.msrd</semanticResources>
     <semanticResources>documentation/View-uc-ugAverageTypeofCrisis.msrd</semanticResources>
@@ -571,7 +566,6 @@
     <semanticResources>concepts/primarytypes-authentication-classes.msr</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Association-assctCaptchaServiceactCaptchaService.msrd</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Association-assctMailingServiceactMailingService.msrd</semanticResources>
-    <semanticResources>operations/environment/environment-actAuthenticated-oeCreateAlert.msr</semanticResources>
     <semanticResources>operations/environment/environment-actCoordinator-oeUpdateCrisis.msr</semanticResources>
     <semanticResources>documentation/View-uc-ugVictimSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-uc-ugWitnessSendFamilyNotification.msrd</semanticResources>
@@ -589,6 +583,25 @@
     <semanticResources>concepts/documentation/Operation-dtCaptchaId-init.msrd</semanticResources>
     <semanticResources>concepts/documentation/Operation-dtCaptchaResponse-init.msrd</semanticResources>
     <semanticResources>concepts/documentation/PrimaryType-Association-assctCaptchaImages.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeSendStatistic.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oegetstatisticUserActivity.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actAdministrator-oegetstatisticUserActivity.msr</semanticResources>
+    <semanticResources>operations/environment-actAdministrator-oegetstatisticUserActivity.msr</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oegetstatisticUserActivity.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtFamilyComment-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtVictimFirstName-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtVictimLastName-is.msr</semanticResources>
+    <semanticResources>operations/environment/environment-actComCompany-oeSendFamilyNotification.msr</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptcha-getImageAt.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-ctCaptchaImage-getUrl.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtVictimFirstName.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtVictimFirstName-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtVictimLastName.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtVictimLastName-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtFamilyComment.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtFamilyComment-is.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actComCompany-outactComCompany-oeSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oeSendFamilyNotification.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hTVyoBLmEeeZAOo5Nrpa5w" name="uc-ugLogin" representation="_hTVyoRLmEeeZAOo5Nrpa5w">

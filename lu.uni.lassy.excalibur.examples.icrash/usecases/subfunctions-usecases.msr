@@ -226,5 +226,8 @@ import icrash.environment
 				ieShowStaticCrisis returned to actAdministrator
 			}
 	}
-}
+	use case system subfunction oeSendFamilyNotification() {
+			actor actComCompany[primary, active]
+		}
+	}
 }

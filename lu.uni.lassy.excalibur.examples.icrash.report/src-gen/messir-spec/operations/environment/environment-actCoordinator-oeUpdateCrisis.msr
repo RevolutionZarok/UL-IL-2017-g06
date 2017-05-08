@@ -25,9 +25,8 @@ import icrash.concepts.secondarytypes.datatypes
 			
 			preF{
   				let TheSystem: ctState in
-				self.rnActor.rnCoordinator = TheCoordinator
-  
-				and (TheSystem.clock.date.gt(AdtDate)
+  				and TheSystem = self.rnActor.rnSystem 
+  				and (TheSystem.clock.date.gt(AdtDate)
        				or (TheSystem.clock.date.eq(AdtDate)
            				and TheSystem.clock.time.gt(AdtTime)
           			)
@@ -35,7 +34,7 @@ import icrash.concepts.secondarytypes.datatypes
 			}
 			
 			postF{
-				let TheSystem: ctState in
+				let	 TheSystem:ctState in
 				let  ActCrisis:ctCrisis in
 				let  AdtCrisisID:dtCrisisID in
 				let  AetCrisisType:etCrisisType in
