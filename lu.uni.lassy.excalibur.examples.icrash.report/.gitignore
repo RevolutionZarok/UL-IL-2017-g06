@@ -21,3 +21,5 @@ report_SPEC.pdf
 *.svg
 /doc-gen/*
 /src-gen/*
+/report.bbl
+/report.blg
