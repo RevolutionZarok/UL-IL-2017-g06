@@ -1,0 +1,25 @@
+package icrash.concepts.primarytypes.datatypes.operations.datatypes.dtFamilyComment.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtFamilyComment.is():ptBoolean{
+		
+		    postF{ 
+		        let TheResult: ptBoolean in
+		        ( if
+		          ( MaxLength = 160
+		          	self.value.length().gt(0)
+		            and self.value.length().lt(MaxLength)
+		          )
+		          then (TheResult = true)
+		          else (TheResult = false)
+		          endif
+		          result = TheResult
+		        )
+		    }
+
+		}
+	}
+}

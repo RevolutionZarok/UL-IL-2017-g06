@@ -43,11 +43,11 @@ icrash.environment.actCoordinator.outactCoordinator.oeUpdateCrisis.AdtComment
 @endPreF
 //postFunctional descriptions
 @postF 
-" "
+"When a crisis is updated all the existing information is replaced by the updated information"
 @endPostF
 //postProtocol descriptions
 @postP 
-" "
+"none"
 @endPostP
 //example
 @example" "

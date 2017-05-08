@@ -109,13 +109,19 @@ import icrash.concepts.primarytypes.authentication.classes
 
 			output interface outactComCompany{
 				operation oeAlert(
-										AetHumanKind:etHumanKind , 
-										AdtDate:dtDate , 
-										AdtTime:dtTime , 
-										AdtPhoneNumber:dtPhoneNumber ,
-										AdtGPSLocation:dtGPSLocation , 
-										AdtComment:dtComment 
-										):ptBoolean
+					AetHumanKind:etHumanKind , 
+					AdtDate:dtDate , 
+					AdtTime:dtTime , 
+					AdtPhoneNumber:dtPhoneNumber ,
+					AdtGPSLocation:dtGPSLocation , 
+					AdtComment:dtComment 
+				):ptBoolean
+				operation oeSendFamilyNotification(
+					AdtVictimFirstName:dtVictimFirstName,
+					AdtVictimLastName:dtVictimLastName,
+					AdtDate:dtDate,
+					AdtComment:dtComment		
+				):ptBoolean
 			}
 			
 			input interface inactComCompany{
@@ -136,14 +142,6 @@ import icrash.concepts.primarytypes.authentication.classes
 				//Michel:
 				operation oeSubmitCaptcha(AdtResponse:dtCaptchaResponse):ptBoolean
 				
-				//Vlad:
-				operation oeCreateAlert(AetHumanKind:etHumanKind , 
-										AdtDate:dtDate , 
-										AdtTime:dtTime , 
-										AdtPhoneNumber:dtPhoneNumber ,
-										AdtGPSLocation:dtGPSLocation , 
-										AdtComment:dtComment 
-										):ptBoolean
 			}
 			
 			input interface inactAuthenticated{

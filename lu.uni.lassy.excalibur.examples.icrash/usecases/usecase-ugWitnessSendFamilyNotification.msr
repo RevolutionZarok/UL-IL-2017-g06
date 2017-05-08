@@ -12,32 +12,29 @@ import icrash.environment
 
 	Use Case Model {
 		use case system usergoal ugWitnessSendFamilyNotification() {
-		actor actSystem[primary, active]
-		actor actAuthenticated[secondary, active]
-		actor actCoordinator[secondary, proactive]
-		
-		reuse oeCreateAlert[1..*]
-		reuse oeValidateAlert[1..1]
-		reuse oeUpdateCrisis[0..*]
-		
-		step a: actAuthenticated
-		executes oeCreateAlert()
-		
-		step b: actCoordinator
-		executes oeCreateAlert()
-		
-		step c: actCoordinator
-		executes oeValidateAlert()
-		
-		step d: actSystem
-		executes oeChooseInformation()
-		
-		step e: actCoordinator
-		executes oeUpdateCrisis()
-		
-		ordering constraint "if c then previously a or b"
-		ordering constraint "if d then previously a or b"
-		ordering constraint "if e then previously a or b"
+			actor actComCompany[primary, proactive]
+			actor actAuthenticated[secondary, active]
+			actor actCoordinator[secondary, proactive]
+			
+			reuse oeCreateAlert[1..*]
+			reuse oeValidateAlert[1..1]
+			reuse oeUpdateCrisis[0..*]
+			
+			step a: actAuthenticated
+			executes oeCreateAlert()
+			
+			step b: actCoordinator
+			executes oeValidateAlert(AdtAlertID)
+			
+			step c: actCoordinator
+			executes oeUpdateCrisis()
+			
+			step d: actComCompany
+			executes oeSendFamilyNotification()
+			
+			ordering constraint "if b then previously a"
+			ordering constraint "if c then previously b"
+			ordering constraint "if d then previously b or c"
 		}
 	}
 
