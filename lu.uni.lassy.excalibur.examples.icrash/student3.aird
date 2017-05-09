@@ -631,6 +631,7 @@
     <semanticResources>concepts/documentation/Operation-dtFamilyComment-is.msrd</semanticResources>
     <semanticResources>environment/documentation/Operation-actComCompany-outactComCompany-oeSendFamilyNotification.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSendFamilyNotification.msrd</semanticResources>
+    <semanticResources>documentation/View-cm-view18.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WzMfgPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_XHx6YBLiEeeZAOo5Nrpa5w" name="uc-ugAverageTypeofCrisis" representation="_XHx6YRLiEeeZAOo5Nrpa5w">

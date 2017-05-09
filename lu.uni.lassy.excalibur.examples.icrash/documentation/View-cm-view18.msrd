@@ -1,0 +1,14 @@
+/*
+@author michm
+@date Tue May 09 20:45:06 CEST 2017
+*/
+
+
+@@view cm-view18
+@model Concept
+@level Local
+@sublevel Primary Class
+@number 18
+@description "A captcha test and its related pictures"
+@caption "Captcha test and its associated images"
+@scale MaxWidth

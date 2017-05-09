@@ -28,7 +28,7 @@ Concept Model {
 			class ctMailingService role rnctMailingService cardinality [1..1]{
 				operation init():ptBoolean//TODO: Improve
 			}
-			class ctCaptcha role rnctCaptcha cardinality [1..1]{//TODO: View [Sprint3]
+			class ctCaptcha role rnctCaptcha cardinality [1..1]{
 				attribute id: dtCaptchaId
 				attribute question: dtString
 				
@@ -36,7 +36,7 @@ Concept Model {
 				operation is():ptBoolean
 				operation getImageAt(Aindex:ptInteger):ctCaptchaImage//Sprint3
 			}
-			class ctCaptchaImage role rnctCaptchaImage cardinality [9..9]{//TODO: View [Sprint3]
+			class ctCaptchaImage role rnctCaptchaImage cardinality [9..9]{
 				attribute index:ptInteger
 				attribute url:dtString
 				

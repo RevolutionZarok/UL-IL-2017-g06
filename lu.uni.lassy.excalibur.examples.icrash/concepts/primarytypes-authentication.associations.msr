@@ -23,7 +23,7 @@ import icrash.concepts.primarytypes.authentication.classes
 			association assctMailingServiceactMailingService
  					ctMailingService(rnctMailingService)[1..1]
  					actMailingService(rnactMailingService)[1..1]
- 			composition assctCaptchaImages//TODO: View [Sprint3]
+ 			composition assctCaptchaImages
  					ctCaptcha(rnctCaptcha)[1..1]
  					ctCaptchaImage(rnctCaptchaImage)[9..9]
 		}
