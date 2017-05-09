@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -19,8 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-
+import java.util.Scanner;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AlertController;
@@ -83,7 +83,6 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     /** The pane containing the logon controls. */
 	@FXML
     private Pane pnAdminLogon;
-
     /** The textfield that allows input of a username for logon. */
     @FXML
     private TextField txtfldAdminUserName;
@@ -116,6 +115,11 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     @FXML
     private Button bttnBottomAdminStatistic;
     
+    /** The button that allows the user to refresh the data in the tables. */
+    @FXML
+    private Button bttnRefreshStatistic;
+    
+
     /*//Table for the statistic
     @FXML
     private TableView<CtCrisis> tblvwStaticCrises;
@@ -175,6 +179,16 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     	showStatistic(TypeOfStatic.Call);
 	}
 	
+    /**
+     * Button refresh event that runs on the click event.     
+     * 
+     * @param event The event fired by the button being clicked
+     */
+    @FXML
+    void bttnRefreshStatistic_OnClick(ActionEvent event) {
+    	 populateTables();
+    }
+    
 	//// Show Statistic 
 	private enum TypeOfStatic{
 		Call
@@ -267,7 +281,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	 public void populateTables(){
 	    	try {
 				addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
-				addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
+				//addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
 			//	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			} catch (ServerOfflineException | ServerNotBoundException e) {
 				showExceptionErrorMessage(e);
@@ -284,7 +298,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	public void setUpTables(){
 		setUpMessageTables(tblvwAdminMessages);
 		//TODO 
-		//setUpAlertTables(tblvwAlerts);
+		//	setUpAlertTables(tblvwAlerts);
 	   // setUpCrisesTables(tblvwCrises);
 	}
 	
@@ -300,13 +314,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		
 		GridPane grdpn = new GridPane();
 
-		Button bttntypOK = null;
-		//grdpn.add(txtfldUserID, 1, 1);
-		bttntypOK = new Button("Delete");
 		
-		grdpn.add(bttntypOK, 1, 2);
-
-		bttntypOK.setDefaultButton(true);
 		anchrpnCoordinatorDetails.getChildren().add(grdpn);
 		AnchorPane.setTopAnchor(grdpn, 0.0);
 		AnchorPane.setLeftAnchor(grdpn, 0.0);
@@ -329,14 +337,24 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	             });
 				stage2.setX(360);
 	            stage2.setY(1);
+	            
 				stage2.show();
-		
-        
+				
+			 	
+				
+				
 		} 
 		catch (IOException e) {
 			System.err.println("Error in catch for the button Statistic");
 			e.printStackTrace();
 		}
+		System.out.println("11");
+			alertController = new AlertController();
+			System.out.println("22");
+			setUpAlertTables(tblvwAlerts);
+			System.out.println("33");
+			populateTables();
+			System.out.println("44");
 		}
 		
 		/*bttntypOK.setDefaultButton(true);
@@ -500,9 +518,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		systemstateController = new SystemStateController();
 		crisisController = new CrisisController();
     	alertController = new AlertController();
+    	//false
 		logonShowPanes(false);
 		setUpTables();
-		populateTables();
 	}
 	
 	
