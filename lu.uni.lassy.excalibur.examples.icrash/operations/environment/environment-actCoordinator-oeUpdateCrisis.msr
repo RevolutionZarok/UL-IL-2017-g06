@@ -1,13 +1,14 @@
 package icrash.environment.operations.actCoordinator.outactCoordinator.oeUpdateCrisis {
 
 import lu.uni.lassy.messir.libraries.primitives
-import lu.uni.lassy.messir.libraries.math
-import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.calendar
+import lu.uni.lassy.messir.libraries.math
 
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
 import icrash.concepts.secondarytypes.datatypes
+
+import icrash.environment
 
 	Operation Model {
 
@@ -24,17 +25,17 @@ import icrash.concepts.secondarytypes.datatypes
 			}
 			
 			preF{
-  				let TheSystem: ctState in
-  				and TheSystem = self.rnActor.rnSystem 
-  				and (TheSystem.clock.date.gt(AdtDate)
-       				or (TheSystem.clock.date.eq(AdtDate)
-           				and TheSystem.clock.time.gt(AdtTime)
-          			)
-      			)
+  				let TheSystem:ctState in
+  				let ACtCrisis:ctCrisis in
+  				
+  				TheSystem = self.rnActor.rnSystem 
+  				and TheSystem.clock.date.gt(ACtCrisis.instant.date)
+  				and TheSystem.clock.time.gt(ACrisis.instant.time)
 			}
 			
 			postF{
 				let	 TheSystem:ctState in
+				let  TheactComCompany:actComCompany in
 				let  ActCrisis:ctCrisis in
 				let  AdtCrisisID:dtCrisisID in
 				let  AetCrisisType:etCrisisType in
@@ -51,10 +52,13 @@ import icrash.concepts.secondarytypes.datatypes
 				and ACrisisStatus = pending
 				
 				and ActCrisis.update(
-					AetAlertStatus,
 					AdtDate,
- 					AdtTimee,
+ 					AdtTime,
  					AdtComment
+ 				
+				)
+				and TheactComCompany.rnInterfaceOUT^operation oeSendFamilyNotification(
+					AdtVictimFirstName,AdtVictimLastName,AdtDate,AdtComment		
 				)
 			}
 			

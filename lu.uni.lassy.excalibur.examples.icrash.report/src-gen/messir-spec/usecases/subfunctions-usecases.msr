@@ -185,9 +185,12 @@ import icrash.environment
 			ieMessage(AMessage) returned to actCoordinator
 		}
 	}
-	
-	
-	
+	use case system subfunction oeSendFamilyNotification(){
+		actor actComCompany[primary, active]
+		returned messages{
+			idMessage(AMessage) returned to actComCompany
+		}
+	}
 		
 	//Sam:
 	use case system subfunction oegetStatistic(){
@@ -226,8 +229,5 @@ import icrash.environment
 				ieShowStaticCrisis returned to actAdministrator
 			}
 	}
-	use case system subfunction oeSendFamilyNotification() {
-			actor actComCompany[primary, active]
-		}
-	}
+}
 }
