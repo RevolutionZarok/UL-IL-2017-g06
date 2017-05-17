@@ -100,4 +100,6 @@ public interface ActAuthenticated extends java.rmi.Remote, Serializable, JIntIsA
 	 * @throws NotBoundException 
 	 */
 	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException;
+	
+	public PtBoolean ieCaptchaAuthenticationSucceeded() throws RemoteException, NotBoundException;
 }

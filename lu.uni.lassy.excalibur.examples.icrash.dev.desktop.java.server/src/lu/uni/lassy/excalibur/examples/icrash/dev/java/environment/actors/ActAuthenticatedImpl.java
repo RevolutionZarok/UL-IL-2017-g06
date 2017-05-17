@@ -207,10 +207,24 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException{
 		Logger log = Log4JUtils.getInstance().getLogger();
 		log.info("actAuthenticated has submitted an answer to a captcha test");
-		exceptCaptcha = new PtBoolean(true);//TODO: Messir?
+		exceptCaptcha = new PtBoolean(true);
 		if(!ActCaptchaServiceImpl.getInstance().ieVerifyCaptcha(aResponse).getValue()){
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 			exceptCaptcha = new PtBoolean(false);
+		}
+		return new PtBoolean(true);
+	}
+	
+	@Override
+	public PtBoolean ieCaptchaAuthenticationSucceeded() throws RemoteException, NotBoundException{
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				aProxy.ieCaptchaAuthenticationSucceeded();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
 		}
 		return new PtBoolean(true);
 	}

@@ -127,10 +127,12 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
 		IcrashSystem iCrashSys_Server = (IcrashSystem) registry
 				.lookup("iCrashServer");
-		iCrashSys_Server.getCurrentRequestingAuthenticatedActor().oeLogin(
+		if(iCrashSys_Server.getCurrentRequestingAuthenticatedActor().oeLogin(
 				iCrashSys_Server.getCurrentRequestingAuthenticatedLogin(),
 				iCrashSys_Server.getCurrentRequestingAuthenticatedPassword()
-				);
+				).getValue()){
+			iCrashSys_Server.getCurrentRequestingAuthenticatedActor().ieCaptchaAuthenticationSucceeded();
+		}
 		
 		return new PtBoolean(true);
 	}

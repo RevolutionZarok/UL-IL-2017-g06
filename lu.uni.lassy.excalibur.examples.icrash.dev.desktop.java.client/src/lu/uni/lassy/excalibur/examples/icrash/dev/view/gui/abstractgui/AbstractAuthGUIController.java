@@ -35,4 +35,8 @@ public abstract class AbstractAuthGUIController extends AbstractGUIController im
 	 */
 	protected abstract void logonShowPanes(boolean loggedOn);
 	
+	public void refreshLogonPanesState(boolean loggedOn){
+		logonShowPanes(loggedOn);
+	}
+	
 }

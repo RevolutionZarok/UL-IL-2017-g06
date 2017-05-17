@@ -449,6 +449,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	 */
 	@Override
 	public void logon() {
+		userController.setCurrentAuthGUI(this);
 		if(txtfldCoordLogonUserName.getText().length() > 0 && psswrdfldCoordLogonPassword.getText().length() > 0){
 			try {
 				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText()).getValue()){

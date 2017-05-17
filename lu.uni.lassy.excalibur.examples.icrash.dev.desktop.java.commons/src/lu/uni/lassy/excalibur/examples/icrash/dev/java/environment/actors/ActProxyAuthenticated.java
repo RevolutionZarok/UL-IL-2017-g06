@@ -86,6 +86,8 @@ public interface ActProxyAuthenticated extends Remote, JIntHasServerSideActor, J
 	 */
 	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException;
 	
+	public PtBoolean ieCaptchaAuthenticationSucceeded() throws RemoteException, NotBoundException;
+	
 	/**
 	 * An enum of different user types, makes it easier to read code where you can check the type rather than having to call instance of to check the actor type.
 	 */

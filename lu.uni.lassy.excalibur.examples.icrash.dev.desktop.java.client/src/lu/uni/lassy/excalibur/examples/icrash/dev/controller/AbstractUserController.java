@@ -24,6 +24,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyAuthenticatedImpl;
+import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController;
 
 /**
  * The Class AbstractUserController, used for generic functions that are done by both administrators and coordinators.
@@ -124,5 +125,13 @@ public abstract class AbstractUserController implements HasListeners {
 			Log4JUtils.getInstance().getLogger().error(e);
 			throw new ServerNotBoundException();
 		}
+	}
+	
+	public void setCurrentAuthGUI(AbstractAuthGUIController gui){
+		getAuthImpl().setCurrentAuthGUI(gui);
+	}
+	
+	public AbstractAuthGUIController getCurrentAuthGUI(){
+		return getAuthImpl().getCurrentAuthGUI();
 	}
 }
