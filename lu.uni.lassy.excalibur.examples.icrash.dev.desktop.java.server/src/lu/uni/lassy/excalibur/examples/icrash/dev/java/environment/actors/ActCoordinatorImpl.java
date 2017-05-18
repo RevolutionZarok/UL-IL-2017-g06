@@ -31,7 +31,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
 
@@ -364,5 +366,39 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 	 	}else{
 	 		return super.setAuthenticationLocked(aLocked);
 	 	}
+	}
+	
+	@Override
+	protected PtBoolean notifyAboutLocking() throws RemoteException, NotBoundException{
+		Optional<CtCoordinator> op = getAssociatedCt();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			
+			DtString reset_code = CtCoordinator.generateResetCode();
+			Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		 	
+			if(!iCrashSys_Server.oeUpdateCoordinator(ctc.id, ctc.login, ctc.pwd, ctc.mail, ctc.locked, reset_code).getValue()){
+				reset_code = ctc.resetCode;
+				Log4JUtils.getInstance().getLogger().info("A new reset code could not be generated...");
+			}
+			
+			PtString message = new PtString(
+					"Your coordinator account \"" + ctc.login + "\" for iCrash.FX has been locked in order to guarantee your security. "
+					+ "The reason it has been locked is that someone tried several times to log in "
+					+ "with your coordinator account without success. As a safety measure, your account "
+					+ "has been disabled temporarily.\n\n"
+					+ "In order to reactivate your account, you will have to remember the following code:\n"
+					+ ctc.resetCode.toString() + "\n\n"
+					+ "To reactivate your account, go to the window you would normally log in with your "
+					+ "coordinator credentials. Click then on \"Reactivate account\". A new window will then "
+					+ "appear where you have to enter the code sent by this mail. After this, follow the "
+					+ "given instructions.\n\n"
+					+ "Best regards,\niCrash.FX Service Team"
+					);
+			return ActMailingServiceImpl.getInstance().ieSendMail(ctc.mail, new PtString("Your iCrash.FX coordinator account has been disabled"), message);
+		}else{
+			return super.notifyAboutLocking();
+		}
 	}
 }

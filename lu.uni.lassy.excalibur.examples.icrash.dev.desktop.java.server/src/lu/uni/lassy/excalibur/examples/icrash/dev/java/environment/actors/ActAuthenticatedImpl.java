@@ -116,6 +116,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			if(loginCounter.getValue() >= 8){
 				setAuthenticationLocked(new PtBoolean(true));
+				notifyAboutLocking();
 			}
 		}
 		exceptCaptcha = new PtBoolean(false);
@@ -232,12 +233,16 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		return new PtBoolean(true);
 	}
 
-	public PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
+	protected PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
 		return new PtBoolean(loginCounter.getValue() >= 8);
 	}
 
-	public PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
+	protected PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
 		return new PtBoolean(false);
+	}
+	
+	protected PtBoolean notifyAboutLocking() throws RemoteException, NotBoundException{
+		return new PtBoolean(true);
 	}
 	
 }

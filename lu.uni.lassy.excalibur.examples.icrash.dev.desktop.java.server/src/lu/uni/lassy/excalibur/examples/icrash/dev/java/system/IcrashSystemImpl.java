@@ -1261,6 +1261,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			return new PtBoolean(false);
 		} catch (Exception e) {
 			log.error("Exception in oeDeleteCoordinator..." + e);
+			e.printStackTrace();
 			return new PtBoolean(false);
 		}
 	}
@@ -1290,8 +1291,10 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				if (DbCoordinators.updateCoordinator(aCtCoordinator).getValue()){
 					cmpSystemCtAuthenticated.remove(oldCoordinator.login.value.getValue());
 					cmpSystemCtAuthenticated.put(aCtCoordinator.login.value.getValue(), aCtCoordinator);
-					ActAdministrator admin = (ActAdministrator) currentRequestingAuthenticatedActor;
-					admin.ieCoordinatorUpdated();
+					if(currentRequestingAuthenticatedActor != null && currentRequestingAuthenticatedActor instanceof ActAdministrator){
+						ActAdministrator admin = (ActAdministrator) currentRequestingAuthenticatedActor;
+						admin.ieCoordinatorUpdated();
+					}
 					return new PtBoolean(true);
 				}
 				else
@@ -1304,7 +1307,8 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			}
 			return new PtBoolean(false);
 		} catch (Exception e) {
-			log.error("Exception in oeDeleteCoordinator..." + e);
+			log.error("Exception in oeUpdateCoordinator..." + e);
+			e.printStackTrace();
 			return new PtBoolean(false);
 		}
 	}
