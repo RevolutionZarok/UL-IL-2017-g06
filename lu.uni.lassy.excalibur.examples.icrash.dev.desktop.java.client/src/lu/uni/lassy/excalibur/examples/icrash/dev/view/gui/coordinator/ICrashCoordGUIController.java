@@ -33,6 +33,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -147,6 +148,9 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     /** The button that allows a user to logoff. */
     @FXML
     private Button bttnCoordLogoff;
+    
+    @FXML
+    private Hyperlink linkReactivAccount;
 
     /**
      * Button event that deals with changing the status of a crisis
@@ -589,4 +593,10 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 		}
 		return new PtBoolean(true);
 	}
+
+    @FXML
+    void linkReactivAccount_OnClick(ActionEvent event) {
+		showWarningMessage("Warning", "Account reactivation is not yet implemented");
+    }
+
 }
