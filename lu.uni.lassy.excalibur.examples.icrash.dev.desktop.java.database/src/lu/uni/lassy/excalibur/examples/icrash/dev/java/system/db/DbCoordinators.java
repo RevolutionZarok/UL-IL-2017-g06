@@ -203,7 +203,7 @@ public class DbCoordinators extends DbAbstract{
 				int locked = aCtCoordinator.locked.getValue()?1:0;
 				String reset_code = aCtCoordinator.resetCode.toString();
 				String statement = "UPDATE "+ dbName+ ".coordinators" +
-						" SET pwd='"+pwd+"',  login='"+ login+"', email='" + mail + "', locked='"+locked+"' reset_code='" + reset_code +  "' " +
+						" SET pwd='"+pwd+"',  login='"+ login+"', email='" + mail + "', locked='"+locked+"', reset_code='" + reset_code +  "' " +
 						"WHERE id='"+id+"'";
 				int val = st.executeUpdate(statement);
 				log.debug(val+" row updated");

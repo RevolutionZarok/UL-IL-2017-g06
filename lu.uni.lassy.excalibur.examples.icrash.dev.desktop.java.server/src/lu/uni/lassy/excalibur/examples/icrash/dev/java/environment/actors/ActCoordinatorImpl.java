@@ -16,9 +16,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Optional;
+
+import org.apache.log4j.Logger;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
@@ -30,8 +34,6 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
-
-import org.apache.log4j.Logger;
 
 /**
  * The Class ActCoordinatorImpl, which creates a server side actor of type coordinator.
@@ -331,5 +333,36 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 		if(res.getValue() == true)
 			log.info("operation oeGetAlertsSet successfully executed by the system");
 		return res;
+	}
+	
+	private Optional<CtCoordinator> getAssociatedCt() throws RemoteException, NotBoundException{
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		return iCrashSys_Server.getAllCtCoordinators().stream()
+							.filter(ct -> ct.login.eq(getLogin()).getValue())
+							.findFirst();
+	}
+	
+	@Override
+	public PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
+		Optional<CtCoordinator> op = getAssociatedCt();
+		if(op.isPresent()){
+			return op.get().locked;
+		}else{
+			return super.isAuthenticationLocked();
+		}
+	}
+	
+	@Override
+	public PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	Optional<CtCoordinator> op = getAssociatedCt();
+	 	if(op.isPresent()){
+	 		CtCoordinator ctc = op.get();
+	 		return iCrashSys_Server.oeUpdateCoordinator(ctc.id, ctc.login, ctc.pwd, ctc.mail, aLocked, ctc.resetCode);
+	 	}else{
+	 		return super.setAuthenticationLocked(aLocked);
+	 	}
 	}
 }

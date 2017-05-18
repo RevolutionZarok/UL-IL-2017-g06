@@ -90,7 +90,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		//set up ActAuthenticated instance that performs the request
 		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
 		
-		if(loginCounter.getValue() >= 8){//TODO: Excalibur
+		if(isAuthenticationLocked().getValue()){//TODO: Excalibur
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
 			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
@@ -112,8 +112,11 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin successfully executed by the system");
 			loginCounter = new PtInteger(0);//TODO: Excalibur
 		}else{//TODO: Excalibur
-			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
+			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
+			if(loginCounter.getValue() >= 8){
+				setAuthenticationLocked(new PtBoolean(true));
+			}
 		}
 		exceptCaptcha = new PtBoolean(false);
 		
@@ -227,6 +230,14 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			}
 		}
 		return new PtBoolean(true);
+	}
+
+	public PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
+		return new PtBoolean(loginCounter.getValue() >= 8);
+	}
+
+	public PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
+		return new PtBoolean(false);
 	}
 	
 }

@@ -58,9 +58,20 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd the value to change the password to 
 	 * @return the success of the update method
 	 */
-	public PtBoolean update(DtLogin aLogin,DtPassword aPwd){
+	public PtBoolean update(DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail){//TODO:Messir S4
 		login = aLogin;
 		pwd = aPwd;
+		mail = aMail;
+		return new PtBoolean(true);
+	}
+	
+	public PtBoolean updateLockedState(PtBoolean aLocked){//TODO:Messir? S4
+		locked = aLocked;
+		return new PtBoolean(true);
+	}
+	
+	public PtBoolean updateResetCode(DtString aResetCode){//TODO:Messir? S4
+		resetCode = aResetCode;
 		return new PtBoolean(true);
 	}
 	
