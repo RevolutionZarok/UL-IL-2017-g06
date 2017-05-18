@@ -389,7 +389,7 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 					+ "with your coordinator account without success. As a safety measure, your account "
 					+ "has been disabled temporarily.\n\n"
 					+ "In order to reactivate your account, you will have to remember the following code:\n"
-					+ ctc.resetCode.toString() + "\n\n"
+					+ reset_code + "\n\n"
 					+ "To reactivate your account, go to the window you would normally log in with your "
 					+ "coordinator credentials. Click then on \"Reactivate account\". A new window will then "
 					+ "appear where you have to enter the code sent by this mail. After this, follow the "
