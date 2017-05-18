@@ -12,7 +12,11 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
+import java.util.Random;
+
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 /**
  * The Class CtCoordinator which extends the class of CtAuthenticated
@@ -25,6 +29,10 @@ public class CtCoordinator extends CtAuthenticated {
 
 	/** The id of the coordinator. */
 	public DtCoordinatorID id;
+	
+	public PtBoolean locked = new PtBoolean(false);//TODO:Messir S4
+	public DtString resetCode = generateResetCode();//TODO:Messir S4
+	public DtMailAddress mail;
 		
 	/**
 	 * Initialises the coordinator.
@@ -34,9 +42,12 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd The password of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd){
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail,PtBoolean aLocked,DtString aResetCode){//TODO:Messir S4
 			super.init(aLogin, aPwd);
 			id = aId;
+			mail = aMail;
+			locked = aLocked;
+			resetCode = aResetCode;
 			return new PtBoolean(true); 
 	}
 	
@@ -74,5 +85,26 @@ public class CtCoordinator extends CtAuthenticated {
 	@Override
 	public int hashCode(){
 		return this.id.value.getValue().length() + super.hashCode();
+	}
+	
+	public static DtString generateResetCode(){
+		StringBuilder sb = new StringBuilder();
+		Random rand = new Random(System.currentTimeMillis());
+		for(int i = 0 ; i < 8 ; i++){
+			int j = 48;
+			switch(rand.nextInt(3)){
+			case 0:
+				j = 48 + rand.nextInt(10);
+				break;
+			case 1:
+				j = 65 + rand.nextInt(26);
+				break;
+			case 2:
+				j = 97 + rand.nextInt(26);
+				break;
+			}
+			sb.append((char)j);
+		}
+		return new DtString(new PtString(sb.toString()));
 	}
 }

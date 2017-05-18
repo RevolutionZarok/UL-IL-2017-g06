@@ -22,7 +22,9 @@ import java.util.Hashtable;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
@@ -51,11 +53,14 @@ public class DbCoordinators extends DbAbstract{
 				String id = aCtCoordinator.id.value.getValue();
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
+				String email = aCtCoordinator.mail.toString();
+				int locked = aCtCoordinator.locked.getValue()?1:0;
+				String resetCode = aCtCoordinator.resetCode.toString();
 	
 				log.debug("[DATABASE]-Insert coordinator");
 				int val = st.executeUpdate("INSERT INTO "+ dbName+ ".coordinators" +
-											"(id,login,pwd)" + 
-											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"')");
+											"(id,login,pwd,email,locked,reset_code)" + 
+											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"','"+email+"','"+locked+"','"+resetCode+"')");
 				
 				log.debug(val + " row affected");
 			}
@@ -106,9 +111,21 @@ public class DbCoordinators extends DbAbstract{
 					DtLogin aLogin = new DtLogin(new PtString(res.getString("login")));
 					//coordinator's pwd
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
-
-					aCtCoordinator.init(aId, aLogin,aPwd);
+					//coordinator's email
+					DtMailAddress aMail = new DtMailAddress(new PtString(res.getString("email")));
+					//coordinator's locked state
+					PtBoolean aLocked = new PtBoolean(res.getBoolean("locked"));
+					//coordinator's resetCode
+					String _aResetCode = res.getString("reset_code");
+					DtString aResetCode;
+					if(_aResetCode == null){
+						aResetCode = CtCoordinator.generateResetCode();
+					}else{
+						aResetCode = new DtString(new PtString(_aResetCode));
+					}
 					
+
+					aCtCoordinator.init(aId, aLogin,aPwd,aMail,aLocked,aResetCode);
 				}
 								
 			}
@@ -182,8 +199,11 @@ public class DbCoordinators extends DbAbstract{
 				String id = aCtCoordinator.id.value.getValue();
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
+				String mail = aCtCoordinator.mail.toString();
+				int locked = aCtCoordinator.locked.getValue()?1:0;
+				String reset_code = aCtCoordinator.resetCode.toString();
 				String statement = "UPDATE "+ dbName+ ".coordinators" +
-						" SET pwd='"+pwd+"',  login='"+ login+"' " +
+						" SET pwd='"+pwd+"',  login='"+ login+"', email='" + mail + "', locked='"+locked+"' reset_code='" + reset_code +  "' " +
 						"WHERE id='"+id+"'";
 				int val = st.executeUpdate(statement);
 				log.debug(val+" row updated");
@@ -232,8 +252,11 @@ public class DbCoordinators extends DbAbstract{
 							res.getString("id")));
 					DtLogin aLogin = new DtLogin(new PtString(res.getString("login")));
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
+					DtMailAddress aMail = new DtMailAddress(new PtString(res.getString("email")));
+					PtBoolean aLocked = new PtBoolean(res.getBoolean("locked"));
+					DtString aResetCode = new DtString(new PtString(res.getString("reset_code")));
 					//init aCtAlert instance
-					aCtCoord.init(aId, aLogin, aPwd);
+					aCtCoord.init(aId, aLogin, aPwd, aMail,aLocked,aResetCode);
 					
 					//add instance to the hash
 					cmpSystemCtCoord
