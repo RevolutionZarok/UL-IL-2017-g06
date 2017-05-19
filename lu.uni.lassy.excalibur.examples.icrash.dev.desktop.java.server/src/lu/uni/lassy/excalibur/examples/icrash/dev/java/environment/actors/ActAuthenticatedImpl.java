@@ -50,9 +50,9 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	private DtLogin login;
 	
 	/** The internal counter for login attempts */
-	private PtInteger loginCounter = new PtInteger(0);//TODO: Messir
+	private PtInteger loginCounter = new PtInteger(0);
 	
-	private PtBoolean exceptCaptcha = new PtBoolean(false);//TODO: Messir
+	private PtBoolean exceptCaptcha = new PtBoolean(false);
 	
 	/**
 	 * Instantiates a new server side actor of type authenticated.
@@ -90,7 +90,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		//set up ActAuthenticated instance that performs the request
 		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
 		
-		if(isAuthenticationLocked().getValue()){//TODO: Excalibur
+		if(isAuthenticationLocked().getValue()){
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
 			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
@@ -98,7 +98,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
 			iCrashSys_Server.setCurrentRequestingAuthenticatedLogin(aDtLogin);
 			iCrashSys_Server.setCurrentRequestingAuthenticatedPassword(aDtPassword);
-			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
+			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();
 			return new PtBoolean(false);
 		}
 
@@ -110,8 +110,8 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		
 		if (res.getValue() == true){
 			log.info("operation oeLogin successfully executed by the system");
-			loginCounter = new PtInteger(0);//TODO: Excalibur
-		}else{//TODO: Excalibur
+			loginCounter = new PtInteger(0);
+		}else{
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
 			if(loginCounter.getValue() >= 8){

@@ -98,8 +98,8 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * This is set by the Actor itself before it performs an oe action*/
 	ActAuthenticated currentRequestingAuthenticatedActor;
 	
-	DtLogin currentRequestingAuthenticatedLogin;//TODO: Messir?
-	DtPassword currentRequestingAuthenticatedPassword;//TODO: Messir?
+	DtLogin currentRequestingAuthenticatedLogin;
+	DtPassword currentRequestingAuthenticatedPassword;
 	
 	/** The current connected communication company that is performing a method on the system.
 	 * This is set by the Actor itself before it performs an oe action*/

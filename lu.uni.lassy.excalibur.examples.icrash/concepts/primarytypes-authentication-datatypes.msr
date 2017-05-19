@@ -19,12 +19,12 @@ Concept Model {
 			}
 			datatype dtCaptchaResponse {
 				attribute id: dtCaptchaId
-				attribute response: dtInteger//TODO: Sprint3: Changed from ptString -> dtInteger
+				attribute response: dtInteger
 				
 				operation init(Aid:dtCaptchaId, Aresponse:dtInteger):ptBoolean
 				operation is():ptBoolean
 			}
-			datatype dtCaptchaResponseMap{//TODO: Is this sufficient?
+			datatype dtCaptchaResponseMap{
 				operation is():ptBoolean
 				
 				operation register(AdtResponse:dtCaptchaResponse):ptBoolean
