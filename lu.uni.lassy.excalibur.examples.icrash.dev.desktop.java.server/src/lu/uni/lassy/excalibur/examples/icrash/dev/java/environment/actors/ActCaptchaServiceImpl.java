@@ -5,6 +5,11 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
@@ -14,6 +19,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCa
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaId;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponseMap;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
@@ -26,9 +32,80 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 	
 	private DtCaptchaResponseMap responseMap = new DtCaptchaResponseMap();
 	private static ActCaptchaServiceImpl instance;//TODO: RMI
+	
+	private final List<CImageRef> captchaImageDatabase;
+	private final List<CaptchaQuestion> captchaQuestions;
+	
+	private final Random random;
 
 	private ActCaptchaServiceImpl() throws RemoteException {
 		super(RmiUtils.getInstance().getPort());
+		
+		this.random = new Random(System.currentTimeMillis());
+
+		ArrayList<CImageRef> captchaImageDatabase = new ArrayList<>();
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_0.jpg", "cat"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_1.jpg", "dog"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_2.jpg", "dog", "puppy"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_3.jpg", "cat", "kitten"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_4.jpg", "horse"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_5.jpg", "cat"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_6.jpg", "horse"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_7.jpg", "dog"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_8.jpg", "dog"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_9.jpg", "cat"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_10.jpg", "horse"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_11.jpg", "horse"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_12.jpg", "squirrel"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_13.jpg", "squirrel"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_14.jpg", "squirrel"));
+		captchaImageDatabase.add(new CImageRef("http://kremi151.square7.ch/captcha/captcha_15.jpg", "squirrel"));
+		this.captchaImageDatabase = Collections.unmodifiableList(captchaImageDatabase);
+		
+		ArrayList<CaptchaQuestion> captchaQuestions = new ArrayList<>();
+		captchaQuestions.add(new CaptchaQuestion("Select the pictures containing a dog", "dog"));
+		captchaQuestions.add(new CaptchaQuestion("Select the pictures containing a cat", "cat"));
+		captchaQuestions.add(new CaptchaQuestion("Select the pictures containing a horse", "horse"));
+		captchaQuestions.add(new CaptchaQuestion("Select the pictures containing a squirrel", "squirrel"));
+		this.captchaQuestions = Collections.unmodifiableList(captchaQuestions);
+	}
+	
+	private CaptchaCouple generateRandomCaptcha(){
+		CaptchaQuestion question = captchaQuestions.get(random.nextInt(captchaQuestions.size()));
+		ArrayList<CImageRef> targetImages = new ArrayList<>();
+		ArrayList<CImageRef> fillerImages = new ArrayList<>(captchaImageDatabase);
+		Iterator<CImageRef> fillerIterator = fillerImages.iterator();
+		while(fillerIterator.hasNext()){
+			CImageRef ref = fillerIterator.next();
+			for(String tag : ref.tags){
+				if(tag.equalsIgnoreCase(question.tag)){
+					fillerIterator.remove();
+					targetImages.add(ref);
+					break;
+				}
+			}
+		}
+		boolean answers[] = new boolean[9];
+		for(int i = 0 ; i < 9 ; i++)answers[i] = false;
+		CtCaptchaImage captchaImages[] = new CtCaptchaImage[9];
+		ArrayList<Integer> slotsLeft = new ArrayList<>(9);
+		for(int i = 0 ; i < 9 ; i++)slotsLeft.add(i);
+		final int maxTargetImages = 2 + random.nextInt(3);
+		for(int i = 0 ; i < maxTargetImages && targetImages.size() > 0 ; i++){
+			CImageRef ref = targetImages.remove(random.nextInt(targetImages.size()));
+			int slot = slotsLeft.remove(random.nextInt(slotsLeft.size()));
+			captchaImages[slot] = new CtCaptchaImage(ref.url);
+			answers[slot] = true;
+		}
+		while(slotsLeft.size() > 0){
+			CImageRef ref = fillerImages.remove(random.nextInt(fillerImages.size()));
+			int slot = slotsLeft.remove(random.nextInt(slotsLeft.size()));
+			captchaImages[slot] = new CtCaptchaImage(ref.url);
+		}
+		DtCaptchaId id = new DtCaptchaId(new PtInteger((int)(Integer.MAX_VALUE * Math.random())));
+		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString(buildBinaryAnswerString(answers)));
+		CtCaptcha captchaTest = new CtCaptcha(id, question.question.value, captchaImages);
+		return new CaptchaCouple(captchaTest, captchaAnswer);
 	}
 
 	@Override
@@ -41,27 +118,13 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 				.lookup("iCrashServer");
 		
 		log.info("Generating captcha test...");
-		DtCaptchaId id = new DtCaptchaId(new PtInteger((int)(Integer.MAX_VALUE * Math.random())));
 		
-		CtCaptchaImage images[] = new CtCaptchaImage[]{
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_0.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_1.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_2.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_3.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_4.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_5.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_6.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_7.jpg")),
-				new CtCaptchaImage(new PtString("http://kremi151.square7.ch/captcha/captcha_8.jpg"))
-		};
+		CaptchaCouple generated = generateRandomCaptcha();
 		
-		CtCaptcha captchaTest = new CtCaptcha(id, new PtString("Select the pictures showing a dog"), images);//TODO: Captcha -> make variable
-		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString(buildBinaryAnswerString(new boolean[]{false, true, true, false, false, false, false, true, true})));//TODO: Captcha -> make variable
-
 		log.info("Saving captcha test and answer...");
-		responseMap.register(captchaAnswer);
+		responseMap.register(generated.answer);
 		
-		iCrashSys_Server.oeSendCaptcha(captchaTest);
+		iCrashSys_Server.oeSendCaptcha(generated.test);
 		return new PtBoolean(true);
 	}
 	
@@ -142,6 +205,36 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 			instance = new ActCaptchaServiceImpl();
 		}
 		return instance;
+	}
+	
+	private static class CImageRef{
+		final PtString url;
+		final String tags[];
+		
+		private CImageRef(String url, String... tags){
+			this.url = new PtString(url);
+			this.tags = tags;
+		}
+	}
+	
+	private static class CaptchaCouple{
+		final CtCaptcha test;
+		final DtCaptchaResponse answer;
+		
+		private CaptchaCouple(CtCaptcha test, DtCaptchaResponse answer){
+			this.test = test;
+			this.answer = answer;
+		}
+	}
+	
+	private static class CaptchaQuestion{
+		final DtString question;
+		final String tag;
+		
+		private CaptchaQuestion(String question, String tag){
+			this.question = new DtString(new PtString(question));
+			this.tag = tag;
+		}
 	}
 
 }
