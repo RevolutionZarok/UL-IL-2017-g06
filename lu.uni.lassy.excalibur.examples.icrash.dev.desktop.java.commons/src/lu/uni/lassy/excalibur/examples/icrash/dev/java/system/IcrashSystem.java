@@ -383,9 +383,11 @@ public interface IcrashSystem extends Remote {
 	public PtBoolean oeSetClock(DtDateAndTime aCurrentClock) throws RemoteException; 
 	
 	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException;
+	
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd) throws RemoteException, NotBoundException;//TODO: Messir S4 (Post conditions too)
 
-	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;//TODO: Messir?
-	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;//TODO: Messir?
-	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;//TODO: Messir?
-	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;//TODO: Messir?
+	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;
+	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;
+	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;
+	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;
 }

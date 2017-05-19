@@ -245,4 +245,9 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		return new PtBoolean(true);
 	}
 	
+	public PtBoolean notifyAboutUnlocking(){
+		this.loginCounter = new PtInteger(0);
+		return new PtBoolean(true);
+	}
+	
 }

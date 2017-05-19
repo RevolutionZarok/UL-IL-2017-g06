@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -1385,6 +1386,25 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	@Override
 	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException {
 		return ActCaptchaServiceImpl.getInstance().oeSendCaptcha(aCaptcha);
+	}
+
+	@Override
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd) throws RemoteException, NotBoundException {
+		Optional<CtCoordinator> op = getAllCtCoordinators().stream()
+				.filter(ct -> ct.login.eq(aLogin).getValue())
+				.findFirst();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			ActCoordinator actC = getActCoordinator(ctc);
+			if(ctc.resetCode.eq(aResetCode).getValue()){
+				oeUpdateCoordinator(ctc.id, ctc.login, aNewPwd, ctc.mail, new PtBoolean(false), CtCoordinator.generateResetCode());
+				if(actC instanceof ActCoordinatorImpl){
+					((ActCoordinatorImpl)actC).notifyAboutUnlocking();
+				}
+				return new PtBoolean(true);
+			}
+		}
+		return new PtBoolean(false);
 	}
 
 	@Override
