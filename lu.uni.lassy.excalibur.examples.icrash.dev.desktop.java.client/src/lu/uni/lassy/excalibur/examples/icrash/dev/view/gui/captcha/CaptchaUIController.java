@@ -11,7 +11,6 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCaptchaResponse;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 public class CaptchaUIController {
 
@@ -37,18 +36,9 @@ public class CaptchaUIController {
 	}
 	
 	@FXML
-    public void initialize() {//TODO: Load images from actual captcha test
+    public void initialize() {
 		labelQuestion.setText(captchaTest.getQuestion().toString());
-		System.out.println("Loading images...");//TODO: Remove
-		/*img0.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_0.jpg"));
-		img1.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_1.jpg"));
-		img2.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_2.jpg"));
-		img3.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_3.jpg"));
-		img4.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_4.jpg"));
-		img5.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_5.jpg"));
-		img6.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_6.jpg"));
-		img7.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_7.jpg"));
-		img8.setImage(new Image("http://kremi151.square7.ch/captcha/captcha_8.jpg"));*/
+		System.out.println("Loading images...");
 		img0.setImage(new Image(captchaTest.getImageAt(new PtInteger(0)).getUrl().toString()));
 		img1.setImage(new Image(captchaTest.getImageAt(new PtInteger(1)).getUrl().toString()));
 		img2.setImage(new Image(captchaTest.getImageAt(new PtInteger(2)).getUrl().toString()));
@@ -58,30 +48,19 @@ public class CaptchaUIController {
 		img6.setImage(new Image(captchaTest.getImageAt(new PtInteger(6)).getUrl().toString()));
 		img7.setImage(new Image(captchaTest.getImageAt(new PtInteger(7)).getUrl().toString()));
 		img8.setImage(new Image(captchaTest.getImageAt(new PtInteger(8)).getUrl().toString()));
-		System.out.println("Done");//TODO: Remove
+		System.out.println("Done");
 	}
 	
 	@FXML
 	protected void btnSendCaptcha_OnClick(){
 		try {
-			actAuthenticated.oeSubmitCaptcha(new DtCaptchaResponse(captchaTest.getId(), new PtString(buildBinaryAnswerString())));
+			actAuthenticated.oeSubmitCaptcha(new DtCaptchaResponse(captchaTest.getId(), DtCaptchaResponse.buildBinaryAnswer(selection)));
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
 		} catch (NotBoundException e) {
 			throw new RuntimeException(e);
 		}
 		labelQuestion.getScene().getWindow().hide();
-	}
-	
-	private String buildBinaryAnswerString(){
-		StringBuilder sb = new StringBuilder();
-		int currentChar = 0;
-		for(int i = 0 ; i < 9 ; i++){
-			currentChar |= (selection[i] ? (1 << i) : 0);
-		}
-		sb.append((char)(currentChar & 255));
-		sb.append((char)((currentChar >> 8) & 255));
-		return sb.toString();
 	}
 	
 	@FXML

@@ -31,7 +31,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 	private static final long serialVersionUID = -5086057999828832836L;
 	
 	private DtCaptchaResponseMap responseMap = new DtCaptchaResponseMap();
-	private static ActCaptchaServiceImpl instance;//TODO: RMI
+	private static ActCaptchaServiceImpl instance;
 	
 	private final List<CImageRef> captchaImageDatabase;
 	private final List<CaptchaQuestion> captchaQuestions;
@@ -103,7 +103,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 			captchaImages[slot] = new CtCaptchaImage(ref.url);
 		}
 		DtCaptchaId id = new DtCaptchaId(new PtInteger((int)(Integer.MAX_VALUE * Math.random())));
-		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, new PtString(buildBinaryAnswerString(answers)));
+		DtCaptchaResponse captchaAnswer = new DtCaptchaResponse(id, DtCaptchaResponse.buildBinaryAnswer(answers));
 		CtCaptcha captchaTest = new CtCaptcha(id, question.question.value, captchaImages);
 		return new CaptchaCouple(captchaTest, captchaAnswer);
 	}
@@ -127,20 +127,6 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		iCrashSys_Server.oeSendCaptcha(generated.test);
 		return new PtBoolean(true);
 	}
-	
-	private String buildBinaryAnswerString(boolean answer[]){
-		if(answer.length != 9){
-			throw new IllegalArgumentException();
-		}
-		StringBuilder sb = new StringBuilder();
-		int currentChar = 0;
-		for(int i = 0 ; i < 9 ; i++){
-			currentChar |= (answer[i] ? (1 << i) : 0);
-		}
-		sb.append((char)(currentChar & 255));
-		sb.append((char)((currentChar >> 8) & 255));
-		return sb.toString();
-	}
 
 	@Override
 	public PtBoolean ieVerifyCaptcha(DtCaptchaResponse AdtCaptchaResponse) throws RemoteException, NotBoundException {
@@ -157,7 +143,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		}else{
 			log.info("Unknown captcha test answer received");
 		}
-		return new PtBoolean(false);//TODO: Messir: Return true if captcha answer is correct
+		return new PtBoolean(false);
 	}
 
 	@Override
@@ -200,7 +186,7 @@ public class ActCaptchaServiceImpl extends UnicastRemoteObject implements ActCap
 		return new PtBoolean(true);
 	}
 	
-	public static ActCaptchaService getInstance() throws RemoteException{//TODO: RMI
+	public static ActCaptchaService getInstance() throws RemoteException{
 		if(instance == null){
 			instance = new ActCaptchaServiceImpl();
 		}
