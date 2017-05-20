@@ -40,6 +40,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompanyImpl;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinatorImpl;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActMailingServiceImpl;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbAlerts;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbComCompanies;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbCoordinators;
@@ -1403,6 +1404,27 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				}
 				return new PtBoolean(true);
 			}
+		}
+		return new PtBoolean(false);
+	}
+
+	@Override
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException {
+		Optional<CtCoordinator> op = getAllCtCoordinators().stream()
+				.filter(ct -> ct.login.eq(aLogin).getValue())
+				.findFirst();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			PtString content = new PtString(
+					"This mail contains the code needed to enter in order to reactivate your account "
+					+ "or to simply change your password.\n"
+					+ "Your reset code is:\n"
+					+ ctc.resetCode.toString() + "\n"
+					+ "If it wasn't you who requested the code, please ignore this mail.\n\n"
+					+ "Best regards,\n"
+					+ "iCrash.FX Service Team"
+					);
+			return ActMailingServiceImpl.getInstance().ieSendMail(ctc.mail, new PtString("Your reset code to reactivate your iCrash.FX account"), content);
 		}
 		return new PtBoolean(false);
 	}

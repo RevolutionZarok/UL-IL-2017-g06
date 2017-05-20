@@ -96,6 +96,21 @@ public class PasswordResetGUIController {
 		}
 	}
 	
+	@FXML
+	protected void linkSendCode_OnClick(ActionEvent event) throws RemoteException, NotBoundException{
+		if(txtFieldLogin.getText().length() > 0){
+			Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		 	if(iCrashSys_Server.oeSendResetCodePerMail(new DtLogin(new PtString(txtFieldLogin.getText()))).getValue()){
+		 		showConfirmationMessage("Send reset code", "Your reset code has been sent to your indicated e-mail address. Please have a look in your inbox.");
+		 	}else{
+		 		showWarningMessage("Send reset code", "Your reset code could not be sent via e-mail. Either the given coordinator login name is unknown or an unexpected error occured. Please try again.");
+		 	}
+		}else{
+			showWarningMessage("Incomplete information", "Please enter the login name for your account.");
+		}
+	}
+	
 	private void showConfirmationMessage(String title, String message){
 		showMessage(title, message, AlertType.CONFIRMATION);
 	}

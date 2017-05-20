@@ -386,6 +386,8 @@ public interface IcrashSystem extends Remote {
 	
 	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd) throws RemoteException, NotBoundException;//TODO: Messir S4 (Post conditions too)
 
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException;//TODO: Messir S4 (Post conditions too)
+	
 	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;
 	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;
 	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;
