@@ -1,0 +1,11 @@
+/*
+@author michm
+@date Sat May 20 13:53:05 CEST 2017
+*/
+
+
+@@view uc-oeSendResetCodePerMail
+@model Use-Case icrash.usecases.subfunctions.authentication.oeSendResetCodePerMail 
+@description "The coordinator wants the system to send his specific reset code over mail in order to either recover his account or to simply hange his password"
+@caption "Send reset code via mail"
+@scale MaxWidth
