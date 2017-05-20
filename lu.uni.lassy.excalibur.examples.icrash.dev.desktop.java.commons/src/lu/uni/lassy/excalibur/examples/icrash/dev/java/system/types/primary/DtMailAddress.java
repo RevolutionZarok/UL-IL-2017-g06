@@ -5,7 +5,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
-public class DtMailAddress extends DtString implements JIntIs{//TODO:Messir S4
+public class DtMailAddress extends DtString implements JIntIs{
 
 	private static final long serialVersionUID = -7360040416993072868L;
 

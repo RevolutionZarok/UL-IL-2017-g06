@@ -12,6 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
@@ -26,7 +27,7 @@ public class ActMailingServiceImpl extends UnicastRemoteObject implements ActMai
 	}
 
 	@Override
-	public PtBoolean ieSendMail(PtString address, PtString title, PtString content) throws RemoteException {
+	public PtBoolean ieSendMail(DtMailAddress address, PtString title, PtString content) throws RemoteException {
 		final String username = "icrash2017g06@gmail.com";
 		final String password = "";
 
@@ -46,7 +47,7 @@ public class ActMailingServiceImpl extends UnicastRemoteObject implements ActMai
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("icrash2017g06@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(address.getValue()));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(address.toString()));
 			message.setSubject(title.getValue());
 			message.setText(content.getValue());
 

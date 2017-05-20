@@ -10,6 +10,6 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 public interface ActMailingService extends java.rmi.Remote, Serializable, JIntIsActor{
 	
-	public PtBoolean ieSendMail(DtMailAddress address, PtString title, PtString content) throws RemoteException;//TODO:Messir S4 (DtMailAddress)
+	public PtBoolean ieSendMail(DtMailAddress address, PtString title, PtString content) throws RemoteException;
 
 }

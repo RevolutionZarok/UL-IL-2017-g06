@@ -11,16 +11,16 @@ import icrash.concepts.primarytypes.authentication.classes
 Environment Model {
 		
 		actor actMailingService role rnactMailingService cardinality[1 .. 1] {
-			operation init():ptBoolean//TODO: Parameters
+			operation init():ptBoolean
 			input interface inactMailingService {
-				operation ieSendMail(AAddress:ptString, ATitle:ptString, AContent:ptString):ptBoolean
+				operation ieSendMail(AAddress:dtMailAddress, ATitle:ptString, AContent:ptString):ptBoolean
 			}
 			output interface outactMailingService {
 			}
 		}
 		
 		actor actCaptchaService role rnactCaptchaService cardinality[1 .. 1]{
-			operation init():ptBoolean//TODO: Parameters
+			operation init():ptBoolean
 			input interface inactCaptchaService {
 				operation ieGenerateCaptcha():ptBoolean//Documented
 				operation ieVerifyCaptcha(AdtCaptchaResponse:dtCaptchaResponse):ptBoolean
