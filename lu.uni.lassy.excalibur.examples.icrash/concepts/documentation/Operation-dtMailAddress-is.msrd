@@ -1,0 +1,15 @@
+/*
+@author michm
+@date Sat May 20 13:31:04 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.is
+@description "Verifies if the given e-mail address is valid"
+//postFunctional descriptions
+@postF 
+"If the underlying string is a valid e-mail address, true is returned. Otherwise, false is returned."
+@endPostF
+//example
+@example" "

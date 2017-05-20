@@ -1,0 +1,22 @@
+/*
+@author michm
+@date Sat May 20 13:32:13 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.init
+//parameters
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.init.Aaddress
+"The e-mail address as a string"
+@endParameters
+
+@description "
+used to initialize the current object as a new instance of the dtMailAddress type. "
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new dtMailAddress instance having its attributes equal to the ones provided as parameters. "
+@endPostF
+//example
+@example" "

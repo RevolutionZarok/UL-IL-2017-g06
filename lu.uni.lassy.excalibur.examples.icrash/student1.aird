@@ -603,6 +603,9 @@
     <semanticResources>environment/documentation/Operation-actComCompany-outactComCompany-oeSendFamilyNotification.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSendFamilyNotification.msrd</semanticResources>
     <semanticResources>documentation/View-cm-view18.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtMailAddress-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtMailAddress-init.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtMailAddress-is.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hTVyoBLmEeeZAOo5Nrpa5w" name="uc-ugLogin" representation="_hTVyoRLmEeeZAOo5Nrpa5w">

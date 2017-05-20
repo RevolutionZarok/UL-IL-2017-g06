@@ -31,6 +31,11 @@ Concept Model {
 				operation get(AId:dtCaptchaId):dtCaptchaResponse
 				operation remove(AId:dtCaptchaId):ptBoolean
 			}
+			datatype dtMailAddress extends dtString{
+				operation init(Aaddress:ptString):ptBoolean
+				
+				operation is():ptBoolean
+			}
 		}
 
 		Secondary Types {
