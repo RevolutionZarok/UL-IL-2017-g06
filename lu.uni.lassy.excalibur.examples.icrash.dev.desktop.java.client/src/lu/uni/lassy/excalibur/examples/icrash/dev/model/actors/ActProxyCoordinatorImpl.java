@@ -23,9 +23,12 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
@@ -227,6 +230,25 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 	@Override
 	public PtBoolean oeLogout() throws RemoteException, NotBoundException {
 		return super.oeLogout();
+	}
+
+	@Override
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd)
+			throws RemoteException, NotBoundException {
+		if (getServerSideActor() != null)
+			return ((ActCoordinator) getServerSideActor())
+					.oeTryPasswordReset(aLogin, aResetCode, aNewPwd);
+		else
+			return new PtBoolean(false);
+	}
+
+	@Override
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException {
+		if (getServerSideActor() != null)
+			return ((ActCoordinator) getServerSideActor())
+					.oeSendResetCodePerMail(aLogin);
+		else
+			return new PtBoolean(false);
 	}
 
 }

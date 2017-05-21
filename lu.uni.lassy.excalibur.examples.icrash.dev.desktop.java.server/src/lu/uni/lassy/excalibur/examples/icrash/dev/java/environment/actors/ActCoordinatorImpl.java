@@ -28,6 +28,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -400,5 +401,20 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 		}else{
 			return super.notifyAboutLocking();
 		}
+	}
+
+	@Override
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd)
+			throws RemoteException, NotBoundException {
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	return iCrashSys_Server.oeTryPasswordReset(aLogin, aResetCode, aNewPwd);
+	}
+
+	@Override
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException {
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	return iCrashSys_Server.oeSendResetCodePerMail(aLogin);
 	}
 }

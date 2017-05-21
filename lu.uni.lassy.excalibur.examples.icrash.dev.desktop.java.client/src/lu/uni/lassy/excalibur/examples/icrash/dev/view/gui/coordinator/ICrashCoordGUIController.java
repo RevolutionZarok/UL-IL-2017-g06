@@ -596,8 +596,8 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	}
 
     @FXML
-    void linkReactivAccount_OnClick(ActionEvent event) {
-		new PasswordResetGUI().show();
+    void linkReactivAccount_OnClick(ActionEvent event) throws IncorrectActorException {
+    	new PasswordResetGUI().show();
     }
 
 }
