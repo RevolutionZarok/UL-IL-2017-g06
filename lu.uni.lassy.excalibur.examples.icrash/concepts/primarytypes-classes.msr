@@ -102,11 +102,17 @@ import icrash.concepts.primarytypes.authentication.datatypes
 					extends ctAuthenticated{
 			
 				attribute id:dtCoordinatorID
+				attribute locked:ptBoolean
+				attribute resetCode:dtResetCode
+				attribute mail:dtMailAddress
 				
 				operation init(
 										Aid:dtCoordinatorID ,
 										Alogin:dtLogin ,
-										Apwd:dtPassword ):ptBoolean
+										Apwd:dtPassword,
+										Amail:dtMailAddress,
+										Alocked:ptBoolean,
+										AresetCode:dtResetCode ):ptBoolean
 			}
 
 			class ctAdministrator 

@@ -24,7 +24,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
@@ -117,11 +117,11 @@ public class DbCoordinators extends DbAbstract{
 					PtBoolean aLocked = new PtBoolean(res.getBoolean("locked"));
 					//coordinator's resetCode
 					String _aResetCode = res.getString("reset_code");
-					DtString aResetCode;
+					DtResetCode aResetCode;
 					if(_aResetCode == null){
 						aResetCode = CtCoordinator.generateResetCode();
 					}else{
-						aResetCode = new DtString(new PtString(_aResetCode));
+						aResetCode = new DtResetCode(new PtString(_aResetCode));
 					}
 					
 
@@ -254,7 +254,7 @@ public class DbCoordinators extends DbAbstract{
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
 					DtMailAddress aMail = new DtMailAddress(new PtString(res.getString("email")));
 					PtBoolean aLocked = new PtBoolean(res.getBoolean("locked"));
-					DtString aResetCode = new DtString(new PtString(res.getString("reset_code")));
+					DtResetCode aResetCode = new DtResetCode(new PtString(res.getString("reset_code")));
 					//init aCtAlert instance
 					aCtCoord.init(aId, aLogin, aPwd, aMail,aLocked,aResetCode);
 					

@@ -1,0 +1,22 @@
+/*
+@author michm
+@date Sun May 21 13:42:49 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.init
+//parameters
+@parameter
+icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.init.AptString
+""
+@endParameters
+
+@description "
+used to initialize the current object as a new instance of the dtResetCode type. "
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new dtResetCode instance having its attributes equal to the ones provided as parameters. "
+@endPostF
+//example
+@example" "

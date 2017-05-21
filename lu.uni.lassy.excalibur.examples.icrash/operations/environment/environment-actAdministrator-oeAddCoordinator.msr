@@ -5,10 +5,11 @@ import lu.uni.lassy.messir.libraries.primitives
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
 import icrash.environment
+import icrash.concepts.primarytypes.authentication.datatypes
 
 Operation Model {
 
-operation: actAdministrator.outactAdministrator.oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword):ptBoolean
+operation: actAdministrator.outactAdministrator.oeAddCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtLogin:dtLogin, AdtPassword:dtPassword, AdtMailAddress:dtMailAddress):ptBoolean
 {
 preP{
   let TheSystem: ctState in
@@ -38,12 +39,13 @@ postF{
   let TheSystem: ctState in
   let TheactCoordinator:actCoordinator in
   let ThectCoordinator:ctCoordinator in
+  let ARandomResetCode:dtResetCode in
   self.rnActor.rnSystem = TheSystem
   and self.rnActor = TheActor
 /* PostF01 */
   TheactCoordinator.init()
 /* PostF02 */
-  and ThectCoordinator.init(AdtCoordinatorID,AdtLogin,AdtPassword)
+  and ThectCoordinator.init(AdtCoordinatorID,AdtLogin,AdtPassword,AdtMailAddress,false,ARandomResetCode)
 
 /* PostF03 */
   and TheactCoordinator@post.rnctCoordinator = ThectCoordinator

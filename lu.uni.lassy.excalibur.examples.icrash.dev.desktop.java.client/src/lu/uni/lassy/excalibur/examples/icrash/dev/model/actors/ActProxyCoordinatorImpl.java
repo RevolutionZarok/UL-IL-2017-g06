@@ -16,6 +16,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Hashtable;
 
+import org.apache.log4j.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
@@ -25,19 +29,14 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message.MessageType;
-
-import org.apache.log4j.Logger;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableMap;
 
 /**
  * The Class ActProxyCoordinatorImpl, the client side actor class for coordinators.
@@ -233,7 +232,7 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 	}
 
 	@Override
-	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd)
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtResetCode aResetCode, DtPassword aNewPwd)
 			throws RemoteException, NotBoundException {
 		if (getServerSideActor() != null)
 			return ((ActCoordinator) getServerSideActor())

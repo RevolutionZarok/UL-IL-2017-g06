@@ -18,7 +18,7 @@ import javafx.stage.Modality;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
 
@@ -81,7 +81,7 @@ public class PasswordResetGUIController {
 	protected void btnReset_OnClick(ActionEvent event) throws RemoteException, NotBoundException{
 		if(verifyCorrectness()){
 			DtLogin login = new DtLogin(new PtString(txtFieldLogin.getText()));
-			DtString resetCode = new DtString(new PtString(txtFieldResetCode.getText()));
+			DtResetCode resetCode = new DtResetCode(new PtString(txtFieldResetCode.getText()));
 			DtPassword pwd = new DtPassword(new PtString(txtFieldPwd.getText()));
 			Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
 		 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");

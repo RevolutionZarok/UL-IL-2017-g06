@@ -36,6 +36,11 @@ Concept Model {
 				
 				operation is():ptBoolean
 			}
+			datatype dtResetCode extends dtString{//TODO:Messir S4 (already done)
+				operation init(AptString:ptString):ptBoolean
+				
+				operation is():ptBoolean
+			}
 		}
 
 		Secondary Types {

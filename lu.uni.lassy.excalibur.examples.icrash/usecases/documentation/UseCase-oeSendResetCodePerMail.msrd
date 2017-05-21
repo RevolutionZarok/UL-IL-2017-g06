@@ -1,0 +1,24 @@
+/*
+@author michm
+@date Sun May 21 13:55:39 CEST 2017
+*/
+
+
+@@Use Case Subfunction icrash.usecases.subfunctions.authentication.oeSendResetCodePerMail
+@description ""
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

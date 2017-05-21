@@ -29,10 +29,10 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
@@ -375,7 +375,7 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 		if(op.isPresent()){
 			CtCoordinator ctc = op.get();
 			
-			DtString reset_code = CtCoordinator.generateResetCode();
+			DtResetCode reset_code = CtCoordinator.generateResetCode();
 			Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
 		 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
 		 	
@@ -404,7 +404,7 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 	}
 
 	@Override
-	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtString aResetCode, DtPassword aNewPwd)
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtResetCode aResetCode, DtPassword aNewPwd)
 			throws RemoteException, NotBoundException {
 		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
 	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");

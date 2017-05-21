@@ -1,0 +1,15 @@
+/*
+@author michm
+@date Sun May 21 13:55:33 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtResetCode
+@description ""
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.init
+""
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.is
+""
+@endOperations
