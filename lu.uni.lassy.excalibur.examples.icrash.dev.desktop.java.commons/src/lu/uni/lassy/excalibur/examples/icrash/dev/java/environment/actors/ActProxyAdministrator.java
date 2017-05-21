@@ -45,7 +45,7 @@ public interface ActProxyAdministrator extends ActProxyAuthenticated {
 	 *             Thrown if the server has not been bound correctly in RMI
 	 *             settings
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin, DtPassword aDtPassword, DtMailAddress aMail)//TODO:Messir S4
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin, DtPassword aDtPassword, DtMailAddress aMail)
 			throws RemoteException, NotBoundException;
 
 	/**

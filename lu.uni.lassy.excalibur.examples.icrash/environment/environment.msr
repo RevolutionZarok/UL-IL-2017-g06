@@ -98,7 +98,7 @@ import lu.uni.lassy.messir.libraries.string
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
 				
-				operation oeTryPasswordReset(AdtLogin:dtLogin, AResetCode:dtResetCode, ANewPwd:dtPassword):ptBoolean//TODO:Messir S4
+				operation oeTryPasswordReset(AdtLogin:dtLogin, AResetCode:dtResetCode, ANewPwd:dtPassword):ptBoolean
 				operation oeSendResetCodePerMail(AdtLogin:dtLogin):ptBoolean//TODO:Messir S4
 			}
 			

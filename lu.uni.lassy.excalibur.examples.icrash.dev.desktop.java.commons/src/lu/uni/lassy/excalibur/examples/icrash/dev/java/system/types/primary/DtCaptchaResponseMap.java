@@ -24,7 +24,7 @@ public class DtCaptchaResponseMap implements Serializable, JIntIs {
 	
 	public PtBoolean register(DtCaptchaResponse AdtResponse){
 		return new PtBoolean(map.put(AdtResponse.getId(), AdtResponse) == null);
-	}//TODO: Messir: Add to OM
+	}
 	
 	public DtCaptchaResponse get(DtCaptchaId AId){
 		DtCaptchaResponse res = map.get(AId);
@@ -33,10 +33,10 @@ public class DtCaptchaResponseMap implements Serializable, JIntIs {
 		}else{
 			return new DtCaptchaResponse(new DtCaptchaId(new PtInteger(-1)), new PtInteger(-1));
 		}
-	}//TODO: Messir: Add to OM
+	}
 
 	public PtBoolean remove(DtCaptchaId AId){
 		return new PtBoolean(map.remove(AId) != null);
-	}//TODO: Messir: Add to OM
+	}
 	
 }

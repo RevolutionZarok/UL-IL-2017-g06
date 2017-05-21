@@ -29,8 +29,8 @@ public class CtCoordinator extends CtAuthenticated {
 	/** The id of the coordinator. */
 	public DtCoordinatorID id;
 	
-	public PtBoolean locked = new PtBoolean(false);//TODO:Messir S4
-	public DtResetCode resetCode = generateResetCode();//TODO:Messir S4
+	public PtBoolean locked = new PtBoolean(false);
+	public DtResetCode resetCode = generateResetCode();
 	public DtMailAddress mail;
 		
 	/**
@@ -41,7 +41,7 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd The password of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail,PtBoolean aLocked,DtResetCode aResetCode){//TODO:Messir S4
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail,PtBoolean aLocked,DtResetCode aResetCode){
 			super.init(aLogin, aPwd);
 			id = aId;
 			mail = aMail;
@@ -57,19 +57,19 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd the value to change the password to 
 	 * @return the success of the update method
 	 */
-	public PtBoolean update(DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail){//TODO:Messir S4
+	public PtBoolean update(DtLogin aLogin,DtPassword aPwd,DtMailAddress aMail){
 		login = aLogin;
 		pwd = aPwd;
 		mail = aMail;
 		return new PtBoolean(true);
 	}
 	
-	public PtBoolean updateLockedState(PtBoolean aLocked){//TODO:Messir? S4
+	public PtBoolean updateLockedState(PtBoolean aLocked){
 		locked = aLocked;
 		return new PtBoolean(true);
 	}
 	
-	public PtBoolean updateResetCode(DtResetCode aResetCode){//TODO:Messir? S4
+	public PtBoolean updateResetCode(DtResetCode aResetCode){
 		resetCode = aResetCode;
 		return new PtBoolean(true);
 	}
