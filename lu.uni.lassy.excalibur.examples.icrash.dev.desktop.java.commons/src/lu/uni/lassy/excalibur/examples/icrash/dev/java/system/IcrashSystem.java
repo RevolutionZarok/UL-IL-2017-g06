@@ -34,10 +34,13 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCa
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -230,11 +233,14 @@ public interface IcrashSystem extends Remote {
 	 * @param aDtPhoneNumber The phone number of the human reporting the accident
 	 * @param aDtGPSLocation The location of the accident
 	 * @param aDtComment The message sent by the user
+	 * @param aDtVictimLastName 
+	 * @param aDtVictimFirstName 
+	 * @param aDtFamilyComment 
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean oeAlert(EtHumanKind aEtHumanKind,DtDate aDtDate,
-				DtTime aDtTime,DtPhoneNumber aDtPhoneNumber,DtGPSLocation aDtGPSLocation,DtComment aDtComment) throws RemoteException; 
+				DtTime aDtTime,DtPhoneNumber aDtPhoneNumber,DtGPSLocation aDtGPSLocation,DtComment aDtComment, DtFamilyComment aDtFamilyComment, DtVictimFirstName aDtVictimFirstName, DtVictimLastName aDtVictimLastName) throws RemoteException; 
 
 	/**
 	 * Validates an alert on the system

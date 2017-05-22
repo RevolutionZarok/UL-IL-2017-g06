@@ -18,8 +18,11 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -48,13 +51,16 @@ public interface ActComCompany extends java.rmi.Remote, Serializable, JIntIsActo
 	 * @param aDtPhoneNumber The phone number of the human associated with the accident
 	 * @param aDtGPSLocation The location of the accident
 	 * @param aDtComment The message sent by the human associated with the accident
+	 * @param aDtVictimLastName 
+	 * @param aDtVictimFirstName 
+	 * @param aDtFamilyComment 
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server is not bound correctly in RMI settings
 	 */
 	public PtBoolean oeAlert(EtHumanKind aEtHumanKind,DtDate aDtDate,
 			DtTime aDtTime,DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation,DtComment aDtComment) throws RemoteException, NotBoundException;
+			DtGPSLocation aDtGPSLocation,DtComment aDtComment, DtFamilyComment aDtFamilyComment, DtVictimFirstName aDtVictimFirstName, DtVictimLastName aDtVictimLastName) throws RemoteException, NotBoundException;
 
 	/**
 	 * Sends a message to the client side actor with details of if the alert was logged or not.

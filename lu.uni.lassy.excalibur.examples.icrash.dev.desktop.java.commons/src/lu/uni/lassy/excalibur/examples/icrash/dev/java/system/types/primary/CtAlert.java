@@ -42,6 +42,12 @@ public class CtAlert implements Serializable {
 	/** The comment associated with the alert. */
 	public DtComment comment;
 
+	public DtFamilyComment familyComment;
+	
+	public DtVictimFirstName victimFirstName;
+	
+	public DtVictimLastName victimLastName;
+
 	/**
 	 * Initialises the alert.
 	 *
@@ -50,16 +56,22 @@ public class CtAlert implements Serializable {
 	 * @param aLocation the location of the alert
 	 * @param aInstant the date and time of the accident the alert is associated with
 	 * @param aComment the comment associated with the alert.
+	 * @param aDtVictimLastName 
+	 * @param aDtVictimFirstName 
+	 * @param aDtFamilyComment 
 	 * @return the success of the initialisation of the alert
 	 */
 	public PtBoolean init(DtAlertID aId, EtAlertStatus aStatus,
-			DtGPSLocation aLocation, DtDateAndTime aInstant, DtComment aComment) {
+			DtGPSLocation aLocation, DtDateAndTime aInstant, DtComment aComment, DtFamilyComment aFamilyComment, DtVictimFirstName aVictimFirstName, DtVictimLastName aVictimLastName) {
 			
 		id = aId;
 		status = aStatus;
 		location = aLocation;
 		instant = aInstant;
 		comment = aComment;
+		familyComment = aFamilyComment;
+		victimFirstName = aVictimFirstName;
+		victimLastName = aVictimLastName;
 		return new PtBoolean(true);
 	}
 

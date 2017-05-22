@@ -21,8 +21,11 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -91,12 +94,14 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 	 */
 	synchronized public PtBoolean oeAlert(EtHumanKind aEtHumanKind,
 			DtDate aDtDate, DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation, DtComment aDtComment)
+			DtGPSLocation aDtGPSLocation, DtComment aDtComment, DtFamilyComment aDtFamilyComment,
+			DtVictimFirstName aDtVictimFirstName, DtVictimLastName aDtVictimLastName)
 			throws RemoteException, NotBoundException {
 
 		if (serverSideActor != null)
 			return serverSideActor.oeAlert(aEtHumanKind, aDtDate, aDtTime,
-					aDtPhoneNumber, aDtGPSLocation, aDtComment);
+					aDtPhoneNumber, aDtGPSLocation, aDtComment, aDtFamilyComment,
+					aDtVictimFirstName, aDtVictimLastName);
 		else
 			return new PtBoolean(false);
 	}

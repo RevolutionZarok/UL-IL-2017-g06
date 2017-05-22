@@ -157,8 +157,8 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		txtarFamilyComment.setVisible(false);
 		Label lblVictimIdentification = new Label("Fill out if you can identify the victim:");
 		lblVictimIdentification.setVisible(false);
-		TextField txtfldVictimFirstName = new TextField("Enter victim's first name");
-		TextField txtfldVictimLastName = new TextField("Enter victim's last name");
+		TextField txtfldVictimFirstName = new TextField("Joe");
+		TextField txtfldVictimLastName = new TextField("Danger");
 		txtfldVictimFirstName.setMinWidth(width);
 		txtfldVictimFirstName.setMaxWidth(width);
 		txtfldVictimLastName.setMinWidth(width);
@@ -228,7 +228,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 							dtpckr.getValue().getYear(), dtpckr.getValue().getMonthValue(), dtpckr.getValue().getDayOfMonth(),
 							lstvwPersonType.getSelectionModel().getSelectedItem(), txtfldPhone.getText(),
 							txtfldLatitude.getText(), txtfldLongitude.getText(),
-							txtarComment.getText()).getValue())
+							txtarComment.getText(), txtfldVictimFirstName.getText(), txtfldVictimLastName.getText(), txtarFamilyComment.getText()).getValue())
 						resetForm(grdpn);
 					else
 						showWarningMessage("Error", "Unable to create alert");
@@ -255,11 +255,14 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 	 * @param latitude The latitude of the accident
 	 * @param longitude The longitude of the accident
 	 * @param comment The message sent by the human about the accident
+	 * @param string3 
+	 * @param string2 
+	 * @param string 
 	 * @return The success of the method
 	 */
-	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String comment){
+	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String comment, String victimFirstName, String victimLastName, String familyComment){
 		try {
-			return comcompanyController.oeAlert(humanKind, year, month, day, (int)hour, (int)minute, (int)second, phoneNumber, latitude, longitude, comment);
+			return comcompanyController.oeAlert(humanKind, year, month, day, (int)hour, (int)minute, (int)second, phoneNumber, latitude, longitude, comment, victimFirstName, victimLastName, familyComment);
 		} catch (ServerOfflineException | InvalidHumanKindException | ServerNotBoundException e) {
 			showExceptionErrorMessage(e);
 		} catch (IncorrectFormatException e) {

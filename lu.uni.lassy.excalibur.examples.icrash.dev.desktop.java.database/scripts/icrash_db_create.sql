@@ -27,14 +27,17 @@ DROP TABLE IF EXISTS `alerts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alerts` (
-	  `id` varchar(80) NOT NULL,
-	  `status` varchar(80) DEFAULT NULL,
-	  `latitude` double DEFAULT NULL,
-	  `longitude` double DEFAULT NULL,
-	  `instant` datetime DEFAULT NULL,
-	  `comment` varchar(80) DEFAULT NULL,
-  `crisis` varchar(80) DEFAULT NULL,
-  `human` varchar(80) DEFAULT NULL,
+	 `id` varchar(80) NOT NULL,
+	 `status` varchar(80) DEFAULT NULL,
+	 `latitude` double DEFAULT NULL,
+	 `longitude` double DEFAULT NULL,
+	 `instant` datetime DEFAULT NULL,
+	 `comment` varchar(80) DEFAULT NULL,
+ 	 `crisis` varchar(80) DEFAULT NULL,
+ 	 `human` varchar(80) DEFAULT NULL,
+	 `familyComment` varchar(160) DEFAULT NULL,
+	 `victimFirstName` varchar(50) DEFAULT NULL,
+	 `victimLastName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -58,14 +61,17 @@ DROP TABLE IF EXISTS `crises`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `crises` (
-  `id` varchar(80) NOT NULL,
-  `type` varchar(80) DEFAULT NULL,
-  `status` varchar(80) DEFAULT NULL,
-  `latitude` double DEFAULT NULL,
-  `longitude` double DEFAULT NULL,
-  `instant` datetime DEFAULT NULL,
-  `comment` varchar(80) DEFAULT NULL,
-  `coordinator` varchar(80) DEFAULT NULL,
+  	`id` varchar(80) NOT NULL,
+  	`type` varchar(80) DEFAULT NULL,
+  	`status` varchar(80) DEFAULT NULL,
+  	`latitude` double DEFAULT NULL,
+  	`longitude` double DEFAULT NULL,
+  	`instant` datetime DEFAULT NULL,
+  	`comment` varchar(80) DEFAULT NULL,
+  	`coordinator` varchar(80) DEFAULT NULL,
+	`familyComment` varchar(160) DEFAULT NULL,
+	`victimFirstName` varchar(50) DEFAULT NULL,
+	`victimLastName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
