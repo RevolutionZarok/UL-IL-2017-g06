@@ -99,7 +99,7 @@ import lu.uni.lassy.messir.libraries.string
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
 				
 				operation oeTryPasswordReset(AdtLogin:dtLogin, AResetCode:dtResetCode, ANewPwd:dtPassword):ptBoolean
-				operation oeSendResetCodePerMail(AdtLogin:dtLogin):ptBoolean//TODO:Messir S4
+				operation oeSendResetCodePerMail(AdtLogin:dtLogin):ptBoolean
 			}
 			
 			input interface inactCoordinator{

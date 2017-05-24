@@ -619,6 +619,7 @@
     <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeSendResetCodePerMail.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeTryPasswordReset.msrd</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeSendResetCodePerMail.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actCoordinator-oeSendResetCodePerMail.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hTVyoBLmEeeZAOo5Nrpa5w" name="uc-ugLogin" representation="_hTVyoRLmEeeZAOo5Nrpa5w">
