@@ -48,6 +48,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
@@ -57,6 +59,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGP
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -118,7 +122,12 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	
 	/**  A hashtable of the actor com companies in the system, stored by their name as a key. */
 	Hashtable<String, ActComCompany> cmpSystemActComCompany = new Hashtable<String, ActComCompany>();
-
+	
+	/**  A hashtable of the Statistic  for number of sending crises  in the system, stored by their ID as a key. */
+	Hashtable<String, CtStatisticNumberofCrises> cmpSystemCtStatisticNumberofCrises = new Hashtable<String, CtStatisticNumberofCrises>();
+	/**  A hashtable of the statistic for  number of user login  in the system, stored by their ID as a key. */
+	Hashtable<String, CtStatisticUserActivity> cmpSystemCtStatisticUserActivity = new Hashtable<String, CtStatisticUserActivity>();
+	
 	// Messir associations	
 	/**  A hashtable of the joint alerts and crises in the system, stored by their alert as a key. */
 	Hashtable<CtAlert, CtCrisis> assCtAlertCtCrisis = new Hashtable<CtAlert, CtCrisis>();
@@ -449,6 +458,24 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 		return result;
 	}
 	
+	
+	public ArrayList<CtStatisticUserActivity> getStatisticUserLogin() throws RemoteException {
+		ArrayList<CtStatisticUserActivity> result = new ArrayList<CtStatisticUserActivity>();
+		if(cmpSystemCtStatisticUserActivity !=null){
+			for(CtStatisticUserActivity StatisticUserActivity : cmpSystemCtStatisticUserActivity.values())
+				result.add(StatisticUserActivity);
+		}
+		return result;
+	}
+	
+	public ArrayList<CtStatisticNumberofCrises> getStatisticNumberofCrises() throws RemoteException {
+		ArrayList<CtStatisticNumberofCrises> result = new ArrayList<CtStatisticNumberofCrises>();
+		if(cmpSystemCtStatisticUserActivity !=null){
+			for(CtStatisticNumberofCrises StatisticNumberofCrises : cmpSystemCtStatisticNumberofCrises.values())
+				result.add(StatisticNumberofCrises);
+		}
+		return result;
+	}
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#getAllCtHumans()
 	 */
@@ -1260,6 +1287,46 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			return new PtBoolean(false);
 		}
 	}
+	@Override
+	public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity) {
+		try{
+			//PreP1
+			isSystemStarted();
+			//PreP2
+			isAdminLoggedIn();
+			///TODO statistic
+			//PostF1
+			
+			// TODO Auto-generated method stub
+			return new PtBoolean(false);
+		}catch (Exception e) {
+			log.error("Exception in oegetStatisticUserActivity..." + e);
+			return new PtBoolean(false);
+		}
+	}
+
+	@Override
+	public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises) {
+		try{
+			//PreP1
+			isSystemStarted();
+			//PreP2
+			isAdminLoggedIn();
+			///TODO statistic
+			//PostF1
+			
+	
+			return new PtBoolean(false);
+		}catch (Exception e) {
+			log.error("Exception in oegetStatisticNumberOfCrises..." + e);
+			return new PtBoolean(false);
+		}
+	}
+	@Override
+	public PtBoolean oegetStatisticTypes() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeUpdateCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
@@ -1391,4 +1458,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException {
 		return currentRequestingAuthenticatedPassword;
 	}
+
+	
+	
 }

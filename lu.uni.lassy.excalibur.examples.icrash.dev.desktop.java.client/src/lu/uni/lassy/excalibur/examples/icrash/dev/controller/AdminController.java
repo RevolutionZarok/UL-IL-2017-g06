@@ -14,6 +14,7 @@ package lu.uni.lassy.excalibur.examples.icrash.dev.controller;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectFormatException;
@@ -22,14 +23,19 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOf
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated.UserType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
+import lu.uni.lassy.excalibur.examples.icrash.dev.model.Server;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyAdministratorImpl;
 
 /**
@@ -108,6 +114,46 @@ public class AdminController extends AbstractUserController {
 		return new PtBoolean(false);
 	}
 	
+	/** Parameter that allows the system to gain server access, the server function lives in the model of the client and  has RMI calls to access the server. */
+	private Server server = Server.getInstance();
+	
+	/**
+	 * Returns a list of all statistic for the number of sending crises  in the system, with using a logged in user.
+	 *
+	 * @return Returns an ArrayList of type CtStatisticUserActivity, which contains all statistic for the number of number of user login currently within the iCrashSystem
+	 * @throws ServerOfflineException is an error that is thrown when the server is offline or not reachable
+	 * @throws ServerNotBoundException is only thrown when attempting to access a server which has no current binding. This shouldn't happen, but you never know!
+	 */
+	public ArrayList<CtStatisticUserActivity> getListOfStatisticUserLogin() throws ServerOfflineException, ServerNotBoundException{
+		try {
+			return server.sys().getStatisticUserLogin();
+		} catch (RemoteException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerOfflineException();
+		} catch (NotBoundException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerNotBoundException();
+		}
+	}
+	
+	/**
+	 * Returns a list of all statistic for the number of sending crises  in the system, with using a logged in user.
+	 *
+	 * @return Returns an ArrayList of type CtStatisticNumberofCrises, which contains all statistic for the number of sending crises currently within the iCrashSystem
+	 * @throws ServerOfflineException is an error that is thrown when the server is offline or not reachable
+	 * @throws ServerNotBoundException is only thrown when attempting to access a server which has no current binding. This shouldn't happen, but you never know!
+	 */
+	public ArrayList<CtStatisticNumberofCrises> getListOfStatisticNumberofsendingCrises() throws ServerOfflineException, ServerNotBoundException{
+		try {
+			return server.sys().getStatisticNumberofCrises();
+		} catch (RemoteException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerOfflineException();
+		} catch (NotBoundException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerNotBoundException();
+		}
+	}
 	// TODO Not finish for the moment has now the basic but nothing for the statistic. 
 	// For the Function Statistic
 	public PtBoolean oegetStatistic()throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
@@ -128,6 +174,7 @@ public class AdminController extends AbstractUserController {
 	}
 	//TODO define a valuer for int so i must give something with this function. 
 	public PtBoolean oegetStatisticUserActivity(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		System.out.println("www11");
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
 			DtStatisticUserActivity aDtgetstatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
@@ -145,14 +192,16 @@ public class AdminController extends AbstractUserController {
 		}
 		return new PtBoolean(false);
 	}
+	//TODO
 	public PtBoolean oegetStatisticNumberOfCrises(int statisticNumber)throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		System.out.println("www");
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
-			DtStatisticUserActivity aDtStatisticUserActivity = new DtStatisticUserActivity(new PtInteger(statisticNumber));
+			DtStatisticNumberOfCrises aDtStatisticNumberOfCrises= new DtStatisticNumberOfCrises(new PtInteger(statisticNumber));
 			Hashtable<JIntIs, Integer> ht = new Hashtable<JIntIs, Integer>();
-			ht.put(aDtStatisticUserActivity, aDtStatisticUserActivity.value.getValue());
+			ht.put(aDtStatisticNumberOfCrises, aDtStatisticNumberOfCrises.value.getValue());
 			try {
-			return actorAdmin.oegetStatistic();
+			return actorAdmin.oegetStatisticNumberOfCrises(aDtStatisticNumberOfCrises);
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerOfflineException();

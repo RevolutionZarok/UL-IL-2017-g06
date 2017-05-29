@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AlertController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CrisisController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.HumanController;
@@ -34,6 +35,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractGUIController;
@@ -125,7 +128,17 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
     
     /** The system state controller, which allows state specific functions, like getting the current server date and time. */
     private SystemStateController systemStateController;
-	
+   
+    @FXML
+    private TableView<CtStatisticUserActivity> tblvwUserActivity;
+
+    /** The tableview of the statistic number of sending crises in the system. */
+    @FXML
+    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
+  
+    /** The admin controller, which allows crisis specific functions, like getting a list of the different statistic. */
+    private AdminController adminController;
+   
     /*
 	 * Other things created for this controller
 	 */
@@ -170,6 +183,7 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
     	setUpCrisesTables(tblvwCrises);
     	setUpHumansTables(tblvwHumans);
     	setUpStateTables(tblvwCtState);
+    	
     }
 
 	/* (non-Javadoc)

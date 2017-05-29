@@ -39,7 +39,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab disable="true" text="Administrators">
+            <Tab disable="true" text="">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -48,7 +48,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab disable="true" text="Coordinators">
+            <Tab disable="true" text="">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -57,7 +57,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab disable="true" text="Communication Companies">
+            <Tab disable="true" text="">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
@@ -66,7 +66,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab disable="true" text="Sever state">
+            <Tab disable="true" text="">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>

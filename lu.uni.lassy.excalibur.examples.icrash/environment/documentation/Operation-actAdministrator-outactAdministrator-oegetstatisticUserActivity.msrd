@@ -13,15 +13,13 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUserActivi
 ""
 @endParameters
 
-@description "This operation will send the statistic for the number of the user activity. "
+@description "This output event is a message that is sent to the system by the Actor Administrator. The administrator asks the system that to provide the statistics for the quantity of login operation per user.  "
 
 //preProtocol descriptions
 @preP
-"The system is started"
+"The system is started. TheSystem variable value is equal to the only ctState instance accessible from the output interface instance sending the output event."
 @preP
-"The actor must bee login as a Administrator."
-@preP
-"The Database must be open. "
+"The actor must bee login as a Administrator. Return true if vplsLogged of CtAutenticated was executed"
 @endPreP
 //preFunctional descriptions
 @preF
@@ -32,8 +30,6 @@ icrash.environment.actAdministrator.outactAdministrator.oegetstatisticUserActivi
 "At first search all the information for this statistic. So the database must bee open to get the information"
 @postF 
 "The information from the database will be calculate to the different times. "
-@postF 
-"After this the operation getstatisticTypesOfCrises() give the statistic"
 @postF 
 "And at least the statistic will bee show it into the interface. "
 

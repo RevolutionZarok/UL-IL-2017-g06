@@ -29,6 +29,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
@@ -38,6 +40,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGP
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticNumberOfCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -196,6 +200,18 @@ public interface IcrashSystem extends Remote {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public ArrayList<ActComCompany> getAllActComCompanies() throws RemoteException;
+	/**
+	 * Get a list of all statistic for the number of user logins
+	 * @return A list of all statistic for the number of user logins in the system
+	 * @throws RemoteException
+	 */
+	public ArrayList<CtStatisticUserActivity> getStatisticUserLogin() throws RemoteException;
+	/**
+	 * Get a list of all statistic for the number of sending crises
+	 * @return A list of all statistic for the number of sending crises in the system
+	 * @throws RemoteException
+	 */
+	public ArrayList<CtStatisticNumberofCrises> getStatisticNumberofCrises() throws RemoteException;
 	
 	/**
 	 * Gets the specified communication company with the name specified.
@@ -360,6 +376,27 @@ public interface IcrashSystem extends Remote {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean oeDeleteCoordinator(DtCoordinatorID aDtCoordinatorID) throws RemoteException; 
+	/**
+	 * 
+	 * @param aDtStatisticUserActivity
+	 * @return The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 */
+	public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity) throws RemoteException;
+	/**
+	 * 
+	 * @param aDtStatisticNumberOfCrises
+	 * @return The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 */
+	public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises)throws RemoteException;
+	/**
+	 * 
+	 * @return
+	 * @throws RemoteException Thrown if the server is offline
+	 */
+	public PtBoolean oegetStatisticTypes()throws RemoteException;
+	
 	
 	/**
 	 * Runs the function of sollicitating crisis handling, if a crisis hasn't been handled with the delay, coordinators will be warned. If it passes max delax, it will be auto assigned out 
@@ -384,4 +421,6 @@ public interface IcrashSystem extends Remote {
 	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;//TODO: Messir?
 	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;//TODO: Messir?
 	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;//TODO: Messir?
+
+	
 }

@@ -12,20 +12,14 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin;
 import java.io.IOException;
-import java.io.Reader;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AlertController;
-import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CrisisController;
-import lu.uni.lassy.excalibur.examples.icrash.dev.controller.HumanController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.SystemStateController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectActorException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectFormatException;
@@ -35,7 +29,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOf
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
@@ -45,8 +40,6 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractA
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator.CreateICrashCoordGUI;
 import javafx.scene.layout.GridPane;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -59,7 +52,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -133,19 +125,23 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     
     
   /////////// NEW
-    /** The tableview of the alerts in the system. */
 	@FXML
     private TableView<CtAlert> tblvwAlerts;
 	
-	/** The tableview of the crises in the system. */
+	/** The tableview of the  statistic number of user login in the system. */
+   
     @FXML
-    private TableView<CtCrisis> tblvwCrises;
+    private TableView<CtStatisticUserActivity> tblvwUserActivity;
 
+    /** The tableview of the statistic number of sending crises in the system. */
+    @FXML
+    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
+    
 	  /** The alert controller, which allows alert specific functions, like getting a list of alerts. */
     private AlertController alertController;
-    
-    /** The crisis controller, which allows crisis specific functions, like getting a list of crises. */
-    private CrisisController crisisController;
+  
+    /** The admin controller, which allows crisis specific functions, like getting a list of the different statistic. */
+    private AdminController adminController;
 	
 	//////
     /** The button that allows a user to logoff */
@@ -281,6 +277,8 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	 public void populateTables(){
 	    	try {
 				addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
+				//addAdminsToTableViewStatistic1(tblvwUserActivity, adminController.getListOfStatisticUserLogin());
+				//addAdminsToTableViewStatistic2(tblvwNumberofsendingCrises, adminController.getListOfStatisticNumberofsendingCrises());
 				//addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
 			//	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			} catch (ServerOfflineException | ServerNotBoundException e) {
@@ -297,6 +295,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	
 	public void setUpTables(){
 		setUpMessageTables(tblvwAdminMessages);
+			
 		//TODO 
 		//	setUpAlertTables(tblvwAlerts);
 	   // setUpCrisesTables(tblvwCrises);
@@ -321,9 +320,11 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setBottomAnchor(grdpn, 0.0);
 		AnchorPane.setRightAnchor(grdpn, 0.0);
 		try {	
-				URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
+				URL url = this.getClass().getResource("iCrashAdminStatisticGUI2.fxml");
 				FXMLLoader loader = new FXMLLoader(url);
+				System.out.println("afetewwwwwt");
 				Parent root2 = (Parent)loader.load();
+				System.out.println("dwdww");
 				
 				Stage stage2 = new Stage();
 				stage2.setTitle("iCrash Admin Statistic");
@@ -349,52 +350,21 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			e.printStackTrace();
 		}
 		System.out.println("11");
-			alertController = new AlertController();
+		alertController = new AlertController();
+	
 			System.out.println("22");
 			setUpAlertTables(tblvwAlerts);
 			System.out.println("33");
-			populateTables();
 			System.out.println("44");
+			System.out.println("setup1");
+			//setUpStatisticTable(tblvwNumberofsendingCrises);
+			System.out.println("setup2");
+			//setUpStatisticTable2(tblvwUserActivity);
+			populateTables();
+			
+
 		}
 		
-		/*bttntypOK.setDefaultButton(true);
-		bttntypOK.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				if (!checkIfAllDialogHasBeenFilledIn(grdpn))
-					showWarningNoDataEntered();
-				else{
-					try {
-						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
-						switch(type){
-						case Call:
-							if (userController.oegetStatisticNumberOfCrises(statisticNumber.getValue())){
-								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
-								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
-							}
-							else
-								showErrorMessage("Unable to add coordinator", "An error occured when adding the coordinator");
-							break;
-						case CallUser:
-							if (userController.oeDeleteCoordinator(txtfldUserID.getText()).getValue()){
-								for(CreateICrashCoordGUI window : listOfOpenWindows){
-									if (window.getDtCoordinatorID().value.getValue().equals(coordID.value.getValue()))
-										window.closeWindow();
-								}
-								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
-							}
-							else
-								showErrorMessage("Unable to delete coordinator", "An error occured when deleting the coordinator");
-							break;
-						}
-					} catch (ServerOfflineException | ServerNotBoundException | IncorrectFormatException e) {
-						showExceptionErrorMessage(e);
-					}					
-				}
-			}
-		})
-		
-	}*/
 
 	/**
 	 * Shows the modify coordinator screen.
@@ -516,7 +486,6 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		systemstateController = new SystemStateController();
-		crisisController = new CrisisController();
     	alertController = new AlertController();
     	//false
 		logonShowPanes(false);
