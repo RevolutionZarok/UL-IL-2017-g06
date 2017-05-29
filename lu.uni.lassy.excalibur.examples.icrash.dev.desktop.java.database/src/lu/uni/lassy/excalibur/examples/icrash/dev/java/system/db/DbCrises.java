@@ -27,11 +27,14 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -87,13 +90,18 @@ public class DbCrises extends DbAbstract {
 				String instant = sdf.format(calendar.getTime());
 
 				String comment = aCtCrisis.comment.value.getValue();
+				
+				String familyComment = aCtCrisis.familyComment.value.getValue();
+				
+				String victimFirstName = aCtCrisis.victimFirstName.value.getValue();
+				String victimLastName = aCtCrisis.victimLastName.value.getValue();
 
 				log.debug("[DATABASE]-Insert crisis");
 				int val = st.executeUpdate("INSERT INTO " + dbName + ".crises"
 						+ "(id,type,status,latitude,longitude,instant,comment)"
 						+ "VALUES(" + "'" + id + "'" + ",'" + type + "','"
 						+ status + "', " + latitude + ", " + longitude + ", '"
-						+ instant + "','" + comment + "')");
+						+ instant + "','" + comment + "','" + familyComment  + "','" + victimFirstName + "','" + victimLastName + "')");
 
 				log.debug(val + " row affected");
 			} catch (SQLException s) {
@@ -188,9 +196,15 @@ public class DbCrises extends DbAbstract {
 					//crisis's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
+					
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("familyComment")));
+					
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("victimFirstName")));
+					
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("victimLastName")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+							aInstant, aDtComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 
 				}
 
@@ -335,9 +349,15 @@ public class DbCrises extends DbAbstract {
 					//crisis' comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
+					
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("familyComment")));
+					
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("victimFirstName")));
+					
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("victimLastName")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+							aInstant, aDtComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 
 					//*************************************
 					aCtCoordinator = new CtCoordinator();
@@ -452,9 +472,15 @@ public class DbCrises extends DbAbstract {
 					//crisis' comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
+					
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("familyComment")));
+					
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("victimFirstName")));
+					
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("victimLastName")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+							aInstant, aDtComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 
 					//add instance to the hash
 					cmpSystemCtCrisis.put(aCtCrisis.id.value.getValue(),

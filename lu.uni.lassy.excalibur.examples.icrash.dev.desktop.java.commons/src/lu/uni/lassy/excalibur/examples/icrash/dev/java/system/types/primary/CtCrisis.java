@@ -55,6 +55,12 @@ public class CtCrisis implements Serializable {
 	
 	/** The comment associated with the crisis. Often refered to as the report. */
 	public DtComment comment;
+	
+	public DtFamilyComment familyComment;
+	
+	public DtVictimFirstName victimFirstName;
+	
+	public DtVictimLastName victimLastName;
 
 	/**
 	 * Initialises the crisis.
@@ -65,11 +71,14 @@ public class CtCrisis implements Serializable {
 	 * @param aLocation the location of the accident associated with the crisis
 	 * @param aInstant the date and time of the accident associated with the crisis
 	 * @param aComment the comment of the crisis
+	 * @param aVictimLastName 
+	 * @param aVictimFirstName 
+	 * @param aFamilyComment 
 	 * @return the success of the initialisation
 	 */
 	public PtBoolean init(DtCrisisID aId, EtCrisisType aType,
 			EtCrisisStatus aStatus, DtGPSLocation aLocation,
-			DtDateAndTime aInstant, DtComment aComment) {
+			DtDateAndTime aInstant, DtComment aComment, DtFamilyComment aFamilyComment, DtVictimFirstName aVictimFirstName, DtVictimLastName aVictimLastName) {
 
 		id = aId;
 		type = aType;

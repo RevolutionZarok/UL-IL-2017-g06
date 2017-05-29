@@ -19,9 +19,12 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbCrises;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -86,9 +89,13 @@ public class TestCase_db_table_crises {
 		//set up comment
 		DtComment aDtComment = new DtComment(new PtString("1 bicycle involved in an accident."));
 		
+		DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString("All is well, no need to worry!"));
+		
+		DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString("Ronald"));
+		DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString("Ragan"));
 		
 		CtCrisis aCtCrisis = new CtCrisis();
-		aCtCrisis.init(aId, aType, aStatus,aDtGPSLocation,aInstant, aDtComment);
+		aCtCrisis.init(aId, aType, aStatus,aDtGPSLocation,aInstant, aDtComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 		
 		DbCrises.insertCrisis(aCtCrisis);
 		

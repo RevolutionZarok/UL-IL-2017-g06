@@ -130,8 +130,6 @@ public class DbAlerts extends DbAbstract {
 				String victimFirstName = aCtAlert.victimFirstName.value.getValue();
 				
 				String victimLastName = aCtAlert.victimLastName.value.getValue();
-				
-				System.out.print(familyComment + " " + victimFirstName + " " + victimLastName);
 
 				log.debug("[DATABASE]-Insert alert");
 				int val = st.executeUpdate("INSERT INTO " + dbName + ".alerts"
@@ -224,11 +222,11 @@ public class DbAlerts extends DbAbstract {
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 					
-					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("comment")));
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("familyComment")));
 					
-					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("first name")));
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("victimFirstName")));
 					
-					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("last name")));
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("victimLastName")));
 					
 					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
 							aDtComment, aDtFamilyComment,
@@ -361,11 +359,11 @@ public class DbAlerts extends DbAbstract {
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 					
-					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("comment")));
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("familyComment")));
 					
-					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("first name")));
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("victimFirstName")));
 					
-					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("last name")));
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("victimLastName")));
 
 					//init aCtAlert instance
 					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
@@ -463,11 +461,11 @@ public class DbAlerts extends DbAbstract {
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("alerts.comment")));
 					
-					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("comment")));
+					DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString(res.getString("alerts.familyComment")));
 					
-					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("first name")));
+					DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString(res.getString("alerts.victimFirstName")));
 					
-					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("last name")));
+					DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString(res.getString("alerts.victimLastName")));
 
 					//init aCtAlert instance
 					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
@@ -527,10 +525,16 @@ public class DbAlerts extends DbAbstract {
 					//crisis's comment  
 					DtComment aCrisisDtComment = new DtComment(new PtString(
 							res.getString("crises.comment")));
+					
+					DtFamilyComment aFamilyComment = new DtFamilyComment(new PtString(res.getString("crises.familyComment")));
+					
+					DtVictimFirstName aVictimFirstName = new DtVictimFirstName(new PtString(res.getString("crises.victimFirstName")));
+					DtVictimLastName aVictimLastName = new DtVictimLastName(new PtString(res.getString("crises.victimLastName")));
 
 					aCtCrisis.init(aCrisisId, aCrisisType, aCrisisStatus,
 							aCrisisDtGPSLocation, aCrisisInstant,
-							aCrisisDtComment);
+							aCrisisDtComment, aFamilyComment, aVictimFirstName,
+							aVictimLastName);
 
 					//add instances to the hash
 					assCtAlertCtCrisis.put(aCtAlert, aCtCrisis);
@@ -800,7 +804,8 @@ public class DbAlerts extends DbAbstract {
 				String sql = "UPDATE "
 						+ dbName
 						+ ".alerts SET `status` = ?, `latitude` = ?, `longitude` = ?,"
-						+ " `instant` = ?, `comment` = ? WHERE id = ?";
+						+ " `instant` = ?, `comment` = ?, `familyComment` = ?, `victimFirstName` = ?,"
+						+ " `victimLastName` = ? WHERE id = ?";
 				String id = aCtAlert.id.value.getValue();
 				String status = aCtAlert.status.toString();
 				double latitude = aCtAlert.location.latitude.value.getValue();
@@ -821,6 +826,11 @@ public class DbAlerts extends DbAbstract {
 				String instant = sdf.format(calendar.getTime());
 
 				String comment = aCtAlert.comment.value.getValue();
+				
+				String familyComment = aCtAlert.familyComment.value.getValue();
+				
+				String victimFirstName = aCtAlert.victimFirstName.value.getValue();
+				String victimLastName = aCtAlert.victimLastName.value.getValue();
 
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setString(1, status);
@@ -828,7 +838,10 @@ public class DbAlerts extends DbAbstract {
 				statement.setDouble(3, longitude);
 				statement.setString(4, instant);
 				statement.setString(5, comment);
-				statement.setString(6, id);
+				statement.setString(6, familyComment);
+				statement.setString(7, victimFirstName);
+				statement.setString(8, victimLastName);
+				statement.setString(9, id);
 				int rows = statement.executeUpdate();
 				log.debug(rows + " row affected");
 			} catch (SQLException s) {

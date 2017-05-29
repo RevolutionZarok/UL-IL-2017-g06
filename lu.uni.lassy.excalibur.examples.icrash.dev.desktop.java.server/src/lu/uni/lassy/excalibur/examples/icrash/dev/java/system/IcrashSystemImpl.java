@@ -701,7 +701,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				DtComment acComment = new DtComment(new PtString(
 						"no report defined, yet"));
 				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant,
-						acComment);
+						acComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 	
 				//DB: insert crisis in the database
 				DbCrises.insertCrisis(aCtCrisis);
@@ -789,6 +789,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 						//+ "' "
 						+ "is now declared as valid !");
 				theActCoordinator.ieMessage(aMessage);
+				
 				return new PtBoolean(true);
 			}
 		}

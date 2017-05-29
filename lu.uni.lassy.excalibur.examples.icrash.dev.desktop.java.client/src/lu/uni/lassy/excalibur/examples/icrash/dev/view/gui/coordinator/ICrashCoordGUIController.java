@@ -425,8 +425,14 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 				showWarningIncorrectInformationEntered(e);
 			}
 		populateAlerts();
+		sendFamilyNotification();
 	}
 	
+	private void sendFamilyNotification() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Runs the function that will allow the current user to invalidate the selected alert.
 	 */
