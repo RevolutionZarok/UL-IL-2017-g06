@@ -445,6 +445,63 @@ public abstract class AbstractGUIController implements Initializable {
 		tblvw.getColumns().add(statusCol);
 		setColumnsSameWidth(tblvw);
 	}
+	public void setUpAlertTablesStatistic(TableView<CtAlert> tblvw){
+		
+		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
+		TableColumn<CtAlert, String> dateCol = new TableColumn<CtAlert, String>("Date");
+		TableColumn<CtAlert, String> timeCol = new TableColumn<CtAlert, String>("Time");
+		TableColumn<CtAlert, Double> longitudeCol = new TableColumn<CtAlert, Double>("Longitude");
+		TableColumn<CtAlert, Double> latitudeCol = new TableColumn<CtAlert, Double>("Latitude");
+		TableColumn<CtAlert, String> commentCol = new TableColumn<CtAlert, String>("Comment");
+		TableColumn<CtAlert, String> statusCol = new TableColumn<CtAlert, String>("Status");
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() 
+			{
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) 
+			{
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().id.value.getValue());
+			}
+		});
+		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.date.toString());
+			}
+		});
+		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.time.toString());
+			}
+		});
+		longitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, Double>, ObservableValue<Double>>() {
+			public ObservableValue<Double> call(CellDataFeatures<CtAlert, Double> alert) {
+				return new ReadOnlyObjectWrapper<Double>(alert.getValue().location.longitude.value.getValue());
+			}
+		});
+		latitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, Double>, ObservableValue<Double>>() {
+			public ObservableValue<Double> call(CellDataFeatures<CtAlert, Double> alert) {
+				return new ReadOnlyObjectWrapper<Double>(alert.getValue().location.latitude.value.getValue());
+			}
+		});
+		commentCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().comment.value.getValue());
+			}
+		});
+		statusCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().status.name());
+			}
+		});	
+		
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(dateCol);
+		tblvw.getColumns().add(timeCol);
+//		tblvw.getColumns().add(longitudeCol);
+	//	tblvw.getColumns().add(latitudeCol);
+//		tblvw.getColumns().add(commentCol);
+//		tblvw.getColumns().add(statusCol);
+		setColumnsSameWidth(tblvw);
+	}
+
 	
 	/**
 	 * * Sets up the crisis tableviews with the correct columns.

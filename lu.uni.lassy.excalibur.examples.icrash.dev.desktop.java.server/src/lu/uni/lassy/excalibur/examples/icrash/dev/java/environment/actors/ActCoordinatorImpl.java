@@ -332,4 +332,5 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 			log.info("operation oeGetAlertsSet successfully executed by the system");
 		return res;
 	}
+	
 }

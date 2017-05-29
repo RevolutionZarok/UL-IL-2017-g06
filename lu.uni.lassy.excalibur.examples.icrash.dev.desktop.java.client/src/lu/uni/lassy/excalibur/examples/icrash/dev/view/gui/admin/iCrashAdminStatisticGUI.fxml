@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="291.0" prefWidth="558.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.monitor.MonitorGUIController">
+<AnchorPane prefHeight="291.0" prefWidth="558.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin.MonitorStatisticGUIController">
   <children>
     <BorderPane prefHeight="401.0" prefWidth="678.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -30,7 +30,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab style="" text="Humans">
+            <Tab style="" text="Average Time Of Crises">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>

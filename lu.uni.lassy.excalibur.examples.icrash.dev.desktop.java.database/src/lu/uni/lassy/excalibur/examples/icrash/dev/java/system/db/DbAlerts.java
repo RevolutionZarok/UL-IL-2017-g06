@@ -159,9 +159,8 @@ public class DbAlerts extends DbAbstract {
 
 			/********************/
 			//Select
-
 			try {
-				String sql = "SELECT * FROM " + dbName + ".alerts WHERE id = "
+				String sql = "SELECT * FROM " + dbName + ".alerts  ORDER BY instant DESC WHERE id = "
 						+ alertId;
 
 				PreparedStatement statement = conn.prepareStatement(sql);
@@ -290,8 +289,8 @@ public class DbAlerts extends DbAbstract {
 			//Select
 
 			try {
-				String sql = "SELECT * FROM " + dbName + ".alerts ";
-
+				String sql = "SELECT * FROM " + dbName + ".alerts ORDER BY instant ASC";
+				
 				PreparedStatement statement = conn.prepareStatement(sql);
 				ResultSet res = statement.executeQuery(sql);
 

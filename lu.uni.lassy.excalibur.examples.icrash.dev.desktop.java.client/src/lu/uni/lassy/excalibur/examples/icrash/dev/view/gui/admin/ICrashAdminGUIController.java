@@ -320,11 +320,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setBottomAnchor(grdpn, 0.0);
 		AnchorPane.setRightAnchor(grdpn, 0.0);
 		try {	
-				URL url = this.getClass().getResource("iCrashAdminStatisticGUI2.fxml");
+				URL url = this.getClass().getResource("iCrashAdminStatisticGUI.fxml");
 				FXMLLoader loader = new FXMLLoader(url);
-				System.out.println("afetewwwwwt");
 				Parent root2 = (Parent)loader.load();
-				System.out.println("dwdww");
 				
 				Stage stage2 = new Stage();
 				stage2.setTitle("iCrash Admin Statistic");
@@ -340,27 +338,18 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	            stage2.setY(1);
 	            
 				stage2.show();
-				
-			 	
-				
-				
 		} 
 		catch (IOException e) {
 			System.err.println("Error in catch for the button Statistic");
 			e.printStackTrace();
 		}
-		System.out.println("11");
-		alertController = new AlertController();
-	
-			System.out.println("22");
-			setUpAlertTables(tblvwAlerts);
-			System.out.println("33");
+			System.out.println("11");
 			System.out.println("44");
 			System.out.println("setup1");
 			//setUpStatisticTable(tblvwNumberofsendingCrises);
 			System.out.println("setup2");
 			//setUpStatisticTable2(tblvwUserActivity);
-			populateTables();
+			//populateTables();
 			
 
 		}

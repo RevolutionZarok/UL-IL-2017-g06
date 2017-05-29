@@ -140,5 +140,6 @@ public interface ActCoordinator extends ActAuthenticated {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean ieSendAnAlert(CtAlert aCtAlert) throws RemoteException;
+	
 
 }
