@@ -28,11 +28,14 @@ import javafx.event.EventHandler;
  * This is the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
  */
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -42,6 +45,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CoordinatorController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectActorException;
@@ -55,7 +59,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyCoordinatorImpl;
@@ -425,11 +431,35 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 				showWarningIncorrectInformationEntered(e);
 			}
 		populateAlerts();
-		sendFamilyNotification();
+		sendFamilyNotification(alert);
 	}
 	
-	private void sendFamilyNotification() {
-		// TODO Auto-generated method stub
+	private void sendFamilyNotification(CtAlert alert) {
+		DtSMS sms = new DtSMS(new PtString(alert.victimFirstName.value.getValue() + " " + 
+		alert.victimLastName.value.getValue() + " was in an accident. Here's his comment:\n" +
+				alert.familyComment.value.getValue()));
+		
+		Group root = new Group();
+		Stage stage = new Stage();
+		Scene scene = new Scene(root, 500, 250);
+		
+		GridPane grdpn = new GridPane();
+		
+		Label lblFamily = new Label("Received message: ");
+		Label whitespace1 = new Label("");
+		Label whitespace2 = new Label("");
+		TextArea txtbxMessage = new TextArea(sms.value.getValue());
+		
+		grdpn.add(whitespace1, 1, 1);
+		grdpn.add(lblFamily, 1, 2);
+		grdpn.add(whitespace2, 1, 3);
+		grdpn.add(txtbxMessage, 1, 4);
+		
+        stage.setTitle("Family notification window"); 
+        stage.setScene(scene); 
+        stage.sizeToScene(); 
+        root.getChildren().add(grdpn);
+        stage.show(); 
 		
 	}
 
