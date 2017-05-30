@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNotBoundException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOfflineException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Server;
@@ -42,6 +43,24 @@ public class CrisisController {
 	public ArrayList<CtCrisis> getAllCtCrises() throws ServerOfflineException, ServerNotBoundException{
 		try {
 			return server.sys().getAllCtCrises();
+		} catch (RemoteException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerOfflineException();
+		} catch (NotBoundException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerNotBoundException();
+		}
+	}
+	/**
+	 * Returns a list of all crises in the system, without using a logged in user.
+	 *
+	 * @return Returns an ArrayList of type CtCrisis, which contains all crises currently within the iCrashSystem
+	 * @throws ServerOfflineException is an error that is thrown when the server is offline or not reachable
+	 * @throws ServerNotBoundException is only thrown when attempting to access a server which has no current binding. This shouldn't happen, but you never know!
+	 */
+	public ArrayList<CtStatisticUserActivity> getAllStCtCrises() throws ServerOfflineException, ServerNotBoundException{
+		try {
+			return server.sys().getAllCtStatisticUserActivity();
 		} catch (RemoteException e) {
 			Log4JUtils.getInstance().getLogger().error(e);
 			throw new ServerOfflineException();

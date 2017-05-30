@@ -73,14 +73,9 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
 	@FXML
     private TableView<CtAlert> tblvwAlerts;
 	
-
 	/** The tableview of the crises in the system. */
     @FXML
     private TableView<CtCrisis> tblvwCrises;
-
-    /** The tableview of the humans in the system. */
-    @FXML
-    private TableView<CtHuman> tblvwHumans;
 
     /** The tableview of the administrators in the system. */
     @FXML
@@ -89,14 +84,14 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
     /** The tableview of the coordinators in the system. */
     @FXML
     private TableView<CtCoordinator> tblvwCoordinators;
-
-    /** The tableview of the communication companies in the system. */
     @FXML
-    private TableView<String> tblvwComCompany;
+    private TableView<CtStatisticUserActivity> tblvwUserActivity;
 
-    /** The tableview of the state of the system. */
+    /** The tableview of the statistic number of sending crises in the system. */
     @FXML
-    private TableView<CtState> tblvwCtState;
+    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
+  
+
 
     /** The label showing the date and time this formwas last updated last updated. */
     @FXML
@@ -130,13 +125,7 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
     /** The system state controller, which allows state specific functions, like getting the current server date and time. */
     private SystemStateController systemStateController;
     /// NEW 
-    @FXML
-    private TableView<CtStatisticUserActivity> tblvwUserActivity;
-
-    /** The tableview of the statistic number of sending crises in the system. */
-    @FXML
-    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
-  
+   
     /** The admin controller, which allows crisis specific functions, like getting a list of the different statistic. */
     private AdminController adminController;
    
@@ -155,14 +144,9 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
      */
     public void populateTables(){
     	try {		
-    		//addStateToTableView(tblvwCtState, systemStateController.getServerState());
-			//addComCompaniesToTableView(tblvwComCompany, systemStateController.getListOfComCompaniesNames());
-			addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
-			addHumansToTableView(tblvwHumans, humanController.getAllHumans());
+    		addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
 			addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
-			//Moved these to the bottom, as most likely to throw the null pointer exception error
-			//addAdminsToTableView(tblvwAdministrators, systemStateController.getAllAdministrators());
-			//addCoordsToTableView(tblvwCoordinators, systemStateController.getAllCoordinators());
+			addCoordsToTableView(tblvwCoordinators, systemStateController.getAllCoordinators());
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			lblLastUpdated.setText(_textForLabelLastUpdated + LocalDateTime.now().format(formatter));
 		} catch (ServerOfflineException | ServerNotBoundException e) {
@@ -178,12 +162,9 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
      */
     public void setUpTables(){
     	//setUpAdminTables(tblvwAdministrators, true);
-    	setUpAlertTablesStatistic(tblvwAlerts);
-    	//setUpComCompaniesTables(tblvwComCompany);
-    	//setUpCoordTables(tblvwCoordinators, true);
-    	setUpCrisesTables(tblvwCrises);
-    	setUpHumansTables(tblvwHumans);
-    	//setUpStateTables(tblvwCtState);
+    	setUpCoordTables(tblvwCoordinators,true);
+    	setNumberofsendingCrisesTables(tblvwAlerts);
+    	setAverageTimeforCrises(tblvwCrises);
     	
     }
 

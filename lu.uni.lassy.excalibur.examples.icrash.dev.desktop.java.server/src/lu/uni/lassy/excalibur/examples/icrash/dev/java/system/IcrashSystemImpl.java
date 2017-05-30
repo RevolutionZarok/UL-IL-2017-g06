@@ -116,6 +116,9 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	
 	/**  A hashtable of the crises in the system, stored by their ID as a key. */
 	Hashtable<String, CtCrisis> cmpSystemCtCrisis = new Hashtable<String, CtCrisis>();
+
+	/**  A hashtable of the crises in the system, stored by their ID as a key. */
+	Hashtable<String, CtCrisis> cmpSystemCtCrisisSt = new Hashtable<String, CtCrisis>();
 	
 	/**  A hashtable of the humans in the system, stored by their phone number as a key. */
 	Hashtable<String, CtHuman> cmpSystemCtHuman = new Hashtable<String, CtHuman>();
@@ -495,6 +498,15 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 		ArrayList<CtCrisis> result = new ArrayList<CtCrisis>();
 		if (cmpSystemCtCrisis != null){
 			for(CtCrisis crisis : cmpSystemCtCrisis.values())
+				result.add(crisis);
+		}
+		return result;
+	}
+	@Override
+	public ArrayList<CtStatisticUserActivity> getAllCtStatisticUserActivity() throws RemoteException {
+		ArrayList<CtStatisticUserActivity> result = new ArrayList<CtStatisticUserActivity>();
+		if (cmpSystemCtCrisis != null){
+			for(CtStatisticUserActivity crisis : cmpSystemCtStatisticUserActivity.values())
 				result.add(crisis);
 		}
 		return result;
@@ -1458,6 +1470,10 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException {
 		return currentRequestingAuthenticatedPassword;
 	}
+
+	
+
+	
 
 	
 	

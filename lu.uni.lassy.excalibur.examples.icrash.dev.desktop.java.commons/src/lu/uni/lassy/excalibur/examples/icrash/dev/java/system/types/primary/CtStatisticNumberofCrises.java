@@ -21,11 +21,14 @@ public class CtStatisticNumberofCrises {
 	public DtInteger NumberofSendingCrises;
 
 	public  DtDateAndTime instant;
+	/** The id of the crises. */
+	public DtCrisisID id;
 	
-	public CtStatisticNumberofCrises(DtTime aTime, DtInteger aNumberofSendingCrises,  DtDateAndTime ainstant){
+	public CtStatisticNumberofCrises(DtTime aTime, DtInteger aNumberofSendingCrises,  DtDateAndTime ainstant, DtCrisisID aid){
 		this.Time = aTime;
 		this.NumberofSendingCrises = aNumberofSendingCrises;
 		this.instant =ainstant;
+		this.id = aid;
 		//return new PtBoolean(true);
 		
 	}
@@ -46,9 +49,13 @@ public class CtStatisticNumberofCrises {
 			return false;
 		if (!(aCtStatisticNumberofCrises.instant.time.hour.toString().equals(this.instant.time.hour.toString())))
 			return false;
+		if (!(aCtStatisticNumberofCrises.id.value.getValue().equals(this.id.value.getValue())))
+			return false;
 		return true;
 	}
-	
+	public DtCrisisID  getId(){
+		return id;
+	}
 	public DtTime getTime(){
 		return Time; 
 	}
@@ -58,6 +65,7 @@ public class CtStatisticNumberofCrises {
 	public DtDateAndTime geTime(){
 		return instant;
 	}
+	
 public void iecalculeStatisticNumberOfCrises(){
 		
 		try{

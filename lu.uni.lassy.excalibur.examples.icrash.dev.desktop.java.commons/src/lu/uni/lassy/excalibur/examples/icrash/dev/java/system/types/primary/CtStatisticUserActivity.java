@@ -25,13 +25,18 @@ public class CtStatisticUserActivity implements Serializable {
 	
 	/** The date and time of the accident that is associated to the crisis. */
 	public DtDateAndTime instant;
+	/** The id of the crises. */
+	public DtLogin id;
 	
 	public int counter;
 	
-	public CtStatisticUserActivity(DtStatisticUserActivity aNumberOf, DtTime aTime, DtDateAndTime ainstant){
+	
+	
+	public CtStatisticUserActivity(DtStatisticUserActivity aNumberOf,DtLogin aid, DtTime aTime, DtDateAndTime ainstant){
 		this.NumberOfUser = aNumberOf;
 		this.Time = aTime;
 		this.instant= ainstant;
+		this.id = aid;
 		//return new PtBoolean(true);
 		
 	}
@@ -59,9 +64,23 @@ public class CtStatisticUserActivity implements Serializable {
 			return false;
 		if(!(aCtStatisticUserActivity.Time.toString().equals(this.Time.toString())))
 			return false;
+		if (!(aCtStatisticUserActivity.id.value.getValue().equals(this.id.value.getValue())))
+			return false;
 		return true;
 	}
-	public void iecalculeStatisticUserActivity(){
+	public DtStatisticUserActivity getNumberOfUser(){
+		return NumberOfUser;
+	}
+	public DtTime getTime(){
+		return Time; 
+	}
+	public DtHour geDateAndTime(){
+		return instant.time.hour;
+	}
+	public DtLogin  getId(){
+		return id;
+	}
+/*	public void iecalculeStatisticUserActivity(){
 		System.out.println("1111");
 		try{
 			Class.forName("org.postgresql.Driver" );
@@ -86,15 +105,7 @@ public class CtStatisticUserActivity implements Serializable {
 		}
 	
 		
-	}
+	}*/
 	
-	public DtStatisticUserActivity getNumberOfUser(){
-		return NumberOfUser;
-	}
-	public DtTime getTime(){
-		return Time; 
-	}
-	public DtHour geDateAndTime(){
-		return instant.time.hour;
-	}
+	
 }

@@ -193,6 +193,14 @@ public interface IcrashSystem extends Remote {
 	 */
 	public ArrayList<CtCrisis> getAllCtCrises() throws RemoteException;
 	
+//TODO
+	/**
+	 * Gets a list of all crises in the system.
+	 *
+	 * @return A list of all the crises in the system
+	 * @throws RemoteException Thrown if the server is offline
+	 */
+	public ArrayList<CtStatisticUserActivity> getAllCtStatisticUserActivity() throws RemoteException;
 	/**
 	 * Gets a list of all communication companies in the system.
 	 *

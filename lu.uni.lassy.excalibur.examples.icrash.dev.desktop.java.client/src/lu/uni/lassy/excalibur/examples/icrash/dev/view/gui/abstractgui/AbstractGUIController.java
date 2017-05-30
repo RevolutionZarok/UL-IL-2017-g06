@@ -445,15 +445,13 @@ public abstract class AbstractGUIController implements Initializable {
 		tblvw.getColumns().add(statusCol);
 		setColumnsSameWidth(tblvw);
 	}
-	public void setUpAlertTablesStatistic(TableView<CtAlert> tblvw){
+	
+	public void setNumberofsendingCrisesTables (TableView<CtAlert> tblvw){
 		
 		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
 		TableColumn<CtAlert, String> dateCol = new TableColumn<CtAlert, String>("Date");
 		TableColumn<CtAlert, String> timeCol = new TableColumn<CtAlert, String>("Time");
 		TableColumn<CtAlert, Double> longitudeCol = new TableColumn<CtAlert, Double>("Longitude");
-		TableColumn<CtAlert, Double> latitudeCol = new TableColumn<CtAlert, Double>("Latitude");
-		TableColumn<CtAlert, String> commentCol = new TableColumn<CtAlert, String>("Comment");
-		TableColumn<CtAlert, String> statusCol = new TableColumn<CtAlert, String>("Status");
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() 
 			{
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) 
@@ -476,32 +474,80 @@ public abstract class AbstractGUIController implements Initializable {
 				return new ReadOnlyObjectWrapper<Double>(alert.getValue().location.longitude.value.getValue());
 			}
 		});
-		latitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, Double>, ObservableValue<Double>>() {
-			public ObservableValue<Double> call(CellDataFeatures<CtAlert, Double> alert) {
-				return new ReadOnlyObjectWrapper<Double>(alert.getValue().location.latitude.value.getValue());
-			}
-		});
-		commentCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
-				return new ReadOnlyObjectWrapper<String>(alert.getValue().comment.value.getValue());
-			}
-		});
-		statusCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
-				return new ReadOnlyObjectWrapper<String>(alert.getValue().status.name());
-			}
-		});	
+		
+		
 		
 		tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(dateCol);
 		tblvw.getColumns().add(timeCol);
 //		tblvw.getColumns().add(longitudeCol);
-	//	tblvw.getColumns().add(latitudeCol);
-//		tblvw.getColumns().add(commentCol);
-//		tblvw.getColumns().add(statusCol);
 		setColumnsSameWidth(tblvw);
 	}
-
+	
+	/**
+	 * * Sets up the statistic number of sending crises tableviews with the correct columns.
+	 * @param tblvw The tableview to add the columns to
+	 */
+	public void setAverageTimeforCrises(TableView<CtCrisis>tblvw){
+		TableColumn<CtCrisis, String> idCol = new TableColumn<CtCrisis, String>("ID");
+		TableColumn<CtCrisis, String> typeCol = new TableColumn<CtCrisis, String>("Type");
+		TableColumn<CtCrisis, Double> longitudeCol = new TableColumn<CtCrisis, Double>("Longitude");
+		
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
+			
+			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().id.value.getValue());
+			}
+		});
+		typeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().type.name());
+			}
+		});
+		longitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Double>, ObservableValue<Double>>() {
+			public ObservableValue<Double> call(CellDataFeatures<CtCrisis, Double> crisis) {
+				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.longitude.value.getValue());
+			}
+		});
+		
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(typeCol);
+		tblvw.getColumns().add(longitudeCol);
+		setColumnsSameWidth(tblvw);
+	}
+	/**
+	 * * Sets up the statistic for the average time for the different types of crisis tableviews with the correct columns.
+	 *
+	 * @param tblvw The tableview to add the columns to
+	 */
+	
+	public void setUpAlertTablesStatistic(TableView<CtStatisticUserActivity>tblvw){
+		TableColumn<CtStatisticUserActivity, String> idCol = new TableColumn<CtStatisticUserActivity, String>("ID");
+		TableColumn<CtStatisticUserActivity, String> dateCol = new TableColumn<CtStatisticUserActivity, String>("Date");
+		TableColumn<CtStatisticUserActivity, String> timeCol = new TableColumn<CtStatisticUserActivity, String>("Time");
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().id.value.getValue());
+			}
+		});
+		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.date.toString());
+			}
+		});
+		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.time.toString());
+			}
+		});
+		
+		//CtCrises
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(dateCol);
+		tblvw.getColumns().add(timeCol);
+		setColumnsSameWidth(tblvw);
+	}
 	
 	/**
 	 * * Sets up the crisis tableviews with the correct columns.
