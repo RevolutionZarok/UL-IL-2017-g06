@@ -19,17 +19,27 @@ Concept Model {
 			}
 			datatype dtCaptchaResponse {
 				attribute id: dtCaptchaId
-				attribute response: dtInteger//TODO: Sprint3: Changed from ptString -> dtInteger
+				attribute response: dtInteger
 				
 				operation init(Aid:dtCaptchaId, Aresponse:dtInteger):ptBoolean
 				operation is():ptBoolean
 			}
-			datatype dtCaptchaResponseMap{//TODO: Is this sufficient?
+			datatype dtCaptchaResponseMap{
 				operation is():ptBoolean
 				
 				operation register(AdtResponse:dtCaptchaResponse):ptBoolean
 				operation get(AId:dtCaptchaId):dtCaptchaResponse
 				operation remove(AId:dtCaptchaId):ptBoolean
+			}
+			datatype dtMailAddress extends dtString{
+				operation init(Aaddress:ptString):ptBoolean
+				
+				operation is():ptBoolean
+			}
+			datatype dtResetCode extends dtString{
+				operation init(AptString:ptString):ptBoolean
+				
+				operation is():ptBoolean
 			}
 		}
 

@@ -1,0 +1,63 @@
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeSendResetCodePerMail {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+import icrash.environment.authentication
+
+	Operation Model {
+
+		operation: icrash.environment.actCoordinator.outactCoordinator.oeSendResetCodePerMail(AdtLogin:dtLogin):ptBoolean{
+			preP{
+				let TheSystem: ctState in
+				let AvpStarted: ptBoolean in
+				let TheActor:actCoordinator in
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheActor
+				
+				/*PreP01*/
+				and self.rnActor.rnSystem.vpStarted = AvpStarted
+				and AvpStarted = true
+			}
+			preF{
+				/*PreF01*/
+				AdtLogin.is() = true
+			}
+			postF{
+				let TheSystem: ctState in
+				let TheactCoordinator:actCoordinator in
+				let TheactMailingService:actMailingService in
+  
+				self.rnActor.rnSystem = TheSystem
+				and self.rnActor = TheactAuthenticated
+				
+				let AptStringMailAddress: ptString in
+				let AptStringMailTitle: ptString in
+				let AptStringMailContentTmp: ptString in
+				let AptStringMailContent: ptString in
+				
+				/*PostF01*/
+				if (TheactCoordinator.rnctCoordinator.login = AdtLogin) then (
+					AptStringMailAddress.eq(TheactCoordinator.rnctCoordinator.mail)
+					and AptStringMailTitle.eq("Your reset code to reactivate your iCrash.FX account")
+					and AptStringMailContentTmp.eq("Your reset code: ")
+					and AptStringMailContent.eq(AptStringMailContentTmp.ptStringConcat(TheactCoordinator.rnctCoordinator.resetCode))
+					and TheactMailingService.rnInterfaceINieSendMail(AptStringMailAddress, AptStringMailTitle, AptStringMailContent)
+					result = true
+				) else (
+					result = false
+				)
+				endif
+					
+			}
+			postP{
+				/*PostP01*/
+				true
+			}
+		}
+	}
+}

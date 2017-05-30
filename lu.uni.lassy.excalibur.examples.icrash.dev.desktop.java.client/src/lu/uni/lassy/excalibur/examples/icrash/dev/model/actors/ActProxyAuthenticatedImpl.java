@@ -36,6 +36,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message.MessageType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.captcha.CaptchaUI;
 
 /**
@@ -48,6 +49,8 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	
 	/** The server side actor to use when calling user specific methods. */
 	private ActAuthenticated _serverSideActor;
+	
+	private AbstractAuthGUIController _currentAuthGUI;
 	
 	/**
 	 * Instantiates a new client side actor of type authenticated.
@@ -116,6 +119,14 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 		}
 		
 	}
+
+	@Override
+	public PtBoolean ieCaptchaAuthenticationSucceeded(){
+		if(_currentAuthGUI != null){
+			_currentAuthGUI.refreshLogonPanesState(true);
+		}
+		return new PtBoolean(true);
+	}
 	
 	@Override
 	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException{
@@ -177,5 +188,13 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 		if (_serverSideActor instanceof ActComCompany)
 			return UserType.ComCompany;
 		return UserType.Unknown;
+	}
+	
+	public void setCurrentAuthGUI(AbstractAuthGUIController gui){
+		this._currentAuthGUI = gui;
+	}
+	
+	public AbstractAuthGUIController getCurrentAuthGUI(){
+		return this._currentAuthGUI;
 	}
 }

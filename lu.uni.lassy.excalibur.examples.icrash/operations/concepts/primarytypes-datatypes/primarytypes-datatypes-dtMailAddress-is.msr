@@ -1,0 +1,16 @@
+package icrash.concepts.primarytypes.authentication.datatypes.operations.datatypes.dtMailAddress.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.is():ptBoolean{
+			postF{
+				//TODO
+			}
+		}
+	}
+}

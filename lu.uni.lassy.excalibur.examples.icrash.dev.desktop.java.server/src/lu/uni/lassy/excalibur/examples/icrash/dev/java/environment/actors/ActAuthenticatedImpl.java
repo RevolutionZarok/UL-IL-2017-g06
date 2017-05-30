@@ -50,9 +50,9 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	private DtLogin login;
 	
 	/** The internal counter for login attempts */
-	private PtInteger loginCounter = new PtInteger(0);//TODO: Messir
+	private PtInteger loginCounter = new PtInteger(0);
 	
-	private PtBoolean exceptCaptcha = new PtBoolean(false);//TODO: Messir
+	private PtBoolean exceptCaptcha = new PtBoolean(false);
 	
 	/**
 	 * Instantiates a new server side actor of type authenticated.
@@ -90,7 +90,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		//set up ActAuthenticated instance that performs the request
 		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
 		
-		if(loginCounter.getValue() >= 8){//TODO: Excalibur
+		if(isAuthenticationLocked().getValue()){
 			log.info("operation oeLogin refusing to be executed due to too many failed login attempts");
 			ieMessage(new PtString("Your account is blocked from further login attempts. Please contact an administrator to unblock it."));
 			return new PtBoolean(false);
@@ -98,7 +98,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 			log.info("operation oeLogin failed more than 3 times. A captcha test is now imposed. (Attempt #" + loginCounter.getValue() + ")");
 			iCrashSys_Server.setCurrentRequestingAuthenticatedLogin(aDtLogin);
 			iCrashSys_Server.setCurrentRequestingAuthenticatedPassword(aDtPassword);
-			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();//TODO: Plz do sometin wiz RMI plz
+			ActCaptchaServiceImpl.getInstance().ieGenerateGaptcha();
 			return new PtBoolean(false);
 		}
 
@@ -110,10 +110,14 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		
 		if (res.getValue() == true){
 			log.info("operation oeLogin successfully executed by the system");
-			loginCounter = new PtInteger(0);//TODO: Excalibur
-		}else{//TODO: Excalibur
-			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
+			loginCounter = new PtInteger(0);
+		}else{
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
+			log.info("operation oeLogin failed, this was the attempt #" + loginCounter.getValue());
+			if(loginCounter.getValue() >= 8){
+				setAuthenticationLocked(new PtBoolean(true));
+				notifyAboutLocking();
+			}
 		}
 		exceptCaptcha = new PtBoolean(false);
 		
@@ -207,11 +211,42 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	public PtBoolean oeSubmitCaptcha(DtCaptchaResponse aResponse) throws RemoteException, NotBoundException{
 		Logger log = Log4JUtils.getInstance().getLogger();
 		log.info("actAuthenticated has submitted an answer to a captcha test");
-		exceptCaptcha = new PtBoolean(true);//TODO: Messir?
+		exceptCaptcha = new PtBoolean(true);
 		if(!ActCaptchaServiceImpl.getInstance().ieVerifyCaptcha(aResponse).getValue()){
 			loginCounter = new PtInteger(loginCounter.getValue() + 1);
 			exceptCaptcha = new PtBoolean(false);
 		}
+		return new PtBoolean(true);
+	}
+	
+	@Override
+	public PtBoolean ieCaptchaAuthenticationSucceeded() throws RemoteException, NotBoundException{
+		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator.hasNext();) {
+			ActProxyAuthenticated aProxy = iterator.next();
+			try {
+				aProxy.ieCaptchaAuthenticationSucceeded();
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				iterator.remove();
+			}
+		}
+		return new PtBoolean(true);
+	}
+
+	protected PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
+		return new PtBoolean(loginCounter.getValue() >= 8);
+	}
+
+	protected PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
+		return new PtBoolean(false);
+	}
+	
+	protected PtBoolean notifyAboutLocking() throws RemoteException, NotBoundException{
+		return new PtBoolean(true);
+	}
+	
+	public PtBoolean notifyAboutUnlocking(){
+		this.loginCounter = new PtInteger(0);
 		return new PtBoolean(true);
 	}
 	

@@ -8,7 +8,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 public class CtCaptchaImage implements Serializable, JIntIs{
-//TODO: Complete this class
+
 	private static final long serialVersionUID = -7909701326466541888L;
 	
 	private DtString url;
@@ -19,7 +19,7 @@ public class CtCaptchaImage implements Serializable, JIntIs{
 
 	@Override
 	public PtBoolean is() {
-		return new PtBoolean(true);//TODO
+		return new PtBoolean(url.value.getValue().length() > 0);
 	}
 	
 	public DtString getUrl(){

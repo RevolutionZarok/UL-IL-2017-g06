@@ -6,7 +6,6 @@ import java.util.HashMap;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 public class DtCaptchaResponseMap implements Serializable, JIntIs {
 
@@ -25,19 +24,19 @@ public class DtCaptchaResponseMap implements Serializable, JIntIs {
 	
 	public PtBoolean register(DtCaptchaResponse AdtResponse){
 		return new PtBoolean(map.put(AdtResponse.getId(), AdtResponse) == null);
-	}//TODO: Messir: Add to OM
+	}
 	
 	public DtCaptchaResponse get(DtCaptchaId AId){
 		DtCaptchaResponse res = map.get(AId);
 		if(res != null){
 			return res;
 		}else{
-			return new DtCaptchaResponse(new DtCaptchaId(new PtInteger(-1)), new PtString("invalid"));
+			return new DtCaptchaResponse(new DtCaptchaId(new PtInteger(-1)), new PtInteger(-1));
 		}
-	}//TODO: Messir: Add to OM
+	}
 
 	public PtBoolean remove(DtCaptchaId AId){
 		return new PtBoolean(map.remove(AId) != null);
-	}//TODO: Messir: Add to OM
+	}
 	
 }

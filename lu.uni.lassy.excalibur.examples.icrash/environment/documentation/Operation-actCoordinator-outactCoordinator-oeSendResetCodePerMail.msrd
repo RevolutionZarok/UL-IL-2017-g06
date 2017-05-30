@@ -1,0 +1,34 @@
+/*
+@author michm
+@date Sun May 21 13:55:36 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSendResetCodePerMail
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendResetCodePerMail.AdtLogin
+""
+@endParameters
+
+@description "Sends the individual reset code of the respective coordinator to the indicated email address"
+//preProtocol descriptions
+@preP
+"The system has to be started"
+@endPreP
+//preFunctional descriptions
+@preF
+"The coordinator login name should be valid"
+@endPreF
+//postFunctional descriptions
+@postF 
+"If an instance of ctCoordinator exists for the given login name, then reset code stored in the ctCoordinator instance is send 
+in text form as a message to the actMailingService to be send to the email address indicated in the ctCoordinator instance"
+@endPostF
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP
+//example
+@example" "

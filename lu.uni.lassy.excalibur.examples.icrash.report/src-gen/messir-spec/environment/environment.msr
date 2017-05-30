@@ -8,6 +8,7 @@ import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.authentication.datatypes
 import icrash.concepts.primarytypes.authentication.classes
+import lu.uni.lassy.messir.libraries.string
 
 	Environment Model { 
 
@@ -35,7 +36,8 @@ import icrash.concepts.primarytypes.authentication.classes
 				operation oeAddCoordinator(
 											AdtCoordinatorID:dtCoordinatorID ,
 											AdtLogin:dtLogin , 
-											AdtPassword:dtPassword ):ptBoolean
+											AdtPassword:dtPassword,
+											AdtMailAddress:dtMailAddress ):ptBoolean
 											
 				operation oeDeleteCoordinator(
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
@@ -95,6 +97,9 @@ import icrash.concepts.primarytypes.authentication.classes
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+				
+				operation oeTryPasswordReset(AdtLogin:dtLogin, AResetCode:dtResetCode, ANewPwd:dtPassword):ptBoolean//TODO:Messir S4
+				operation oeSendResetCodePerMail(AdtLogin:dtLogin):ptBoolean//TODO:Messir S4
 			}
 			
 			input interface inactCoordinator{

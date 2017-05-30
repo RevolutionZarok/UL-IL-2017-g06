@@ -1,0 +1,15 @@
+/*
+@author michm
+@date Sun May 21 13:55:32 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress
+@description ""
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.init
+""
+@operation
+icrash.concepts.primarytypes.authentication.datatypes.dtMailAddress.is
+""
+@endOperations

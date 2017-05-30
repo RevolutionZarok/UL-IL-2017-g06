@@ -1,0 +1,26 @@
+package icrash.concepts.primarytypes.authentication.datatypes.operations.datatypes.dtResetCode.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.is():ptBoolean{
+			postF{
+				let TheResult: ptBoolean in
+		        let Length: ptInteger in
+		        ( if
+		          ( Length = 8
+		            and self.value.length().eq(Length)
+		          )
+		          then (TheResult = true)
+		          else (TheResult = false)
+		          endif
+		          result = TheResult
+		        )
+			}
+		}
+	}
+}

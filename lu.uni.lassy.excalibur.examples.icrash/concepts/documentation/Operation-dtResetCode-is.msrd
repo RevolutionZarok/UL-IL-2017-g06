@@ -1,0 +1,15 @@
+/*
+@author michm
+@date Sun May 21 13:13:14 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.authentication.datatypes.dtResetCode.is
+@description "Verifies that the underlying reset code is valid"
+//postFunctional descriptions
+@postF 
+"If the length of the underlying string is equal to 8, then tru is returned. Otherwise, false is returned."
+@endPostF
+//example
+@example" "

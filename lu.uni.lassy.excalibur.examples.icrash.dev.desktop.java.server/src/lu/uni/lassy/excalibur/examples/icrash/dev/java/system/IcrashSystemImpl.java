@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -36,6 +37,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompanyImpl;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinatorImpl;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActMailingServiceImpl;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbAlerts;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbComCompanies;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbCoordinators;
@@ -44,6 +46,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbHumans;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAuthenticated;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
@@ -56,8 +59,10 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
@@ -96,8 +101,8 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * This is set by the Actor itself before it performs an oe action*/
 	ActAuthenticated currentRequestingAuthenticatedActor;
 	
-	DtLogin currentRequestingAuthenticatedLogin;//TODO: Messir?
-	DtPassword currentRequestingAuthenticatedPassword;//TODO: Messir?
+	DtLogin currentRequestingAuthenticatedLogin;
+	DtPassword currentRequestingAuthenticatedPassword;
 	
 	/** The current connected communication company that is performing a method on the system.
 	 * This is set by the Actor itself before it performs an oe action*/
@@ -1220,7 +1225,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,
-			DtLogin aDtLogin, DtPassword aDtPassword) throws RemoteException {
+			DtLogin aDtLogin, DtPassword aDtPassword, DtMailAddress aMail) throws RemoteException {
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1235,7 +1240,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 			//PostF2
 			CtCoordinator ctCoordinator = new CtCoordinator();
-			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword);
+			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword, aMail, new PtBoolean(false), CtCoordinator.generateResetCode());
 			DbCoordinators.insertCoordinator(ctCoordinator);
 			
 			
@@ -1281,6 +1286,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			return new PtBoolean(false);
 		} catch (Exception e) {
 			log.error("Exception in oeDeleteCoordinator..." + e);
+			e.printStackTrace();
 			return new PtBoolean(false);
 		}
 	}
@@ -1293,7 +1299,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * It is worth noticing that such system operation is not used anywhere for the moment (not even included in the class' interface)
 	 * 
 	 * */
-	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword) throws java.rmi.RemoteException{
+	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword,DtMailAddress aMail,PtBoolean aLocked,DtResetCode aResetCode) throws java.rmi.RemoteException{
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1303,21 +1309,30 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			if (ctAuth != null && ctAuth instanceof CtCoordinator){
 				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
 				CtCoordinator oldCoordinator = new CtCoordinator();
-				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd);
-				aCtCoordinator.update(aDtLogin, aDtPassword);
+				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd, aCtCoordinator.mail, aCtCoordinator.locked, aCtCoordinator.resetCode);
+				aCtCoordinator.update(aDtLogin, aDtPassword, aMail);
+				aCtCoordinator.updateLockedState(aLocked);
+				aCtCoordinator.updateResetCode(aResetCode);
 				if (DbCoordinators.updateCoordinator(aCtCoordinator).getValue()){
 					cmpSystemCtAuthenticated.remove(oldCoordinator.login.value.getValue());
 					cmpSystemCtAuthenticated.put(aCtCoordinator.login.value.getValue(), aCtCoordinator);
-					ActAdministrator admin = (ActAdministrator) currentRequestingAuthenticatedActor;
-					admin.ieCoordinatorUpdated();
+					if(currentRequestingAuthenticatedActor != null && currentRequestingAuthenticatedActor instanceof ActAdministrator){
+						ActAdministrator admin = (ActAdministrator) currentRequestingAuthenticatedActor;
+						admin.ieCoordinatorUpdated();
+					}
 					return new PtBoolean(true);
 				}
 				else
-					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd);
+				{
+					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd, oldCoordinator.mail);
+					aCtCoordinator.updateLockedState(oldCoordinator.locked);
+					aCtCoordinator.updateResetCode(oldCoordinator.resetCode);
+				}
 			}
 			return new PtBoolean(false);
 		} catch (Exception e) {
-			log.error("Exception in oeDeleteCoordinator..." + e);
+			log.error("Exception in oeUpdateCoordinator..." + e);
+			e.printStackTrace();
 			return new PtBoolean(false);
 		}
 	}
@@ -1394,6 +1409,46 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	@Override
 	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException {
 		return ActCaptchaServiceImpl.getInstance().oeSendCaptcha(aCaptcha);
+	}
+	
+	@Override
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtResetCode aResetCode, DtPassword aNewPwd) throws RemoteException, NotBoundException {
+		Optional<CtCoordinator> op = getAllCtCoordinators().stream()
+				.filter(ct -> ct.login.eq(aLogin).getValue())
+				.findFirst();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			ActCoordinator actC = getActCoordinator(ctc);
+			if(ctc.resetCode.eq(aResetCode).getValue()){
+				oeUpdateCoordinator(ctc.id, ctc.login, aNewPwd, ctc.mail, new PtBoolean(false), CtCoordinator.generateResetCode());
+				if(actC instanceof ActCoordinatorImpl){
+					((ActCoordinatorImpl)actC).notifyAboutUnlocking();
+				}
+				return new PtBoolean(true);
+			}
+		}
+		return new PtBoolean(false);
+	}
+
+	@Override
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException {
+		Optional<CtCoordinator> op = getAllCtCoordinators().stream()
+				.filter(ct -> ct.login.eq(aLogin).getValue())
+				.findFirst();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			PtString content = new PtString(
+					"This mail contains the code needed to enter in order to reactivate your account "
+					+ "or to simply change your password.\n"
+					+ "Your reset code is:\n"
+					+ ctc.resetCode.toString() + "\n"
+					+ "If it wasn't you who requested the code, please ignore this mail.\n\n"
+					+ "Best regards,\n"
+					+ "iCrash.FX Service Team"
+					);
+			return ActMailingServiceImpl.getInstance().ieSendMail(ctc.mail, new PtString("Your reset code to reactivate your iCrash.FX account"), content);
+		}
+		return new PtBoolean(false);
 	}
 
 	@Override

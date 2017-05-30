@@ -25,6 +25,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAuthenticated;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCaptcha;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
@@ -37,8 +38,10 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
@@ -359,7 +362,8 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword) throws RemoteException; 	
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword,DtMailAddress aMail) throws RemoteException;
+	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword,DtMailAddress aMail,PtBoolean aLocked,DtResetCode aResetCode) throws java.rmi.RemoteException;
 	
 	/**
 	 * Deletes a coordinator with the details specified.
@@ -389,9 +393,13 @@ public interface IcrashSystem extends Remote {
 	
 	public PtBoolean oeSendCaptcha(CtCaptcha aCaptcha) throws RemoteException, NotBoundException;
 
-	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;//TODO: Messir?
-	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;//TODO: Messir?
-	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;//TODO: Messir?
-	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;//TODO: Messir?
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtResetCode aResetCode, DtPassword aNewPwd) throws RemoteException, NotBoundException;
+
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException;//TODO: Messir S4 (Post conditions too)
+	
+	public void setCurrentRequestingAuthenticatedLogin(DtLogin aDtLogin) throws RemoteException;
+	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;
+	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;
+	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;
 
 }

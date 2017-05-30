@@ -1,0 +1,27 @@
+/*
+* @author michm
+* @date Sat May 20 13:43:09 CEST 2017
+*/
+
+package icrash.usecases.subfunctions.authentication {
+
+import lu.uni.lassy.messir.libraries.primitives
+import icrash.environment.authentication
+
+
+	Use Case Model {
+
+		use case system subfunction oeTryPasswordReset() {
+			actor icrash.environment.actCoordinator[primary, active]
+		}
+	
+		use case system subfunction oeSendResetCodePerMail() {
+			actor icrash.environment.actCoordinator[primary, active]
+			actor actMailingService[secondary]
+			returned messages {
+				ieSendMail() returned to actMailingService
+			}
+		}
+
+	}
+}

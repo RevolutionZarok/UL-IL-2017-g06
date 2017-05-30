@@ -16,14 +16,21 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Optional;
+
+import org.apache.log4j.Logger;
+
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtResetCode;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -31,8 +38,6 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
-
-import org.apache.log4j.Logger;
 
 /**
  * The Class ActCoordinatorImpl, which creates a server side actor of type coordinator.
@@ -353,6 +358,86 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 		if(res.getValue() == true)
 			log.info("operation oeGetAlertsSet successfully executed by the system");
 		return res;
+	}
+
+	private Optional<CtCoordinator> getAssociatedCt() throws RemoteException, NotBoundException{
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		return iCrashSys_Server.getAllCtCoordinators().stream()
+							.filter(ct -> ct.login.eq(getLogin()).getValue())
+							.findFirst();
+	}
+	
+	@Override
+	public PtBoolean isAuthenticationLocked() throws RemoteException, NotBoundException{
+		Optional<CtCoordinator> op = getAssociatedCt();
+		if(op.isPresent()){
+			return op.get().locked;
+		}else{
+			return super.isAuthenticationLocked();
+		}
+	}
+	
+	@Override
+	public PtBoolean setAuthenticationLocked(PtBoolean aLocked) throws RemoteException, NotBoundException{
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	Optional<CtCoordinator> op = getAssociatedCt();
+	 	if(op.isPresent()){
+	 		CtCoordinator ctc = op.get();
+	 		return iCrashSys_Server.oeUpdateCoordinator(ctc.id, ctc.login, ctc.pwd, ctc.mail, aLocked, ctc.resetCode);
+	 	}else{
+	 		return super.setAuthenticationLocked(aLocked);
+	 	}
+	}
+	
+	@Override
+	protected PtBoolean notifyAboutLocking() throws RemoteException, NotBoundException{
+		Optional<CtCoordinator> op = getAssociatedCt();
+		if(op.isPresent()){
+			CtCoordinator ctc = op.get();
+			
+			DtResetCode reset_code = CtCoordinator.generateResetCode();
+			Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		 	
+			if(!iCrashSys_Server.oeUpdateCoordinator(ctc.id, ctc.login, ctc.pwd, ctc.mail, ctc.locked, reset_code).getValue()){
+				reset_code = ctc.resetCode;
+				Log4JUtils.getInstance().getLogger().info("A new reset code could not be generated...");
+			}
+			
+			PtString message = new PtString(
+					"Your coordinator account \"" + ctc.login + "\" for iCrash.FX has been locked in order to guarantee your security. "
+					+ "The reason it has been locked is that someone tried several times to log in "
+					+ "with your coordinator account without success. As a safety measure, your account "
+					+ "has been disabled temporarily.\n\n"
+					+ "In order to reactivate your account, you will have to remember the following code:\n"
+					+ reset_code + "\n\n"
+					+ "To reactivate your account, go to the window you would normally log in with your "
+					+ "coordinator credentials. Click then on \"Reactivate account\". A new window will then "
+					+ "appear where you have to enter the code sent by this mail. After this, follow the "
+					+ "given instructions.\n\n"
+					+ "Best regards,\niCrash.FX Service Team"
+					);
+			return ActMailingServiceImpl.getInstance().ieSendMail(ctc.mail, new PtString("Your iCrash.FX coordinator account has been disabled"), message);
+		}else{
+			return super.notifyAboutLocking();
+		}
+	}
+
+	@Override
+	public PtBoolean oeTryPasswordReset(DtLogin aLogin, DtResetCode aResetCode, DtPassword aNewPwd)
+			throws RemoteException, NotBoundException {
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	return iCrashSys_Server.oeTryPasswordReset(aLogin, aResetCode, aNewPwd);
+	}
+
+	@Override
+	public PtBoolean oeSendResetCodePerMail(DtLogin aLogin) throws RemoteException, NotBoundException {
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+	 	IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	 	return iCrashSys_Server.oeSendResetCodePerMail(aLogin);
 	}
 
 }

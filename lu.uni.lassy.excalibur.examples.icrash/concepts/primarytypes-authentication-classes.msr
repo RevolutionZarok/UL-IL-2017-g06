@@ -23,10 +23,10 @@ Concept Model {
 			class ctCaptchaService role rnctCaptchaService cardinality [1..1]{
 				attribute map:dtCaptchaResponseMap
 				
-				operation init():ptBoolean//TODO: Improve
+				operation init():ptBoolean
 			}
 			class ctMailingService role rnctMailingService cardinality [1..1]{
-				operation init():ptBoolean//TODO: Improve
+				operation init():ptBoolean
 			}
 			class ctCaptcha role rnctCaptcha cardinality [1..1]{
 				attribute id: dtCaptchaId
@@ -34,7 +34,7 @@ Concept Model {
 				
 				operation init(Aid:dtCaptchaId, Aquestion:dtString):ptBoolean
 				operation is():ptBoolean
-				operation getImageAt(Aindex:ptInteger):ctCaptchaImage//Sprint3
+				operation getImageAt(Aindex:ptInteger):ctCaptchaImage
 			}
 			class ctCaptchaImage role rnctCaptchaImage cardinality [9..9]{
 				attribute index:ptInteger
@@ -42,7 +42,6 @@ Concept Model {
 				
 				operation init(Aindex:ptInteger, Aurl:ptString):ptBoolean
 				operation is():ptBoolean
-				operation getUrl():dtString//Sprint3
 			}
 		}
 
