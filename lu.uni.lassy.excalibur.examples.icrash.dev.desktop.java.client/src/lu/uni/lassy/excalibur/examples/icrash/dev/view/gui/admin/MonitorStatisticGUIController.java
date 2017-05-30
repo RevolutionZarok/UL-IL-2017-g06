@@ -162,7 +162,7 @@ public class MonitorStatisticGUIController extends AbstractGUIController impleme
      */
     public void setUpTables(){
     	//setUpAdminTables(tblvwAdministrators, true);
-    	setUpCoordTables(tblvwCoordinators,true);
+    	setUpUserActivityTables(tblvwCoordinators, true);
     	setNumberofsendingCrisesTables(tblvwAlerts);
     	setAverageTimeforCrises(tblvwCrises);
     	

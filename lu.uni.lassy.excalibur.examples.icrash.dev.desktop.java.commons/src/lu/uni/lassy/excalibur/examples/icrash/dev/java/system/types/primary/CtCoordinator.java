@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
 /**
@@ -22,6 +23,8 @@ public class CtCoordinator extends CtAuthenticated {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 227L;
+	/** The date and time of the accident that is associated to the crisis. */
+	public DtDateAndTime instant;
 
 	/** The id of the coordinator. */
 	public DtCoordinatorID id;
@@ -34,7 +37,9 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd The password of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd){
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin, DtPassword aPwd){
+	
+		
 			super.init(aLogin, aPwd);
 			id = aId;
 			return new PtBoolean(true); 
@@ -64,6 +69,8 @@ public class CtCoordinator extends CtAuthenticated {
 			return false;
 		CtCoordinator aCtCoordinator = (CtCoordinator)obj;
 		if (!aCtCoordinator.id.value.getValue().equals(this.id.value.getValue()))
+			return false;
+		if (!aCtCoordinator.instant.toString().equals(this.instant.toString()))
 			return false;
 		return true;
 	}

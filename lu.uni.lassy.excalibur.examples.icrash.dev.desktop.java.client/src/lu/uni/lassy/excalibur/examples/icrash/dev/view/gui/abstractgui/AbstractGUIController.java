@@ -445,7 +445,31 @@ public abstract class AbstractGUIController implements Initializable {
 		tblvw.getColumns().add(statusCol);
 		setColumnsSameWidth(tblvw);
 	}
-	
+	public void setUpUserActivityTables(TableView<CtCoordinator> tblvw, boolean showPassword){
+		TableColumn<CtCoordinator, String> idCol = new TableColumn<CtCoordinator, String>("ID");
+		TableColumn<CtCoordinator, String> nameCol = new TableColumn<CtCoordinator, String>("Username");
+		TableColumn<CtCoordinator, String> time = new TableColumn<CtCoordinator, String>("Username");
+		
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().id.value.getValue());
+			}
+		});
+		nameCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().login.value.getValue());
+			}
+		});
+		time.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().instant.time.toString());
+			}
+		});
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(nameCol);
+		//tblvw.getColumns().add(time);
+		setColumnsSameWidth(tblvw);
+	}
 	public void setNumberofsendingCrisesTables (TableView<CtAlert> tblvw){
 		
 		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
@@ -510,7 +534,7 @@ public abstract class AbstractGUIController implements Initializable {
 			}
 		});
 		
-		tblvw.getColumns().add(idCol);
+		//tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(typeCol);
 		tblvw.getColumns().add(longitudeCol);
 		setColumnsSameWidth(tblvw);
