@@ -21,6 +21,8 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
@@ -163,31 +165,68 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 		}
 		return new PtBoolean(true);
 	}
-
+	
 	@Override
-	public PtBoolean oegetStatistic() throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oegetStatistic() throws RemoteException, NotBoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	// TODO Auto-generated method stub
 	@Override
-	public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity)
+	synchronized public PtBoolean oegetStatisticUserActivity(DtStatisticUserActivity aDtStatisticUserActivity)
 			throws RemoteException, NotBoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Logger log = Log4JUtils.getInstance().getLogger();
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		//Gathering the remote object as it was published into the registry
+				IcrashSystem iCrashSys_Server = (IcrashSystem) registry.lookup("iCrashServer");
+		//set up ActAuthenticated instance that performs the request
+				iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+				log.info("message ActAdministrator.oegetStatisticUserActivity sent to system");
+				PtBoolean res = iCrashSys_Server.oegetStatisticUserActivity(aDtStatisticUserActivity);
 
+				if (res.getValue() == true)
+					log.info("operation oegetStatisticUserActivity successfully executed by the system");
+
+				return res;
+		
+	
+	}
+	//TODO
 	@Override
-	public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises)
+	synchronized public PtBoolean oegetStatisticNumberOfCrises(DtStatisticNumberOfCrises aDtStatisticNumberOfCrises)
 			throws RemoteException, NotBoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Logger log = Log4JUtils.getInstance().getLogger();
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		//Gathering the remote object as it was published into the registry
+				IcrashSystem iCrashSys_Server = (IcrashSystem) registry.lookup("iCrashServer");
+		//set up ActAuthenticated instance that performs the request
+				iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+				log.info("message ActAdministrator.oegetStatisticNumberOfCrises sent to system");
+				PtBoolean res = iCrashSys_Server.oegetStatisticNumberOfCrises(aDtStatisticNumberOfCrises);
+
+				if (res.getValue() == true)
+					log.info("operation oegetStatisticNumberOfCrises successfully executed by the system");
+
+				return res;
 	}
 
 	@Override
-	public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException {
-		// TODO Auto-generated method stub
-		return null;
+	synchronized public PtBoolean oegetStatisticTypes() throws RemoteException, NotBoundException {
+		Logger log = Log4JUtils.getInstance().getLogger();
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+		//Gathering the remote object as it was published into the registry
+				IcrashSystem iCrashSys_Server = (IcrashSystem) registry
+						.lookup("iCrashServer");
+				iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+				log.info("message ActAdministrator.oegetStatisticTypes sent to system");
+				PtBoolean res = iCrashSys_Server.oegetStatisticTypes();
+
+				if (res.getValue() == true)
+					log.info("operation .oegetStatisticTypes successfully executed by the system");
+
+				return res;
+				// TODO Auto-generated method stub
 	}
 	
 	//TODO or change the name of the function!!
@@ -208,7 +247,7 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 	}
 	// Statistic Feature --> ie Message 
 	@Override
-	public PtBoolean iegetStatisticUserActivity() throws RemoteException {
+	public PtBoolean iegetStatisticUserActivity(CtStatisticUserActivity aCtStatisticUserActivity) throws RemoteException {
 		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
 				.hasNext();) {
 			ActProxyAuthenticated aProxy = iterator.next();
@@ -223,9 +262,11 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 		return new PtBoolean(true);
 		
 	}
+	
+	
 	// Statistic Feature --> ie Message 
 	@Override
-	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException {
+	public PtBoolean iegetStatisticNumberOfCrises(CtStatisticNumberofCrises actStatisticNumberofCrises) throws RemoteException {
 		for (Iterator<ActProxyAuthenticated> iterator = listeners.iterator(); iterator
 				.hasNext();) {
 			ActProxyAuthenticated aProxy = iterator.next();
@@ -256,5 +297,6 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 		}
 		return new PtBoolean(true);
 	}
+
 
 }

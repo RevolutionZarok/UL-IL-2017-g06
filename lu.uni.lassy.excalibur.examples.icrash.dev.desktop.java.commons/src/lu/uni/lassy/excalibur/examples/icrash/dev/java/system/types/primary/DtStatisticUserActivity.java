@@ -29,4 +29,9 @@ public class DtStatisticUserActivity extends DtInteger implements JIntIs{
 		return new PtBoolean(this.value.getValue() >= _minNumber && this.value.getValue() <= _maxNumber);
 	}
 
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

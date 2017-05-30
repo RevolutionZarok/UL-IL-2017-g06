@@ -47,11 +47,14 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtState;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message.MessageType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectFormatException;
@@ -394,33 +397,28 @@ public abstract class AbstractGUIController implements Initializable {
 	 * @param tblvw The tableview to add the columns to
 	 */
 	public void setUpAlertTables(TableView<CtAlert> tblvw){
-		System.out.println("33.1");
+		
 		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
-		System.out.println("33.3"+ idCol);
 		TableColumn<CtAlert, String> dateCol = new TableColumn<CtAlert, String>("Date");
 		TableColumn<CtAlert, String> timeCol = new TableColumn<CtAlert, String>("Time");
 		TableColumn<CtAlert, Double> longitudeCol = new TableColumn<CtAlert, Double>("Longitude");
 		TableColumn<CtAlert, Double> latitudeCol = new TableColumn<CtAlert, Double>("Latitude");
 		TableColumn<CtAlert, String> commentCol = new TableColumn<CtAlert, String>("Comment");
 		TableColumn<CtAlert, String> statusCol = new TableColumn<CtAlert, String>("Status");
-		System.out.println("33.2");
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() 
 			{
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) 
 			{
-				System.out.println("33.4");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().id.value.getValue());
 			}
 		});
 		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
-				System.out.println("33.5");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.date.toString());
 			}
 		});
 		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
-				System.out.println("33.6");
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.time.toString());
 			}
 		});
@@ -444,18 +442,142 @@ public abstract class AbstractGUIController implements Initializable {
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().status.name());
 			}
 		});	
-		System.out.println("33.7"+idCol);
+		
 		tblvw.getColumns().add(idCol);
-		System.out.println("33.8");
 		tblvw.getColumns().add(dateCol);
 		tblvw.getColumns().add(timeCol);
 		tblvw.getColumns().add(longitudeCol);
 		tblvw.getColumns().add(latitudeCol);
 		tblvw.getColumns().add(commentCol);
 		tblvw.getColumns().add(statusCol);
-		System.out.println("33.9");
 		setColumnsSameWidth(tblvw);
-		System.out.println("33.10");
+	}
+	public void setUpUserActivityTables(TableView<CtCoordinator> tblvw, boolean showPassword){
+		TableColumn<CtCoordinator, String> idCol = new TableColumn<CtCoordinator, String>("ID");
+		TableColumn<CtCoordinator, String> nameCol = new TableColumn<CtCoordinator, String>("Username");
+		TableColumn<CtCoordinator, String> time = new TableColumn<CtCoordinator, String>("Username");
+		
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().id.value.getValue());
+			}
+		});
+		nameCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().login.value.getValue());
+			}
+		});
+		time.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().instant.time.toString());
+			}
+		});
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(nameCol);
+		//tblvw.getColumns().add(time);
+		setColumnsSameWidth(tblvw);
+	}
+	public void setNumberofsendingCrisesTables (TableView<CtAlert> tblvw){
+		
+		TableColumn<CtAlert, String> idCol = new TableColumn<CtAlert, String>("ID");
+		TableColumn<CtAlert, String> dateCol = new TableColumn<CtAlert, String>("Date");
+		TableColumn<CtAlert, String> timeCol = new TableColumn<CtAlert, String>("Time");
+		TableColumn<CtAlert, Double> longitudeCol = new TableColumn<CtAlert, Double>("Longitude");
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() 
+			{
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) 
+			{
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().id.value.getValue());
+			}
+		});
+		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.date.toString());
+			}
+		});
+		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtAlert, String> alert) {
+				return new ReadOnlyObjectWrapper<String>(alert.getValue().instant.time.toString());
+			}
+		});
+		longitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtAlert, Double>, ObservableValue<Double>>() {
+			public ObservableValue<Double> call(CellDataFeatures<CtAlert, Double> alert) {
+				return new ReadOnlyObjectWrapper<Double>(alert.getValue().location.longitude.value.getValue());
+			}
+		});
+		
+		
+		
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(dateCol);
+		tblvw.getColumns().add(timeCol);
+//		tblvw.getColumns().add(longitudeCol);
+		setColumnsSameWidth(tblvw);
+	}
+	
+	/**
+	 * * Sets up the statistic number of sending crises tableviews with the correct columns.
+	 * @param tblvw The tableview to add the columns to
+	 */
+	public void setAverageTimeforCrises(TableView<CtCrisis>tblvw){
+		TableColumn<CtCrisis, String> idCol = new TableColumn<CtCrisis, String>("ID");
+		TableColumn<CtCrisis, String> typeCol = new TableColumn<CtCrisis, String>("Type");
+		TableColumn<CtCrisis, Double> longitudeCol = new TableColumn<CtCrisis, Double>("Longitude");
+		
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
+			
+			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().id.value.getValue());
+			}
+		});
+		typeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().type.name());
+			}
+		});
+		longitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Double>, ObservableValue<Double>>() {
+			public ObservableValue<Double> call(CellDataFeatures<CtCrisis, Double> crisis) {
+				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.longitude.value.getValue());
+			}
+		});
+		
+		//tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(typeCol);
+		tblvw.getColumns().add(longitudeCol);
+		setColumnsSameWidth(tblvw);
+	}
+	/**
+	 * * Sets up the statistic for the average time for the different types of crisis tableviews with the correct columns.
+	 *
+	 * @param tblvw The tableview to add the columns to
+	 */
+	
+	public void setUpAlertTablesStatistic(TableView<CtStatisticUserActivity>tblvw){
+		TableColumn<CtStatisticUserActivity, String> idCol = new TableColumn<CtStatisticUserActivity, String>("ID");
+		TableColumn<CtStatisticUserActivity, String> dateCol = new TableColumn<CtStatisticUserActivity, String>("Date");
+		TableColumn<CtStatisticUserActivity, String> timeCol = new TableColumn<CtStatisticUserActivity, String>("Time");
+		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().id.value.getValue());
+			}
+		});
+		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.date.toString());
+			}
+		});
+		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.time.toString());
+			}
+		});
+		
+		//CtCrises
+		tblvw.getColumns().add(idCol);
+		tblvw.getColumns().add(dateCol);
+		tblvw.getColumns().add(timeCol);
+		setColumnsSameWidth(tblvw);
 	}
 	
 	/**
@@ -534,6 +656,8 @@ public abstract class AbstractGUIController implements Initializable {
 		TableColumn<CtHuman, String> kindCol = new TableColumn<CtHuman, String>("Type");
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtHuman, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtHuman, String> human) {
+				
+				
 				return new ReadOnlyObjectWrapper<String>(human.getValue().id.value.getValue());
 			}
 		});
@@ -545,6 +669,49 @@ public abstract class AbstractGUIController implements Initializable {
 		tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(kindCol);
 		setColumnsSameWidth(tblvw);
+	}
+	
+	public void setUpStatisticTable(TableView<CtStatisticNumberofCrises> tblvw){
+		TableColumn<CtStatisticNumberofCrises, String> time = new TableColumn<CtStatisticNumberofCrises,String>("Time");
+		TableColumn<CtStatisticNumberofCrises, PtInteger> Number = new TableColumn<CtStatisticNumberofCrises, PtInteger>("number of crises");
+		System.out.println("wwwProblem?");
+		time.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticNumberofCrises, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticNumberofCrises, String> Timecol) {
+				// TODO Auto-generated method stub
+				return new ReadOnlyObjectWrapper<String>(Timecol.getValue().instant.time.hour.value.toString());
+			}
+		});
+		Number.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticNumberofCrises, PtInteger>, ObservableValue<PtInteger>>() {
+			public ObservableValue<PtInteger> call(CellDataFeatures<CtStatisticNumberofCrises, PtInteger> NumberofCrises) {	
+			return new ReadOnlyObjectWrapper<PtInteger>(NumberofCrises.getValue().NumberofSendingCrises.value) ;
+			}
+		});
+		System.out.println("wwww3444");
+		tblvw.getColumns().add(time);
+		System.out.println("eeeeee");
+		tblvw.getColumns().add(Number);
+		setColumnsSameWidth(tblvw);
+			
+	}
+	public void setUpStatisticTable2(TableView<CtStatisticUserActivity> tblvw){
+		TableColumn<CtStatisticUserActivity, String> time = new TableColumn<CtStatisticUserActivity,String>("Time");
+		TableColumn<CtStatisticUserActivity, PtInteger> Number = new TableColumn<CtStatisticUserActivity, PtInteger>("Number of sending crises");
+		System.out.println("wwwProblem?");
+		time.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtStatisticUserActivity, String> Timecol) {
+				return new ReadOnlyObjectWrapper<String>(Timecol.getValue().instant.time.hour.value.toString());
+			}
+		});
+		Number.setCellValueFactory(new Callback<CellDataFeatures<CtStatisticUserActivity, PtInteger>, ObservableValue<PtInteger>>() {
+			public ObservableValue<PtInteger> call(CellDataFeatures<CtStatisticUserActivity, PtInteger> Number) {
+				return new ReadOnlyObjectWrapper<PtInteger>(Number.getValue().NumberOfUser.value) ;
+			}
+		});
+		
+		tblvw.getColumns().add(time);
+		tblvw.getColumns().add(Number);
+		setColumnsSameWidth(tblvw);
+			
 	}
 	
 	/**
@@ -685,6 +852,26 @@ public abstract class AbstractGUIController implements Initializable {
 	public void addAdminsToTableView(TableView<CtAdministrator> tblvw, List<CtAdministrator> listOfItems){
 		tblvw.getItems().clear();
 		tblvw.getItems().addAll(listOfItems);
+	}
+	/**
+	 * Adds the provided list of admins to the tableview.
+	 *
+	 * @param tblvwUserActivity The tableview to add the data to
+	 * @param arrayList the list of items to add to the tableview
+	 */
+	public void addAdminsToTableViewStatistic1(TableView<CtStatisticUserActivity> tblvwUserActivity, Collection<? extends CtStatisticUserActivity> collection){
+		tblvwUserActivity.getItems().clear();
+		tblvwUserActivity.getItems().addAll(collection);
+	}
+	/**
+	 * Adds the provided list of admins to the tableview.
+	 *
+	 * @param tblvwUserActivity The tableview to add the data to
+	 * @param arrayList the list of items to add to the tableview
+	 */
+	public void addAdminsToTableViewStatistic2(TableView<CtStatisticNumberofCrises> tblvwUserActivity, Collection<? extends CtStatisticNumberofCrises> collection){
+		tblvwUserActivity.getItems().clear();
+		tblvwUserActivity.getItems().addAll(collection);
 	}
 	
 	/**

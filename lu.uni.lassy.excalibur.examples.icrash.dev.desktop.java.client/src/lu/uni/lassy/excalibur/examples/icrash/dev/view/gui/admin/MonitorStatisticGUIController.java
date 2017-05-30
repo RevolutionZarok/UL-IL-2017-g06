@@ -10,7 +10,7 @@
  *     Christophe Kamphaus - Remote implementation of Actors
  *     Thomas Mortimer - Updated client to MVC and added new design patterns
  ******************************************************************************/
-package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.monitor;
+package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -60,7 +60,7 @@ import javafx.scene.control.TableView;
  * The Class MonitorGUIController, which is used to control the GUI of the monitor window. This is a window created for observing data in the server.
  * If there is a difference between the database and what the monitor says, there could be an issue
  */
-public class MonitorGUIController extends AbstractGUIController implements HasTables {
+public class MonitorStatisticGUIController extends AbstractGUIController implements HasTables {
 	/*
 	* This section of controls and methods is to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
 	* When replacing, remember to reassign the correct methods to the button event methods and set the correct types for the tableviews
@@ -73,14 +73,9 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
 	@FXML
     private TableView<CtAlert> tblvwAlerts;
 	
-
 	/** The tableview of the crises in the system. */
     @FXML
     private TableView<CtCrisis> tblvwCrises;
-
-    /** The tableview of the humans in the system. */
-    @FXML
-    private TableView<CtHuman> tblvwHumans;
 
     /** The tableview of the administrators in the system. */
     @FXML
@@ -89,14 +84,14 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
     /** The tableview of the coordinators in the system. */
     @FXML
     private TableView<CtCoordinator> tblvwCoordinators;
-
-    /** The tableview of the communication companies in the system. */
     @FXML
-    private TableView<String> tblvwComCompany;
+    private TableView<CtStatisticUserActivity> tblvwUserActivity;
 
-    /** The tableview of the state of the system. */
+    /** The tableview of the statistic number of sending crises in the system. */
     @FXML
-    private TableView<CtState> tblvwCtState;
+    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
+  
+
 
     /** The label showing the date and time this formwas last updated last updated. */
     @FXML
@@ -130,13 +125,7 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
     /** The system state controller, which allows state specific functions, like getting the current server date and time. */
     private SystemStateController systemStateController;
     /// NEW 
-    @FXML
-    private TableView<CtStatisticUserActivity> tblvwUserActivity;
-
-    /** The tableview of the statistic number of sending crises in the system. */
-    @FXML
-    private TableView<CtStatisticNumberofCrises> tblvwNumberofsendingCrises;
-  
+   
     /** The admin controller, which allows crisis specific functions, like getting a list of the different statistic. */
     private AdminController adminController;
    
@@ -155,13 +144,8 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
      */
     public void populateTables(){
     	try {		
-    		addStateToTableView(tblvwCtState, systemStateController.getServerState());
-			addComCompaniesToTableView(tblvwComCompany, systemStateController.getListOfComCompaniesNames());
-			addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
-			addHumansToTableView(tblvwHumans, humanController.getAllHumans());
+    		addAlertsToTableView(tblvwAlerts, alertController.getListOfAlerts());
 			addCrisesToTableView(tblvwCrises, crisisController.getAllCtCrises());
-			//Moved these to the bottom, as most likely to throw the null pointer exception error
-			addAdminsToTableView(tblvwAdministrators, systemStateController.getAllAdministrators());
 			addCoordsToTableView(tblvwCoordinators, systemStateController.getAllCoordinators());
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			lblLastUpdated.setText(_textForLabelLastUpdated + LocalDateTime.now().format(formatter));
@@ -177,13 +161,10 @@ public class MonitorGUIController extends AbstractGUIController implements HasTa
      * @see lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.HasTables#setUpTables()
      */
     public void setUpTables(){
-    	setUpAdminTables(tblvwAdministrators, true);
-    	setUpAlertTables(tblvwAlerts);
-    	setUpComCompaniesTables(tblvwComCompany);
-    	setUpCoordTables(tblvwCoordinators, true);
-    	setUpCrisesTables(tblvwCrises);
-    	setUpHumansTables(tblvwHumans);
-    	setUpStateTables(tblvwCtState);
+    	//setUpAdminTables(tblvwAdministrators, true);
+    	setUpUserActivityTables(tblvwCoordinators, true);
+    	setNumberofsendingCrisesTables(tblvwAlerts);
+    	setAverageTimeforCrises(tblvwCrises);
     	
     }
 

@@ -138,10 +138,10 @@ public class DbCrises extends DbAbstract {
 			//Select
 
 			try {
-				String sql = "SELECT * FROM " + dbName + ".crises WHERE id = "
-						+ crisisId;
+				String sql = "SELECT * FROM " + dbName + ".crises ORDER BY instant DESC WHERE id = ?";
 
 				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setString(1, crisisId);
 				ResultSet res = statement.executeQuery(sql);
 
 				if (res.next()) {

@@ -51,6 +51,50 @@ LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table'NumberofsendingCrises'
+--
+DROP TABLE IF EXISTS `crises`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `StatisticNumberofCrises` (
+`instant` datetime DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
+-- Table structure for table'Logincounter'
+--
+DROP TABLE IF EXISTS `humans`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `StatisticLogin` (
+`instant` datetime DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table 'Avereage time for the different types of a crises'
+--
+DROP TABLE IF EXISTS `crises`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `StatisticAverageTimeFortheTypes` (
+`instant` datetime DEFAULT NULL,
+`type` varchar(80) DEFAULT NULL,
+PRIMARY KEY (type)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `crises`
+--
+
+LOCK TABLES `crises` WRITE;
+/*!40000 ALTER TABLE `crises` DISABLE KEYS */;
+/*!40000 ALTER TABLE `crises` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --

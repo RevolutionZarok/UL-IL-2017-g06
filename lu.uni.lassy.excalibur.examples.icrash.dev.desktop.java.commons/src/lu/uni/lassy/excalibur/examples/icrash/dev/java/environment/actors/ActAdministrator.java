@@ -15,6 +15,8 @@ package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticNumberofCrises;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtStatisticUserActivity;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtMailAddress;
@@ -93,7 +95,7 @@ public interface ActAdministrator extends ActAuthenticated {
 	// Sam Statistic Function Interface
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 * @throws NotBoundException
@@ -104,7 +106,7 @@ public interface ActAdministrator extends ActAuthenticated {
 
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 * @throws NotBoundException
@@ -126,7 +128,7 @@ public interface ActAdministrator extends ActAuthenticated {
 
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throwsRemoteException Thrown if the server is offline
 	 * @throws NotBoundException
 	 *             Thrown if the server has not been bound correctly in RMI
@@ -136,7 +138,7 @@ public interface ActAdministrator extends ActAuthenticated {
 
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 */
@@ -144,23 +146,24 @@ public interface ActAdministrator extends ActAuthenticated {
 
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 */
-	public PtBoolean iegetStatisticUserActivity() throws RemoteException;
+	public PtBoolean iegetStatisticUserActivity(CtStatisticUserActivity aCtStatisticUserActivity) throws RemoteException;
 
 	/**
 	 * 
-	 * @return
+	 * @param actStatisticNumberofCrises 
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 */
-	public PtBoolean iegetStatisticNumberOfCrises() throws RemoteException;
+	public PtBoolean iegetStatisticNumberOfCrises(CtStatisticNumberofCrises actStatisticNumberofCrises) throws RemoteException;
 
 	/**
 	 * 
-	 * @return
+	 * @return The success of the method
 	 * @throws RemoteException
 	 *             Thrown if the server is offline
 	 */
