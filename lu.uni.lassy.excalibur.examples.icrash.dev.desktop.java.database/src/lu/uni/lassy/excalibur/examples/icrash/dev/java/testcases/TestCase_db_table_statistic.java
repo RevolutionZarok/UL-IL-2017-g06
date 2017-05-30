@@ -10,6 +10,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbCrises;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFamilyComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimFirstName;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtVictimLastName;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
@@ -58,10 +61,14 @@ public class TestCase_db_table_statistic extends DbAbstract  {
 		//**********************************************************
 		//set up comment
 		DtComment aDtComment = new DtComment(new PtString("1 bicycle involved in an accident."));
+
+		DtFamilyComment aDtFamilyComment = new DtFamilyComment(new PtString("All is well, no need to worry!"));
 		
+		DtVictimFirstName aDtVictimFirstName = new DtVictimFirstName(new PtString("Ronald"));
+		DtVictimLastName aDtVictimLastName = new DtVictimLastName(new PtString("Ragan"));
 		
 		CtCrisis aCtCrisis = new CtCrisis();
-		aCtCrisis.init(aId, aType,null, null, aInstant, aDtComment);
+		aCtCrisis.init(aId, aType,null, null, aInstant, aDtComment, aDtFamilyComment, aDtVictimFirstName, aDtVictimLastName);
 		//set null since it don´t need this for my test case only the time, type and id
 		DbCrises.insertCrisis(aCtCrisis);
 		

@@ -14,6 +14,7 @@ package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
 import java.util.Random;
 
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
@@ -25,6 +26,9 @@ public class CtCoordinator extends CtAuthenticated {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 227L;
+	
+	/** The date and time of the registration for the associated coordinator. */
+	public DtDateAndTime instant;
 
 	/** The id of the coordinator. */
 	public DtCoordinatorID id;
