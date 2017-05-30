@@ -435,9 +435,18 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	}
 	
 	private void sendFamilyNotification(CtAlert alert) {
-		DtSMS sms = new DtSMS(new PtString(alert.victimFirstName.value.getValue() + " " + 
-		alert.victimLastName.value.getValue() + " was in an accident. Here's his comment:\n" +
-				alert.familyComment.value.getValue()));
+		
+//		DtSMS sms = new DtSMS(new PtString(alert.victimFirstName.value.getValue() + " " + 
+//		alert.victimLastName.value.getValue() + " was in an accident. Here's his comment:\n" +
+//				alert.familyComment.value.getValue()));
+		PtString message = new PtString("No message received");
+		try{
+			message = userController.getMessage(alert.id.value.getValue());			
+		} catch (ServerOfflineException | ServerNotBoundException e) {
+			showServerOffLineMessage(e);
+		} catch (IncorrectFormatException e) {
+			showWarningIncorrectInformationEntered(e);
+		}
 		
 		Group root = new Group();
 		Stage stage = new Stage();
@@ -448,7 +457,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 		Label lblFamily = new Label("Received message: ");
 		Label whitespace1 = new Label("");
 		Label whitespace2 = new Label("");
-		TextArea txtbxMessage = new TextArea(sms.value.getValue());
+		TextArea txtbxMessage = new TextArea(message.getValue());
 		
 		grdpn.add(whitespace1, 1, 1);
 		grdpn.add(lblFamily, 1, 2);

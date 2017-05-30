@@ -150,10 +150,9 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		cboxFamily.setText("Send family notification");
 		cboxFamily.setSelected(false);
 		cboxFamily.setVisible(false);
-		TextArea txtarFamilyComment = new TextArea();
+		TextArea txtarFamilyComment = new TextArea("No comment");
 		txtarFamilyComment.setMinWidth(width);
 		txtarFamilyComment.setMaxWidth(width);
-		txtarFamilyComment.setPromptText("Enter a comment for the family");
 		txtarFamilyComment.setVisible(false);
 		Label lblVictimIdentification = new Label("Fill out if you can identify the victim:");
 		lblVictimIdentification.setVisible(false);

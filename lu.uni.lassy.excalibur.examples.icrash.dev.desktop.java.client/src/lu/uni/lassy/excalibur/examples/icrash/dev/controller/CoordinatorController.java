@@ -190,6 +190,23 @@ public class CoordinatorController extends AbstractUserController {
 		return new PtBoolean(false);
 	}
 	
+	public PtString getMessage(String alertID) throws ServerNotBoundException, ServerOfflineException, IncorrectFormatException{
+		DtAlertID aDtAlertID = new DtAlertID(new PtString(alertID));
+		if (this.getUserType() == UserType.Coordinator){
+			ActProxyCoordinator actCoord = (ActProxyCoordinator)this.getAuth();
+			try{
+				return actCoord.oeSendFamilyNotification(aDtAlertID);
+			}catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtString("There has been an error in CoordinatorController");
+	}
+	
 	/**
 	 * Takes an alert that exists in the system and will change it's status to invalid.
 	 *

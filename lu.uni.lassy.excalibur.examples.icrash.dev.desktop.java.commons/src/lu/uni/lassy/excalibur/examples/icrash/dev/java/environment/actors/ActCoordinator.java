@@ -24,6 +24,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 /**
  * The Interface ActCoordinator that allows the client to access the server via RMI.
@@ -69,6 +70,9 @@ public interface ActCoordinator extends ActAuthenticated {
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in the RMI settings
 	 */
 	public PtBoolean oeValidateAlert(DtAlertID aDtAlertID) throws RemoteException, NotBoundException;
+	
+
+	public PtString oeSendFamilyNotification(DtAlertID aDtAlertID) throws RemoteException, NotBoundException;
 	
 	/**
 	 * Invalidates the alert with the same ID as the one passed.
@@ -140,5 +144,6 @@ public interface ActCoordinator extends ActAuthenticated {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean ieSendAnAlert(CtAlert aCtAlert) throws RemoteException;
+
 
 }

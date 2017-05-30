@@ -799,6 +799,24 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 		return new PtBoolean(false);
 	}
 
+	@Override
+	public PtString oeSendFamilyNotification(DtAlertID aDtAlertID) throws RemoteException {
+		try{
+			//PreP1
+			isSystemStarted();
+			CtAlert theAlert = cmpSystemCtAlert
+					.get(aDtAlertID.value.getValue());
+			if (currentRequestingAuthenticatedActor instanceof ActCoordinator) {
+				PtString aFamilyNotification = new PtString(DbAlerts.getAlertInfo(theAlert));
+				return aFamilyNotification;
+			}
+		}
+		catch(Exception e){
+			log.error("Exception in oeAlert..." + e);
+		}
+		return new PtString("Error on IcrashSystemImpl");
+	}
+
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeInvalidateAlert(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID)
 	 */

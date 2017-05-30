@@ -28,6 +28,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.RmiUtils;
 
@@ -125,6 +126,27 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 			
 			
 		if(res.getValue() == true)
+			log.info("operation oeValidateAlert successfully executed by the system");
+
+
+		return res;
+	}
+
+	@Override
+	synchronized public PtString oeSendFamilyNotification(DtAlertID aDtAlertID) throws RemoteException, NotBoundException {
+		Logger log = Log4JUtils.getInstance().getLogger();
+		
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+
+	    IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+	
+		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+
+		log.info("message ActCoordinator.oeSendFamilyNotification sent to system");
+		PtString res = iCrashSys_Server.oeSendFamilyNotification(aDtAlertID);
+			
+			
+		if(res != null)
 			log.info("operation oeValidateAlert successfully executed by the system");
 
 
@@ -332,4 +354,5 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 			log.info("operation oeGetAlertsSet successfully executed by the system");
 		return res;
 	}
+
 }

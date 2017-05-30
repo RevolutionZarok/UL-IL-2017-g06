@@ -27,6 +27,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message.MessageType;
@@ -109,6 +110,16 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 					.oeValidateAlert(aDtAlertID);
 		else
 			return new PtBoolean(false);
+	}
+	
+
+	@Override
+	synchronized public PtString oeSendFamilyNotification(DtAlertID aDtAlertID) throws RemoteException, NotBoundException{
+		if (getServerSideActor() != null)
+			return ((ActCoordinator) getServerSideActor())
+					.oeSendFamilyNotification(aDtAlertID);
+		else
+			return new PtString("Error on ActProxyCoordinatorImpl");
 	}
 
 	/* (non-Javadoc)
@@ -228,5 +239,6 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 	public PtBoolean oeLogout() throws RemoteException, NotBoundException {
 		return super.oeLogout();
 	}
+
 
 }

@@ -50,6 +50,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTim
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 /**
  * The Interface IcrashSystem that allows RMI access to the server methods.
@@ -251,6 +252,8 @@ public interface IcrashSystem extends Remote {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean oeValidateAlert(DtAlertID aDtAlertID) throws RemoteException; 
+
+	public PtString oeSendFamilyNotification(DtAlertID aDtAlertID) throws RemoteException;
 	
 	/**
 	 * Validates an alert on the system
@@ -390,4 +393,5 @@ public interface IcrashSystem extends Remote {
 	public void setCurrentRequestingAuthenticatedPassword(DtPassword aDtPassword) throws RemoteException;//TODO: Messir?
 	public DtLogin getCurrentRequestingAuthenticatedLogin() throws RemoteException;//TODO: Messir?
 	public DtPassword getCurrentRequestingAuthenticatedPassword() throws RemoteException;//TODO: Messir?
+
 }

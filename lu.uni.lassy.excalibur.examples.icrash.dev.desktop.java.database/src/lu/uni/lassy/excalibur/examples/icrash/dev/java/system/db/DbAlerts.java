@@ -40,6 +40,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAl
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
@@ -853,6 +854,41 @@ public class DbAlerts extends DbAbstract {
 		} catch (Exception e) {
 			logException(e);
 		}
+
+	}
+	
+	public static String getAlertInfo(CtAlert theAlert) {
+		try {
+			conn = DriverManager
+					.getConnection(url + dbName, userName, password);
+			log.debug("Connected to the database");
+
+			Statement statement = null;
+
+			try{
+				log.debug("[DATABASE]-Get notification information");
+				String query = "SELECT familyComment, victimFirstName, victimLastName FROM"
+						+ dbName
+						+ ".alerts WHERE id = ?";
+				ResultSet rs = statement.executeQuery(query);
+				String familyComment  = rs.getString("familyComment");
+				String victimName = rs.getString("victimFirstName") + " " + rs.getString("victimLastName");	
+				
+				DtSMS sms = new DtSMS(new PtString(victimName + " has been in an accident. Here's his message:\n\n" + familyComment));
+				
+				return sms.value.getValue();
+			}catch (SQLException s) {
+				log.error("SQL statement is not executed! " + s);
+			}finally {
+		        if (statement != null) { statement.close(); }
+		    }
+			
+			conn.close();
+			log.debug("Disconnected from database");
+		} catch (Exception e) {
+			logException(e);
+		}
+		return "Error in DbAlerts";
 
 	}
 
