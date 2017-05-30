@@ -869,7 +869,7 @@ public class DbAlerts extends DbAbstract {
 				log.debug("[DATABASE]-Get notification information");
 				String query = "SELECT familyComment, victimFirstName, victimLastName FROM"
 						+ dbName
-						+ ".alerts WHERE id = ?";
+						+ ".alerts WHERE id = " + theAlert.id.value.getValue() + ";";
 				ResultSet rs = statement.executeQuery(query);
 				String familyComment  = rs.getString("familyComment");
 				String victimName = rs.getString("victimFirstName") + " " + rs.getString("victimLastName");	
