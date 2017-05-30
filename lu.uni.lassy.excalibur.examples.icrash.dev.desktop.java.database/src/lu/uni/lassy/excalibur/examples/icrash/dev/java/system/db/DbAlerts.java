@@ -863,18 +863,23 @@ public class DbAlerts extends DbAbstract {
 					.getConnection(url + dbName, userName, password);
 			log.debug("Connected to the database");
 
-			Statement statement = null;
+			Statement statement = conn.createStatement();
 
 			try{
 				log.debug("[DATABASE]-Get notification information");
-				String query = "SELECT familyComment, victimFirstName, victimLastName FROM"
+				String query = "SELECT familyComment, victimFirstName, victimLastName FROM "
 						+ dbName
-						+ ".alerts WHERE id = " + theAlert.id.value.getValue() + ";";
+						+ ".alerts WHERE id = " + theAlert.id.value.getValue();
 				ResultSet rs = statement.executeQuery(query);
-				String familyComment  = rs.getString("familyComment");
-				String victimName = rs.getString("victimFirstName") + " " + rs.getString("victimLastName");	
+				String familyComment = "";
+				String victimName = "";
 				
-				DtSMS sms = new DtSMS(new PtString(victimName + " has been in an accident. Here's his message:\n\n" + familyComment));
+				while(rs.next()){
+					familyComment  = rs.getString("familyComment");
+					victimName = rs.getString("victimFirstName") + " " + rs.getString("victimLastName");	
+				}
+				
+				DtSMS sms = new DtSMS(new PtString(victimName + " has been in an accident. Here's his comment:\n\n" + familyComment));
 				
 				return sms.value.getValue();
 			}catch (SQLException s) {
